@@ -10,11 +10,11 @@
   padding: 50px 20px 50px 20px;
   margin: -30px 0 -20px 0;
   transition: background-color 0.3s ease-in-out;
-  color:  #313131;
+  color: #313131;
 }
 
 .nav-link-hover:hover {
-  background-color:  #447ee2; /* #f5f5f5;  Background covers full area */
+  background-color: #447ee2; /* #f5f5f5;  Background covers full area */
   color: white;
 }
 
@@ -84,7 +84,7 @@
 
 .input-field:hover,
 .input-field:focus {
-  border-bottom: 3px solid  #4375ff;
+  border-bottom: 3px solid #4375ff;
 }
 
 .search-icon {
@@ -167,19 +167,18 @@
 /* NAV PILLS & TABS */
 
 .custom-tab-left {
-  border-inline-end: 1px solid black;
-  border-bottom: 1px solid black;
+  border-inline-end: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .custom-tab-middle {
-  border-inline-start: 1px solid black;
-  border-inline-end: 1px solid black;
-  border-bottom: 1px solid black;
+  border-inline-start: 1px solid #eaeaea;
+  border-inline-end: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .custom-tab-right {
-  border-inline-start: 1px solid black;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #eaeaea;
 }
 
 /* LONG TEXTS */
