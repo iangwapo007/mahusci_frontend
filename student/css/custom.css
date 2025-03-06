@@ -1,9 +1,5 @@
 /* MAIN COLORS */
 
-.color1 {
-  color: #f77a0e;
-}
-
 /* NAVBAR ITEMS */
 
 .nav-link-hover {
@@ -14,10 +10,11 @@
   padding: 50px 20px 50px 20px;
   margin: -30px 0 -20px 0;
   transition: background-color 0.3s ease-in-out;
+  color:  #313131;
 }
 
 .nav-link-hover:hover {
-  background-color: black; /* #f5f5f5;  Background covers full area */
+  background-color:  #447ee2; /* #f5f5f5;  Background covers full area */
   color: white;
 }
 
@@ -87,7 +84,7 @@
 
 .input-field:hover,
 .input-field:focus {
-  border-bottom: 3px solid #f77a0e;
+  border-bottom: 3px solid  #4375ff;
 }
 
 .search-icon {
