@@ -145,9 +145,9 @@
     <!-- END OF MOBILE NAVBAR -->
 
     <div class="container-fluid bg-info-subtle">
-      <div class="container" style="padding-left: 70px">
-        <div class="row py-4">
-          <div class="col mt-4 jost fw-medium me-3">
+      <div class="container px-lg-5">
+        <div class="row">
+          <div class="col-lg-6 py-5 jost fw-medium">
             <div>
               <span class="badge text-bg-dark">Chemistry</span>
               <span class="ms-2" style="font-size: smaller"
@@ -161,21 +161,21 @@
             <div class="d-flex align-items-center gap-4 mt-3">
               <div>
                 <img
-                  src="/src/icon/time.png"
-                  style="width: 15px"
+                  src="/src/icon/lessons.png"
+                  style="width: 18px"
                   alt=""
                   srcset=""
                 />
-                <span style="font-size: smaller">19 hours</span>
+                <span style="font-size: smaller">19 Lessons</span>
               </div>
               <div>
                 <img
-                  src="/src/icon/students.png"
+                  src="/src/icon/videos.png"
                   style="width: 20px"
                   alt=""
                   srcset=""
                 />
-                <span style="font-size: smaller">34 Students</span>
+                <span style="font-size: smaller">34 Videos</span>
               </div>
               <div>
                 <img
@@ -188,19 +188,110 @@
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="custom-card-fixed">
-              <img
-                src="/src/images/chemistry.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body my-3 ms-5">
+          <div class="col-lg-6 py-lg-5">
+            <div class="">
+              <div class="custom-card-fixed">
+                <img
+                  src="/src/images/chemistry.jpeg"
+                  alt="Card Image"
+                  class="custom-card-img"
+                />
+                <div class="custom-card-body my-3 ms-5">
+                  <span
+                    class="jost text-white custom-button"
+                    style="background-color: black"
+                    >Take Quiz</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container px-lg-5" style="margin-top: -150px">
+      <div class="col">
+        <div class="border border-black w-50 rounded-top-4">
+          <div class="bg-white rounded-4">
+            <nav>
+              <div
+                class="exo d-flex justify-content-between"
+                id="nav-tab"
+                role="tablist"
+              >
                 <span
-                  class="jost text-white custom-button"
-                  style="background-color: black"
-                  >Take Quiz</span
-                >
+                  class="flex-fill text-center custom-tab-left py-3 nav-link active"
+                  style="font-weight: 700; font-size: 18px; width: 120px"
+                  id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                  >Overview
+                </span>
+                <span
+                  class="flex-fill text-center custom-tab-middle py-3 nav-link"
+                  style="font-weight: 700; font-size: 18px; width: 120px"
+                  id="nav-profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                  >Progress
+                </span>
+                <span
+                  class="flex-fill text-center custom-tab-middle py-3"
+                  style="font-weight: 700; font-size: 18px; width: 120px"
+                  >Instructor
+                </span>
+                <span
+                  class="flex-fill text-center custom-tab-right py-3"
+                  style="font-weight: 700; font-size: 18px; width: 120px"
+                  >Test
+                </span>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+                tabindex="0"
+              >
+                Test
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+                tabindex="0"
+              >
+                Piste di mo gana
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-contact"
+                role="tabpanel"
+                aria-labelledby="nav-contact-tab"
+                tabindex="0"
+              >
+                ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="nav-disabled"
+                role="tabpanel"
+                aria-labelledby="nav-disabled-tab"
+                tabindex="0"
+              >
+                ...
               </div>
             </div>
           </div>

@@ -167,6 +167,24 @@
   position: absolute;
 }
 
+/* NAV PILLS & TABS */
+
+.custom-tab-left {
+  border-inline-end: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.custom-tab-middle {
+  border-inline-start: 1px solid black;
+  border-inline-end: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.custom-tab-right {
+  border-inline-start: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
 /* LONG TEXTS */
 
 .truncate {
