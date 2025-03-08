@@ -208,6 +208,47 @@
   background-color: #5a95fd;
 }
 
+/* CUSTOM DROPDOWN */
+.static-dropdown {
+  padding: 0; /* Remove extra padding */
+  margin: 0; /* Remove unnecessary margin */
+  position: relative; /* Ensures it stays inside the container */
+}
+
+.static-dropdown .dropdown-menu {
+  position: static !important; /* Keeps dropdown inside the parent */
+  transform: none !important; /* Prevents Bootstrap from pushing it */
+  margin-top: 2px !important; /* Adjust gap between button and menu */
+  width: 100%; /* Ensures it matches the parent container width */
+}
+
+.dropdown {
+  position: relative; /* Ensure it stays within the parent */
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu {
+  display: none; /* Hide by default */
+  position: relative !important; /* Prevents absolute positioning */
+  transform: none !important;
+  margin-top: 2px;
+  width: 100%; /* Full width */
+}
+
+.dropdown.show .dropdown-menu {
+  display: block; /* Show menu when dropdown is active */
+}
+
+/* Remove Bootstrap's default dropdown caret */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.locked {
+  opacity: 0.5;
+}
+
 /* LONG TEXTS */
 
 .truncate {
@@ -244,5 +285,14 @@
 @media (min-width: 768px) {
   .dp {
     padding: 0 100px 0 100px;
+  }
+}
+
+/* FOR MOBILE VIEW */
+
+@media (max-width: 576px) {
+  /* Mobile */
+  .padding-top-mobile {
+    padding-top: 180px;
   }
 }

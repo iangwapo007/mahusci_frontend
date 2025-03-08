@@ -6,6 +6,7 @@
     <title>Sample | Courses</title>
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat"
       rel="stylesheet"
@@ -213,7 +214,12 @@
         </div>
       </div>
 
-      <div class="container ps-lg-5" style="margin-top: -150px">
+      <!-- START OF NAV PILLS -->
+
+      <div
+        class="container ps-lg-5 padding-top-mobile"
+        style="margin-top: -150px"
+      >
         <div class="row">
           <div class="col-lg-6">
             <div class="border rounded-4">
@@ -252,14 +258,14 @@
                     <span
                       class="py-3 flex-fill text-center custom-tab-right text-reset"
                       style="font-weight: 700; font-size: 18px; width: 120px"
-                      id="nav-overview-tab"
+                      id="nav-instructor-tab"
                       data-bs-toggle="tab"
-                      data-bs-target="#nav-overview"
+                      data-bs-target="#nav-instructor"
                       type="button"
                       role="tab"
-                      aria-controls="nav-overview"
-                      aria-selected="true"
-                      >Test
+                      aria-controls="nav-instructor"
+                      aria-selected="false"
+                      >Instructor
                     </span>
                   </div>
                 </nav>
@@ -272,7 +278,7 @@
                     tabindex="0"
                   >
                     <div class="container">
-                      <p class="pt-3 pb-3 px-3 jost">
+                      <p class="py-3 mx-3 jost">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Voluptates adipisci exercitationem, repudiandae sint
                         dolorem omnis minima temporibus ducimus cum rem
@@ -288,11 +294,667 @@
                     aria-labelledby="nav-progress-tab"
                     tabindex="0"
                   >
-                    <div class="container">
-                      <p class="pt-3 pb-3 px-3 jost">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Voluptas, commodi. Commodi suscipit.
+                    <div class="container px-4 py-3">
+                      <p class="jost">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Repellat nihil laboriosam atque in deserunt porro
+                        provident culpa ea aperiam quod. Assumenda, porro modi!
+                        Voluptate magni, incidunt debitis excepturi pariatur
+                        provident.
                       </p>
+                      <!-- LESSONS -->
+                      <div class="dropdown py-1">
+                        <button
+                          class="btn dropdown-toggle w-100"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                          style="border: 1px solid #e5e4e7"
+                        >
+                          <div class="d-flex align-items-center float-start">
+                            <img
+                              src="/src/icon/dropdown.png"
+                              style="width: 10px; margin-right: 12px"
+                              alt=""
+                            />
+                            <span class="float-start exo fw-semibold"
+                              >Chapter 1 | Sample</span
+                            >
+                          </div>
+                          <div class="float-end me-2">
+                            <span class="jost">3 Lessons</span>
+                          </div>
+                        </button>
+                        <div class="dropdown-menu w-100 static-dropdown">
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 2: Ubriiiiii</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost" style="color: #5a95fd" ;
+                                  >Lesson 2: Ubriiiiii(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/dot.png"
+                                  style="width: 15px; margin-right: 1px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 3: Steffany</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Steffany(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/quizzes.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Ubriiiiii VS Steffany(Quiz)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="dropdown py-1">
+                        <button
+                          class="btn dropdown-toggle w-100 locked disabled"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                          style="border: 1px solid #e5e4e7"
+                        >
+                          <div class="d-flex align-items-center float-start">
+                            <img
+                              src="/src/icon/dropdown.png"
+                              style="width: 10px; margin-right: 12px"
+                              alt=""
+                            />
+                            <span class="float-start exo fw-semibold"
+                              >Chapter 2 | Sample 2</span
+                            >
+                          </div>
+                          <div class="float-end me-2">
+                            <span class="jost me-3">3 Lessons</span>
+                            <img
+                              src="/src/icon/locked.png"
+                              width="15px"
+                              alt=""
+                              srcset=""
+                            />
+                          </div>
+                        </button>
+                        <div class="dropdown-menu w-100 static-dropdown">
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 2: Ubriiiiii</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost" style="color: #5a95fd" ;
+                                  >Lesson 2: Ubriiiiii(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/dot.png"
+                                  style="width: 15px; margin-right: 1px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 3: Steffany</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Steffany(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/quizzes.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Ubriiiiii VS Steffany(Quiz)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="dropdown py-1">
+                        <button
+                          class="btn dropdown-toggle w-100 locked disabled"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                          style="border: 1px solid #e5e4e7"
+                        >
+                          <div class="d-flex align-items-center float-start">
+                            <img
+                              src="/src/icon/dropdown.png"
+                              style="width: 10px; margin-right: 12px"
+                              alt=""
+                            />
+                            <span class="float-start exo fw-semibold"
+                              >Chapter 3 | Sample 3</span
+                            >
+                          </div>
+                          <div class="float-end me-2">
+                            <span class="jost me-3">3 Lessons</span>
+                            <img
+                              src="/src/icon/locked.png"
+                              width="15px"
+                              alt=""
+                              srcset=""
+                            />
+                          </div>
+                        </button>
+                        <div class="dropdown-menu w-100 static-dropdown">
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 1: Lorem ipsum dolor(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 2: Ubriiiiii</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/done.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost" style="color: #5a95fd" ;
+                                  >Lesson 2: Ubriiiiii(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/dot.png"
+                                  style="width: 15px; margin-right: 1px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/file.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost">Lesson 3: Steffany</span>
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/videos.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Steffany(Video)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ps-5 pe-3 my-3">
+                            <div
+                              class="d-flex justify-content-between align-items-center locked"
+                            >
+                              <div>
+                                <img
+                                  src="/src/icon/quizzes.png"
+                                  style="width: 18px"
+                                  alt=""
+                                />
+                                <span class="jost"
+                                  >Lesson 3: Ubriiiiii VS Steffany(Quiz)</span
+                                >
+                              </div>
+                              <div>
+                                <span class="badge jost text-bg-secondary me-4"
+                                  >View</span
+                                >
+                                <img
+                                  src="/src/icon/locked.png"
+                                  style="width: 15px"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade show"
+                    id="nav-instructor"
+                    role="tabpanel"
+                    aria-labelledby="nav-instructor-tab"
+                    tabindex="0"
+                  >
+                    <div class="container">
+                      <div class="row d-flex justify-content-center">
+                        <img
+                          src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+                          class="w-25"
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="row text-center mt-3">
+                          <h3>Liquid nAts</h3>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Consectetur accusamus quibusdam laborum
+                            possimus porro, voluptates fuga ut dolores
+                            voluptatibus nihil expedita. Iure ipsum
+                            exercitationem temporibus eligendi. Et in cumque
+                            quidem.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -301,6 +963,7 @@
           </div>
         </div>
       </div>
+      <!-- END OF NAV PILLS -->
     </div>
 
     <!-- END OF CONTENT -->
@@ -365,5 +1028,22 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdown = document.querySelector(".dropdown");
+        const dropdownButton = dropdown.querySelector(".dropdown-toggle");
+
+        dropdownButton.addEventListener("click", function () {
+          dropdown.classList.toggle("show"); // Toggle the dropdown menu visibility
+        });
+
+        // Close when clicking outside
+        document.addEventListener("click", function (event) {
+          if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove("show");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
