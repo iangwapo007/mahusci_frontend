@@ -115,9 +115,16 @@
     <div
       class="montserrat shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
     >
-      <div>
-        <span class="color1">Sample Logo</span>
-      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
 
       <div
         class="d-flex align-items-center float-end"
@@ -133,16 +140,92 @@
           />
         </div>
       </div>
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-start w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title exo fw-semibold" id="offcanvasNavbarLabel">
+            MahuSci
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body jost">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/student/home.html"
+              >
+                <img
+                  class="ms-1"
+                  src="/src/icon/home.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/student/courses.html"
+                ><img
+                  class="me-4"
+                  src="/src/icon/students.png"
+                  alt=""
+                  srcset=""
+                  style="width: 25px"
+                />My Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  class="ps-1"
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 20px; margin-right: 28px"
+                />My Profile</a
+              >
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <span class="ms-3">Log out</span>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
     </div>
 
     <div
-      class="montserrat py-2 d-flex d-md-none"
+      class="jost py-2 d-flex d-md-none"
       style="font-weight: 600; background-color: #f5f5f5"
     >
       <div class="container">
-        <span class="px-3" style="color: #545454">Homepage</span
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span class="px-3" style="color: #545454">Home</span></a
         ><span style="color: #9d9d9d">></span
-        ><span class="px-3" style="color: #9d9d9d">Course</span>
+        ><a class="text-decoration-none" href="/student/courses.html"
+          ><span class="px-3" style="color: #545454">My Courses</span></a
+        >
+        <span style="color: #9d9d9d">></span
+        ><span class="px-3 truncate1" style="color: #9d9d9d"
+          >Organic Chemistry (Carbon-based Compounds)</span
+        >
       </div>
     </div>
     <!-- END OF MOBILE NAVBAR -->

@@ -267,6 +267,15 @@
   width: 360px; /* Adjust width as needed */
 }
 
+.truncate1 {
+  max-width: 150px; /* Adjust width as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* PAGINATION */
 
 .pagination-item {
