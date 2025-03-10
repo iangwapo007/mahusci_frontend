@@ -32,26 +32,28 @@
       </div>
 
       <div class="exo d-flex justify-content-between">
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >Home
+          </span></a
+        >
+        <a class="text-decoration-none" href="/student/courses.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >My Courses
+          </span></a
+        >
         <span
           class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="home.html">Home</a>
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="courses.html"
-            >Courses</a
-          >
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
         <span
-          class="cl nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          class="nav-link-hover flex-fill text-center"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
       </div>
@@ -87,9 +89,16 @@
     <div
       class="montserrat shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
     >
-      <div>
-        <span class="color1">Sample Logo</span>
-      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
 
       <div
         class="d-flex align-items-center float-end"
@@ -105,10 +114,80 @@
           />
         </div>
       </div>
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-start w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title exo fw-semibold" id="offcanvasNavbarLabel">
+            MahuSci
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body jost">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/student/home.html"
+              >
+                <img
+                  class="ms-1"
+                  src="/src/icon/home.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/student/courses.html"
+                ><img
+                  class="me-4"
+                  src="/src/icon/students.png"
+                  alt=""
+                  srcset=""
+                  style="width: 25px"
+                />My Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  class="ps-1"
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 20px; margin-right: 28px"
+                />My Profile</a
+              >
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <span class="ps-3">Log out</span>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
     </div>
 
     <!-- END OF MOBILE NAVBAR -->
 
+    <!-- FOR DESKTOP VIEW -->
     <div class="container-fluid p-0">
       <img
         class="img-fluid w-100"
@@ -116,27 +195,27 @@
         alt=""
         srcset=""
       />
-      <!-- <div
-        class="overlay text-white"
+      <div
+        class="overlay text-white d-none d-lg-block"
         style="margin-top: -420px; margin-left: 200px; padding-right: 800px"
       >
-        <h1 class="montserrat fw-semibold">
-          Expand Your Knowledge with our Online Courses
-        </h1>
-        <p class="poppins pt-4 fw-lighter">
+        <h1 class="exo fw-semibold">Welcome to MahuSci!</h1>
+        <p class="jost pt-4 fw-lighter">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore culpa
           quo possimus quas maxime illo et nesciunt quibusdam voluptas molestias
           facere ducimus vitae atque impedit sequi distinctio, nihil debitis
           eius!
         </p>
+      </div>
+    </div>
 
-        <button
-          class="custom-button rounded-5 exo py-3 px-5 fw-semibold"
-          style="font-size: 15px; background-color: black"
-        >
-          <span class="text-white">Lorem ipsum dolor sit</span>
-        </button>
-      </div> -->
+    <!-- FOR MOBILE VIEW -->
+    <div
+      class="overlay d-block d-sm-none"
+      style="margin-top: -120px; padding-left: 30px"
+    >
+      <span class="fs-5 text-white exo">Welcome to MahuSci!</span>
+      <small></small>
     </div>
 
     <div class="container px-5 py-5">

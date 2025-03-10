@@ -33,26 +33,28 @@
       </div>
 
       <div class="exo d-flex justify-content-between">
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >Home
+          </span></a
+        >
+        <a class="text-decoration-none" href="/student/courses.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >My Courses
+          </span></a
+        >
         <span
           class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="home.html">Home</a>
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="courses.html"
-            >Courses</a
-          >
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
         <span
-          class="cl nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          class="nav-link-hover flex-fill text-center"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
       </div>
@@ -113,9 +115,16 @@
     <div
       class="montserrat shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
     >
-      <div>
-        <span class="color1">Sample Logo</span>
-      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
 
       <div
         class="d-flex align-items-center float-end"
@@ -131,16 +140,92 @@
           />
         </div>
       </div>
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-start w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title exo fw-semibold" id="offcanvasNavbarLabel">
+            MahuSci
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body jost">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/student/home.html"
+              >
+                <img
+                  class="ms-1"
+                  src="/src/icon/home.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/student/courses.html"
+                ><img
+                  class="me-4"
+                  src="/src/icon/students.png"
+                  alt=""
+                  srcset=""
+                  style="width: 25px"
+                />My Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  class="ps-1"
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 20px; margin-right: 28px"
+                />My Profile</a
+              >
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <span class="ms-3">Log out</span>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
     </div>
 
     <div
-      class="montserrat py-2 d-flex d-md-none"
+      class="jost py-2 d-flex d-md-none"
       style="font-weight: 600; background-color: #f5f5f5"
     >
       <div class="container">
-        <span class="px-3" style="color: #545454">Homepage</span
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span class="px-3" style="color: #545454">Home</span></a
         ><span style="color: #9d9d9d">></span
-        ><span class="px-3" style="color: #9d9d9d">Course</span>
+        ><a class="text-decoration-none" href="/student/courses.html"
+          ><span class="px-3" style="color: #545454">My Courses</span></a
+        >
+        <span style="color: #9d9d9d">></span
+        ><span class="px-3 truncate1" style="color: #9d9d9d"
+          >Organic Chemistry (Carbon-based Compounds)</span
+        >
       </div>
     </div>
     <!-- END OF MOBILE NAVBAR -->
@@ -216,10 +301,7 @@
 
       <!-- START OF NAV PILLS -->
 
-      <div
-        class="container ps-lg-5 padding-top-mobile"
-        style="margin-top: -150px"
-      >
+      <div class="container ps-lg-5 pt-sm-1" style="margin-top: -150px">
         <div class="row">
           <div class="col-lg-6">
             <div class="border rounded-4">
@@ -326,7 +408,7 @@
                           </div>
                         </button>
                         <div class="dropdown-menu w-100 static-dropdown">
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -341,9 +423,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -352,7 +431,8 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+
+                          <div class="px-lg-5 px-4 -3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -367,9 +447,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -378,7 +455,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -391,9 +468,6 @@
                                 <span class="jost">Lesson 2: Ubriiiiii</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -402,7 +476,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -417,9 +491,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/dot.png"
                                   style="width: 15px; margin-right: 1px"
@@ -428,7 +499,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -441,9 +512,6 @@
                                 <span class="jost">Lesson 3: Steffany</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -452,7 +520,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -467,9 +535,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -478,7 +543,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -493,9 +558,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -536,7 +598,7 @@
                           </div>
                         </button>
                         <div class="dropdown-menu w-100 static-dropdown">
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -551,9 +613,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -562,7 +621,8 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+
+                          <div class="px-lg-5 px-4 -3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -577,9 +637,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -588,7 +645,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -601,9 +658,6 @@
                                 <span class="jost">Lesson 2: Ubriiiiii</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -612,7 +666,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -627,9 +681,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/dot.png"
                                   style="width: 15px; margin-right: 1px"
@@ -638,7 +689,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -651,9 +702,6 @@
                                 <span class="jost">Lesson 3: Steffany</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -662,7 +710,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -677,9 +725,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -688,7 +733,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -703,9 +748,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -746,7 +788,7 @@
                           </div>
                         </button>
                         <div class="dropdown-menu w-100 static-dropdown">
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -761,9 +803,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -772,7 +811,8 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+
+                          <div class="px-lg-5 px-4 -3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -787,9 +827,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -798,7 +835,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -811,9 +848,6 @@
                                 <span class="jost">Lesson 2: Ubriiiiii</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/done.png"
                                   style="width: 15px"
@@ -822,7 +856,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center"
                             >
@@ -837,9 +871,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/dot.png"
                                   style="width: 15px; margin-right: 1px"
@@ -848,7 +879,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -861,9 +892,6 @@
                                 <span class="jost">Lesson 3: Steffany</span>
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -872,7 +900,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -887,9 +915,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -898,7 +923,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="ps-5 pe-3 my-3">
+                          <div class="px-lg-5 px-4 my-3">
                             <div
                               class="d-flex justify-content-between align-items-center locked"
                             >
@@ -913,9 +938,6 @@
                                 >
                               </div>
                               <div>
-                                <span class="badge jost text-bg-secondary me-4"
-                                  >View</span
-                                >
                                 <img
                                   src="/src/icon/locked.png"
                                   style="width: 15px"
@@ -936,23 +958,26 @@
                     tabindex="0"
                   >
                     <div class="container">
-                      <div class="row mt-3 d-flex justify-content-center">
-                        <img
-                          src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-                          class="w-25"
-                          alt=""
-                          srcset=""
-                        />
-                        <div class="row text-center mt-3">
-                          <h3 class="exo fw-semibold">Liquid nAts</h3>
-                          <p class="jost">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Consectetur accusamus quibusdam laborum
-                            possimus porro, voluptates fuga ut dolores
-                            voluptatibus nihil expedita. Iure ipsum
-                            exercitationem temporibus eligendi. Et in cumque
-                            quidem.
-                          </p>
+                      <div class="row px-2 py-4">
+                        <div class="col-lg-5 text-center">
+                          <img
+                            class="w-75 border border-black rounded-3"
+                            src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+                            alt=""
+                            srcset=""
+                          />
+                        </div>
+                        <div class="col">
+                          <div class="pt-sm-2">
+                            <span class="fw-semibold exo fs-5"
+                              >Liquid nAts</span
+                            >
+                            <p class="jost mt-2">
+                              Lorem ipsum dolor, sit amet consectetur
+                              adipisicing elit. In similique dolor dolorem quos,
+                              quo eius aperiam, itaque accusantium ea eos cumque
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>

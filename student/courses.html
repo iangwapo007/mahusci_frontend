@@ -32,26 +32,28 @@
       </div>
 
       <div class="exo d-flex justify-content-between">
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >Home
+          </span></a
+        >
+        <a class="text-decoration-none" href="/student/courses.html"
+          ><span
+            class="nav-link-hover flex-fill text-center"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >My Courses
+          </span></a
+        >
         <span
           class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="home.html">Home</a>
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
-          ><a class="text-decoration-none text-reset" href="courses.html"
-            >Courses</a
-          >
-        </span>
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
         <span
-          class="cl nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 120px"
+          class="nav-link-hover flex-fill text-center"
+          style="font-weight: 700; font-size: 18px; width: 140px"
           >Test</span
         >
       </div>
@@ -102,9 +104,16 @@
     <div
       class="montserrat shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
     >
-      <div>
-        <span class="color1">Sample Logo</span>
-      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
 
       <div
         class="d-flex align-items-center float-end"
@@ -120,26 +129,103 @@
           />
         </div>
       </div>
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-start w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title exo fw-semibold" id="offcanvasNavbarLabel">
+            MahuSci
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body jost">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/student/home.html"
+              >
+                <img
+                  class="ms-1"
+                  src="/src/icon/home.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/student/courses.html"
+                ><img
+                  class="me-4"
+                  src="/src/icon/students.png"
+                  alt=""
+                  srcset=""
+                  style="width: 25px"
+                />My Courses</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  class="ps-1"
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 20px; margin-right: 28px"
+                />My Profile</a
+              >
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <span class="ms-3">Log out</span>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
     </div>
 
     <div
-      class="montserrat py-2 d-flex d-md-none"
+      class="jost py-2 d-flex d-md-none"
       style="font-weight: 600; background-color: #f5f5f5"
     >
       <div class="container">
-        <span class="px-3" style="color: #545454">Homepage</span
+        <a class="text-decoration-none" href="/student/home.html"
+          ><span class="px-3" style="color: #545454">Home</span></a
         ><span style="color: #9d9d9d">></span
-        ><span class="px-3" style="color: #9d9d9d">Course</span>
+        ><a class="text-decoration-none" href="/student/courses.html"
+          ><span class="px-3" style="color: #9d9d9d">My Courses</span></a
+        >
       </div>
     </div>
     <!-- END OF MOBILE NAVBAR -->
+
+    <!-- START OF CONTENTS -->
 
     <div
       class="container mt-5 d-flex justify-content-between align-items-center exo"
     >
       <div class="ms-3">
-        <h2 style="font-weight: 800; color:  #4481eb;">All Courses</h2>
-        <span>Welcome to taka2</span>
+        <h2 style="font-weight: 800; color: #4481eb">My Courses</h2>
+        <span
+          >Welcome back!
+          <span class="fw-bolder">Christine Lacuerda Luperte</span>
+        </span>
       </div>
       <div class="search-container d-none d-md-flex">
         <input class="input-field" type="text" placeholder="Search" />
@@ -174,7 +260,7 @@
                   Dalauta</span
                 >
                 <h5 class="custom-card-title truncate">Botany (Plants)</h5>
-                <div class="d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center gap-4 pb-3">
                   <div>
                     <img
                       src="/src/icon/lessons.png"
@@ -203,9 +289,21 @@
                     <span style="font-size: smaller">13 Quizzes</span>
                   </div>
                 </div>
-              </div>
-            </div></a
-          >
+                <div class="custom-card-footer">
+                  <span style="font-size: smaller">Progress:</span>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Basic example"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar w-25"></div>
+                  </div>
+                </div>
+              </div></div
+          ></a>
         </div>
         <div class="col-lg-4 mt-5">
           <a
@@ -215,28 +313,27 @@
             <div class="custom-card">
               <span
                 class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-                >Chemistry</span
               >
+                Chemistry
+              </span>
               <img
                 src="/src/images/chemistry.jpeg"
                 alt="Card Image"
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller"
-                  ><span style="color: #9d9d9d">by </span>Clark Raven
-                  Dalauta</span
-                >
+                <span style="font-size: smaller">
+                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
+                </span>
                 <h5 class="custom-card-title truncate">
                   Organic Chemistry (Carbon-based Compounds)
                 </h5>
-                <div class="d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center gap-4 pb-3">
                   <div>
                     <img
                       src="/src/icon/lessons.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">19 Lessons</span>
                   </div>
@@ -245,7 +342,6 @@
                       src="/src/icon/videos.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">34 Videos</span>
                   </div>
@@ -254,9 +350,21 @@
                       src="/src/icon/quizzes.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">13 Quizzes</span>
+                  </div>
+                </div>
+                <div class="custom-card-footer">
+                  <span style="font-size: smaller">Progress:</span>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Basic example"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar w-75"></div>
                   </div>
                 </div>
               </div>
@@ -271,28 +379,27 @@
             <div class="custom-card">
               <span
                 class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-                >Physics</span
               >
+                Physics
+              </span>
               <img
                 src="/src/images/physics.jpeg"
                 alt="Card Image"
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller"
-                  ><span style="color: #9d9d9d">by </span>Clark Raven
-                  Dalauta</span
-                >
+                <span style="font-size: smaller">
+                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
+                </span>
                 <h5 class="custom-card-title truncate">
                   Mechanics (Motion, Forces, Energy)
                 </h5>
-                <div class="d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center gap-4 pb-3">
                   <div>
                     <img
                       src="/src/icon/lessons.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">19 Lessons</span>
                   </div>
@@ -301,7 +408,6 @@
                       src="/src/icon/videos.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">34 Videos</span>
                   </div>
@@ -310,67 +416,26 @@
                       src="/src/icon/quizzes.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">13 Quizzes</span>
+                  </div>
+                </div>
+                <div class="custom-card-footer">
+                  <span style="font-size: smaller">Progress:</span>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Basic example"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar w-50"></div>
                   </div>
                 </div>
               </div>
             </div>
           </a>
-        </div>
-        <div class="col-lg-4 mt-5">
-          <a class="text-decoration-none text-reset" href="/student/course.html"
-            ><div class="custom-card">
-              <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-                >Earth Science</span
-              >
-              <img
-                src="/src/images/earth_science.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <span style="font-size: smaller"
-                  ><span style="color: #9d9d9d">by </span>Clark Raven
-                  Dalauta</span
-                >
-                <h5 class="custom-card-title truncate">
-                  Geology (Rocks, Minerals, Earth’s Crust)
-                </h5>
-                <div class="d-flex align-items-center gap-4">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
-              </div>
-            </div></a
-          >
         </div>
         <div class="col-lg-4 mt-5">
           <a
@@ -380,28 +445,27 @@
             <div class="custom-card">
               <span
                 class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-                >Astronomy</span
               >
+                Earth Science
+              </span>
               <img
-                src="/src/images/astronomy.jpeg"
+                src="/src/images/earth_science.jpeg"
                 alt="Card Image"
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller"
-                  ><span style="color: #9d9d9d">by </span>Clark Raven
-                  Dalauta</span
-                >
+                <span style="font-size: smaller">
+                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
+                </span>
                 <h5 class="custom-card-title truncate">
-                  Astrophysics (Stars, Galaxies, Black Holes)
+                  Geology (Rocks, Minerals, Earth’s Crust)
                 </h5>
-                <div class="d-flex align-items-center gap-4">
+                <div class="d-flex align-items-center gap-4 pb-3">
                   <div>
                     <img
                       src="/src/icon/lessons.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">19 Lessons</span>
                   </div>
@@ -410,7 +474,6 @@
                       src="/src/icon/videos.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">34 Videos</span>
                   </div>
@@ -419,9 +482,87 @@
                       src="/src/icon/quizzes.png"
                       style="width: 15px"
                       alt=""
-                      srcset=""
                     />
                     <span style="font-size: smaller">13 Quizzes</span>
+                  </div>
+                </div>
+                <div class="custom-card-footer">
+                  <span style="font-size: smaller">Progress:</span>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Basic example"
+                    aria-valuenow="25"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar w-25"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 mt-5">
+          <a
+            class="text-decoration-none text-reset"
+            href="/student/course.html"
+          >
+            <div class="custom-card">
+              <span
+                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+              >
+                Astronomy
+              </span>
+              <img
+                src="/src/images/astronomy.jpeg"
+                alt="Card Image"
+                class="custom-card-img"
+              />
+              <div class="custom-card-body">
+                <span style="font-size: smaller">
+                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
+                </span>
+                <h5 class="custom-card-title truncate">
+                  Astrophysics (Stars, Galaxies, Black Holes)
+                </h5>
+                <div class="d-flex align-items-center gap-4 pb-3">
+                  <div>
+                    <img
+                      src="/src/icon/lessons.png"
+                      style="width: 15px"
+                      alt=""
+                    />
+                    <span style="font-size: smaller">19 Lessons</span>
+                  </div>
+                  <div>
+                    <img
+                      src="/src/icon/videos.png"
+                      style="width: 15px"
+                      alt=""
+                    />
+                    <span style="font-size: smaller">34 Videos</span>
+                  </div>
+                  <div>
+                    <img
+                      src="/src/icon/quizzes.png"
+                      style="width: 15px"
+                      alt=""
+                    />
+                    <span style="font-size: smaller">13 Quizzes</span>
+                  </div>
+                </div>
+                <div class="custom-card-footer">
+                  <span style="font-size: smaller">Progress:</span>
+                  <div
+                    class="progress"
+                    role="progressbar"
+                    aria-label="Basic example"
+                    aria-valuenow="50"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <div class="progress-bar w-50"></div>
                   </div>
                 </div>
               </div>
@@ -439,7 +580,7 @@
         <span class="pagination-item"><</span>
         <span
           class="pagination-item"
-          style="background-color:  #4587f8; color: #f5f5f5"
+          style="background-color: #4587f8; color: #f5f5f5"
           >1</span
         >
         <span class="pagination-item">2</span>
@@ -450,8 +591,13 @@
 
     <!-- END OF PAGINATION -->
 
+    <!-- END OF CONTENTS -->
+
     <!-- START OF FOOTER -->
-    <div class="container-fluid" style="background-color: #5995fd; color: #ffffff;">
+    <div
+      class="container-fluid"
+      style="background-color: #5995fd; color: #ffffff"
+    >
       <div class="container">
         <div class="row px-md-5 gap-1" style="padding-top: 80px">
           <div class="col">
