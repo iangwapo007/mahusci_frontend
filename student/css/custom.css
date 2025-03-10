@@ -170,6 +170,11 @@
 
 /* NAV PILLS & TABS */
 
+.nav-pill:hover {
+  background-color: #5a95fd;
+  color: white;
+}
+
 .custom-tab-left {
   border-inline-end: 1px solid #eaeaea;
   border-bottom: 1px solid #eaeaea;
@@ -292,7 +297,11 @@
 
 @media (max-width: 576px) {
   /* Mobile */
-  .padding-top-mobile {
+  .pt-sm-1 {
     padding-top: 165px;
+  }
+
+  .pt-sm-2 {
+    padding-top: 20px;
   }
 }
