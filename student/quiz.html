@@ -419,8 +419,10 @@
       class="container mt-5 d-flex justify-content-between align-items-center montserrat"
     >
       <div>
-        <h2 style="font-weight: bold; color: #4481eb">Topic 1. Anotomy Char2</h2>
-        <span>description nga gamay</span>
+        <h2 class="exo text-black" style="font-weight: bold; color: #4481eb">
+          Topic 1. Anotomy Char2
+        </h2>
+        <span class="jost">description nga gamay</span>
       </div>
     </div>
 
@@ -459,14 +461,11 @@
     </div>
 
     <!--FAILED-->
-    <div id="timeoutModal" class="modal-overlay montserrat ">
+    <div id="timeoutModal " class="modal-overlay montserrat d-none">
       <div class="modal-box">
         <!-- Animated Icon -->
         <div class="modal-icon">
-          <img
-            src="/src/images/sad.png"
-            style="width: 90px; height: 90px"
-          />
+          <img src="/src/images/sad.png" style="width: 90px; height: 90px" />
         </div>
 
         <div class="modal-title">Sorry</div>
@@ -484,7 +483,9 @@
         <div class="col-12 col-lg-7">
           <form id="quiz-form">
             <!-- Question -->
-            <h2 class="question-title mb-3" style="font-weight: bold;">Mahal mo paba ako?</h2>
+            <h2 class="question-title mb-3 jost fw-light">
+              Mahal mo paba ako?
+            </h2>
 
             <!-- Options -->
             <!-- <div class="option mb-3" data-option="A">
@@ -509,6 +510,7 @@
 
             <div>
               <textarea
+                class=""
                 name=""
                 id=""
                 rows="10"
@@ -533,7 +535,7 @@
         <!-- Right side: Scoreboard and Quiz List -->
         <div class="col-12 col-lg-5">
           <div class="quiz-questions-list">
-            <h4 style="font-weight: bold;">Quiz Questions List</h4>
+            <h4 style="font-weight: bold">Quiz Questions List</h4>
             <div class="quiz-questions-body pt-3">
               <div class="progress-bar answered">
                 <i class="fas fa-check-circle"></i> Quiz question 1

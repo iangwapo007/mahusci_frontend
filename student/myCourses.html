@@ -20,92 +20,135 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="exo">
     <!-- START OF DESKTOP NAVBAR -->
 
     <div
-      class="d-none d-md-flex d-flex justify-content-between align-items-center"
-      style="margin: 0px 200px 0px 200px"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      style="padding: 5px 200px 5px 200px"
     >
-      <div class="py-4">
-        <span class="color1 exo fs-3 fw-semibold">Sample Logo</span>
+      <div class="py-3">
+        <img
+          src="/src/images/mahusci-banner-logo.png"
+          style="width: 180px"
+          alt=""
+          srcset=""
+        />
       </div>
 
-      <div class="exo d-flex justify-content-between">
+      <div class="d-flex justify-content-between">
         <a class="text-decoration-none" href="/student/home.html"
           ><span
-            class="nav-link-hover flex-fill text-center"
+            class="nav-link-hover flex-fill text-center col"
             style="font-weight: 700; font-size: 18px; width: 140px"
             >Home
           </span></a
         >
-        <a class="text-decoration-none" href="/student/courses.html"
+        <div class="position-relative dropdown">
+          <a class="text-decoration-none" href="/student/allCategories.html">
+            <span
+              class="nav-link-hover flex-fill text-center"
+              style="
+                font-weight: 700;
+                font-size: 18px;
+                width: 140px;
+                cursor: pointer;
+              "
+              role="button"
+            >
+              Categories
+            </span></a
+          >
+
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <a
+                class="text-decoration-none text-reset"
+                href="selectedCategory.html"
+                >Biology</a
+              >
+            </li>
+            <li class="dropdown-item">
+              <a
+                class="text-decoration-none text-reset"
+                href="selectedCategory.html"
+                >Chemistry</a
+              >
+            </li>
+            <li class="dropdown-item">
+              <a
+                class="text-decoration-none text-reset"
+                href="selectedCategory.html"
+                >Physics</a
+              >
+            </li>
+            <li class="dropdown-item">
+              <a
+                class="text-decoration-none text-reset"
+                href="selectedCategory.html"
+                >Earth Science</a
+              >
+            </li>
+            <li class="dropdown-item">
+              <a
+                class="text-decoration-none text-reset"
+                href="selectedCategory.html"
+                >Astronomy</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <a class="text-decoration-none" href="/student/myCourses.html"
           ><span
-            class="nav-link-hover flex-fill text-center"
+            class="nav-link-hover flex-fill text-center col"
             style="font-weight: 700; font-size: 18px; width: 140px"
             >My Courses
           </span></a
         >
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 140px"
-          >Test</span
-        >
-        <span
-          class="nav-link-hover flex-fill text-center"
-          style="font-weight: 700; font-size: 18px; width: 140px"
-          >Test</span
-        >
       </div>
 
-      <div
-        class="py-4 montserrat d-flex align-items-center float-end"
-        style="margin-top: -20px; margin-bottom: -20px"
-      >
-        <div class="pe-2">
-          <img
-            class="profile-picture"
-            src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-            alt=""
-            srcset=""
-          />
-        </div>
-        <div class="px-2">
-          <span style="font-size: 16px; font-weight: 600; line-height: 1"
-            >Liquid nAts</span
-          >
-          <span
-            class="color1"
-            style="font-size: 13px; display: block; line-height: 1"
-            >Sentinel</span
-          >
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="jost py-3 d-none d-md-flex"
-      style="font-weight: 500; background-color: #f5f5f5"
-    >
-      <div class="container" style="margin-left: 200px; margin-right: 100px">
-        <span class="pe-2" style="color: #545454"
-          ><a class="text-decoration-none text-reset" href="/student/home.html"
-            >Homepage</a
-          ></span
+      <a href="myProfile.html">
+        <div
+          class="py-4 d-flex align-items-center float-end"
+          style="margin-top: -20px; margin-bottom: -20px"
         >
-        <span style="color: #9d9d9d">></span>
-        <span class="px-2" style="color: #545454">Courses</span>
-      </div>
+          <div class="pe-2">
+            <img
+              class="profile-picture"
+              src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="px-2">
+            <span style="font-size: 16px; font-weight: 600; line-height: 1"
+              >Liquid nAts</span
+            >
+            <span
+              class="color1"
+              style="font-size: 13px; display: block; line-height: 1"
+              >Sentinel</span
+            >
+          </div>
+        </div>
+      </a>
     </div>
 
     <!-- END OF DESKTOP NAVBAR -->
 
     <!-- START OF MOBILE NAVBAR -->
     <div
-      class="montserrat shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
+      class="fixed-top bg-white shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
     >
+      <img
+        class="w-25"
+        src="/src/images/mahusci-banner-logo.png"
+        alt=""
+        srcset=""
+      />
       <button
-        class="navbar-toggler"
+        class="navbar-toggler ms-auto"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar"
@@ -115,31 +158,14 @@
         <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
       </button>
 
-      <div
-        class="d-flex align-items-center float-end"
-        style="margin-top: -20px; margin-bottom: -20px"
-      >
-        <div class="pe-2">
-          <img
-            class="profile-picture"
-            src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-            alt=""
-            srcset=""
-            style="width: 35px"
-          />
-        </div>
-      </div>
       <!-- START OF OFFCANVAS -->
       <div
-        class="offcanvas offcanvas-start w-75"
+        class="offcanvas offcanvas-end w-75"
         tabindex="-1"
         id="offcanvasNavbar"
         aria-labelledby="offcanvasNavbarLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title exo fw-semibold" id="offcanvasNavbarLabel">
-            MahuSci
-          </h5>
           <button
             type="button"
             class="btn-close"
@@ -147,43 +173,144 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body jost">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+        <div class="offcanvas-body">
+          <div
+            class="d-flex align-items-center rounded-3"
+            style="margin-bottom: 30px"
+          >
+            <div class="">
+              <img
+                class="profile-picture-offcanvas"
+                src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+                alt=""
+                srcset=""
+              />
+            </div>
+            <div class="ps-4">
+              <span style="font-size: 16px; font-weight: 600; line-height: 1"
+                >Liquid nAts</span
+              >
+              <span
+                class="color1"
+                style="font-size: 13px; display: block; line-height: 1"
+                >Sentinel</span
+              >
+            </div>
+          </div>
+          <span class="ms-2" style="color: #969697; font-size: 14px"
+            >Pages</span
+          >
+          <ul class="navbar-nav justify-content-end flex-grow-1 ms-3 pe-3 mt-2">
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link active d-flex align-items-center"
                 aria-current="page"
                 href="/student/home.html"
               >
                 <img
-                  class="ms-1"
                   src="/src/icon/home.png"
                   alt=""
                   srcset=""
                   style="width: 20px; margin-right: 26px"
-                />Home</a
-              >
+                />
+                <span class="mt-1">Home</span>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/student/courses.html"
-                ><img
-                  class="me-4"
-                  src="/src/icon/students.png"
+              <a
+                class="text-decoration-none text-reset d-flex align-items-center"
+                data-bs-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                <img
+                  src="/src/icon/category.png"
                   alt=""
                   srcset=""
-                  style="width: 25px"
-                />My Courses</a
-              >
+                  style="
+                    width: 15px;
+
+                    margin-left: 2px;
+                    margin-right: 28px;
+                  "
+                />
+                <span class="mt-1">Categories</span>
+              </a>
+              <div class="collapse ms-5" id="collapseExample">
+                <div class="card card-body">
+                  <ul class="list-unstyled">
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="allCategories.html"
+                        >All Categories</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="selectedCategory.html"
+                        >Biology</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="selectedCategory.html"
+                        >Chemistry</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="selectedCategory.html"
+                        >Physics</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="selectedCategory.html"
+                        >Earth Science</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="text-decoration-none text-reset"
+                        href="selectedCategory.html"
+                        >Astronomy</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"
+              <a
+                class="nav-link d-flex align-items-center"
+                href="myCourses.html"
                 ><img
-                  class="ps-1"
+                  src="/src/icon/students.png"
+                  alt=""
+                  style="width: 25px; margin-left: -3px; margin-right: 20px"
+                />
+                <span class="mt-1 ms-1">My Courses</span>
+              </a>
+            </li>
+            <li class="nav-item" style="margin-top: -6px">
+              <a
+                class="nav-link d-flex align-items-center"
+                href="myProfile.html"
+                ><img
                   src="/src/icon/my-profile.png"
                   alt=""
-                  style="width: 20px; margin-right: 28px"
-                />My Profile</a
-              >
+                  style="width: 18px; margin-left: 1px; margin-right: 22px"
+                />
+                <span class="mt-1 ms-1">My Profile</span>
+              </a>
             </li>
           </ul>
           <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
@@ -193,41 +320,29 @@
               srcset=""
               style="width: 25px"
             />
-            <span class="ms-3">Log out</span>
+            <span class="ps-3">Log out</span>
           </div>
         </div>
       </div>
       <!-- ENF OF OFFCANVAS -->
     </div>
 
-    <div
-      class="jost py-2 d-flex d-md-none"
-      style="font-weight: 600; background-color: #f5f5f5"
-    >
-      <div class="container">
-        <a class="text-decoration-none" href="/student/home.html"
-          ><span class="px-3" style="color: #545454">Home</span></a
-        ><span style="color: #9d9d9d">></span
-        ><a class="text-decoration-none" href="/student/courses.html"
-          ><span class="px-3" style="color: #9d9d9d">My Courses</span></a
-        >
-      </div>
-    </div>
     <!-- END OF MOBILE NAVBAR -->
 
     <!-- START OF CONTENTS -->
 
     <div
-      class="container mt-5 d-flex justify-content-between align-items-center exo"
+      class="container mt-5 d-flex justify-content-between align-items-center"
+      style="padding-top: 55px"
     >
-      <div class="ms-3">
+      <div class="ms-3 pt-lg-5">
         <h2 style="font-weight: 800; color: #4481eb">My Courses</h2>
         <span
           >Welcome back!
           <span class="fw-bolder">Christine Lacuerda Luperte</span>
         </span>
       </div>
-      <div class="search-container d-none d-md-flex">
+      <div class="mt-3 search-container d-none d-md-flex">
         <input class="input-field" type="text" placeholder="Search" />
         <img
           src="/src/icon/search.png"
@@ -240,13 +355,15 @@
     </div>
 
     <!-- START OF CARDS -->
-    <div class="container px-md-5 px-4 exo" style="margin-top: -18px">
-      <div class="row">
+    <div class="container px-md-5 px-4" style="margin-top: -18px">
+      <div class="row d-flex justify-content-center">
         <div class="col-lg-4 mt-5">
-          <a class="text-decoration-none text-reset" href="/student/course.html"
+          <a
+            class="text-decoration-none text-reset"
+            href="/student/selectedCourse.html"
             ><div class="custom-card">
               <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
                 >Biology</span
               >
               <img
@@ -255,40 +372,8 @@
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller"
-                  ><span style="color: #9d9d9d">by </span>Clark Raven
-                  Dalauta</span
-                >
                 <h5 class="custom-card-title truncate">Botany (Plants)</h5>
-                <div class="d-flex align-items-center gap-4 pb-3">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                      srcset=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
+
                 <div class="custom-card-footer">
                   <span style="font-size: smaller">Progress:</span>
                   <div
@@ -308,11 +393,11 @@
         <div class="col-lg-4 mt-5">
           <a
             class="text-decoration-none text-reset"
-            href="/student/course.html"
+            href="/student/selectedCourse.html"
           >
             <div class="custom-card">
               <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
               >
                 Chemistry
               </span>
@@ -322,38 +407,10 @@
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller">
-                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
-                </span>
                 <h5 class="custom-card-title truncate">
                   Organic Chemistry (Carbon-based Compounds)
                 </h5>
-                <div class="d-flex align-items-center gap-4 pb-3">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
+
                 <div class="custom-card-footer">
                   <span style="font-size: smaller">Progress:</span>
                   <div
@@ -374,11 +431,11 @@
         <div class="col-lg-4 mt-5">
           <a
             class="text-decoration-none text-reset"
-            href="/student/course.html"
+            href="/student/selectedCourse.html"
           >
             <div class="custom-card">
               <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
               >
                 Physics
               </span>
@@ -388,38 +445,10 @@
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller">
-                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
-                </span>
                 <h5 class="custom-card-title truncate">
                   Mechanics (Motion, Forces, Energy)
                 </h5>
-                <div class="d-flex align-items-center gap-4 pb-3">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
+
                 <div class="custom-card-footer">
                   <span style="font-size: smaller">Progress:</span>
                   <div
@@ -440,11 +469,11 @@
         <div class="col-lg-4 mt-5">
           <a
             class="text-decoration-none text-reset"
-            href="/student/course.html"
+            href="/student/selectedCourse.html"
           >
             <div class="custom-card">
               <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
               >
                 Earth Science
               </span>
@@ -454,38 +483,10 @@
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller">
-                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
-                </span>
                 <h5 class="custom-card-title truncate">
                   Geology (Rocks, Minerals, Earth’s Crust)
                 </h5>
-                <div class="d-flex align-items-center gap-4 pb-3">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
+
                 <div class="custom-card-footer">
                   <span style="font-size: smaller">Progress:</span>
                   <div
@@ -506,11 +507,11 @@
         <div class="col-lg-4 mt-5">
           <a
             class="text-decoration-none text-reset"
-            href="/student/course.html"
+            href="/student/selectedCourse.html"
           >
             <div class="custom-card">
               <span
-                class="jost fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
+                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
               >
                 Astronomy
               </span>
@@ -520,38 +521,9 @@
                 class="custom-card-img"
               />
               <div class="custom-card-body">
-                <span style="font-size: smaller">
-                  <span style="color: #9d9d9d">by </span>Clark Raven Dalauta
-                </span>
                 <h5 class="custom-card-title truncate">
                   Astrophysics (Stars, Galaxies, Black Holes)
                 </h5>
-                <div class="d-flex align-items-center gap-4 pb-3">
-                  <div>
-                    <img
-                      src="/src/icon/lessons.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">19 Lessons</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/videos.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">34 Videos</span>
-                  </div>
-                  <div>
-                    <img
-                      src="/src/icon/quizzes.png"
-                      style="width: 15px"
-                      alt=""
-                    />
-                    <span style="font-size: smaller">13 Quizzes</span>
-                  </div>
-                </div>
                 <div class="custom-card-footer">
                   <span style="font-size: smaller">Progress:</span>
                   <div
@@ -576,7 +548,7 @@
     <!-- START OF PAGINATION -->
 
     <div class="d-flex justify-content-center align-items-center">
-      <div class="jost d-flex gap-3 justify-content-center my-5">
+      <div class="d-flex gap-3 justify-content-center my-5">
         <span class="pagination-item"><</span>
         <span
           class="pagination-item"
@@ -596,13 +568,18 @@
     <!-- START OF FOOTER -->
     <div
       class="container-fluid"
-      style="background-color: #5995fd; color: #ffffff"
+      style="background-color: #5995fd; color: rgb(255, 255, 255)"
     >
       <div class="container">
         <div class="row px-md-5 gap-1" style="padding-top: 80px">
-          <div class="col">
-            <span class="exo fs-3 fw-bold">Sample Logo</span>
-            <p class="jost pt-md-5 pt-3 pe-5" style="color: #ffffff">
+          <div class="col" style="margin-top: -5px">
+            <img
+              class="w-50"
+              src="/src/images/mahusci-banner-logo1.png"
+              alt=""
+              srcset=""
+            />
+            <p class="pt-md-5 pt-3 pe-5" style="color: #ffffff">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
               dignissimos, excepturi id nisi obcaecati dolorum molestias atque
               ducimus quam at ut aliquam odit voluptatum placeat ad sit?
@@ -610,9 +587,9 @@
             </p>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
-            <span class="exo fs-5 fw-bold">GET HELP</span>
+            <span class="fs-5 fw-bold">GET HELP</span>
             <ul
-              class="jost list-unstyled pt-md-5 pt-3"
+              class="list-unstyled pt-md-5 pt-3"
               style="color: #ffffff; margin-top: -5px"
             >
               <li class="py-2">Contact Us</li>
@@ -621,9 +598,9 @@
             </ul>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
-            <span class="exo fs-5 fw-bold">COURSES</span>
+            <span class="fs-5 fw-bold">COURSES</span>
             <ul
-              class="jost list-unstyled pt-md-5 pt-3"
+              class="list-unstyled pt-md-5 pt-3"
               style="color: #ffffff; margin-top: -5px"
             >
               <li class="py-2">Biology</li>
@@ -635,7 +612,7 @@
           </div>
 
           <div class="col" style="padding-top: 10px">
-            <span class="exo fs-5 fw-bold">CONTACT US</span>
+            <span class="fs-5 fw-bold">CONTACT US</span>
             <div class="pt-md-5 pt-3" style="color: #ffffff; margin-top: 3px">
               <p>
                 Address: Caraga State University, Amapyon, Butuan City, Agusan
@@ -648,7 +625,7 @@
         </div>
         <hr />
         <div class="py-2">
-          <p class="text-center jost" style="color: #ffffff">
+          <p class="text-center" style="color: #ffffff">
             Copyright 2025 Sample Project. All rights reserved.
           </p>
         </div>

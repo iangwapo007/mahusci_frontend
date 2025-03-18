@@ -1,0 +1,12 @@
+To do:
+	add dropdown on categories navbar item(done)
+	create categories page
+	Logo
+	Profile page
+	fix my courses page(done)
+	change navbar hover effect(done)
+	fix nav pills distance in course.html(done)
+	edit card at course.html(done)
+	disable locked courses(done)
+	apply correct navbar to all pages
+	apply correct changes to mobile navbar
