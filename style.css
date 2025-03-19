@@ -148,6 +148,21 @@ form.sign-in-form {
   text-transform: uppercase;
   font-weight: 600;
   margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn1 {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
   padding-left: 48px;
   padding-top: 14px;
   cursor: pointer;
