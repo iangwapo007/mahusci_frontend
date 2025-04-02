@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample | Home</title>
+    <title>Sample | Course Lesson</title>
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link
@@ -19,10 +19,134 @@
       href="https://fonts.googleapis.com/css?family=Jost"
       rel="stylesheet"
     />
+    <style>
+      /* Custom styles for lesson page */
+      .lesson-container {
+        padding-top: 80px;
+        padding-bottom: 50px;
+      }
+      
+      .lesson-sidebar {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      
+      .lesson-list {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      
+      .lesson-item {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      
+      .lesson-item:hover {
+        background-color: #f8f9fa;
+      }
+      
+      .lesson-item.active {
+        background-color: #5995fd;
+        color: white;
+      }
+      
+      .lesson-item.locked {
+        color: #aaa;
+        cursor: not-allowed;
+      }
+      
+      .lesson-item .lock-icon {
+        width: 15px;
+        margin-left: 5px;
+      }
+      
+      .lesson-content {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+      }
+      
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      
+      .nav-button {
+        background-color: #5995fd;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      
+      .nav-button:hover {
+        background-color: #4a85e8;
+      }
+      
+      .nav-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      
+      .complete-button {
+        width: 100%;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 4px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      
+      .complete-button:hover {
+        background-color: #218838;
+      }
+      
+      .lesson-text {
+        padding: 20px;
+      }
+      
+      .lesson-progress {
+        height: 6px;
+        margin-bottom: 20px;
+      }
+      
+      @media (max-width: 768px) {
+        .lesson-container {
+          padding-top: 100px;
+        }
+        
+        .lesson-sidebar {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
   </head>
   <body class="exo">
     <!-- START OF DESKTOP NAVBAR -->
-
     <div
       class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
       style="padding: 5px 200px 5px 200px"
@@ -134,7 +258,6 @@
         </div>
       </a>
     </div>
-
     <!-- END OF DESKTOP NAVBAR -->
 
     <!-- START OF MOBILE NAVBAR -->
@@ -326,8 +449,151 @@
       </div>
       <!-- ENF OF OFFCANVAS -->
     </div>
-
     <!-- END OF MOBILE NAVBAR -->
+
+    <!-- START OF LESSON CONTENT -->
+    <div class="container lesson-container" style="margin-top: 30px">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="fw-bold">Introduction to Biology</h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="myCourses.html">My Courses</a></li>
+              <li class="breadcrumb-item"><a href="#">Biology</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Introduction to Biology</li>
+            </ol>
+          </nav>
+          <div class="progress lesson-progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- Left sidebar with lesson list -->
+        <div class="col-md-4 mb-4">
+          <div class="lesson-sidebar bg-white p-3">
+            <h4 class="fw-bold mb-3">Course Lessons</h4>
+            <div class="lesson-list">
+              <div class="lesson-item active d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">1. Introduction</span>
+                  <div class="small">10:25 minutes</div>
+                </div>
+                <span class="badge bg-success rounded-pill">Completed</span>
+              </div>
+              <div class="lesson-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">2. Cell Structure</span>
+                  <div class="small">15:40 minutes</div>
+                </div>
+                <span class="badge bg-warning rounded-pill">In Progress</span>
+              </div>
+              <div class="lesson-item d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">3. Cell Function</span>
+                  <div class="small">12:15 minutes</div>
+                </div>
+                <span class="badge bg-secondary rounded-pill">Unlocked</span>
+              </div>
+              <div class="lesson-item locked d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">4. DNA and RNA</span>
+                  <div class="small">20:30 minutes</div>
+                </div>
+                <img src="/src/icon/lock.png" alt="Locked" class="lock-icon" />
+              </div>
+              <div class="lesson-item locked d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">5. Genetics Basics</span>
+                  <div class="small">18:45 minutes</div>
+                </div>
+                <img src="/src/icon/lock.png" alt="Locked" class="lock-icon" />
+              </div>
+              <div class="lesson-item locked d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">6. Evolution</span>
+                  <div class="small">22:10 minutes</div>
+                </div>
+                <img src="/src/icon/lock.png" alt="Locked" class="lock-icon" />
+              </div>
+              <div class="lesson-item locked d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">7. Ecosystems</span>
+                  <div class="small">14:50 minutes</div>
+                </div>
+                <img src="/src/icon/lock.png" alt="Locked" class="lock-icon" />
+              </div>
+              <div class="lesson-item locked d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="fw-bold">8. Final Quiz</span>
+                  <div class="small">30:00 minutes</div>
+                </div>
+                <img src="/src/icon/lock.png" alt="Locked" class="lock-icon" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right content area with video and text -->
+        <div class="col-md-8">
+          <div class="lesson-content bg-white">
+            <!-- Video container -->
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/QnQe0xW_JY4" title="Introduction to Biology" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Lesson text content -->
+            <div class="lesson-text">
+              <h2 class="fw-bold">Cell Structure</h2>
+              <p>In this lesson, we'll explore the basic structure of cells, the fundamental building blocks of all living organisms. Understanding cell structure is essential for comprehending how biological systems function at their most basic level.</p>
+              
+              <h3>Key Concepts</h3>
+              <ul>
+                <li>Cells are the basic structural and functional units of all living organisms</li>
+                <li>All cells are surrounded by a cell membrane that regulates what enters and leaves the cell</li>
+                <li>Prokaryotic cells lack a nucleus, while eukaryotic cells have a nucleus and other membrane-bound organelles</li>
+                <li>Plant cells have cell walls and chloroplasts, which animal cells lack</li>
+              </ul>
+              
+              <h3>Cell Organelles and Their Functions</h3>
+              <p>Each organelle in a eukaryotic cell performs a specific function that contributes to the overall function of the cell:</p>
+              
+              <ul>
+                <li><strong>Nucleus:</strong> Contains genetic material (DNA) and controls cellular activities</li>
+                <li><strong>Mitochondria:</strong> Produces energy (ATP) through cellular respiration</li>
+                <li><strong>Endoplasmic Reticulum:</strong> Synthesizes and transports proteins and lipids</li>
+                <li><strong>Golgi Apparatus:</strong> Modifies, sorts, and packages proteins for secretion</li>
+                <li><strong>Lysosomes:</strong> Contain digestive enzymes for breaking down cellular waste</li>
+                <li><strong>Chloroplasts:</strong> (In plant cells) Site of photosynthesis</li>
+              </ul>
+              
+              <p>In the next lesson, we'll explore how these structures work together to perform essential cellular functions.</p>
+              
+              <div class="alert alert-info mt-4">
+                <strong>Note:</strong> Complete the quiz at the end of this lesson to unlock the next lesson on Cell Function.
+              </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="p-4">
+              <div class="navigation-buttons">
+                <button class="nav-button" id="prev-button">
+                  <i class="bi bi-arrow-left"></i> Previous Lesson
+                </button>
+                <button class="nav-button" id="next-button">
+                  Next Lesson <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
+              <button class="complete-button" id="complete-button">
+                Mark as Complete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END OF LESSON CONTENT -->
 
     <!-- START OF FOOTER -->
     <div
@@ -398,5 +664,130 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simple JavaScript to handle lesson navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        // Elements
+        const lessonItems = document.querySelectorAll('.lesson-item');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const completeButton = document.getElementById('complete-button');
+        
+        // Set initial state
+        let currentLessonIndex = 1; // Second lesson (index 1)
+        
+        // Function to update navigation button states
+        function updateNavButtons() {
+          prevButton.disabled = currentLessonIndex === 0;
+          
+          // Check if next lesson is locked
+          const nextLesson = lessonItems[currentLessonIndex + 1];
+          nextButton.disabled = nextLesson && nextLesson.classList.contains('locked');
+        }
+        
+        // Initialize button states
+        updateNavButtons();
+        
+        // Handle lesson item clicks
+        lessonItems.forEach(function(item, index) {
+          item.addEventListener('click', function() {
+            // Ignore if lesson is locked
+            if (item.classList.contains('locked')) {
+              return;
+            }
+            
+            // Update active state
+            lessonItems.forEach(function(li) {
+              li.classList.remove('active');
+            });
+            item.classList.add('active');
+            currentLessonIndex = index;
+            
+            // Update navigation buttons
+            updateNavButtons();
+            
+            // In a real application, you would load the content for the selected lesson here
+            // For demonstration purposes, we're just changing the active state
+          });
+        });
+        
+        // Previous button click
+        prevButton.addEventListener('click', function() {
+          if (currentLessonIndex > 0) {
+            currentLessonIndex--;
+            lessonItems.forEach(function(li) {
+              li.classList.remove('active');
+            });
+            lessonItems[currentLessonIndex].classList.add('active');
+            updateNavButtons();
+            
+            // Load previous lesson content (in a real application)
+          }
+        });
+        
+        // Next button click
+        nextButton.addEventListener('click', function() {
+          const nextLesson = lessonItems[currentLessonIndex + 1];
+          if (nextLesson && !nextLesson.classList.contains('locked')) {
+            currentLessonIndex++;
+            lessonItems.forEach(function(li) {
+              li.classList.remove('active');
+            });
+            lessonItems[currentLessonIndex].classList.add('active');
+            updateNavButtons();
+            
+            // Load next lesson content (in a real application)
+          }
+        });
+        
+        // Complete button click
+        completeButton.addEventListener('click', function() {
+          // Mark current lesson as complete
+          const currentLesson = lessonItems[currentLessonIndex];
+          const statusBadge = currentLesson.querySelector('.badge');
+          
+          if (statusBadge) {
+            statusBadge.textContent = 'Completed';
+            statusBadge.classList.remove('bg-warning');
+            statusBadge.classList.add('bg-success');
+          } else {
+            const newBadge = document.createElement('span');
+            newBadge.className = 'badge bg-success rounded-pill';
+            newBadge.textContent = 'Completed';
+            currentLesson.appendChild(newBadge);
+          }
+          
+          // Unlock next lesson if it exists
+          if (currentLessonIndex < lessonItems.length - 1) {
+            const nextLesson = lessonItems[currentLessonIndex + 1];
+            nextLesson.classList.remove('locked');
+            
+            // Remove lock icon
+            const lockIcon = nextLesson.querySelector('.lock-icon');
+            if (lockIcon) {
+              lockIcon.remove();
+            }
+            
+            // Add unlocked badge
+            const unlockBadge = document.createElement('span');
+            unlockBadge.className = 'badge bg-secondary rounded-pill';
+            unlockBadge.textContent = 'Unlocked';
+            nextLesson.appendChild(unlockBadge);
+            
+            // Update navigation
+            updateNavButtons();
+          }
+          
+          // Update progress bar
+          const progressBar = document.querySelector('.progress-bar');
+          const newProgress = ((currentLessonIndex + 1) / lessonItems.length) * 100;
+          progressBar.style.width = newProgress + '%';
+          progressBar.setAttribute('aria-valuenow', newProgress);
+          
+          // Show success message
+          alert('Lesson completed! Next lesson has been unlocked.');
+        });
+      });
+    </script>
   </body>
 </html>
