@@ -1,88 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registration Page</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | MahuSci</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  </head>
+  <body>
     <form class="form">
-        <div class="logo-container">
-            
-            <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo">
-           
-          </div>
-        <p class="title">Register</p>
-        <div class="flex">
-          <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Firstname</span>
-          </label>
-          <label>
-            <input placeholder="" type="text" class="input">
-            <span>Middle name</span>
-          </label>
-          <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Lastname</span>
-          </label>
-        </div>
-        
-        <div class="flex">
-          <label>
-            <input required="" placeholder="" type="number" min="1" max="120" class="input">
-            <span>Age</span>
-          </label>
-          <label>
-            <input required="" placeholder="" type="date" class="input">
-            <span>Birthdate</span>
-          </label>
-        </div>
+      <div class="logo-container">
+        <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo" />
+      </div>
+      <p class="title">Sign Up</p>
+      <div class="flex">
         <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Name of School</span>
-          </label>
-        <div class="flex">
-          <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Grade</span>
-          </label>
-          <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Section</span>
-          </label>
-        </div>
-        <label>
-          <input required="" placeholder="" type="email" class="input">
-          <span>Email</span>
+          <input required="" placeholder="" type="text" class="input" />
+          <span>Firstname</span>
         </label>
-        
         <label>
-          <input required="" placeholder="" type="text" class="input">
-          <span>Complete Address</span>
+          <input placeholder="" type="text" class="input" />
+          <span>Middle name</span>
         </label>
-     
-        <div class="flex">
         <label>
-            <input required="" placeholder="" type="text" class="input">
-            <span>Username</span>
-          </label>
+          <input required="" placeholder="" type="text" class="input" />
+          <span>Lastname</span>
+        </label>
+      </div>
+
+      <div class="flex">
         <label>
-          <input required="" placeholder="" type="password" class="input">
+          <input
+            required=""
+            placeholder=""
+            type="number"
+            min="1"
+            max="120"
+            class="input"
+          />
+          <span>Age</span>
+        </label>
+        <label>
+          <input required="" placeholder="" type="date" class="input" />
+          <span>Birthdate</span>
+        </label>
+      </div>
+      <label>
+        <input required="" placeholder="" type="text" class="input" />
+        <span>Name of School</span>
+      </label>
+      <div class="flex">
+        <label>
+          <select required class="input">
+            <option value="" disabled selected hidden>
+              Select Grade Level
+            </option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+          </select>
+          <span>Grade</span>
+        </label>
+
+        <label>
+          <input required="" placeholder="" type="text" class="input" />
+          <span>Section</span>
+        </label>
+      </div>
+      <label>
+        <input required="" placeholder="" type="email" class="input" />
+        <span>Email</span>
+      </label>
+
+      <label>
+        <input required="" placeholder="" type="text" class="input" />
+        <span>Complete Address</span>
+      </label>
+
+      <div class="flex">
+        <label>
+          <input required="" placeholder="" type="text" class="input" />
+          <span>Username</span>
+        </label>
+        <label>
+          <input required="" placeholder="" type="password" class="input" />
           <span>Password</span>
         </label>
         <label>
-          <input required="" placeholder="" type="password" class="input">
+          <input required="" placeholder="" type="password" class="input" />
           <span>Confirm password</span>
         </label>
-    </div>
-        <button class="submit text-white">Submit</button>
-        <p class="signin">Already have an account? <a href="index.html">Signin</a></p>
-      </form>
+      </div>
+      <button class="submit text-white">Submit</button>
+      <p class="signin">
+        Already have an account? <a href="index.html">Log in</a>
+      </p>
+    </form>
 
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
