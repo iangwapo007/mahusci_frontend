@@ -646,8 +646,6 @@ textarea:focus {
 }
 /* end of  quiz page styling */
 
-
-
 /* Custom styles for lesson page */
 .lesson-container {
   padding-top: 80px;
@@ -656,7 +654,7 @@ textarea:focus {
 
 .lesson-sidebar {
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .lesson-list {
@@ -685,10 +683,9 @@ textarea:focus {
   cursor: not-allowed;
 }
 
-
 .lesson-content {
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .video-container {
@@ -762,7 +759,7 @@ textarea:focus {
   .lesson-container {
     padding-top: 100px;
   }
-  
+
   .lesson-sidebar {
     margin-bottom: 20px;
   }
