@@ -29,7 +29,50 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+  <style>
+    .card-quiz {
+      transition: all 0.3s ease;
+      overflow: hidden;
+      max-width: 100%;
+      border: 1px solid #6b6b6b !important;
+    }
 
+    .card-quiz:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* Image container styling */
+    .card-img-container {
+      overflow: hidden;
+      background-color: #f8f9fa;
+    }
+
+    /* Input field and button styling */
+    .input-group .form-control {
+      border: 1px solid #6b6b6b;
+      font-size: 0.9rem;
+      height: 38px;
+    }
+
+    .input-group .btn-primary {
+      background-color: #5995fd;
+      border-color: #5995fd;
+      font-size: 0.9rem;
+      height: 38px;
+      padding: 0 1rem;
+    }
+
+    .input-group .btn-primary:hover {
+      background-color: #4085fd;
+      border-color: #4085fd;
+    }
+
+    /* Making everything more compact */
+    .container {
+      max-width: 1200px;
+    }
+  </style>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
     <div
@@ -233,26 +276,50 @@
       style="margin-top: 100px !important"
     >
       <div>
-        <h2 class="fw-bold">Topic 1. Anotomy Char2</h2>
+        <h2 class="fw-bold d-flex" style="color: #393939">
+          Discover the Power Beneath the Earth!
+        </h2>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="myCourses.html">My Courses</a>
+              <a href="lessons.html">Lessons</a>
             </li>
-            <li class="breadcrumb-item"><a href="#">Biology</a></li>
+            <li class="breadcrumb-item"><a href="#">Earth Science</a></li>
             <li class="breadcrumb-item active" aria-current="page">
-              Introduction to Biology
+              Introduction to Earth Science
             </li>
           </ol>
         </nav>
+        <h3 class="fw-bold" style="color: #2b2b2b">Testing Your Knowledge</h3>
+        <p>Now it’s time to see how much you remember!</p>
         <span class="jost"
           ><strong>Instructions</strong>: Carefully read each question and
-          choose the letter of the best answer. Take your time, think
-          critically, and do your best—this is your chance to show what you
-          already know before we dive deeper into the lesson.</span
+          <strong>choose the letter of the best answer</strong>. Take your time,
+          think critically, and do your best—this is your chance to show what
+          you already know before we dive deeper into the lesson.</span
         >
+
+
+        <h3 class="fw-bold" style="color: #2b2b2b">Warm-Up Activity: 4 Pics 1 Word</h3>
+        <p>Let’s kick things off with a fun challenge!</p>
+        <span class="jost"
+          >You’ll first be playing “4 Pics 1 Word”—a quick and exciting game to get your brain warmed up. All you have to do is:</span
+        >
+        <ol class="pt-3">
+          <li>
+            Look at the 4 images shown on the screen
+          </li>
+          <li>
+            Guess the one word that connects them all
+          </li>
+        </ol>
+        <span class="jost"
+          >Each set of pictures is related to the topic you've already learned: types of plate boundaries. So put your observation and memory skills to the test!</span
+        >
+        <h5 class="pt-3">Think you can get them all right? Let’s find out!</h5>
       </div>
     </div>
+    
 
     <!--Modal-->
     <!--PASSED-->
@@ -306,52 +373,157 @@
     </div>
     <!--end of Modal-->
 
+    <!-- Answer Card for 1 pics 1 word -->
+    <div class="container py-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+            <!-- Single image -->
+            <div class="card-img-container p-2">
+              <img
+                src="/src/images/4 Pics 1 Word.jpg"
+                class="w-100 rounded-2"
+                style="aspect-ratio: 1/1; object-fit: cover"
+              />
+            </div>
+
+            <!-- Answer input area -->
+            <div class="card-body p-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded-start"
+                  placeholder="Input Answer Here"
+                  aria-label="Your answer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+            <!-- Single image -->
+            <div class="card-img-container p-2">
+              <img
+                src="/src/images/4 Pics 1 Word.jpg"
+                class="w-100 rounded-2"
+                style="aspect-ratio: 1/1; object-fit: cover"
+              />
+            </div>
+
+            <!-- Answer input area -->
+            <div class="card-body p-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded-start"
+                  placeholder="Input Answer Here"
+                  aria-label="Your answer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+            <!-- Single image -->
+            <div class="card-img-container p-2">
+              <img
+                src="/src/images/4 Pics 1 Word.jpg"
+                class="w-100 rounded-2"
+                style="aspect-ratio: 1/1; object-fit: cover"
+              />
+            </div>
+
+            <!-- Answer input area -->
+            <div class="card-body p-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded-start"
+                  placeholder="Input Answer Here"
+                  aria-label="Your answer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+            <!-- Single image -->
+            <div class="card-img-container p-2">
+              <img
+                src="/src/images/4 Pics 1 Word.jpg"
+                class="w-100 rounded-2"
+                style="aspect-ratio: 1/1; object-fit: cover"
+              />
+            </div>
+
+            <!-- Answer input area -->
+            <div class="card-body p-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded-start"
+                  placeholder="Input Answer Here"
+                  aria-label="Your answer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of Answer Card for 1 pics 1 word -->
+
     <div class="container quiz-container my-5">
       <div class="row">
         <div class="col-12 col-lg-7">
           <form id="quiz-form">
             <!-- Question -->
-            <h2 class="question-title mb-3 jost fw-light">
-              Mahal mo paba ako?
-            </h2>
+            <h3 class="question-title mb-3 jost fw-light">
+              <ol>
+                <li>What layers of Earth make up the lithosphere?</li>
+              </ol>
+            </h3>
 
-            <!-- Options -->
+            <!-- Quiz type Options -->
             <div class="option mb-3" data-option="A">
-              <span>A</span> Elusmod Tempor Incididunt Ut
+              <span>A</span>The crust and lower mantle
               <div class="icon">✔</div>
             </div>
 
             <div class="option mb-3" data-option="B">
-              <span>B</span> Fugiat Nulla Pariatur
+              <span>B</span>The crust and upper mantle
               <div class="icon">X</div>
             </div>
 
             <div class="option mb-3" data-option="C">
-              <span>C</span> Voluptatem Accusantium Doloremque
+              <span>C</span>The continental crust and oceanic crust
               <div class="icon">X</div>
             </div>
 
             <div class="option mb-3" data-option="D">
-              <span>D</span> Totam Rem Aperiam
+              <span>D</span> The upper and lower mantle
               <div class="icon">X</div>
             </div>
 
             <!-- <div>
-              <textarea
-                class=""
-                name=""
-                id=""
-                rows="10"
-                placeholder="Enter your answer here..."
-                style="
-                  width: 100%;
-                  padding: 10px;
-                  font-size: 16px;
-                  border-radius: 8px;
-                  border: 1px solid #ccc;
-                "
-              ></textarea>
-            </div> -->
+            <textarea
+              class=""
+              name=""
+              id=""
+              rows="10"
+              placeholder="Enter your answer here..."
+              style="
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+              "
+            ></textarea>
+          </div> -->
 
             <!-- Submit Button -->
             <button class="submit-btn" id="submitBtn" type="submit">
@@ -398,6 +570,14 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="navigation-buttons pt-3">
+        <button class="nav-button" id="prev-button">
+          <i class="fas fa-arrow-left"></i> Previous Lesson
+        </button>
+        <button class="nav-button" id="next-button">
+          Next Lesson <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </div>
 
