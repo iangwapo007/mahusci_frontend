@@ -506,7 +506,7 @@ textarea:focus {
 }
 
 .quiz-questions-list {
-  padding: 30px;
+  padding: 20px;
   border: 1px solid #d4d4d4;
   border-radius: 8px;
   background: #ffffff;
@@ -523,17 +523,17 @@ textarea:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Optional: Style icons */
 .progress-bar i {
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .answered {
@@ -709,7 +709,7 @@ textarea:focus {
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
 }
 
 .video-container iframe {

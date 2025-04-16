@@ -349,97 +349,93 @@
                 allowfullscreen
               ></iframe>
             </div>
-
-            <!-- Lesson text content -->
-            <div class="lesson-text">
-              <h2 class="fw-bold">Cell Structure</h2>
-              <p>
-                In this lesson, we'll explore the basic structure of cells, the
-                fundamental building blocks of all living organisms.
-                Understanding cell structure is essential for comprehending how
-                biological systems function at their most basic level.
-              </p>
-
-              <h3>Key Concepts</h3>
-              <ul>
-                <li>
-                  Cells are the basic structural and functional units of all
-                  living organisms
-                </li>
-                <li>
-                  All cells are surrounded by a cell membrane that regulates
-                  what enters and leaves the cell
-                </li>
-                <li>
-                  Prokaryotic cells lack a nucleus, while eukaryotic cells have
-                  a nucleus and other membrane-bound organelles
-                </li>
-                <li>
-                  Plant cells have cell walls and chloroplasts, which animal
-                  cells lack
-                </li>
-              </ul>
-
-              <h3>Cell Organelles and Their Functions</h3>
-              <p>
-                Each organelle in a eukaryotic cell performs a specific function
-                that contributes to the overall function of the cell:
-              </p>
-
-              <ul>
-                <li>
-                  <strong>Nucleus:</strong> Contains genetic material (DNA) and
-                  controls cellular activities
-                </li>
-                <li>
-                  <strong>Mitochondria:</strong> Produces energy (ATP) through
-                  cellular respiration
-                </li>
-                <li>
-                  <strong>Endoplasmic Reticulum:</strong> Synthesizes and
-                  transports proteins and lipids
-                </li>
-                <li>
-                  <strong>Golgi Apparatus:</strong> Modifies, sorts, and
-                  packages proteins for secretion
-                </li>
-                <li>
-                  <strong>Lysosomes:</strong> Contain digestive enzymes for
-                  breaking down cellular waste
-                </li>
-                <li>
-                  <strong>Chloroplasts:</strong> (In plant cells) Site of
-                  photosynthesis
-                </li>
-              </ul>
-
-              <p>
-                In the next lesson, we'll explore how these structures work
-                together to perform essential cellular functions.
-              </p>
-
-              <div class="alert alert-info mt-4">
-                <strong>Note:</strong> Complete the quiz at the end of this
-                lesson to unlock the next lesson on Cell Function.
-              </div>
-            </div>
-
-            <!-- Navigation buttons -->
-            <div class="p-4">
-              <div class="navigation-buttons">
-                <button class="nav-button" id="prev-button">
-                  <i class="fas fa-arrow-left"></i> Previous Lesson
-                </button>
-                <button class="nav-button" id="next-button">
-                  Next Lesson <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
-              <button class="complete-button" id="complete-button">
-                Mark as Complete
-              </button>
-            </div>
           </div>
         </div>
+                    <!-- Lesson text content -->
+                    <div class="lesson-text">
+                      <h2 class="fw-bold">Cell Structure</h2>
+                      <p>
+                        In this lesson, we'll explore the basic structure of cells, the
+                        fundamental building blocks of all living organisms.
+                        Understanding cell structure is essential for comprehending how
+                        biological systems function at their most basic level.
+                      </p>
+        
+                      <h3 class="fw-bold">Key Concepts</h3>
+                      <ul>
+                        <li>
+                          Cells are the basic structural and functional units of all
+                          living organisms
+                        </li>
+                        <li>
+                          All cells are surrounded by a cell membrane that regulates
+                          what enters and leaves the cell
+                        </li>
+                        <li>
+                          Prokaryotic cells lack a nucleus, while eukaryotic cells have
+                          a nucleus and other membrane-bound organelles
+                        </li>
+                        <li>
+                          Plant cells have cell walls and chloroplasts, which animal
+                          cells lack
+                        </li>
+                      </ul>
+        
+                      <h3 class="fw-bold">Cell Organelles and Their Functions</h3>
+                      <p>
+                        Each organelle in a eukaryotic cell performs a specific function
+                        that contributes to the overall function of the cell:
+                      </p>
+        
+                      <ul>
+                        <li>
+                          <strong>Nucleus:</strong> Contains genetic material (DNA) and
+                          controls cellular activities
+                        </li>
+                        <li>
+                          <strong>Mitochondria:</strong> Produces energy (ATP) through
+                          cellular respiration
+                        </li>
+                        <li>
+                          <strong>Endoplasmic Reticulum:</strong> Synthesizes and
+                          transports proteins and lipids
+                        </li>
+                        <li>
+                          <strong>Golgi Apparatus:</strong> Modifies, sorts, and
+                          packages proteins for secretion
+                        </li>
+                        <li>
+                          <strong>Lysosomes:</strong> Contain digestive enzymes for
+                          breaking down cellular waste
+                        </li>
+                        <li>
+                          <strong>Chloroplasts:</strong> (In plant cells) Site of
+                          photosynthesis
+                        </li>
+                      </ul>
+        
+                      <p>
+                        In the next lesson, we'll explore how these structures work
+                        together to perform essential cellular functions.
+                      </p>
+        
+                      <div class="alert alert-info mt-4">
+                        <strong>Note:</strong> Complete the quiz at the end of this
+                        lesson to unlock the next lesson on Cell Function.
+                      </div>
+                    </div>
+        
+                    <!-- Navigation buttons -->
+                    <div class="p-4">
+                      <div class="navigation-buttons">
+                        <button class="nav-button" id="prev-button">
+                          <i class="fas fa-arrow-left"></i> Previous Lesson
+                        </button>
+                        <button class="nav-button" id="next-button">
+                          Next Lesson <i class="fas fa-arrow-right"></i>
+                        </button>
+                      </div>
+                    </div>
       </div>
     </div>
     <!-- END OF LESSON CONTENT -->
@@ -510,132 +506,5 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Simple JavaScript to handle lesson navigation
-      document.addEventListener("DOMContentLoaded", function () {
-        // Elements
-        const lessonItems = document.querySelectorAll(".lesson-item");
-        const prevButton = document.getElementById("prev-button");
-        const nextButton = document.getElementById("next-button");
-        const completeButton = document.getElementById("complete-button");
-
-        // Set initial state
-        let currentLessonIndex = 1; // Second lesson (index 1)
-
-        // Function to update navigation button states
-        function updateNavButtons() {
-          prevButton.disabled = currentLessonIndex === 0;
-
-          // Check if next lesson is locked
-          const nextLesson = lessonItems[currentLessonIndex + 1];
-          nextButton.disabled =
-            nextLesson && nextLesson.classList.contains("locked");
-        }
-
-        // Initialize button states
-        updateNavButtons();
-
-        // Handle lesson item clicks
-        lessonItems.forEach(function (item, index) {
-          item.addEventListener("click", function () {
-            // Ignore if lesson is locked
-            if (item.classList.contains("locked")) {
-              return;
-            }
-
-            // Update active state
-            lessonItems.forEach(function (li) {
-              li.classList.remove("active");
-            });
-            item.classList.add("active");
-            currentLessonIndex = index;
-
-            // Update navigation buttons
-            updateNavButtons();
-
-            // In a real application, you would load the content for the selected lesson here
-            // For demonstration purposes, we're just changing the active state
-          });
-        });
-
-        // Previous button click
-        prevButton.addEventListener("click", function () {
-          if (currentLessonIndex > 0) {
-            currentLessonIndex--;
-            lessonItems.forEach(function (li) {
-              li.classList.remove("active");
-            });
-            lessonItems[currentLessonIndex].classList.add("active");
-            updateNavButtons();
-
-            // Load previous lesson content (in a real application)
-          }
-        });
-
-        // Next button click
-        nextButton.addEventListener("click", function () {
-          const nextLesson = lessonItems[currentLessonIndex + 1];
-          if (nextLesson && !nextLesson.classList.contains("locked")) {
-            currentLessonIndex++;
-            lessonItems.forEach(function (li) {
-              li.classList.remove("active");
-            });
-            lessonItems[currentLessonIndex].classList.add("active");
-            updateNavButtons();
-
-            // Load next lesson content (in a real application)
-          }
-        });
-
-        // Complete button click
-        completeButton.addEventListener("click", function () {
-          // Mark current lesson as complete
-          const currentLesson = lessonItems[currentLessonIndex];
-          const statusBadge = currentLesson.querySelector(".badge");
-
-          if (statusBadge) {
-            statusBadge.textContent = "Completed";
-            statusBadge.classList.remove("bg-warning");
-            statusBadge.classList.add("bg-success");
-          } else {
-            const newBadge = document.createElement("span");
-            newBadge.className = "badge bg-success rounded-pill";
-            newBadge.textContent = "Completed";
-            currentLesson.appendChild(newBadge);
-          }
-
-          // Unlock next lesson if it exists
-          if (currentLessonIndex < lessonItems.length - 1) {
-            const nextLesson = lessonItems[currentLessonIndex + 1];
-            nextLesson.classList.remove("locked");
-
-            // Remove lock icon
-            const lockIcon = nextLesson.querySelector(".lock-icon");
-            if (lockIcon) {
-              lockIcon.remove();
-            }
-
-            // Add unlocked badge
-            const unlockBadge = document.createElement("span");
-            unlockBadge.className = "badge bg-secondary rounded-pill";
-            unlockBadge.textContent = "Unlocked";
-            nextLesson.appendChild(unlockBadge);
-
-            // Update navigation
-            updateNavButtons();
-          }
-
-          // Update progress bar
-          const progressBar = document.querySelector(".progress-bar");
-          const newProgress =
-            ((currentLessonIndex + 1) / lessonItems.length) * 100;
-          progressBar.style.width = newProgress + "%";
-          progressBar.setAttribute("aria-valuenow", newProgress);
-
-          // Show success message
-          alert("Lesson completed! Next lesson has been unlocked.");
-        });
-      });
-    </script>
   </body>
 </html>
