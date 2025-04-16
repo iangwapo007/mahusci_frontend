@@ -150,7 +150,7 @@
 }
 
 .home-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* HORIZONTAL SCROLLING */
@@ -348,10 +348,18 @@
 
 /* PADDING FOR HOME PAGE */
 
-/* Apply padding for desktop and larger tablets */
+/* FOR DESKTOP VIEW */
 @media (min-width: 768px) {
   .dp {
     padding: 0 100px 0 100px;
+  }
+
+  .lessons {
+    height: 140px;
+  }
+
+  .lesson-title {
+    font-size: 20px;
   }
 }
 
@@ -365,6 +373,14 @@
 
   .pt-sm-2 {
     padding-top: 90px;
+  }
+
+  .lessons {
+    height: 100px;
+  }
+
+  .lesson-title {
+    font-size: 14px;
   }
 }
 
@@ -603,7 +619,7 @@ textarea:focus {
 /* Submit button */
 .submit-btn {
   padding: 10px 20px;
-  background-color: #5995fd;;
+  background-color: #5995fd;
   color: white;
   border: none;
   border-radius: 25px;
