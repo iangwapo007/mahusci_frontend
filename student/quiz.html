@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MahuSci | Quiz</title>
+    <link rel="icon" type="image/png" href="/src/images/logo.png" />
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link
@@ -33,7 +34,7 @@
     <!-- START OF DESKTOP NAVBAR -->
     <div
       class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
-      style="padding: 5px 200px 5px 200px"
+      style="padding: 5px 70px 5px 150px"
     >
       <div class="py-3">
         <img
@@ -52,66 +53,20 @@
             >Home
           </span></a
         >
-        <div class="position-relative dropdown">
-          <a class="text-decoration-none" href="/student/allCategories.html">
-            <span
-              class="nav-link-hover flex-fill text-center"
-              style="
-                font-weight: 700;
-                font-size: 18px;
-                width: 140px;
-                cursor: pointer;
-              "
-              role="button"
-            >
-              Categories
-            </span></a
-          >
 
-          <ul class="dropdown-menu">
-            <li class="dropdown-item">
-              <a
-                class="text-decoration-none text-reset"
-                href="selectedCategory.html"
-                >Biology</a
-              >
-            </li>
-            <li class="dropdown-item">
-              <a
-                class="text-decoration-none text-reset"
-                href="selectedCategory.html"
-                >Chemistry</a
-              >
-            </li>
-            <li class="dropdown-item">
-              <a
-                class="text-decoration-none text-reset"
-                href="selectedCategory.html"
-                >Physics</a
-              >
-            </li>
-            <li class="dropdown-item">
-              <a
-                class="text-decoration-none text-reset"
-                href="selectedCategory.html"
-                >Earth Science</a
-              >
-            </li>
-            <li class="dropdown-item">
-              <a
-                class="text-decoration-none text-reset"
-                href="selectedCategory.html"
-                >Astronomy</a
-              >
-            </li>
-          </ul>
-        </div>
+        <a class="text-decoration-none" href="/student/lessons.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 18px; width: 140px"
+            >Lessons
+          </span></a
+        >
 
-        <a class="text-decoration-none" href="/student/myCourses.html"
+        <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
             class="nav-link-hover flex-fill text-center col"
             style="font-weight: 700; font-size: 18px; width: 170px"
-            >My Courses
+            >My Learnings
           </span></a
         >
       </div>
@@ -131,10 +86,10 @@
           </div>
           <div class="px-2">
             <span style="font-size: 16px; font-weight: 600; line-height: 1"
-              >Boyet</span
+              >Ian Emmanuele Generalao</span
             >
             <span style="font-size: 13px; display: block; line-height: 1"
-              >Di kana pok2 aubrey?</span
+              >Student | Grade 7</span
             >
           </div>
         </div>
@@ -180,29 +135,23 @@
         </div>
 
         <div class="offcanvas-body">
-          <div
-            class="d-flex align-items-center rounded-3"
-            style="margin-bottom: 30px"
-          >
-            <div class="">
-              <img
-                class="profile-picture-offcanvas"
-                src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-                alt=""
-                srcset=""
-              />
+          <a class="text-decoration-none text-reset" href="myProfile.html">
+            <div class="d-flex align-items-center rounded-3 mb-4">
+              <div>
+                <img
+                  class="profile-picture-offcanvas"
+                  src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="ps-4">
+                <small class="d-block fw-bold">Ian Emmanuele Generalao</small>
+                <small class="pt-2">Student | Grade 7</small>
+              </div>
             </div>
-            <div class="ps-4">
-              <span style="font-size: 16px; font-weight: 600; line-height: 1"
-                >Liquid nAts</span
-              >
-              <span
-                class="color1"
-                style="font-size: 13px; display: block; line-height: 1"
-                >Sentinel</span
-              >
-            </div>
-          </div>
+          </a>
+
           <span class="ms-2" style="color: #969697; font-size: 14px"
             >Pages</span
           >
@@ -219,88 +168,39 @@
                   srcset=""
                   style="width: 20px; margin-right: 26px"
                 />
-                <span class="mt-1">Home</span>
+                <small class="mt-1">Home</small>
               </a>
             </li>
+
             <li class="nav-item">
               <a
-                class="text-decoration-none text-reset d-flex align-items-center"
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
+                class="nav-link active d-flex align-items-center"
+                aria-current="page"
+                href="/student/lessons.html"
               >
                 <img
-                  src="/src/icon/category.png"
+                  src="/src/icon/book.png"
                   alt=""
                   srcset=""
-                  style="width: 15px; margin-left: 2px; margin-right: 28px"
+                  style="width: 20px; margin-right: 26px"
                 />
-                <span class="mt-1">Categories</span>
+                <small class="mt-1">Lessons</small>
               </a>
-              <div class="collapse ms-5" id="collapseExample">
-                <div class="card card-body">
-                  <ul class="list-unstyled">
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="allCategories.html"
-                        >All Categories</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="selectedCategory.html"
-                        >Biology</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="selectedCategory.html"
-                        >Chemistry</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="selectedCategory.html"
-                        >Physics</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="selectedCategory.html"
-                        >Earth Science</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="text-decoration-none text-reset"
-                        href="selectedCategory.html"
-                        >Astronomy</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </li>
+
             <li class="nav-item">
               <a
                 class="nav-link d-flex align-items-center"
-                href="myCourses.html"
+                href="myLearnings.html"
                 ><img
                   src="/src/icon/students.png"
                   alt=""
                   style="width: 25px; margin-left: -3px; margin-right: 20px"
                 />
-                <span class="mt-1 ms-1">My Courses</span>
+                <small class="mt-1 ms-1">My Learnings</small>
               </a>
             </li>
-            <li class="nav-item" style="margin-top: -6px">
+            <li class="nav-item">
               <a
                 class="nav-link d-flex align-items-center"
                 href="myProfile.html"
@@ -309,7 +209,7 @@
                   alt=""
                   style="width: 18px; margin-left: 1px; margin-right: 22px"
                 />
-                <span class="mt-1 ms-1">My Profile</span>
+                <small class="mt-1 ms-1">My Profile</small>
               </a>
             </li>
           </ul>
@@ -320,7 +220,7 @@
               srcset=""
               style="width: 25px"
             />
-            <span class="ps-3">Log out</span>
+            <small class="ps-3">Log out</small>
           </div>
         </div>
       </div>
