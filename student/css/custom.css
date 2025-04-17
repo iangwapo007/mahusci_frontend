@@ -741,31 +741,6 @@ textarea:focus {
   background-color: #4a85e8;
 }
 
-.nav-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.complete-button {
-  width: 100%;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 4px;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.complete-button:hover {
-  background-color: #218838;
-}
-
-.lesson-text {
-  padding: 20px;
-}
-
 .lesson-progress {
   height: 6px;
   margin-bottom: 20px;
@@ -780,4 +755,98 @@ textarea:focus {
     margin-bottom: 20px;
   }
 }
+
+.lesson-text {
+  margin: 0 auto;
+  padding: 20px 70px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 1000px;
+}
+
+.lesson-head {
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.key-concepts {
+  background-color: #ebf7fd;
+  border-radius: 8px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+}
+
+.concept-title {
+  align-items: center;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.concept-title i {
+  color: #3498db;
+  margin-right: 10px;
+}
+
+.concept-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.check-icon {
+  color: #27ae60;
+  margin-right: 15px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.discussion-title {
+  display: flex;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 30px; 
+}
+
+.discussion-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px 20px; 
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.discussion-name {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+
+@media (max-width: 768px) {
+  .lesson-text {
+    padding: 15px 25px; 
+  }
+  
+  .key-concepts {
+    padding: 20px 25px;
+  }
+}
+
+#prev-button {
+  background-color: #95a5a6;
+}
+
+#prev-button:hover {
+  background-color: #7f8c8d;
+}
+
 /* end of custom styles for lesson page */

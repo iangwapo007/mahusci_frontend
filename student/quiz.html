@@ -30,47 +30,104 @@
     />
   </head>
   <style>
+    /* Card container styling */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px; /* Increased gap between cards */
+      padding: 15px;
+    }
+    
+    /* Card item sizing - increased sizes */
+    .card-item {
+      width: 100%;
+      max-width: 370px;
+    }
+    
+    /* Card styling */
     .card-quiz {
       transition: all 0.3s ease;
       overflow: hidden;
-      max-width: 100%;
-      border: 1px solid #6b6b6b !important;
+      border: none !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+      background-color: #ffffff;
     }
-
+    
     .card-quiz:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
     }
-
+    
     /* Image container styling */
     .card-img-container {
       overflow: hidden;
       background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 10px !important; /* Increased padding */
     }
-
-    /* Input field and button styling */
+    
+    .card-img-container img {
+      transition: transform 0.5s ease;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    }
+    
+    .card-quiz:hover .card-img-container img {
+      transform: scale(1.05);
+    }
+    
+    /* Input field and button styling - larger components */
+    .card-body {
+      padding: 16px !important; /* Increased padding */
+    }
+    
     .input-group .form-control {
-      border: 1px solid #6b6b6b;
-      font-size: 0.9rem;
-      height: 38px;
+      border: 1px solid #d1d1d1;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
     }
 
-    .input-group .btn-primary {
-      background-color: #5995fd;
-      border-color: #5995fd;
-      font-size: 0.9rem;
-      height: 38px;
-      padding: 0 1rem;
+    
+    /* Responsive adjustments - adjusted for larger cards */
+    @media (min-width: 768px) {
+      /* For tablets - now just 1 card per row because they're larger */
+      .card-item {
+        width: calc(100% - 30px);
+        max-width: 370px;
+      }
     }
-
-    .input-group .btn-primary:hover {
-      background-color: #4085fd;
-      border-color: #4085fd;
+    
+    @media (min-width: 992px) {
+      /* For smaller desktops - 2 cards per row */
+      .card-item {
+        width: calc(50% - 30px);
+        max-width: 370px;
+      }
     }
-
-    /* Making everything more compact */
-    .container {
-      max-width: 1200px;
+    
+    @media (min-width: 1200px) {
+      /* For larger desktops - still 2 cards per row, but larger */
+      .card-item {
+        width: calc(50% - 40px);
+        max-width: 400px;
+      }
+      
+      /* Increase gap further on large screens */
+      .card-container {
+        gap: 40px;
+      }
+    }
+    
+    /* For single card centering */
+    .card-container:has(.card-item:only-child) {
+      justify-content: center;
+    }
+    
+    /* When there's only one card */
+    .card-item:only-child {
+      max-width: 400px; /* Even larger when it's the only card */
     }
   </style>
   <body class="poppins">
@@ -290,14 +347,14 @@
             </li>
           </ol>
         </nav>
-        <h3 class="fw-bold" style="color: #2b2b2b">Testing Your Knowledge</h3>
+        <!-- <h3 class="fw-bold" style="color: #2b2b2b">Testing Your Knowledge</h3>
         <p>Now it’s time to see how much you remember!</p>
         <span class="jost"
           ><strong>Instructions</strong>: Carefully read each question and
           <strong>choose the letter of the best answer</strong>. Take your time,
           think critically, and do your best—this is your chance to show what
           you already know before we dive deeper into the lesson.</span
-        >
+        > -->
 
         <h3 class="fw-bold" style="color: #2b2b2b">
           Warm-Up Activity: 4 Pics 1 Word
@@ -373,11 +430,11 @@
     <!--end of Modal-->
 
     <!-- Answer Card for 1 pics 1 word -->
-    <div class="container py-3">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-        <div class="col">
-          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
-            <!-- Single image -->
+    <div class="container py-4">
+      <div class="card-container">
+        <!-- Example cards - your actual cards will go here -->
+        <div class="card-item">
+          <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
               <img
                 src="/src/images/4 Pics 1 Word.jpg"
@@ -385,9 +442,7 @@
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-
-            <!-- Answer input area -->
-            <div class="card-body p-2">
+            <div class="card-body p-3">
               <div class="input-group">
                 <input
                   type="text"
@@ -399,19 +454,16 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
-            <!-- Single image -->
+        <div class="card-item">
+          <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
               <img
-                src="/src/images/4 Pics 1 Word.jpg"
+                src="/src/images/2.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-
-            <!-- Answer input area -->
-            <div class="card-body p-2">
+            <div class="card-body p-3">
               <div class="input-group">
                 <input
                   type="text"
@@ -423,19 +475,16 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
-            <!-- Single image -->
+        <div class="card-item">
+          <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
               <img
-                src="/src/images/4 Pics 1 Word.jpg"
+                src="/src/images/3.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-
-            <!-- Answer input area -->
-            <div class="card-body p-2">
+            <div class="card-body p-3">
               <div class="input-group">
                 <input
                   type="text"
@@ -447,19 +496,16 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
-            <!-- Single image -->
+        <div class="card-item">
+          <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
               <img
-                src="/src/images/4 Pics 1 Word.jpg"
+                src="/src/images/4.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-
-            <!-- Answer input area -->
-            <div class="card-body p-2">
+            <div class="card-body p-3">
               <div class="input-group">
                 <input
                   type="text"
@@ -471,6 +517,29 @@
             </div>
           </div>
         </div>
+        <div class="card-item">
+          <div class="card h-100 shadow card-quiz rounded-3">
+            <div class="card-img-container p-2">
+              <img
+                src="/src/images/5.jpg"
+                class="w-100 rounded-2"
+                style="aspect-ratio: 1/1; object-fit: cover"
+              />
+            </div>
+            <div class="card-body p-3">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded-start"
+                  placeholder="Input Answer Here"
+                  aria-label="Your answer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Add more cards as needed -->
       </div>
     </div>
     <!-- end of Answer Card for 1 pics 1 word -->
