@@ -30,105 +30,168 @@
     />
   </head>
   <style>
-    /* Card container styling */
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px; /* Increased gap between cards */
-      padding: 15px;
-    }
-    
-    /* Card item sizing - increased sizes */
-    .card-item {
-      width: 100%;
-      max-width: 370px;
-    }
-    
-    /* Card styling */
     .card-quiz {
       transition: all 0.3s ease;
       overflow: hidden;
-      border: none !important;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
-      background-color: #ffffff;
+      max-width: 100%;
+      border: 1px solid #6b6b6b !important;
     }
-    
+
     .card-quiz:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3) !important;
     }
-    
+
     /* Image container styling */
     .card-img-container {
       overflow: hidden;
       background-color: #f8f9fa;
-      border-radius: 8px;
-      padding: 10px !important; /* Increased padding */
-    }
-    
-    .card-img-container img {
-      transition: transform 0.5s ease;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    }
-    
-    .card-quiz:hover .card-img-container img {
-      transform: scale(1.05);
-    }
-    
-    /* Input field and button styling - larger components */
-    .card-body {
-      padding: 16px !important; /* Increased padding */
-    }
-    
-    .input-group .form-control {
-      border: 1px solid #d1d1d1;
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
     }
 
-    
-    /* Responsive adjustments - adjusted for larger cards */
-    @media (min-width: 768px) {
-      /* For tablets - now just 1 card per row because they're larger */
-      .card-item {
-        width: calc(100% - 30px);
-        max-width: 370px;
-      }
+    /* Input field and button styling */
+    .input-group .form-control {
+      border: 1px solid #6b6b6b;
+      font-size: 0.9rem;
+      height: 38px;
     }
-    
-    @media (min-width: 992px) {
-      /* For smaller desktops - 2 cards per row */
-      .card-item {
-        width: calc(50% - 30px);
-        max-width: 370px;
-      }
+
+    .input-group .btn-primary {
+      background-color: #5995fd;
+      border-color: #5995fd;
+      font-size: 0.9rem;
+      height: 38px;
+      padding: 0 1rem;
     }
-    
-    @media (min-width: 1200px) {
-      /* For larger desktops - still 2 cards per row, but larger */
-      .card-item {
-        width: calc(50% - 40px);
-        max-width: 400px;
-      }
-      
-      /* Increase gap further on large screens */
-      .card-container {
-        gap: 40px;
-      }
+
+    .input-group .btn-primary:hover {
+      background-color: #4085fd;
+      border-color: #4085fd;
     }
-    
-    /* For single card centering */
-    .card-container:has(.card-item:only-child) {
-      justify-content: center;
+
+    /* Making everything more compact */
+    .container {
+      max-width: 1200px;
     }
-    
-    /* When there's only one card */
-    .card-item:only-child {
-      max-width: 400px; /* Even larger when it's the only card */
-    }
+
+
+/* Base table styles */
+table {
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+th {
+  background-color: #5995fd;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Color classes for different plate boundaries */
+.continental-continental {
+  background-color: #fff2cc;
+}
+.oceanic-continental {
+  background-color: #e6f9e6;
+}
+.oceanic-oceanic {
+  background-color: #e6f0ff;
+}
+.divergent {
+  background-color: #f9e6f9;
+}
+.transform {
+  background-color: #f2f2f2;
+}
+
+/* Table container */
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  /* Convert table to a card-based layout on small screens */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  /* Hide table headers (but not display: none, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr {
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  
+  td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    min-height: 30px;
+  }
+  
+  td:before {
+    /* Add a label for each cell on small screens */
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  
+  /* Add labels for each td element */
+  tr td:nth-of-type(1):before { content: "Plate Boundary Type"; }
+  tr td:nth-of-type(2):before { content: "Landform Created"; }
+  tr td:nth-of-type(3):before { content: "Volcanic Activity?"; }
+  tr td:nth-of-type(4):before { content: "Earthquakes Present?"; }
+  tr td:nth-of-type(5):before { content: "Direction of Movement"; }
+  tr td:nth-of-type(6):before { content: "Real-World Example"; }
+}
+
+/* For medium-sized screens */
+@media screen and (max-width: 992px) and (min-width: 769px) {
+  th {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+  
+  td {
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  input[type="text"] {
+    padding: 6px;
+    font-size: 13px;
+  }
+}
   </style>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
@@ -429,12 +492,14 @@
     </div>
     <!--end of Modal-->
 
+    
+
     <!-- Answer Card for 1 pics 1 word -->
-    <div class="container py-4">
-      <div class="card-container">
-        <!-- Example cards - your actual cards will go here -->
-        <div class="card-item">
-          <div class="card h-100 shadow card-quiz rounded-3">
+    <!-- <div class="container py-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+        
             <div class="card-img-container p-2">
               <img
                 src="/src/images/4 Pics 1 Word.jpg"
@@ -442,7 +507,9 @@
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-            <div class="card-body p-3">
+
+            
+            <div class="card-body p-2">
               <div class="input-group">
                 <input
                   type="text"
@@ -454,16 +521,19 @@
             </div>
           </div>
         </div>
-        <div class="card-item">
-          <div class="card h-100 shadow card-quiz rounded-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+            
             <div class="card-img-container p-2">
               <img
-                src="/src/images/2.jpg"
+                src="/src/images/4 Pics 1 Word.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-            <div class="card-body p-3">
+
+          
+            <div class="card-body p-2">
               <div class="input-group">
                 <input
                   type="text"
@@ -475,16 +545,19 @@
             </div>
           </div>
         </div>
-        <div class="card-item">
-          <div class="card h-100 shadow card-quiz rounded-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+       
             <div class="card-img-container p-2">
               <img
-                src="/src/images/3.jpg"
+                src="/src/images/4 Pics 1 Word.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-            <div class="card-body p-3">
+
+   
+            <div class="card-body p-2">
               <div class="input-group">
                 <input
                   type="text"
@@ -496,16 +569,18 @@
             </div>
           </div>
         </div>
-        <div class="card-item">
-          <div class="card h-100 shadow card-quiz rounded-3">
+        <div class="col">
+          <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
+          
             <div class="card-img-container p-2">
               <img
-                src="/src/images/4.jpg"
+                src="/src/images/4 Pics 1 Word.jpg"
                 class="w-100 rounded-2"
                 style="aspect-ratio: 1/1; object-fit: cover"
               />
             </div>
-            <div class="card-body p-3">
+
+            <div class="card-body p-2">
               <div class="input-group">
                 <input
                   type="text"
@@ -517,46 +592,82 @@
             </div>
           </div>
         </div>
-        <div class="card-item">
-          <div class="card h-100 shadow card-quiz rounded-3">
-            <div class="card-img-container p-2">
-              <img
-                src="/src/images/5.jpg"
-                class="w-100 rounded-2"
-                style="aspect-ratio: 1/1; object-fit: cover"
-              />
-            </div>
-            <div class="card-body p-3">
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control rounded-start"
-                  placeholder="Input Answer Here"
-                  aria-label="Your answer"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Add more cards as needed -->
+      </div>
+    </div> -->
+    <!-- end of Answer Card for 1 pics 1 word -->
+
+
+    <div class="container mt-5">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Plate Boundary Type</th>
+              <th>Landform Created</th>
+              <th>Volcanic Activity?</th>
+              <th>Earthquakes Present?</th>
+              <th>Direction of Movement</th>
+              <th>Real-World Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="continental-continental">
+              <td>Continental - Continental</td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+            </tr>
+            <tr class="oceanic-continental">
+              <td>Oceanic - Continental</td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+            </tr>
+            <tr class="oceanic-oceanic">
+              <td>Oceanic - Oceanic</td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+            </tr>
+            <tr class="divergent">
+              <td>Divergent</td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+            </tr>
+            <tr class="transform">
+              <td>Transform</td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+              <td><input type="text" placeholder="Your answer"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <!-- end of Answer Card for 1 pics 1 word -->
 
     <div class="container quiz-container my-5">
       <div class="row">
         <div class="col-12 col-lg-9">
           <form id="quiz-form">
-            <!-- Question -->
-            <h3 class="question-title mb-3 jost fw-light">
+            <!-- <h3 class="question-title mb-3 jost fw-light">
               <ol>
                 <li>What layers of Earth make up the lithosphere?</li>
               </ol>
-            </h3>
+            </h3> -->
 
             <!-- Quiz type Options -->
-            <div class="option mb-3" data-option="A">
+            <!-- <div class="option mb-3" data-option="A">
               <span>A</span>The crust and lower mantle
               <div class="icon">✔</div>
             </div>
@@ -574,7 +685,7 @@
             <div class="option mb-3" data-option="D">
               <span>D</span> The upper and lower mantle
               <div class="icon">X</div>
-            </div>
+            </div> -->
 
             <!-- <div>
             <textarea
@@ -601,7 +712,7 @@
         </div>
 
         <!-- Right side: Scoreboard and Quiz List -->
-        <div class="col-12 col-lg-3">
+        <!-- <div class="col-12 col-lg-3">
           <div class="quiz-questions-list">
             <h4 style="font-weight: bold">Quiz Questions List</h4>
             <div class="quiz-questions-body pt-3">
@@ -637,7 +748,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+
+
       </div>
       <div class="navigation-buttons pt-3">
         <button class="nav-button" id="prev-button">
