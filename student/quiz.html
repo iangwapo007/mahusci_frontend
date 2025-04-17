@@ -192,6 +192,130 @@ td {
     font-size: 13px;
   }
 }
+
+
+
+
+
+/*mind map css */
+.question-box {
+      background-color: #6f8bd7;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .terms-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .term {
+      background-color: #ffffff;
+      color: #007bff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 16px;
+      display: inline-block;
+    }
+    
+    .section-title {
+      color: #007bff;
+      font-size: 28px;
+      font-weight: 600;
+      text-align: center;
+      margin: 30px 0;
+    }
+    
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: calc(33.33% - 20px);
+      min-width: 280px;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .card-title {
+      color:#007bff;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .feature-label {
+      margin-bottom: 8px;
+      color: #444;
+      font-weight: 500;
+    }
+    
+    .card-input {
+      position: relative;
+      margin-bottom: 15px;
+    }  
+
+    @media (max-width: 992px) {
+      .cards-container {
+        justify-content: space-between;
+      }
+      
+      .card {
+        width: calc(50% - 15px);
+        min-width: auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+      }
+      
+      .card {
+        width: 100%;
+      }
+      
+      .term {
+        margin-bottom: 10px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 10px;
+      }
+      
+      .question-box {
+        padding: 15px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      input[type="text"] {
+        padding: 10px 8px;
+      }
+    }
+    /*mind map css */
   </style>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
@@ -410,14 +534,14 @@ td {
             </li>
           </ol>
         </nav>
-        <!-- <h3 class="fw-bold" style="color: #2b2b2b">Testing Your Knowledge</h3>
+        <h3 class="fw-bold" style="color: #2b2b2b">Testing Your Knowledge</h3>
         <p>Now it’s time to see how much you remember!</p>
         <span class="jost"
           ><strong>Instructions</strong>: Carefully read each question and
           <strong>choose the letter of the best answer</strong>. Take your time,
           think critically, and do your best—this is your chance to show what
           you already know before we dive deeper into the lesson.</span
-        > -->
+        >
 
         <h3 class="fw-bold" style="color: #2b2b2b">
           Warm-Up Activity: 4 Pics 1 Word
@@ -495,7 +619,7 @@ td {
     
 
     <!-- Answer Card for 1 pics 1 word -->
-    <!-- <div class="container py-3">
+    <div class="container py-3">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="col">
           <div class="card h-100 shadow-sm card-quiz rounded-3 border-0">
@@ -593,9 +717,68 @@ td {
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- end of Answer Card for 1 pics 1 word -->
 
+<!-- concept mapping Activity -->
+    <div class="container mt-5">
+      <div class="question-box">
+        <div class="question-title text-white" style="font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 15px;">Match these terms with the correct plate boundary:</div>
+        <div class="terms-container">
+          <div class="term">rift valleys</div>
+          <div class="term">deep-sea trenches</div>
+          <div class="term">volcanic mountains</div>
+        </div>
+      </div>
+      
+      <h2 class="section-title">Plate Boundaries</h2>
+      
+      <div class="cards-container">
+        <!-- Convergent Card -->
+        <div class="card">
+          <div class="card-title">Convergent</div>
+          <div class="feature-label">Feature 1</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+          
+          <div class="feature-label">Feature 2</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+          
+          <div class="feature-label">Feature 3</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+        </div>
+        
+        <!-- Divergent Card -->
+        <div class="card">
+          <div class="card-title">Divergent</div>
+          <div class="feature-label">Feature 1</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+          
+          <div class="feature-label">Feature 2</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+        </div>
+        
+        <!-- Transform Card -->
+        <div class="card">
+          <div class="card-title">Transform</div>
+          <div class="feature-label">Feature 1</div>
+          <div class="card-input">
+            <input  type="text" placeholder="Type your answer here...">
+          </div>
+        </div>
+      </div>
+<!-- end of concept mapping Activity -->
 
     <div class="container mt-5">
       <div class="table-container">
@@ -660,14 +843,14 @@ td {
       <div class="row">
         <div class="col-12 col-lg-9">
           <form id="quiz-form">
-            <!-- <h3 class="question-title mb-3 jost fw-light">
+            <h3 class="question-title mb-3 jost fw-light">
               <ol>
                 <li>What layers of Earth make up the lithosphere?</li>
               </ol>
-            </h3> -->
+            </h3>
 
             <!-- Quiz type Options -->
-            <!-- <div class="option mb-3" data-option="A">
+            <div class="option mb-3" data-option="A">
               <span>A</span>The crust and lower mantle
               <div class="icon">✔</div>
             </div>
@@ -685,9 +868,9 @@ td {
             <div class="option mb-3" data-option="D">
               <span>D</span> The upper and lower mantle
               <div class="icon">X</div>
-            </div> -->
+            </div>
 
-            <!-- <div>
+            <div>
             <textarea
               class=""
               name=""
@@ -702,7 +885,7 @@ td {
                 border: 1px solid #ccc;
               "
             ></textarea>
-          </div> -->
+          </div>
 
             <!-- Submit Button -->
             <button class="submit-btn" id="submitBtn" type="submit">
@@ -712,7 +895,7 @@ td {
         </div>
 
         <!-- Right side: Scoreboard and Quiz List -->
-        <!-- <div class="col-12 col-lg-3">
+        <div class="col-12 col-lg-3">
           <div class="quiz-questions-list">
             <h4 style="font-weight: bold">Quiz Questions List</h4>
             <div class="quiz-questions-body pt-3">
@@ -748,7 +931,7 @@ td {
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
 
       </div>
