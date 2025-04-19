@@ -344,14 +344,17 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="answer1"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
+                  required
                 />
               </div>
             </div>
           </div>
         </div>
+    
         <div class="card-item">
           <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
@@ -365,14 +368,17 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="answer2"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
+                  required
                 />
               </div>
             </div>
           </div>
         </div>
+    
         <div class="card-item">
           <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
@@ -386,14 +392,17 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="answer3"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
+                  required
                 />
               </div>
             </div>
           </div>
         </div>
+    
         <div class="card-item">
           <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
@@ -407,14 +416,17 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="answer4"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
+                  required
                 />
               </div>
             </div>
           </div>
         </div>
+    
         <div class="card-item">
           <div class="card h-100 shadow card-quiz rounded-3">
             <div class="card-img-container p-2">
@@ -428,9 +440,11 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="answer5"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
+                  required
                 />
               </div>
             </div>
@@ -438,6 +452,7 @@
         </div>
       </div>
     </div>
+    
      <!-- END OF 4 PICS 1 WORD -->
 
 
@@ -447,76 +462,97 @@
       <!-- QUIZ MULTIPLE CHOICE-->
       <div class="row">
         <div class="col-12 col-lg-9">
-          <form id="quiz-form">
-            <h3 class="question-title mb-3 jost fw-light">
+          <form id="quiz-form" class="quiz-form">
+            <h3 class="question-title mb-3 jost fw-light" id="question1">
               <ol>
                 <li>What layers of Earth make up the lithosphere?</li>
               </ol>
             </h3>
-
-            <!-- Quiz type Options -->
-            <div class="option mb-3" data-option="A">
-              <span>A</span>The crust and lower mantle
-              <div class="icon">✔</div>
-            </div>
-
-            <div class="option mb-3" data-option="B">
-              <span>B</span>The crust and upper mantle
-              <div class="icon">X</div>
-            </div>
-
-            <div class="option mb-3" data-option="C">
-              <span>C</span>The continental crust and oceanic crust
-              <div class="icon">X</div>
-            </div>
-
-            <div class="option mb-3" data-option="D">
-              <span>D</span> The upper and lower mantle
-              <div class="icon">X</div>
-            </div>
-
-              <!-- Submit Button -->
-              <div class="submit-button-container">
-                <button class="submit-btn" id="submitBtn" type="submit">
-                  Submit Answer
-                </button>
+          
+            <div class="options-group" data-question="question1">
+              <!-- Option A -->
+              <div class="option-container">
+                <input type="radio" id="option-A" name="question1" value="A">
+                <label for="option-A" class="option mb-3">
+                  <span class="option-label">A</span>
+                  <span>The crust and lower mantle</span>
+                  <div class="icon">✔</div>
+                </label>
               </div>
+              
+              <!-- Option B -->
+              <div class="option-container">
+                <input type="radio" id="option-B" name="question1" value="B">
+                <label for="option-B" class="option mb-3">
+                  <span class="option-label">B</span>
+                  <span>The crust and upper mantle</span>
+                  <div class="icon">X</div>
+                </label>
+              </div>
+              
+              <!-- Option C -->
+              <div class="option-container">
+                <input type="radio" id="option-C" name="question1" value="C">
+                <label for="option-C" class="option mb-3">
+                  <span class="option-label">C</span>
+                  <span>The continental crust and oceanic crust</span>
+                  <div class="icon">X</div>
+                </label>
+              </div>
+              
+              <!-- Option D -->
+              <div class="option-container">
+                <input type="radio" id="option-D" name="question1" value="D">
+                <label for="option-D" class="option mb-3">
+                  <span class="option-label">D</span>
+                  <span>The upper and lower mantle</span>
+                  <div class="icon">X</div>
+                </label>
+              </div>
+            </div>
+          
+            <div class="submit-button-container mt-4">
+              <button class="submit-btn" id="submitBtn" type="submit">
+                Submit Answer
+              </button>
+            </div>
           </form>
         </div>
 
         <!-- Right side: Scoreboard and Quiz List -->
         <div class="col-12 col-lg-3">
           <div class="quiz-questions-list">
-            <h4 style="font-weight: bold">Quiz Questions List</h4>
+            <h5 style="font-weight: bold; justify-self: center;">Quiz Questions List</h5>
             <div class="quiz-questions-body pt-3">
-              <div class="progress-bar answered">
+                <!-- Quiz Question List Items -->
+              <div class="progress-bar answered" id="question1-status">
                 <i class="fas fa-check-circle"></i> Quiz question 1
               </div>
-              <div class="progress-bar answered">
+              <div class="progress-bar answered" id="question2-status">
                 <i class="fas fa-check-circle"></i> Quiz question 2
               </div>
-              <div class="progress-bar answered">
+              <div class="progress-bar answered" id="question3-status">
                 <i class="fas fa-check-circle"></i> Quiz question 3
               </div>
-              <div class="progress-bar incorrect">
+              <div class="progress-bar incorrect" id="question5-status">
                 <i class="fas fa-times-circle"></i> Quiz question 4
               </div>
-              <div class="progress-bar answered">
+              <div class="progress-bar answered" id="question5-status">
                 <i class="fas fa-check-circle"></i> Quiz question 5
               </div>
-              <div class="progress-bar unanswered">
+              <div class="progress-bar unanswered" id="question6-status">
                 <i class="fas fa-circle-question"></i> Quiz question 6
               </div>
-              <div class="progress-bar unanswered">
+              <div class="progress-bar unanswered" id="question7-status">
                 <i class="fas fa-circle-question"></i> Quiz question 7
               </div>
-              <div class="progress-bar unanswered">
+              <div class="progress-bar unanswered" id="question8-status">
                 <i class="fas fa-circle-question"></i> Quiz question 8
               </div>
-              <div class="progress-bar unanswered">
+              <div class="progress-bar unanswered" id="question9-status">
                 <i class="fas fa-circle-question"></i> Quiz question 9
               </div>
-              <div class="progress-bar unanswered">
+              <div class="progress-bar unanswered" id="question10-status">
                 <i class="fas fa-circle-question"></i> Quiz question 10
               </div>
             </div>
@@ -526,92 +562,93 @@
       <!-- QUIZ MULTIPLE CHOICE AND ESSAY -->
 
 
-      <!-- TABLE ACTIVITY -->
-    <div class="container mt-5">
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Plate Boundary Type</th>
-              <th>Landform Created</th>
-              <th>Volcanic Activity?</th>
-              <th>Earthquakes Present?</th>
-              <th>Direction of Movement</th>
-              <th>Real-World Example</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="tr-head-1">
-              <td>Continental - Continental</td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-            </tr>
-            <tr class="tr-head-2">
-              <td>Oceanic - Continental</td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-            </tr>
-            <tr class="tr-head-3">
-              <td>Oceanic - Oceanic</td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-            </tr>
-            <tr class="tr-head-4">
-              <td>Divergent</td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-            </tr>
-            <tr class="tr-head-5">
-              <td>Transform</td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-              <td><input type="text" placeholder="Your answer"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <!-- END OF TABLE ACTIVITY -->
+      <!-- COMPARISON CHART -->
+      <div class="container mt-5">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Plate Boundary Type</th>
+                <th>Landform Created</th>
+                <th>Volcanic Activity?</th>
+                <th>Earthquakes Present?</th>
+                <th>Direction of Movement</th>
+                <th>Real-World Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tr-head-1">
+                <td>Continental - Continental</td>
+                <td><input type="text" name="tableanswer1[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer2[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer3[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer4[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer5[]" placeholder="Your answer"></td>
+              </tr>
+              <tr class="tr-head-2">
+                <td>Oceanic - Continental</td>
+                <td><input type="text" name="tableanswer6[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer7[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer8[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer9[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer10[]" placeholder="Your answer"></td>
+              </tr>
+              <tr class="tr-head-3">
+                <td>Oceanic - Oceanic</td>
+                <td><input type="text" name="tableanswer11[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer12[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer13[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer14[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer15[]" placeholder="Your answer"></td>
+              </tr>
+              <tr class="tr-head-4">
+                <td>Divergent</td>
+                <td><input type="text" name="tableanswer16[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer17[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer18[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer19[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer20[]" placeholder="Your answer"></td>
+              </tr>
+              <tr class="tr-head-5">
+                <td>Transform</td>
+                <td><input type="text" name="tableanswer21[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer22[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer23[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer24[]" placeholder="Your answer"></td>
+                <td><input type="text" name="tableanswer25[]" placeholder="Your answer"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>      
+  <!-- END OF COMPARISON CHART -->
 
   <!-- ESSAY -->
-  <div class="container">
-    <textarea
-      class=""
-      name=""
-      id=""
-      rows="10"
-      placeholder="Enter your answer here..."
-      style="
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-      "
-    ></textarea>
-  </div>
+    <div class="container">
+      <textarea
+        class=""
+        name="essay_answer"
+        id="essay_answer"
+        rows="10"
+        placeholder="Enter your answer here..."
+        style="
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+        "
+      ></textarea>
+    </div>
   <!-- ESSAY -->
+
 
   <!-- MIND MAPPING ACTIVITY -->
   <div class="container mt-5">
     <div class="question-box">
-      <div class="question-title text-white" style="font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 15px;">Match these terms with the correct plate boundary:</div>
+      <div class="question-title text-white" style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">
+        Match these terms with the correct plate boundary:
+      </div>
       <div class="terms-container">
         <div class="term">rift valleys</div>
         <div class="term">deep-sea trenches</div>
@@ -621,56 +658,55 @@
         <div class="term">Major earthquakes</div>
       </div>
     </div>
-    
+  
     <h2 class="section-title">Plate Boundaries</h2>
-    
-    <div class="mind-map-container"> 
+  
+    <div class="container mind-map-container"> 
       <div class="mind-map">
         <div class="card-title">Convergent</div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input1" placeholder="Type your answer here...">
         </div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input1" placeholder="Type your answer here...">
         </div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input1" placeholder="Type your answer here...">
         </div>
       </div>
-      
       
       <div class="mind-map">
         <div class="card-title">Divergent</div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input2" placeholder="Type your answer here...">
         </div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input2" placeholder="Type your answer here...">
         </div>
       </div>
       
-    
       <div class="mind-map">
         <div class="card-title">Transform</div>
         <div class="card-input">
-          <input  type="text" placeholder="Type your answer here...">
+          <input class="mapinput" type="text" name="mindmap_input3" placeholder="Type your answer here...">
         </div>
       </div>
     </div>
   </div>
+  
   <!-- END OF MIND MAPPING ACTIVITY -->
 
 
 
             <!-- Submit Button -->
-             <div class="submit-button-container">
+             <div class="container submit-button-container">
               <button class="submit-btn" id="submitBtn" type="submit">
                 Submit Answer
               </button>
             </div>
 
     <!--NAVIGATION BUTTONS -->
-      <div class="navigation-buttons pt-3">
+      <div class="container navigation-buttons pt-3">
         <button class="nav-button" id="prev-button">
           <i class="fas fa-arrow-left"></i> Previous Lesson
         </button>
@@ -750,9 +786,7 @@
       const submitBtn = document.getElementById("submitBtn");
       let selectedOption = null;
 
-      // Define correct answer
-      const correctAnswer = "A";
-
+  
       // Select an option
       options.forEach((option) => {
         option.addEventListener("click", () => {
