@@ -9,38 +9,45 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   </head>
   <body>
-    <form class="form_register">
+    <form id="form_register" class="form_register">
       <div class="logo-container">
         <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo" />
       </div>
       <p class="title">Sign Up</p>
+
       <div class="flex">
         <label>
+          <!-- Firstname Field-->
           <input
             required=""
             placeholder=""
             type="text"
             class="input"
             id="firstname"
+            name="firstname"
           />
           <span>Firstname</span>
         </label>
         <label>
+          <!-- Middlename Field-->
           <input
             placeholder=""
             type="text"
             class="input"
             id="middlename"
+            name="middlename"
           />
           <span>Middle name</span>
         </label>
         <label>
+          <!-- Lastname Field-->
           <input
             required=""
             placeholder=""
             type="text"
             class="input"
             id="lastname"
+            name="lastname"
           />
           <span>Lastname</span>
         </label>
@@ -48,6 +55,7 @@
 
       <div class="flex">
         <label>
+          <!-- Age Field -->
           <input
             required=""
             placeholder=""
@@ -56,33 +64,39 @@
             max="120"
             class="input"
             id="age"
+            name="age"
           />
           <span>Age</span>
         </label>
         <label>
+          <!-- Birthdate Field -->
           <input
             required=""
             placeholder=""
             type="date"
             class="input"
             id="birthdate"
+            name="birthdate"
           />
           <span>Birthdate</span>
         </label>
       </div>
       <label>
+        <!-- School Name Field -->
         <input
           required=""
           placeholder=""
           type="text"
           class="input"
           id="school_name"
+          name="school_name"
         />
         <span>Name of School</span>
       </label>
       <div class="flex">
         <label>
-          <select required class="input" id="grade_level">
+          <!-- Grade Level Field -->
+          <select required class="input" id="grade_level" name="grade_level">
             <option value="" disabled selected hidden>
               Select Grade Level
             </option>
@@ -97,39 +111,46 @@
         </label>
 
         <label>
+          <!-- Section Field -->
           <input
             required=""
             placeholder=""
             type="text"
             class="input"
             id="section"
+            name="section"
           />
           <span>Section</span>
         </label>
       </div>
       <label>
+        <!-- Email Field -->
         <input
           required=""
           placeholder=""
           type="email"
           class="input"
           id="email"
+          name="email"
         />
         <span>Email</span>
       </label>
 
       <label>
+        <!-- Address Field -->
         <input
           required=""
           placeholder=""
           type="text"
           class="input"
           id="address"
+          name="address"
         />
         <span>Complete Address</span>
       </label>
 
       <div class="flex">
+        <!-- Username Field -->
         <label>
           <input
             required=""
@@ -137,36 +158,59 @@
             type="text"
             class="input"
             id="username"
+            name="username"
           />
           <span>Username</span>
         </label>
         <label>
+          <!-- Password Field -->
           <input
             required=""
             placeholder=""
             type="password"
             class="input"
             id="password"
+            name="password"
           />
           <span>Password</span>
         </label>
         <label>
+          <!-- Confirm Password Field -->
           <input
             required=""
             placeholder=""
             type="password"
             class="input"
             id="password_confirmation"
+            name="password_confirmation"
           />
           <span>Confirm password</span>
         </label>
+        <label class="d-none">
+          <!-- Hidden Role Field -->
+          <input
+            required=""
+            placeholder=""
+            id="role"
+            name="role"
+            value="student"
+          />
+          <span>Student</span>
+        </label>
       </div>
-      <button class="submit text-white">Submit</button>
+      <button class="submit text-white" type="submit" id="submit">
+        Submit
+      </button>
+      <div class="pt-3">
+        <div class="alert alert-primary d-none" role="alert"></div>
+        <div class="alert alert-danger d-none" role="alert"></div>
+      </div>
       <p class="signin">
         Already have an account? <a href="index.html">Log in</a>
       </p>
     </form>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/student/js/auth/register.js"></script>
   </body>
 </html>
