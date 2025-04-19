@@ -9,22 +9,39 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   </head>
   <body>
-    <form class="form">
+    <form class="form_register">
       <div class="logo-container">
         <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo" />
       </div>
       <p class="title">Sign Up</p>
       <div class="flex">
         <label>
-          <input required="" placeholder="" type="text" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="text"
+            class="input form-control"
+            id="firstname"
+          />
           <span>Firstname</span>
         </label>
         <label>
-          <input placeholder="" type="text" class="input" />
+          <input
+            placeholder=""
+            type="text"
+            class="input form-control"
+            id="middlename"
+          />
           <span>Middle name</span>
         </label>
         <label>
-          <input required="" placeholder="" type="text" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="text"
+            class="input form-control"
+            id="lastname"
+          />
           <span>Lastname</span>
         </label>
       </div>
@@ -37,22 +54,35 @@
             type="number"
             min="1"
             max="120"
-            class="input"
+            class="input form-control"
+            id="age"
           />
           <span>Age</span>
         </label>
         <label>
-          <input required="" placeholder="" type="date" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="date"
+            class="input form-control"
+            id="birthdate"
+          />
           <span>Birthdate</span>
         </label>
       </div>
       <label>
-        <input required="" placeholder="" type="text" class="input" />
+        <input
+          required=""
+          placeholder=""
+          type="text"
+          class="input form-control"
+          id="school_name"
+        />
         <span>Name of School</span>
       </label>
       <div class="flex">
         <label>
-          <select required class="input">
+          <select required class="input form-control" id="grade_level">
             <option value="" disabled selected hidden>
               Select Grade Level
             </option>
@@ -67,31 +97,67 @@
         </label>
 
         <label>
-          <input required="" placeholder="" type="text" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="text"
+            class="input form-control"
+            id="section"
+          />
           <span>Section</span>
         </label>
       </div>
       <label>
-        <input required="" placeholder="" type="email" class="input" />
+        <input
+          required=""
+          placeholder=""
+          type="email"
+          class="input form-control"
+          id="email"
+        />
         <span>Email</span>
       </label>
 
       <label>
-        <input required="" placeholder="" type="text" class="input" />
+        <input
+          required=""
+          placeholder=""
+          type="text"
+          class="input form-control"
+          id="address"
+        />
         <span>Complete Address</span>
       </label>
 
       <div class="flex">
         <label>
-          <input required="" placeholder="" type="text" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="text"
+            class="input form-control"
+            id="username"
+          />
           <span>Username</span>
         </label>
         <label>
-          <input required="" placeholder="" type="password" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="password"
+            class="input form-control"
+            id="password"
+          />
           <span>Password</span>
         </label>
         <label>
-          <input required="" placeholder="" type="password" class="input" />
+          <input
+            required=""
+            placeholder=""
+            type="password"
+            class="input form-control"
+            id="password_confirmation"
+          />
           <span>Confirm password</span>
         </label>
       </div>
