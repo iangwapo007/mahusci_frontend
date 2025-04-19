@@ -11,7 +11,7 @@ body {
   background-image: url(src/images/register.png);
 }
 
-.form {
+.form, .form_register {
   background-color: white;
   border-radius: 20px;
   box-sizing: border-box;

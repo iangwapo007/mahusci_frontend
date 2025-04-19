@@ -622,7 +622,7 @@ textarea:focus {
   background-color: #5995fd;
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
   margin-top: 10px;
@@ -848,5 +848,342 @@ textarea:focus {
 #prev-button:hover {
   background-color: #7f8c8d;
 }
-
 /* end of custom styles for lesson page */
+
+
+/* Card container for 4 pics 1 word styling */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* Increased gap between cards */
+  padding: 15px;
+}
+
+/* Card item sizing - increased sizes */
+.card-item {
+  width: 100%;
+  max-width: 370px;
+}
+
+/* Card styling */
+.card-quiz {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12) !important;
+  background-color: #ffffff;
+}
+
+.card-quiz:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Image container styling */
+.card-img-container {
+  overflow: hidden;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px !important; /* Increased padding */
+}
+
+.card-img-container img {
+  transition: transform 0.5s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.card-quiz:hover .card-img-container img {
+  transform: scale(1.05);
+}
+
+/* Input field and button styling - larger components */
+.card-frame {
+  padding: 16px !important; /* Increased padding */
+}
+
+.input-group .form-control {
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* Responsive adjustments - adjusted for larger cards */
+@media (min-width: 768px) {
+  /* For tablets - now just 1 card per row because they're larger */
+  .card-item {
+    width: calc(100% - 30px);
+    max-width: 330px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* For smaller desktops - 2 cards per row */
+  .card-item {
+    width: calc(50% - 30px);
+    max-width: 330px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* For larger desktops - still 2 cards per row, but larger */
+  .card-item {
+    width: calc(50% - 40px);
+    max-width: 330px;
+  }
+ 
+  /* Increase gap further on large screens */
+  .card-container {
+    gap: 40px;
+  }
+}
+
+/* For single card centering */
+.card-container:has(.card-item:only-child) {
+  justify-content: center;
+}
+
+/* When there's only one card */
+.card-item:only-child {
+  max-width: 370px; /* Even larger when it's the only card */
+}
+/*End of Card container for 4 pics 1 word styling */
+
+
+
+/* TABLE ACTIVITY STYLES*/
+table {
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+th {
+  background-color: #5995fd;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Color classes for different plate boundaries */
+.tr-head-1 {
+  background-color: #fff2cc;
+}
+.tr-head-2 {
+  background-color: #e6f9e6;
+}
+.tr-head-3 {
+  background-color: #e6f0ff;
+}
+.tr-head-4 {
+  background-color: #f9e6f9;
+}
+.tr-head-5 {
+  background-color: #f2f2f2;
+}
+
+/* Table container */
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  /* Convert table to a card-based layout on small screens */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  /* Hide table headers (but not display: none, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr {
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+  
+  td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #65656580;
+    position: relative;
+    padding-left: 50%;
+    min-height: 30px;
+  }
+  
+  td:before {
+    /* Add a label for each cell on small screens */
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 5px;
+    white-space: wrap;
+  }
+  
+  /* Add labels for each td element */
+  tr td:nth-of-type(1):before { content: "Plate Boundary Type"; }
+  tr td:nth-of-type(2):before { content: "Landform Created"; }
+  tr td:nth-of-type(3):before { content: "Volcanic Activity?"; }
+  tr td:nth-of-type(4):before { content: "Earthquakes Present?"; }
+  tr td:nth-of-type(5):before { content: "Direction of Movement"; }
+  tr td:nth-of-type(6):before { content: "Real-World Example"; }
+}
+
+/* For medium-sized screens */
+@media screen and (max-width: 992px) and (min-width: 769px) {
+  th {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+  
+  td {
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  input[type="text"] {
+    padding: 6px;
+    font-size: 13px;
+  }
+}
+/* END OF TABLE ACTIVITY STYLES*/
+
+
+/* MIND MAP STYLES*/
+.question-box {
+  background-color: #6f8bd7;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.terms-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 15px;
+}
+
+.term {
+background-color: #ffffff;
+color: #5d7dd6;
+padding: 8px;
+border-radius: 20px;
+font-size: 14px;
+font-weight: 700;
+text-align: center;
+white-space: nowrap;
+}
+
+
+.section-title {
+  color:  #6f8bd7;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.mind-map-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mind-map {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  width: calc(33.33% - 20px);
+  min-width: 280px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  border: 1px solid #9a9a9a;
+}
+
+.card-title {
+  color: #5175d6;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #929292;
+}
+
+.card-input {
+  position: relative;
+  margin: 10px;
+}  
+
+@media (max-width: 992px) {
+  .mind-map-container {
+    justify-content: space-between;
+  }
+  
+  .mind-map {
+    width: calc(50% - 15px);
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .mind-map-container {
+    flex-direction: column;
+  }
+  
+  .mind-map {
+    width: 100%;
+  }
+  
+  .section-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .question-box {
+    padding: 15px;
+  }
+  
+  .mind-map {
+    padding: 15px;
+  }
+  
+  input[type="text"] {
+    padding: 10px 8px;
+  }
+}
+/* END OF MIND MAP STYLES*/
