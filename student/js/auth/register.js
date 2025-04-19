@@ -1,3 +1,5 @@
+import { errorNotification, successNotification, url } from "../utils/utils.js";
+
 //Form Register
 
 const form_register = document.getElementById("form_register");
@@ -8,16 +10,16 @@ form_register.onsubmit = async (e) => {
   // Disable Button | WHILE GA LOADING
   document.querySelector("#form_register button").disabled = true;
 
-  //   document.querySelector(
-  //     "#submit"
-  //   ).innerHTML = `<div class="spinner-border me-2" role="status"></div>
-  //                       <span class="mt-1">Loading...</span>`;
+  document.querySelector(
+    "#form_register button"
+  ).innerHTML = `<div class="spinner-border me-2" role="status"></div>
+        <p style="padding-top: 16px">Creating Account</p>`;
 
   // Get Values of Form (input, textarea, select) set it as form-data
   const formData = new FormData(form_register);
 
   // Fetch API user register endpoint
-  const response = await fetch("http://mahusci-backend.test/api/register", {
+  const response = await fetch(url + "/api/register", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -48,26 +50,5 @@ form_register.onsubmit = async (e) => {
   }
   // Enable Button | AFTER MAG LOADING
   document.querySelector("#form_register button").disabled = false;
+  document.querySelector("#form_register button").innerHTML = `Create Account`;
 };
-
-function successNotification(message = "") {
-  document.querySelector(".alert-primary").classList.remove("d-none");
-  document.querySelector(".alert-primary").classList.add("d-block");
-  document.querySelector(".alert-primary").innerHTML = message;
-
-  setTimeout(() => {
-    document.querySelector(".alert-primary").classList.remove("d-block");
-    document.querySelector(".alert-primary").classList.add("d-none");
-  }, 5000);
-}
-
-function errorNotification(message = "") {
-  document.querySelector(".alert-danger").classList.remove("d-none");
-  document.querySelector(".alert-danger").classList.add("d-block");
-  document.querySelector(".alert-danger").innerHTML = message;
-
-  setTimeout(() => {
-    document.querySelector(".alert-danger").classList.remove("d-block");
-    document.querySelector(".alert-danger").classList.add("d-none");
-  }, 5000);
-}
