@@ -1,4 +1,11 @@
-import { errorNotification, successNotification, url } from "../utils/utils.js";
+import {
+  errorNotification,
+  successNotification,
+  backendURL,
+  setRouter,
+} from "../utils/utils.js";
+
+setRouter();
 
 const form_login = document.getElementById("form_login");
 
@@ -17,7 +24,7 @@ form_login.onsubmit = async (e) => {
   const formData = new FormData(form_login);
 
   // Fetch API user login endpoint
-  const response = await fetch(url + "/api/login", {
+  const response = await fetch(backendURL + "/api/login", {
     method: "POST",
     headers: {
       Accept: "application/json",
