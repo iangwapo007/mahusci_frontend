@@ -1,0 +1,27 @@
+import { errorNotification, successNotification, url } from "../utils/utils.js";
+
+const form_login = document.getElementById("form_login");
+
+form_login.onsubmit = async (e) => {
+  e.preventDefault();
+
+  // Disable Button | WHILE GA LOADING
+  document.querySelector("#form_login button").disabled = true;
+
+  document.querySelector(
+    "#form_login button"
+  ).innerHTML = `<div class="spinner-border me-2" role="status"></div>
+            <p style="padding-top: 16px">Logging In</p>`;
+
+  // Get Values of Form (input, textarea, select) set it as form-data
+  const formData = new FormData(form_login);
+
+  // Fetch API user login endpoint
+  const response = await fetch(url + "/api/login", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+    },
+    body: formData,
+  });
+};
