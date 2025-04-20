@@ -680,7 +680,7 @@ input[type="radio"]:checked + .option {
 }
 /* end of  quiz page styling */
 
-/* Custom styles for lesson page */
+/* LECTURE page */
 .lesson-container {
   padding-top: 80px;
   padding-bottom: 50px;
@@ -866,7 +866,7 @@ input[type="radio"]:checked + .option {
 #prev-button:hover {
   background-color: #7f8c8d;
 }
-/* end of custom styles for lesson page */
+/* END OF LECTURE  page */
 
 
 /* Card container for 4 pics 1 word styling */

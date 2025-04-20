@@ -344,7 +344,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="answer1"
+                  name="image_1"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
@@ -368,7 +368,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="answer2"
+                  name="image_2"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
@@ -392,7 +392,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="answer3"
+                  name="image_3"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
@@ -416,7 +416,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="answer4"
+                  name="image_4"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
@@ -440,7 +440,7 @@
               <div class="input-group">
                 <input
                   type="text"
-                  name="answer5"
+                  name="image_5"
                   class="form-control rounded-start"
                   placeholder="Input Answer Here"
                   aria-label="Your answer"
@@ -463,16 +463,16 @@
       <div class="row">
         <div class="col-12 col-lg-9">
           <form id="quiz-form" class="quiz-form">
-            <h3 class="question-title mb-3 jost fw-light" id="question1">
+            <h3 class="question-title mb-3 jost fw-light" id="question_1">
               <ol>
                 <li>What layers of Earth make up the lithosphere?</li>
               </ol>
             </h3>
-          
-            <div class="options-group" data-question="question1">
+        
+            <div class="options-group" data-question="choice_1">
               <!-- Option A -->
               <div class="option-container">
-                <input type="radio" id="option-A" name="question1" value="A">
+                <input type="radio" id="option-A" name="choice_1" value="A">
                 <label for="option-A" class="option mb-3">
                   <span class="option-label">A</span>
                   <span>The crust and lower mantle</span>
@@ -482,7 +482,7 @@
               
               <!-- Option B -->
               <div class="option-container">
-                <input type="radio" id="option-B" name="question1" value="B">
+                <input type="radio" id="option-B" name="choice_1" value="B">
                 <label for="option-B" class="option mb-3">
                   <span class="option-label">B</span>
                   <span>The crust and upper mantle</span>
@@ -492,7 +492,7 @@
               
               <!-- Option C -->
               <div class="option-container">
-                <input type="radio" id="option-C" name="question1" value="C">
+                <input type="radio" id="option-C" name="choice_1" value="C">
                 <label for="option-C" class="option mb-3">
                   <span class="option-label">C</span>
                   <span>The continental crust and oceanic crust</span>
@@ -502,7 +502,7 @@
               
               <!-- Option D -->
               <div class="option-container">
-                <input type="radio" id="option-D" name="question1" value="D">
+                <input type="radio" id="option-D" name="choice_1" value="D">
                 <label for="option-D" class="option mb-3">
                   <span class="option-label">D</span>
                   <span>The upper and lower mantle</span>
@@ -510,7 +510,7 @@
                 </label>
               </div>
             </div>
-          
+        
             <div class="submit-button-container mt-4">
               <button class="submit-btn" id="submitBtn" type="submit">
                 Submit Answer
@@ -518,6 +518,7 @@
             </div>
           </form>
         </div>
+        
 
         <!-- Right side: Scoreboard and Quiz List -->
         <div class="col-12 col-lg-3">
@@ -559,7 +560,7 @@
           </div>
         </div>
       </div>
-      <!-- QUIZ MULTIPLE CHOICE AND ESSAY -->
+      <!-- QUIZ MULTIPLE CHOICE -->
 
 
       <!-- COMPARISON CHART -->
@@ -579,43 +580,43 @@
             <tbody>
               <tr class="tr-head-1">
                 <td>Continental - Continental</td>
-                <td><input type="text" name="tableanswer1[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer2[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer3[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer4[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer5[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input1[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input2[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input3[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input4[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input5[]" placeholder="Your answer"></td>
               </tr>
               <tr class="tr-head-2">
                 <td>Oceanic - Continental</td>
-                <td><input type="text" name="tableanswer6[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer7[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer8[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer9[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer10[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input6[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input7[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input8[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input9[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input10[]" placeholder="Your answer"></td>
               </tr>
               <tr class="tr-head-3">
                 <td>Oceanic - Oceanic</td>
-                <td><input type="text" name="tableanswer11[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer12[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer13[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer14[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer15[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input11[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input12[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input13[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input14[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input15[]" placeholder="Your answer"></td>
               </tr>
               <tr class="tr-head-4">
                 <td>Divergent</td>
-                <td><input type="text" name="tableanswer16[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer17[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer18[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer19[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer20[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input16[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input17[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input18[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input19[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input20[]" placeholder="Your answer"></td>
               </tr>
               <tr class="tr-head-5">
                 <td>Transform</td>
-                <td><input type="text" name="tableanswer21[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer22[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer23[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer24[]" placeholder="Your answer"></td>
-                <td><input type="text" name="tableanswer25[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input21[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input22[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input23[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input24[]" placeholder="Your answer"></td>
+                <td><input type="text" name="input25[]" placeholder="Your answer"></td>
               </tr>
             </tbody>
           </table>
@@ -627,8 +628,8 @@
     <div class="container">
       <textarea
         class=""
-        name="essay_answer"
-        id="essay_answer"
+        name="essay_input"
+        id="essay_input"
         rows="10"
         placeholder="Enter your answer here..."
         style="
@@ -781,6 +782,7 @@
     </div>
     <!-- END OF FOOTER -->
 
+    <!-- E HAWA RANI NGA SCRIP KAY MURAG WANI PULOS!!!!! -->
     <script>
       const options = document.querySelectorAll(".option");
       const submitBtn = document.getElementById("submitBtn");
