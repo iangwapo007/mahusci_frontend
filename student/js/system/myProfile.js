@@ -7,15 +7,12 @@ const btn_logout = document.getElementById("btn_logout");
 btn_logout.onclick = async () => {
   const response = await fetch(backendURL + "/api/logout", {
     headers: {
-      Accept: "application/json",
+      Application: "application/json",
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
   });
-
-  if (response.status === 200) {
+  if (response.ok) {
     localStorage.clear();
-
-    const json = await response.json();
 
     window.location.pathname = "/";
   } else {
