@@ -1,4 +1,8 @@
-const url = "http://mahusci-backend.test";
+import { setRouter } from "../router/router.js";
+
+setRouter();
+
+const backendURL = "http://mahusci-backend.test";
 
 // Success and Error Notification
 function successNotification(message = "") {
@@ -23,4 +27,4 @@ function errorNotification(message = "") {
   }, 5000);
 }
 
-export { url, successNotification, errorNotification };
+export { backendURL, successNotification, errorNotification, setRouter };

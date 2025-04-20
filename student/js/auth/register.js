@@ -1,4 +1,11 @@
-import { errorNotification, successNotification, url } from "../utils/utils.js";
+import {
+  errorNotification,
+  successNotification,
+  backendURL,
+  setRouter,
+} from "../utils/utils.js";
+
+setRouter();
 
 //Form Register
 
@@ -19,7 +26,7 @@ form_register.onsubmit = async (e) => {
   const formData = new FormData(form_register);
 
   // Fetch API user register endpoint
-  const response = await fetch(url + "/api/register", {
+  const response = await fetch(backendURL + "/api/register", {
     method: "POST",
     headers: {
       Accept: "application/json",
