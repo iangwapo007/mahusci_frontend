@@ -24,4 +24,27 @@ form_login.onsubmit = async (e) => {
     },
     body: formData,
   });
+
+  if (response.ok) {
+    // Get response if 200-299 status code | IF OKAY
+    const json = await response.json();
+    console.log(json);
+
+    localStorage.setItem("token", json.token);
+
+    form_login.reset();
+
+    successNotification("Login Successfully!");
+
+    window.location.pathname = "/student/home.html";
+  } else if (response.status == 422) {
+    // Get response if 422 status code | IF DILI OKAY
+    const json = await response.json();
+    console.log(json);
+
+    errorNotification(json.message);
+  }
+
+  document.querySelector("#form_login button").disabled = false;
+  document.querySelector("#form_login button").innerHTML = `Login`;
 };

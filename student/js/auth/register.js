@@ -28,12 +28,6 @@ form_register.onsubmit = async (e) => {
   });
   // Get response if 200-299 status code | IF OKAY
   if (response.ok) {
-    const json = await response.json();
-    console.log(json);
-
-    document.querySelector(".alert-primary").classList.remove("d-none");
-    document.querySelector(".alert-primary").classList.add("d-block");
-
     successNotification("Account Created Successfully!");
 
     form_register.reset();
