@@ -3,6 +3,8 @@ import { setRouter } from "../router/router.js";
 setRouter();
 
 const backendURL = "http://mahusci-backend.test";
+const token = localStorage.getItem("token");
+const userType = localStorage.getItem("type");
 
 // Success and Error Notification
 function successNotification(message = "") {
@@ -27,4 +29,11 @@ function errorNotification(message = "") {
   }, 5000);
 }
 
-export { backendURL, successNotification, errorNotification, setRouter };
+export {
+  backendURL,
+  successNotification,
+  errorNotification,
+  setRouter,
+  token,
+  userType,
+};
