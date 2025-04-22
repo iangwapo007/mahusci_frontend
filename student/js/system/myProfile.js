@@ -1,6 +1,10 @@
-import { setRouter, backendURL } from "../utils/utils.js";
+import { setRouter, backendURL, getLoggedUser } from "../utils/utils.js";
 
+// USE ROUTER
 setRouter();
+
+// GET LOGGED USER INFO
+getLoggedUser();
 
 const btn_logout = document.getElementById("btn_logout");
 
