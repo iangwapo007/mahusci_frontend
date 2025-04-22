@@ -309,6 +309,12 @@
     width: 50% !important;
     max-width: 50% !important;
   }
+
+  .selected-lesson-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
 }
 
 /* FOR MOBILE VIEW */
@@ -334,6 +340,12 @@
   .custom-tab-width {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .selected-lesson-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
   }
 }
 
