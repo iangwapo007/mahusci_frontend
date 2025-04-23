@@ -1,4 +1,4 @@
-import { setRouter, backendURL, getLoggedUser } from "../utils/utils.js";
+import { setRouter, backendURL, getLoggedUser, token } from "../utils/utils.js";
 
 // USE ROUTER
 setRouter();
@@ -12,7 +12,7 @@ btn_logout.onclick = async () => {
   const response = await fetch(backendURL + "/api/logout", {
     headers: {
       Application: "application/json",
-      Authorization: "Bearer " + localStorage.getItem("token"),
+      Authorization: "Bearer " + token,
     },
   });
   if (response.ok) {

@@ -35,7 +35,7 @@ async function getLoggedUser() {
   const response = await fetch(backendURL + "/api/user/profile", {
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ` + localStorage.getItem("token"),
+      Authorization: `Bearer ` + token,
     },
   });
   if (response.ok) {

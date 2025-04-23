@@ -7,7 +7,7 @@ function setRouter() {
     case "/index.html":
     case "/register.html":
       if (token) {
-        if (userType === "student") {
+        if (userType === "Student") {
           window.location.pathname = "/student/home.html";
         } else {
           window.location.pathname = "/teacher/home.html";
