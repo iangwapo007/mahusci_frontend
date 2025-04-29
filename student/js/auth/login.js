@@ -38,6 +38,7 @@ form_login.onsubmit = async (e) => {
     console.log(json);
 
     localStorage.setItem("token", json.token);
+    localStorage.setItem("type", json.role);
 
     form_login.reset();
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sample | Courses</title>
     <link rel="icon" type="image/png" href="/src/images/logo.png" />
+
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
 
@@ -22,7 +23,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="poppins">
+  <body class="poppins bg-image">
     <!-- START OF DESKTOP NAVBAR -->
     <div
       class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
@@ -77,12 +78,14 @@
             />
           </div>
           <div class="px-2">
-            <span style="font-size: 16px; font-weight: 600; line-height: 1"
-              >Iangwapo007</span
-            >
-            <span style="font-size: 13px; display: block; line-height: 1"
-              >Student | Grade 7</span
-            >
+            <span
+              id="username-desktop"
+              style="font-size: 16px; font-weight: 600; line-height: 1"
+            ></span>
+            <span
+              id="role-level-desktop"
+              style="font-size: 13px; display: block; line-height: 1"
+            ></span>
           </div>
         </div>
       </a>
@@ -138,8 +141,10 @@
                 />
               </div>
               <div class="ps-4">
-                <small class="d-block fw-bold">Iangwapo007</small>
-                <small class="pt-2">Student | Grade 7</small>
+                <small id="username-mobile" class="d-block fw-bold"></small>
+                <small id="role-level-mobile" class="pt-2"
+                  >Student | Grade 7</small
+                >
               </div>
             </div>
           </a>
@@ -222,109 +227,257 @@
 
     <!-- START OF CONTENT -->
 
-    <div class="container shadow rounded-3" style="margin-top: 100px">
-      <div class="py-3">
-        <h1 class="text-center fw-semibold">BIOLOGY</h1>
+    <div
+      class="container border-2 border-success border shadow rounded-3 bg-white custom-tab-width px-0"
+      style="margin-top: 120px; margin-bottom: 50px"
+    >
+      <div class="container-fluid border m-0 p-0">
+        <img
+          src="/src/images/earth_science1.png"
+          class="img-fluid p-0 m-0"
+          alt=""
+          srcset=""
+        />
       </div>
       <div class="pt-4">
         <!--1ST QUARTER -->
         <div class="container pb-3">
           <button
-            class="btn border-dark w-100 py-3 d-flex justify-content-start align-items-center shadow"
+            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseExample"
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            <div class="fs-5">
-              <span class="fw-semibold">1st Quarter: </span>
-              <i class=""> Introduction to Biology</i>
+            <div
+              class="container d-flex justify-content-between align-items-center p-0"
+            >
+              <div class="lesson-title">
+                <img
+                  src="/src/icon/dropdown.png"
+                  style="width: 12px; margin-right: 6px"
+                  alt=""
+                />
+                <span class="fw-semibold">1st Quarter - </span>
+                <i>Introduction to Biology</i>
+              </div>
+              <div>
+                <img
+                  src="/src/icon/available.png"
+                  style="width: 30px"
+                  alt=""
+                  srcset=""
+                />
+              </div>
             </div>
           </button>
           <!-- TOPICS INSIDE QUARTER -->
-          <div class="px-4">
-            <div class="collapse py-2" id="collapseExample">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
-              </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
-              </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
-              </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
-              </div>
+          <div
+            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
+            id="collapseExample"
+          >
+            <div class="p-3 lesson-title">
+              <span class="fw-semibold">Topics for this Quarter: </span>
+              <!-- 1ST TOPIC -->
+              <a
+                class="text-reset text-decoration-none"
+                href="selectedTopic.html"
+                ><div class="pt-3 ms-lg-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <img
+                        src="/src/icon/file.png"
+                        style="width: 18px"
+                        alt=""
+                      />
+                      <span>Topics - Sample Topic Title</span>
+                    </div>
+                    <img
+                      src="/src/icon/available.png"
+                      style="width: 30px"
+                      alt=""
+                      srcset=""
+                    />
+                  </div></div
+              ></a>
+
+              <!-- 2ND TOPIC -->
+              <a
+                class="text-reset text-decoration-none"
+                href="selectedTopic.html"
+                ><div class="pt-3 ms-lg-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <img
+                        src="/src/icon/file.png"
+                        style="width: 18px"
+                        alt=""
+                      />
+                      <span>Topics - Sample Topic Title</span>
+                    </div>
+                    <img
+                      src="/src/icon/available.png"
+                      style="width: 30px"
+                      alt=""
+                      srcset=""
+                    />
+                  </div></div
+              ></a>
+              <!-- 3RD TOPIC -->
+              <a
+                class="text-reset text-decoration-none"
+                href="selectedTopic.html"
+                ><div class="pt-3 ms-lg-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <img
+                        src="/src/icon/file.png"
+                        style="width: 18px"
+                        alt=""
+                      />
+                      <span>Topics - Sample Topic Title</span>
+                    </div>
+                    <img
+                      src="/src/icon/available.png"
+                      style="width: 30px"
+                      alt=""
+                      srcset=""
+                    />
+                  </div></div
+              ></a>
+              <!-- 4TH TOPIC -->
+              <a
+                class="text-reset text-decoration-none"
+                href="selectedTopic.html"
+                ><div class="pt-3 ms-lg-5">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <img
+                        src="/src/icon/file.png"
+                        style="width: 18px"
+                        alt=""
+                      />
+                      <span>Topics - Sample Topic Title</span>
+                    </div>
+                    <img
+                      src="/src/icon/available.png"
+                      style="width: 30px"
+                      alt=""
+                      srcset=""
+                    />
+                  </div></div
+              ></a>
             </div>
           </div>
         </div>
-        <!-- 2ND QUARTER -->
+        <!--2ND QUARTER -->
         <div class="container pb-3">
           <button
-            class="btn border-dark w-100 py-3 d-flex justify-content-start align-items-center shadow"
+            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#collapseExample1"
             aria-expanded="false"
             aria-controls="collapseExample"
+            disabled
           >
-            <div class="fs-5">
-              <span class="fw-semibold">2nd Quarter: </span>
-              <i class=""> Sample Topic Title 1</i>
+            <div
+              class="container d-flex justify-content-between align-items-center p-0"
+            >
+              <div class="lesson-title">
+                <img
+                  src="/src/icon/dropdown.png"
+                  style="width: 12px; margin-right: 6px"
+                  alt=""
+                />
+                <span class="fw-semibold">2nd Quarter - </span>
+                <i>Sample Title</i>
+              </div>
+              <div>
+                <img
+                  src="/src/icon/locked.png"
+                  style="width: 18px"
+                  alt=""
+                  srcset=""
+                />
+              </div>
             </div>
           </button>
           <!-- TOPICS INSIDE QUARTER -->
-          <div class="px-4">
-            <div class="collapse py-2" id="collapseExample1">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+          <div
+            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
+            id="collapseExample1"
+          >
+            <div class="p-3 lesson-title">
+              <span class="fw-semibold">Topics for this Quarter: </span>
+              <!-- 1ST TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample1">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 2ND TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample1">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 3RD TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample1">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 4TH TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -332,50 +485,102 @@
         <!-- 3RD QUARTER -->
         <div class="container pb-3">
           <button
-            class="btn border-dark w-100 py-3 d-flex justify-content-start align-items-center shadow"
+            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseExample2"
+            data-bs-target="#collapseExample1"
             aria-expanded="false"
             aria-controls="collapseExample"
+            disabled
           >
-            <div class="fs-5">
-              <span class="fw-semibold">3rd Quarter: </span>
-              <i class=""> Sample Topic Title 2</i>
+            <div
+              class="container d-flex justify-content-between align-items-center p-0"
+            >
+              <div class="lesson-title">
+                <img
+                  src="/src/icon/dropdown.png"
+                  style="width: 12px; margin-right: 6px"
+                  alt=""
+                />
+                <span class="fw-semibold">3rd Quarter - </span>
+                <i>Sample Title</i>
+              </div>
+              <div>
+                <img
+                  src="/src/icon/locked.png"
+                  style="width: 18px"
+                  alt=""
+                  srcset=""
+                />
+              </div>
             </div>
           </button>
           <!-- TOPICS INSIDE QUARTER -->
-          <div class="px-4">
-            <div class="collapse py-2" id="collapseExample2">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+          <div
+            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
+            id="collapseExample1"
+          >
+            <div class="p-3 lesson-title">
+              <span class="fw-semibold">Topics for this Quarter: </span>
+              <!-- 1ST TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample2">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 2ND TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample2">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 3RD TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample2">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 4TH TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -383,50 +588,102 @@
         <!-- 4TH QUARTER -->
         <div class="container pb-3">
           <button
-            class="btn border-dark w-100 py-3 d-flex justify-content-start align-items-center shadow"
+            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#collapseExample3"
+            data-bs-target="#collapseExample1"
             aria-expanded="false"
             aria-controls="collapseExample"
+            disabled
           >
-            <div class="fs-5">
-              <span class="fw-semibold">3rd Quarter: </span>
-              <i class=""> Sample Topic Title 2</i>
+            <div
+              class="container d-flex justify-content-between align-items-center p-0"
+            >
+              <div class="lesson-title">
+                <img
+                  src="/src/icon/dropdown.png"
+                  style="width: 12px; margin-right: 6px"
+                  alt=""
+                />
+                <span class="fw-semibold">4th Quarter - </span>
+                <i>Sample Title</i>
+              </div>
+              <div>
+                <img
+                  src="/src/icon/locked.png"
+                  style="width: 18px"
+                  alt=""
+                  srcset=""
+                />
+              </div>
             </div>
           </button>
           <!-- TOPICS INSIDE QUARTER -->
-          <div class="px-4">
-            <div class="collapse py-2" id="collapseExample3">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+          <div
+            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
+            id="collapseExample1"
+          >
+            <div class="p-3 lesson-title">
+              <span class="fw-semibold">Topics for this Quarter: </span>
+              <!-- 1ST TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample3">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 2ND TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample3">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 3RD TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
-            </div>
-            <div class="collapse py-2" id="collapseExample3">
-              <div class="border-dark card card-body">
-                <span>
-                  <b>Topics: </b>
-                  Sample Topic Title
-                </span>
+              <!-- 4TH TOPIC -->
+              <div class="pt-3 ms-lg-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
+                    <span>Topics - Sample Topic Title</span>
+                  </div>
+                  <img
+                    src="/src/icon/locked.png"
+                    style="width: 18px"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -436,7 +693,7 @@
 
     <!-- START OF FOOTER -->
     <div
-      class="container-fluid"
+      class="container-fluid bg-white"
       style="
         border-top: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -500,22 +757,5 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const dropdown = document.querySelector(".dropdown");
-        const dropdownButton = dropdown.querySelector(".dropdown-toggle");
-
-        dropdownButton.addEventListener("click", function () {
-          dropdown.classList.toggle("show"); // Toggle the dropdown menu visibility
-        });
-
-        // Close when clicking outside
-        document.addEventListener("click", function (event) {
-          if (!dropdown.contains(event.target)) {
-            dropdown.classList.remove("show");
-          }
-        });
-      });
-    </script>
   </body>
 </html>
