@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson Creator</title>
+    <link rel="icon" type="image/png" href="/src/images/logo.png" />
+    <link rel="stylesheet" href="/student/css/custom.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Jost"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin Sketch"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .card {
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .card-header {
+        border-radius: 10px 10px 0 0 !important;
+        background-color: #447ee2;
+      }
+      .content-section {
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+      }
+      .content-section:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      .grade-checkboxes .form-check {
+        margin-right: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .btn-primary {
+        background-color: #447ee2;
+        border-color: #447ee2;
+      }
+      .btn-primary:hover {
+        background-color: #2c6e8b;
+        border-color: #2c6e8b;
+      }
+      .btn-outline-primary {
+        color: #447ee2;
+        border-color: #447ee2;
+      }
+      .btn-outline-primary:hover {
+        background-color: #447ee2;
+        color: white;
+      }
+      .remove-section {
+        transition: all 0.2s;
+      }
+      .remove-section:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body
+    class="poppins"
+    style="
+      background-image: url(/src/images/quiz\ bg.jpg);
+      background-size: 100%;
+      background-attachment: fixed;
+    "
+  >
+    <!-- START OF DESKTOP NAVBAR -->
+    <div
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      style="padding: 5px 150px 5px 150px"
+    >
+      <div class="py-3">
+        <img
+          src="/src/images/mahusci-banner-logo.png"
+          style="width: 180px"
+          alt=""
+          srcset=""
+        />
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a class="text-decoration-none" href="/teacher/dashboard.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px; width: 140px"
+            >Dashboard
+          </span></a
+        >
+        <div class="nav-item dropdown">
+          <a
+            class="text-decoration-none dropdown-toggle"
+            href="#"
+            id="lessonsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <a
+              class="nav-link-hover flex-fill text-center col text-decoration-none"
+              href="/teacher/lessons.html"
+              style="font-weight: 700; font-size: 15px"
+            >
+              My Lessons
+            </a>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="lessonsDropdown">
+            <li>
+              <a class="dropdown-item" href="/teacher/create-lesson.html"
+                >Create Lesson</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Replace the My Assessments link with this dropdown version -->
+        <div class="nav-item dropdown">
+          <a
+            class="text-decoration-none dropdown-toggle"
+            href="#"
+            id="assessmentsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <a
+              class="nav-link-hover flex-fill text-center col text-decoration-none"
+              href="/teacher/assessments.html"
+              style="font-weight: 700; font-size: 15px"
+            >
+              My Assessments
+            </a>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="assessmentsDropdown">
+            <li>
+              <a class="dropdown-item" href="/teacher/create-assessment.html"
+                >Create Assessment</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <a class="text-decoration-none" href="/teacher/lessons.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px"
+            >Arrangements
+          </span></a
+        >
+
+        <a class="text-decoration-none" href="/teacher/students.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px; width: 140px"
+            >Students
+          </span></a
+        >
+      </div>
+
+      <a class="text-decoration-none text-reset" href="myProfile.html">
+        <div
+          class="py-4 d-flex align-items-center float-end"
+          style="margin-top: -20px; margin-bottom: -20px"
+        >
+          <div class="pe-2">
+            <img
+              class="profile-picture"
+              src="/src/images/teacher-profile.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="px-2">
+            <span style="font-size: 16px; font-weight: 600; line-height: 1"
+              >Ms. Rodriguez</span
+            >
+            <span style="font-size: 13px; display: block; line-height: 1"
+              >Science Teacher</span
+            >
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- END OF DESKTOP NAVBAR -->
+
+    <!-- START OF MOBILE NAVBAR -->
+    <div
+      class="fixed-top bg-white shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
+    >
+      <img
+        class="w-25"
+        src="/src/images/mahusci-banner-logo.png"
+        alt=""
+        srcset=""
+      />
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
+
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-end w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <a class="text-decoration-none text-reset" href="myProfile.html">
+            <div class="d-flex align-items-center rounded-3 mb-4">
+              <div>
+                <img
+                  class="profile-picture-offcanvas"
+                  src="/src/images/teacher-profile.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="ps-4">
+                <small class="d-block fw-bold">Ms. Rodriguez</small>
+                <small class="pt-2">Science Teacher</small>
+              </div>
+            </div>
+          </a>
+
+          <span class="ms-2" style="color: #969697; font-size: 14px"
+            >Pages</span
+          >
+          <ul class="navbar-nav justify-content-end flex-grow-1 ms-3 pe-3 mt-2">
+            <li class="nav-item">
+              <a
+                class="nav-link active d-flex align-items-center"
+                aria-current="page"
+                href="/teacher/dashboard.html"
+              >
+                <img
+                  src="/src/icon/dashboard.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />
+                <small class="mt-1">Dashboard</small>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active d-flex align-items-center"
+                aria-current="page"
+                href="/teacher/lessons.html"
+              >
+                <img
+                  src="/src/icon/book.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />
+                <small class="mt-1">My Lessons</small>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex align-items-center"
+                href="/teacher/students.html"
+                ><img
+                  src="/src/icon/students.png"
+                  alt=""
+                  style="width: 25px; margin-left: -3px; margin-right: 20px"
+                />
+                <small class="mt-1 ms-1">Students</small>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex align-items-center"
+                href="myProfile.html"
+                ><img
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 18px; margin-left: 1px; margin-right: 22px"
+                />
+                <small class="mt-1 ms-1">My Profile</small>
+              </a>
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <small class="ps-3">Log out</small>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
+    </div>
+    <!-- END OF MOBILE NAVBAR -->
+
+    <div class="container py-5 mt-5 pt-5">
+      <div class="card">
+        <div class="card-header text-white">
+          <h2 class="mb-0">
+            <i class="fas fa-book-open me-2"></i>Create New Lesson
+          </h2>
+        </div>
+        <div class="card-body">
+          <form id="lessonForm" enctype="multipart/form-data">
+            <!-- Basic Information Section -->
+            <div class="mb-4">
+              <h4 class="mb-3 border-bottom pb-2">
+                <i class="fas fa-info-circle me-2"></i>Basic Information
+              </h4>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="lessonTitle" class="form-label"
+                    >Lesson Title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lessonTitle"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="subject" class="form-label">Subject</label>
+                  <select class="form-select" id="subject" required>
+                    <option value="" selected disabled>Select Subject</option>
+                    <option value="biology">Biology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                    <option value="earth_science">Earth Science</option>
+                    <option value="astronomy">Astronomy</option>
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">Grades (7-12)</label>
+                  <div class="grade-checkboxes d-flex flex-wrap">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade7"
+                        value="7"
+                      />
+                      <label class="form-check-label" for="grade7"
+                        >Grade 7</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade8"
+                        value="8"
+                      />
+                      <label class="form-check-label" for="grade8"
+                        >Grade 8</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade9"
+                        value="9"
+                      />
+                      <label class="form-check-label" for="grade9"
+                        >Grade 9</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade10"
+                        value="10"
+                      />
+                      <label class="form-check-label" for="grade10"
+                        >Grade 10</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade11"
+                        value="11"
+                      />
+                      <label class="form-check-label" for="grade11"
+                        >Grade 11</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="grade12"
+                        value="12"
+                      />
+                      <label class="form-check-label" for="grade12"
+                        >Grade 12</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="difficulty" class="form-label"
+                    >Difficulty Level</label
+                  >
+                  <select class="form-select" id="difficulty" required>
+                    <option value="" selected disabled>
+                      Select Difficulty
+                    </option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="quarter" class="form-label">Quarter</label>
+                  <select class="form-select" id="quarter" required>
+                    <option value="" selected disabled>Select Quarter</option>
+                    <option value="1">Quarter 1</option>
+                    <option value="2">Quarter 2</option>
+                    <option value="3">Quarter 3</option>
+                    <option value="4">Quarter 4</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="learningObjectives" class="form-label"
+                    >Learning Objectives</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="learningObjectives"
+                    rows="3"
+                    placeholder="Enter one learning objective per line"
+                    required
+                  ></textarea>
+                  <small class="text-muted"
+                    >Each line will be treated as a separate objective</small
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="mb-4">
+              <h4 class="mb-3 border-bottom pb-2">
+                <i class="fas fa-file-alt me-2"></i>Lesson Content
+              </h4>
+              <div id="contentSectionsContainer">
+                <!-- Content sections will be added here dynamically -->
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline-primary w-100 mt-3"
+                id="addContentSection"
+              >
+                <i class="fas fa-plus me-2"></i>Add Content Section
+              </button>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="mb-4">
+              <h4 class="mb-3 border-bottom pb-2">
+                <i class="fas fa-paperclip me-2"></i>Additional Resources
+              </h4>
+              <div class="mb-3">
+                <label class="form-label"
+                  >Attach Files (PDFs, Documents, etc.)</label
+                >
+                <input
+                  type="file"
+                  class="form-control"
+                  id="attachments"
+                  multiple
+                />
+                <small class="text-muted">Maximum file size: 10MB each</small>
+              </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex justify-content-between mt-5">
+              <button type="submit" class="btn btn-secondary" id="saveDraft">
+                <i class="fas fa-save me-2"></i>Save Draft
+              </button>
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-check-circle me-2"></i>Publish Lesson
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- START OF FOOTER -->
+    <div
+      class="container-fluid bg-white mt-5"
+      style="
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div class="container">
+        <div class="row px-md-5 gap-1" style="padding-top: 80px">
+          <div class="col" style="margin-top: -5px">
+            <img
+              class="w-50"
+              src="/src/images/mahusci-banner-logo.png"
+              alt=""
+              srcset=""
+            />
+            <p class="pt-md-5 pt-3 pe-5">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
+              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
+              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
+              Quaerat, magnam.
+            </p>
+          </div>
+          <div class="col-lg-2" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">GET HELP</span>
+            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
+              <li class="py-2">Contact Us</li>
+              <li class="py-2">Latest Articles</li>
+              <li class="py-2">FAQ</li>
+            </ul>
+          </div>
+          <div class="col-lg-2" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">COURSES</span>
+            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
+              <li class="py-2">Biology</li>
+              <li class="py-2">Chemistry</li>
+              <li class="py-2">Physics</li>
+              <li class="py-2">Earth Science</li>
+              <li class="py-2">Astronomy</li>
+            </ul>
+          </div>
+
+          <div class="col" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">CONTACT US</span>
+            <div class="pt-md-5 pt-3" style="margin-top: 3px">
+              <p>
+                Address: Caraga State University, Amapyon, Butuan City, Agusan
+                Del Norte, Philippines
+              </p>
+              <span style="display: block">Contact No. 085-342-1234</span>
+              <span>Mail: Palmerston03@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="py-2">
+          <p class="text-center">
+            Copyright 2025 Sample Project. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END OF FOOTER -->
+
+    <script>
+      // Initialize content section counter
+      let contentSectionCounter = 0;
+
+      // Function to add a new content section
+      function addContentSection() {
+        contentSectionCounter++;
+        const container = document.getElementById("contentSectionsContainer");
+        const sectionId = `contentSection${contentSectionCounter}`;
+
+        const newSection = document.createElement("div");
+        newSection.className = "content-section mb-4 p-4";
+        newSection.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Section ${contentSectionCounter}</h5>
+                    <button type="button" class="btn btn-sm btn-danger remove-section">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control editor" id="editor${contentSectionCounter}"
+                            placeholder="Enter lesson content for this section..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="fas fa-images me-2"></i>Upload Images</label>
+                    <input type="file" class="form-control" accept="image/*" multiple>
+                    <small class="text-muted">Supported formats: JPG, PNG, GIF</small>
+                </div>
+            `;
+
+        container.appendChild(newSection);
+
+        // Initialize CKEditor for the new content section
+        CKEDITOR.replace(`editor${contentSectionCounter}`, {
+          toolbar: [
+            {
+              name: "basicstyles",
+              items: [
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "Subscript",
+                "Superscript",
+              ],
+            },
+            {
+              name: "paragraph",
+              items: [
+                "NumberedList",
+                "BulletedList",
+                "-",
+                "Outdent",
+                "Indent",
+                "-",
+                "Blockquote",
+              ],
+            },
+            { name: "links", items: ["Link", "Unlink"] },
+            {
+              name: "insert",
+              items: ["Table", "HorizontalRule", "SpecialChar"],
+            },
+            { name: "styles", items: ["Styles", "Format", "Font", "FontSize"] },
+            { name: "colors", items: ["TextColor", "BGColor"] },
+            { name: "tools", items: ["Maximize", "ShowBlocks"] },
+          ],
+          height: 200,
+          removeButtons: "About",
+        });
+
+        // Add remove functionality
+        newSection
+          .querySelector(".remove-section")
+          .addEventListener("click", function () {
+            if (confirm("Are you sure you want to remove this section?")) {
+              container.removeChild(newSection);
+              CKEDITOR.instances[`editor${contentSectionCounter}`]?.destroy();
+            }
+          });
+      }
+
+      // Add first content section by default
+      document.addEventListener("DOMContentLoaded", function () {
+        addContentSection();
+      });
+
+      // Add content section button
+      document
+        .getElementById("addContentSection")
+        .addEventListener("click", addContentSection);
+
+      // Form submission handler
+      document
+        .getElementById("lessonForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Prepare form data
+          const formData = new FormData();
+          formData.append(
+            "title",
+            document.getElementById("lessonTitle").value
+          );
+          formData.append("subject", document.getElementById("subject").value);
+          formData.append(
+            "difficulty",
+            document.getElementById("difficulty").value
+          );
+          formData.append("quarter", document.getElementById("quarter").value);
+
+          // Add grades
+          const grades = Array.from(
+            document.querySelectorAll(".grade-checkboxes input:checked")
+          ).map((cb) => cb.value);
+          grades.forEach((grade) => formData.append("grades[]", grade));
+
+          // Add objectives
+          const objectives = document
+            .getElementById("learningObjectives")
+            .value.split("\n")
+            .map((line) => line.trim())
+            .filter((line) => line);
+          objectives.forEach((obj) => formData.append("objectives[]", obj));
+
+          // Add content sections
+          const contentSections = Array.from(
+            document.querySelectorAll(".content-section")
+          ).map((section) => {
+            const sectionData = {
+              content:
+                CKEDITOR.instances[
+                  section.querySelector(".editor").id
+                ]?.getData(),
+              images: section.querySelector('input[type="file"]').files,
+            };
+            return sectionData;
+          });
+
+          // Add content sections to form data
+          contentSections.forEach((section, index) => {
+            formData.append(
+              `content_sections[${index}][content]`,
+              section.content
+            );
+            if (section.images) {
+              Array.from(section.images).forEach((file, fileIndex) => {
+                formData.append(
+                  `content_sections[${index}][images][${fileIndex}]`,
+                  file
+                );
+              });
+            }
+          });
+
+          // Add attachments
+          const attachments = document.querySelector("#attachments").files;
+          if (attachments) {
+            Array.from(attachments).forEach((file) => {
+              formData.append("attachments[]", file);
+            });
+          }
+
+          formData.append("teacher_id", 2);
+
+          // Add draft status if needed
+          if (e.submitter?.id === "saveDraft") {
+            formData.append("is_draft", 1);
+          }
+
+          for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+          }
+
+          try {
+            const response = await fetch(
+              "http://mahusci_backend_test.test/api/lessons",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  Authorization: "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: formData,
+              }
+            );
+
+            const data = await response.json();
+
+            console.log(data || (await response.text()));
+
+            if (!response.ok) {
+              throw new Error(data.error || "Failed to save lesson");
+            }
+
+            alert(
+              e.submitter?.id === "saveDraft"
+                ? "Draft saved successfully!"
+                : "Lesson published successfully!"
+            );
+            // Optionally redirect or reset form
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Error: " + error.message);
+          }
+        });
+
+      // // Form submission handler
+      // document
+      //   .getElementById("lessonForm")
+      //   .addEventListener("submit", function (e) {
+      //     e.preventDefault();
+
+      //     // Validate at least one grade is selected
+      //     const selectedGrades = Array.from(
+      //       document.querySelectorAll(".grade-checkboxes input:checked")
+      //     );
+      //     if (selectedGrades.length === 0) {
+      //       alert("Please select at least one grade level");
+      //       return;
+      //     }
+
+      //     // Prepare form data
+      //     const formData = {
+      //       title: document.getElementById("lessonTitle").value,
+      //       subject: document.getElementById("subject").value,
+      //       grades: selectedGrades.map((cb) => cb.value),
+      //       difficulty: document.getElementById("difficulty").value,
+      //       quarter: document.getElementById("quarter").value,
+      //       objectives: document
+      //         .getElementById("learningObjectives")
+      //         .value.split("\n")
+      //         .map((line) => line.trim())
+      //         .filter((line) => line),
+      //       contentSections: Array.from(
+      //         document.querySelectorAll(".content-section")
+      //       ).map((section) => ({
+      //         content:
+      //           CKEDITOR.instances[
+      //             section.querySelector(".editor").id
+      //           ]?.getData(),
+      //         images: Array.from(
+      //           section.querySelector('input[type="file"]').files
+      //         ),
+      //       })),
+      //       attachments: Array.from(
+      //         document.querySelector('input[type="file"]').files
+      //       ),
+      //     };
+
+      //     console.log("Lesson Data:", formData);
+
+      //     // Here you would typically send the data to your backend
+      //     alert("Lesson created successfully!");
+
+      //     // Reset form (optional)
+      //     // this.reset();
+      //     // contentSectionCounter = 0;
+      //     // document.getElementById('contentSectionsContainer').innerHTML = '';
+      //     // addContentSection();
+      //   });
+
+      // // Save draft handler
+      // document
+      //   .getElementById("saveDraft")
+      //   .addEventListener("click", function () {
+      //     const draftData = {
+      //       title: document.getElementById("lessonTitle").value,
+      //       subject: document.getElementById("subject").value,
+      //       grades: Array.from(
+      //         document.querySelectorAll(".grade-checkboxes input:checked")
+      //       ).map((cb) => cb.value),
+      //       difficulty: document.getElementById("difficulty").value,
+      //       quarter: document.getElementById("quarter").value,
+      //       objectives: document
+      //         .getElementById("learningObjectives")
+      //         .value.split("\n")
+      //         .map((line) => line.trim())
+      //         .filter((line) => line),
+      //       // For drafts, we might not save all content sections
+      //       hasContent: contentSectionCounter > 0,
+      //     };
+
+      //     console.log("Draft Data:", draftData);
+
+      //     alert("Draft saved successfully!");
+      //   });
+    </script>
+  </body>
+</html>
