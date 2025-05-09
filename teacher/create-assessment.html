@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MahuSci | Create Assessment</title>
+    <link rel="icon" type="image/png" href="/src/images/logo.png" />
+    <link rel="stylesheet" href="/student/css/custom.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Jost"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin Sketch"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .card {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      border-radius: 10px 10px 0 0 !important;
+      background-color: #447ee2;
+    }
+    .content-section {
+      background-color: white;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .content-section:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+    .grade-checkboxes .form-check {
+      margin-right: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .btn-primary {
+      background-color: #447ee2;
+      border-color: #447ee2;
+    }
+    .btn-primary:hover {
+      background-color: #2c6e8b;
+      border-color: #2c6e8b;
+    }
+    .btn-outline-primary {
+      color: #447ee2;
+      border-color: #447ee2;
+    }
+    .btn-outline-primary:hover {
+      background-color: #447ee2;
+      color: white;
+    }
+    .remove-section {
+      transition: all 0.2s;
+    }
+    .remove-section:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  <body
+    class="poppins"
+    style="
+      background-image: url(/src/images/quiz\ bg.jpg);
+      background-size: 100%;
+      background-attachment: fixed;
+    "
+  >
+    <!-- START OF DESKTOP NAVBAR -->
+    <div
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      style="padding: 5px 150px 5px 150px"
+    >
+      <div class="py-3">
+        <img
+          src="/src/images/mahusci-banner-logo.png"
+          style="width: 180px"
+          alt=""
+          srcset=""
+        />
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <a class="text-decoration-none" href="/teacher/dashboard.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px; width: 140px"
+            >Dashboard
+          </span></a
+        >
+        <div class="nav-item dropdown">
+          <a
+            class="text-decoration-none dropdown-toggle"
+            href="#"
+            id="lessonsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <a
+              class="nav-link-hover flex-fill text-center col text-decoration-none"
+              href="/teacher/lessons.html"
+              style="font-weight: 700; font-size: 15px"
+            >
+              My Lessons
+            </a>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="lessonsDropdown">
+            <li>
+              <a class="dropdown-item" href="/teacher/create-lesson.html"
+                >Create Lesson</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Replace the My Assessments link with this dropdown version -->
+        <div class="nav-item dropdown">
+          <a
+            class="text-decoration-none dropdown-toggle"
+            href="#"
+            id="assessmentsDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <a
+              class="nav-link-hover flex-fill text-center col text-decoration-none"
+              href="/teacher/assessments.html"
+              style="font-weight: 700; font-size: 15px"
+            >
+              My Assessments
+            </a>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="assessmentsDropdown">
+            <li>
+              <a class="dropdown-item" href="/teacher/create-assessment.html"
+                >Create Assessment</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <a class="text-decoration-none" href="/teacher/lessons.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px"
+            >Arrangements
+          </span></a
+        >
+
+        <a class="text-decoration-none" href="/teacher/students.html"
+          ><span
+            class="nav-link-hover flex-fill text-center col"
+            style="font-weight: 700; font-size: 15px; width: 140px"
+            >Students
+          </span></a
+        >
+      </div>
+
+      <a class="text-decoration-none text-reset" href="myProfile.html">
+        <div
+          class="py-4 d-flex align-items-center float-end"
+          style="margin-top: -20px; margin-bottom: -20px"
+        >
+          <div class="pe-2">
+            <img
+              class="profile-picture"
+              src="/src/images/teacher-profile.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="px-2">
+            <span style="font-size: 16px; font-weight: 600; line-height: 1"
+              >Ms. Rodriguez</span
+            >
+            <span style="font-size: 13px; display: block; line-height: 1"
+              >Science Teacher</span
+            >
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- END OF DESKTOP NAVBAR -->
+
+    <!-- START OF MOBILE NAVBAR -->
+    <div
+      class="fixed-top bg-white shadow d-flex d-md-none justify-content-between align-items-center py-3 px-3"
+    >
+      <img
+        class="w-25"
+        src="/src/images/mahusci-banner-logo.png"
+        alt=""
+        srcset=""
+      />
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+        aria-label="Toggle navigation"
+      >
+        <img class="navbar-toggler-icon h-25" src="/src/icon/menu.png" />
+      </button>
+
+      <!-- START OF OFFCANVAS -->
+      <div
+        class="offcanvas offcanvas-end w-75"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <a class="text-decoration-none text-reset" href="myProfile.html">
+            <div class="d-flex align-items-center rounded-3 mb-4">
+              <div>
+                <img
+                  class="profile-picture-offcanvas"
+                  src="/src/images/teacher-profile.png"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+              <div class="ps-4">
+                <small class="d-block fw-bold">Ms. Rodriguez</small>
+                <small class="pt-2">Science Teacher</small>
+              </div>
+            </div>
+          </a>
+
+          <span class="ms-2" style="color: #969697; font-size: 14px"
+            >Pages</span
+          >
+          <ul class="navbar-nav justify-content-end flex-grow-1 ms-3 pe-3 mt-2">
+            <li class="nav-item">
+              <a
+                class="nav-link active d-flex align-items-center"
+                aria-current="page"
+                href="/teacher/dashboard.html"
+              >
+                <img
+                  src="/src/icon/dashboard.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />
+                <small class="mt-1">Dashboard</small>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active d-flex align-items-center"
+                aria-current="page"
+                href="/teacher/lessons.html"
+              >
+                <img
+                  src="/src/icon/book.png"
+                  alt=""
+                  srcset=""
+                  style="width: 20px; margin-right: 26px"
+                />
+                <small class="mt-1">My Lessons</small>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex align-items-center"
+                href="/teacher/students.html"
+                ><img
+                  src="/src/icon/students.png"
+                  alt=""
+                  style="width: 25px; margin-left: -3px; margin-right: 20px"
+                />
+                <small class="mt-1 ms-1">Students</small>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex align-items-center"
+                href="myProfile.html"
+                ><img
+                  src="/src/icon/my-profile.png"
+                  alt=""
+                  style="width: 18px; margin-left: 1px; margin-right: 22px"
+                />
+                <small class="mt-1 ms-1">My Profile</small>
+              </a>
+            </li>
+          </ul>
+          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+            <img
+              src="/src/icon/logout.png"
+              alt=""
+              srcset=""
+              style="width: 25px"
+            />
+            <small class="ps-3">Log out</small>
+          </div>
+        </div>
+      </div>
+      <!-- ENF OF OFFCANVAS -->
+    </div>
+    <!-- END OF MOBILE NAVBAR -->
+
+    <!-- ASSESSMENT CREATION FORM -->
+    <div class="container mt-5" style="margin-top: 100px !important">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Create New Assessment</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form id="assessmentForm">
+            <!-- Assessment Basic Information -->
+            <div class="mb-4">
+              <h5 class="mb-3">Basic Information</h5>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="assessmentTitle" class="form-label"
+                    >Assessment Title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="assessmentTitle"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="assessmentType" class="form-label"
+                    >Assessment Type</label
+                  >
+                  <select class="form-select" id="assessmentType" required>
+                    <option value="" selected disabled>
+                      Select Assessment Type
+                    </option>
+                    <option value="multiple_choice">
+                      Multiple Choice Quiz
+                    </option>
+                    <option value="true_false">True/False</option>
+                    <option value="short_answer">Short Answer</option>
+                    <option value="essay">Essay</option>
+                    <option value="matching">Matching</option>
+                    <option value="fill_blank">Fill in the Blank</option>
+                    <option value="4pics1word">4 Pics 1 Word</option>
+                    <option value="comparison_table">Comparison Table</option>
+                    <option value="mind_mapping">Mind Mapping</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="totalPoints" class="form-label"
+                    >Total Points</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="totalPoints"
+                    min="1"
+                    value="10"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="timeLimit" class="form-label"
+                    >Time Limit (minutes)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="timeLimit"
+                    min="1"
+                    placeholder="Optional"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="assessmentInstructions" class="form-label"
+                  >Instructions</label
+                >
+                <textarea
+                  class="form-control"
+                  id="assessmentInstructions"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Dynamic Assessment Fields -->
+            <div class="mb-4">
+              <h5 class="mb-3">Questions</h5>
+              <div id="assessmentFields">
+                <div class="alert alert-info">
+                  Please select an assessment type to configure the questions.
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button
+                type="submit"
+                class="btn btn-secondary"
+                id="saveAssessmentDraft"
+              >
+                Save as Draft
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Publish Assessment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END OF ASSESSMENT CREATION FORM -->
+
+    <!-- START OF FOOTER -->
+    <div
+      class="container-fluid bg-white mt-5"
+      style="
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <div class="container">
+        <div class="row px-md-5 gap-1" style="padding-top: 80px">
+          <div class="col" style="margin-top: -5px">
+            <img
+              class="w-50"
+              src="/src/images/mahusci-banner-logo.png"
+              alt=""
+              srcset=""
+            />
+            <p class="pt-md-5 pt-3 pe-5">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
+              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
+              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
+              Quaerat, magnam.
+            </p>
+          </div>
+          <div class="col-lg-2" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">GET HELP</span>
+            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
+              <li class="py-2">Contact Us</li>
+              <li class="py-2">Latest Articles</li>
+              <li class="py-2">FAQ</li>
+            </ul>
+          </div>
+          <div class="col-lg-2" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">COURSES</span>
+            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
+              <li class="py-2">Biology</li>
+              <li class="py-2">Chemistry</li>
+              <li class="py-2">Physics</li>
+              <li class="py-2">Earth Science</li>
+              <li class="py-2">Astronomy</li>
+            </ul>
+          </div>
+
+          <div class="col" style="padding-top: 10px">
+            <span class="fs-5 fw-bold">CONTACT US</span>
+            <div class="pt-md-5 pt-3" style="margin-top: 3px">
+              <p>
+                Address: Caraga State University, Amapyon, Butuan City, Agusan
+                Del Norte, Philippines
+              </p>
+              <span style="display: block">Contact No. 085-342-1234</span>
+              <span>Mail: Palmerston03@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="py-2">
+          <p class="text-center">
+            Copyright 2025 Sample Project. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END OF FOOTER -->
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Function to add MCQ question
+      function addMcqQuestion() {
+        const container = document.getElementById("mcqContainer");
+        const questionCount = container.querySelectorAll(".card").length + 1;
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="text" class="form-control question-input" placeholder="Question text">
+            </div>
+            <div class="mb-2">
+              <div class="input-group mb-2">
+                <div class="input-group-text">
+                  <input class="form-check-input correct-answer" type="radio" name="correctAnswer${questionCount}" value="A">
+                </div>
+                <input type="text" class="form-control option-input" placeholder="Option A">
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-text">
+                  <input class="form-check-input correct-answer" type="radio" name="correctAnswer${questionCount}" value="B">
+                </div>
+                <input type="text" class="form-control option-input" placeholder="Option B">
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-text">
+                  <input class="form-check-input correct-answer" type="radio" name="correctAnswer${questionCount}" value="C">
+                </div>
+                <input type="text" class="form-control option-input" placeholder="Option C">
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-text">
+                  <input class="form-check-input correct-answer" type="radio" name="correctAnswer${questionCount}" value="D">
+                </div>
+                <input type="text" class="form-control option-input" placeholder="Option D">
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                <i class="fas fa-trash"></i> Remove
+              </button>
+              <button class="btn btn-sm btn-outline-success add-option" type="button">
+                <i class="fas fa-plus"></i> Add Option
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        // Add event listeners for the new question
+        setupMcqQuestionEvents(newQuestion, questionCount);
+      }
+
+      // Setup events for MCQ questions
+      function setupMcqQuestionEvents(questionElement, questionCount) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+
+        questionElement
+          .querySelector(".add-option")
+          .addEventListener("click", function () {
+            const optionsContainer = questionElement.querySelector(".mb-2");
+            const optionCount =
+              optionsContainer.querySelectorAll(".input-group").length;
+            const nextOptionChar = String.fromCharCode(65 + optionCount);
+
+            const newOption = document.createElement("div");
+            newOption.className = "input-group mb-2";
+            newOption.innerHTML = `
+            <div class="input-group-text">
+              <input class="form-check-input correct-answer" type="radio" name="correctAnswer${questionCount}" value="${nextOptionChar}">
+            </div>
+            <input type="text" class="form-control option-input" placeholder="Option ${nextOptionChar}">
+            <button class="btn btn-outline-danger remove-option" type="button">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+            optionsContainer.appendChild(newOption);
+
+            newOption
+              .querySelector(".remove-option")
+              .addEventListener("click", function () {
+                newOption.remove();
+              });
+          });
+      }
+
+      // Function to add True/False question
+      function addTfQuestion() {
+        const container = document.getElementById("tfContainer");
+        const questionCount = container.querySelectorAll(".card").length + 1;
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="text" class="form-control question-input" placeholder="Question text">
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tfAnswer${questionCount}" id="tfTrue${questionCount}" value="true">
+              <label class="form-check-label" for="tfTrue${questionCount}">True</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="tfAnswer${questionCount}" id="tfFalse${questionCount}" value="false">
+              <label class="form-check-label" for="tfFalse${questionCount}">False</label>
+            </div>
+            <button class="btn btn-sm btn-outline-danger mt-2 remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupTfQuestionEvents(newQuestion);
+      }
+
+      function setupTfQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Function to add Short Answer question
+      function addSaQuestion() {
+        const container = document.getElementById("saContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="text" class="form-control question-input" placeholder="Question text">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control answer-input" placeholder="Correct answer">
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupSaQuestionEvents(newQuestion);
+      }
+
+      function setupSaQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Function to add Essay question
+      function addEssayQuestion() {
+        const container = document.getElementById("essayContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="text" class="form-control question-input" placeholder="Question prompt">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="3" placeholder="Sample answer (optional)"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Grading Rubric</label>
+              <textarea class="form-control" rows="3" placeholder="Enter grading criteria"></textarea>
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupEssayQuestionEvents(newQuestion);
+      }
+
+      function setupEssayQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Function to add Matching question
+      function addMatchingQuestion() {
+        const container = document.getElementById("matchingContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="text" class="form-control question-input" placeholder="Instructions (optional)">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="form-label">Items</label>
+                <div class="items-container">
+                  <div class="input-group mb-2">
+                    <input type="text" class="form-control item-input" placeholder="Item 1">
+                    <button class="btn btn-outline-danger remove-item" type="button">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary add-item">
+                  <i class="fas fa-plus"></i> Add Item
+                </button>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Matches</label>
+                <div class="matches-container">
+                  <div class="input-group mb-2">
+                    <input type="text" class="form-control match-input" placeholder="Match 1">
+                    <button class="btn btn-outline-danger remove-match" type="button">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary add-match">
+                  <i class="fas fa-plus"></i> Add Match
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-outline-danger mt-3 remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupMatchingQuestionEvents(newQuestion);
+      }
+
+      function setupMatchingQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+
+        questionElement
+          .querySelector(".add-item")
+          .addEventListener("click", function () {
+            const itemsContainer =
+              questionElement.querySelector(".items-container");
+            const itemCount =
+              itemsContainer.querySelectorAll(".input-group").length + 1;
+            const newItem = document.createElement("div");
+            newItem.className = "input-group mb-2";
+            newItem.innerHTML = `
+            <input type="text" class="form-control item-input" placeholder="Item ${itemCount}">
+            <button class="btn btn-outline-danger remove-item" type="button">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+            itemsContainer.appendChild(newItem);
+
+            newItem
+              .querySelector(".remove-item")
+              .addEventListener("click", function () {
+                newItem.remove();
+              });
+          });
+
+        questionElement
+          .querySelector(".add-match")
+          .addEventListener("click", function () {
+            const matchesContainer =
+              questionElement.querySelector(".matches-container");
+            const matchCount =
+              matchesContainer.querySelectorAll(".input-group").length + 1;
+            const newMatch = document.createElement("div");
+            newMatch.className = "input-group mb-2";
+            newMatch.innerHTML = `
+            <input type="text" class="form-control match-input" placeholder="Match ${matchCount}">
+            <button class="btn btn-outline-danger remove-match" type="button">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+            matchesContainer.appendChild(newMatch);
+
+            newMatch
+              .querySelector(".remove-match")
+              .addEventListener("click", function () {
+                newMatch.remove();
+              });
+          });
+      }
+
+      // Function to add Fill in the Blank question
+      function addFillBlankQuestion() {
+        const container = document.getElementById("fillBlankContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">Question Text (use [blank] for blanks)</label>
+              <input type="text" class="form-control question-input" placeholder="E.g., The capital of France is [blank].">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Correct Answers (separate multiple answers with commas)</label>
+              <input type="text" class="form-control answer-input" placeholder="E.g., Paris, paris, PARIS">
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupFillBlankQuestionEvents(newQuestion);
+      }
+
+      function setupFillBlankQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Function to add 4 Pics 1 Word question
+      function addPicsQuestion() {
+        const container = document.getElementById("picsContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">Upload 4 Images</label>
+              <input type="file" class="form-control mb-2" accept="image/*" multiple>
+              <small class="text-muted">Please select exactly 4 images</small>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Correct Answer</label>
+              <input type="text" class="form-control answer-input" placeholder="The word that connects all 4 images">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Hints (optional)</label>
+              <input type="text" class="form-control hint-input" placeholder="E.g., Starts with 'S', 5 letters">
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupPicsQuestionEvents(newQuestion);
+      }
+
+      function setupPicsQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Function to add Mind Mapping question
+      function addMindMappingQuestion() {
+        const container = document.getElementById("mindMappingContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">Central Topic</label>
+              <input type="text" class="form-control central-topic" placeholder="Enter the central topic">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Main Branches</label>
+              <div class="branches-container">
+                <div class="branch-group mb-3 border p-3 rounded">
+                  <div class="input-group mb-2">
+                    <input type="text" class="form-control branch-input" placeholder="Main branch 1">
+                    <button class="btn btn-outline-danger remove-branch" type="button">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                  <div class="sub-branches-container ms-4">
+                    <div class="input-group mb-2">
+                      <input type="text" class="form-control sub-branch-input" placeholder="Sub-branch 1">
+                      <button class="btn btn-outline-danger remove-sub-branch" type="button">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-outline-success add-sub-branch">
+                    <i class="fas fa-plus"></i> Add Sub-branch
+                  </button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary add-branch">
+                <i class="fas fa-plus"></i> Add Main Branch
+              </button>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Instructions</label>
+              <textarea class="form-control" placeholder="Enter instructions for students"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Sample Solution (optional)</label>
+              <textarea class="form-control sample-solution" rows="3" placeholder='{
+        "centralTopic": "Science",
+        "branches": [
+          {
+            "name": "Physics",
+            "subBranches": ["Mechanics", "Optics"]
+          },
+          {
+            "name": "Chemistry",
+            "subBranches": ["Organic", "Inorganic"]
+          }
+        ]
+      }'></textarea>
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupMindMappingQuestionEvents(newQuestion);
+      }
+
+      function setupMindMappingQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+
+        // Add main branch
+        questionElement
+          .querySelector(".add-branch")
+          .addEventListener("click", function () {
+            const branchesContainer = questionElement.querySelector(
+              ".branches-container"
+            );
+            const branchCount =
+              branchesContainer.querySelectorAll(".branch-group").length + 1;
+            const newBranch = document.createElement("div");
+            newBranch.className = "branch-group mb-3 border p-3 rounded";
+            newBranch.innerHTML = `
+            <div class="input-group mb-2">
+              <input type="text" class="form-control branch-input" placeholder="Main branch ${branchCount}">
+              <button class="btn btn-outline-danger remove-branch" type="button">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="sub-branches-container ms-4">
+              <div class="input-group mb-2">
+                <input type="text" class="form-control sub-branch-input" placeholder="Sub-branch 1">
+                <button class="btn btn-outline-danger remove-sub-branch" type="button">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-success add-sub-branch">
+              <i class="fas fa-plus"></i> Add Sub-branch
+            </button>
+          `;
+            branchesContainer.appendChild(newBranch);
+
+            // Setup events for the new branch
+            setupMindMappingBranchEvents(newBranch);
+          });
+
+        // Setup events for existing branches
+        questionElement.querySelectorAll(".branch-group").forEach((branch) => {
+          setupMindMappingBranchEvents(branch);
+        });
+      }
+
+      function setupMindMappingBranchEvents(branchElement) {
+        branchElement
+          .querySelector(".remove-branch")
+          ?.addEventListener("click", function () {
+            branchElement.remove();
+          });
+
+        branchElement
+          .querySelector(".add-sub-branch")
+          ?.addEventListener("click", function () {
+            const subBranchesContainer = branchElement.querySelector(
+              ".sub-branches-container"
+            );
+            const subBranchCount =
+              subBranchesContainer.querySelectorAll(".input-group").length + 1;
+            const newSubBranch = document.createElement("div");
+            newSubBranch.className = "input-group mb-2";
+            newSubBranch.innerHTML = `
+            <input type="text" class="form-control sub-branch-input" placeholder="Sub-branch ${subBranchCount}">
+            <button class="btn btn-outline-danger remove-sub-branch" type="button">
+              <i class="fas fa-times"></i>
+            </button>
+          `;
+            subBranchesContainer.appendChild(newSubBranch);
+
+            newSubBranch
+              .querySelector(".remove-sub-branch")
+              .addEventListener("click", function () {
+                newSubBranch.remove();
+              });
+          });
+      }
+
+      // Function to add Comparison Table question
+      function addComparisonTableQuestion() {
+        const container = document.getElementById("comparisonTableContainer");
+        const newQuestion = document.createElement("div");
+        newQuestion.className = "card mb-3";
+        newQuestion.innerHTML = `
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label">Instructions</label>
+              <input type="text" class="form-control question-input" placeholder="Instructions (e.g., Fill in the comparison table)">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Table Headers (comma separated)</label>
+              <input type="text" class="form-control headers-input" placeholder="E.g., Feature,Animal,Plant">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Row Labels (comma separated)</label>
+              <input type="text" class="form-control rows-input" placeholder="E.g., Cell Structure,Reproduction,Energy Source">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Correct Answers (JSON format)</label>
+              <textarea class="form-control answers-input" rows="4" placeholder='[
+        {
+          "Feature": "Cell Structure",
+          "Animal": "No cell wall",
+          "Plant": "Has cell wall"
+        },
+        {
+          "Feature": "Reproduction",
+          "Animal": "Sexual",
+          "Plant": "Asexual or sexual"
+        }
+      ]'></textarea>
+              <small class="form-text text-muted">
+                Provide correct answers in array of objects format. Each object should include values for all columns.
+              </small>
+            </div>
+            <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        `;
+        container.appendChild(newQuestion);
+
+        setupComparisonTableQuestionEvents(newQuestion);
+      }
+
+      function setupComparisonTableQuestionEvents(questionElement) {
+        questionElement
+          .querySelector(".remove-question")
+          .addEventListener("click", function () {
+            questionElement.remove();
+          });
+      }
+
+      // Dynamic assessment fields based on selected type
+      document
+        .getElementById("assessmentType")
+        .addEventListener("change", function () {
+          const type = this.value;
+          const fieldsContainer = document.getElementById("assessmentFields");
+
+          // Clear previous fields
+          fieldsContainer.innerHTML = "";
+
+          if (!type) return;
+
+          // Based on the selected type, load appropriate fields
+          switch (type) {
+            case "multiple_choice":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Multiple Choice Questions</label>
+              <div id="mcqContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <input type="text" class="form-control question-input" placeholder="Question text">
+                    </div>
+                    <div class="mb-2">
+                      <div class="input-group mb-2">
+                        <div class="input-group-text">
+                          <input class="form-check-input correct-answer" type="radio" name="correctAnswer1" value="A">
+                        </div>
+                        <input type="text" class="form-control option-input" placeholder="Option A">
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-text">
+                          <input class="form-check-input correct-answer" type="radio" name="correctAnswer1" value="B">
+                        </div>
+                        <input type="text" class="form-control option-input" placeholder="Option B">
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-text">
+                          <input class="form-check-input correct-answer" type="radio" name="correctAnswer1" value="C">
+                        </div>
+                        <input type="text" class="form-control option-input" placeholder="Option C">
+                      </div>
+                      <div class="input-group mb-2">
+                        <div class="input-group-text">
+                          <input class="form-check-input correct-answer" type="radio" name="correctAnswer1" value="D">
+                        </div>
+                        <input type="text" class="form-control option-input" placeholder="Option D">
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                        <i class="fas fa-trash"></i> Remove
+                      </button>
+                      <button class="btn btn-sm btn-outline-success add-option" type="button">
+                        <i class="fas fa-plus"></i> Add Option
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addMcq">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              // Setup events for the initial MCQ question
+              const initialMcqQuestion = document.querySelector(
+                "#mcqContainer .card"
+              );
+              if (initialMcqQuestion) {
+                setupMcqQuestionEvents(initialMcqQuestion, 1);
+              }
+
+              document
+                .getElementById("addMcq")
+                .addEventListener("click", addMcqQuestion);
+              break;
+
+            case "true_false":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">True/False Questions</label>
+              <div id="tfContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <input type="text" class="form-control question-input" placeholder="Question text">
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="tfAnswer1" id="tfTrue1" value="true">
+                      <label class="form-check-label" for="tfTrue1">True</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="tfAnswer1" id="tfFalse1" value="false">
+                      <label class="form-check-label" for="tfFalse1">False</label>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger mt-2 remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addTf">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialTfQuestion =
+                document.querySelector("#tfContainer .card");
+              if (initialTfQuestion) {
+                setupTfQuestionEvents(initialTfQuestion);
+              }
+
+              document
+                .getElementById("addTf")
+                .addEventListener("click", addTfQuestion);
+              break;
+
+            case "short_answer":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Short Answer Questions</label>
+              <div id="saContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <input type="text" class="form-control question-input" placeholder="Question text">
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" class="form-control answer-input" placeholder="Correct answer">
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addSa">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialSaQuestion =
+                document.querySelector("#saContainer .card");
+              if (initialSaQuestion) {
+                setupSaQuestionEvents(initialSaQuestion);
+              }
+
+              document
+                .getElementById("addSa")
+                .addEventListener("click", addSaQuestion);
+              break;
+
+            case "essay":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Essay Questions</label>
+              <div id="essayContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <input type="text" class="form-control question-input" placeholder="Question prompt">
+                    </div>
+                    <div class="mb-3">
+                      <textarea class="form-control" rows="3" placeholder="Sample answer (optional)"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Grading Rubric</label>
+                      <textarea class="form-control" rows="3" placeholder="Enter grading criteria"></textarea>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addEssay">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialEssayQuestion = document.querySelector(
+                "#essayContainer .card"
+              );
+              if (initialEssayQuestion) {
+                setupEssayQuestionEvents(initialEssayQuestion);
+              }
+
+              document
+                .getElementById("addEssay")
+                .addEventListener("click", addEssayQuestion);
+              break;
+
+            case "matching":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Matching Questions</label>
+              <div id="matchingContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <input type="text" class="form-control question-input" placeholder="Instructions (optional)">
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="form-label">Items</label>
+                        <div class="items-container">
+                          <div class="input-group mb-2">
+                            <input type="text" class="form-control item-input" placeholder="Item 1">
+                            <button class="btn btn-outline-danger remove-item" type="button">
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-item">
+                          <i class="fas fa-plus"></i> Add Item
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Matches</label>
+                        <div class="matches-container">
+                          <div class="input-group mb-2">
+                            <input type="text" class="form-control match-input" placeholder="Match 1">
+                            <button class="btn btn-outline-danger remove-match" type="button">
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-match">
+                          <i class="fas fa-plus"></i> Add Match
+                        </button>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger mt-3 remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addMatching">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialMatchingQuestion = document.querySelector(
+                "#matchingContainer .card"
+              );
+              if (initialMatchingQuestion) {
+                setupMatchingQuestionEvents(initialMatchingQuestion);
+              }
+
+              document
+                .getElementById("addMatching")
+                .addEventListener("click", addMatchingQuestion);
+              break;
+
+            case "fill_blank":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Fill in the Blank Questions</label>
+              <div id="fillBlankContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Question Text (use [blank] for blanks)</label>
+                      <input type="text" class="form-control question-input" placeholder="E.g., The capital of France is [blank].">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Correct Answers (separate multiple answers with commas)</label>
+                      <input type="text" class="form-control answer-input" placeholder="E.g., Paris, paris, PARIS">
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addFillBlank">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialFillBlankQuestion = document.querySelector(
+                "#fillBlankContainer .card"
+              );
+              if (initialFillBlankQuestion) {
+                setupFillBlankQuestionEvents(initialFillBlankQuestion);
+              }
+
+              document
+                .getElementById("addFillBlank")
+                .addEventListener("click", addFillBlankQuestion);
+              break;
+
+            case "4pics1word":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">4 Pics 1 Word Questions</label>
+              <div id="picsContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Upload 4 Images</label>
+                      <input type="file" class="form-control mb-2" accept="image/*" multiple>
+                      <small class="text-muted">Please select exactly 4 images</small>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Correct Answer</label>
+                      <input type="text" class="form-control answer-input" placeholder="The word that connects all 4 images">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Hints (optional)</label>
+                      <input type="text" class="form-control hint-input" placeholder="E.g., Starts with 'S', 5 letters">
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addPics">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialPicsQuestion = document.querySelector(
+                "#picsContainer .card"
+              );
+              if (initialPicsQuestion) {
+                setupPicsQuestionEvents(initialPicsQuestion);
+              }
+
+              document
+                .getElementById("addPics")
+                .addEventListener("click", addPicsQuestion);
+              break;
+
+            case "mind_mapping":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Mind Mapping Questions</label>
+              <div id="mindMappingContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Central Topic</label>
+                      <input type="text" class="form-control central-topic" placeholder="Enter the central topic">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Main Branches</label>
+                      <div class="branches-container">
+                        <div class="branch-group mb-3 border p-3 rounded">
+                          <div class="input-group mb-2">
+                            <input type="text" class="form-control branch-input" placeholder="Main branch 1">
+                            <button class="btn btn-outline-danger remove-branch" type="button">
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                          <div class="sub-branches-container ms-4">
+                            <div class="input-group mb-2">
+                              <input type="text" class="form-control sub-branch-input" placeholder="Sub-branch 1">
+                              <button class="btn btn-outline-danger remove-sub-branch" type="button">
+                                <i class="fas fa-times"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-sm btn-outline-success add-sub-branch">
+                            <i class="fas fa-plus"></i> Add Sub-branch
+                          </button>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-sm btn-outline-primary add-branch">
+                        <i class="fas fa-plus"></i> Add Main Branch
+                      </button>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Instructions</label>
+                      <textarea class="form-control" placeholder="Enter instructions for students"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Sample Solution (optional)</label>
+                      <textarea class="form-control sample-solution" rows="3" placeholder='{
+        "centralTopic": "Science",
+        "branches": [
+          {
+            "name": "Physics",
+            "subBranches": ["Mechanics", "Optics"]
+          },
+          {
+            "name": "Chemistry",
+            "subBranches": ["Organic", "Inorganic"]
+          }
+        ]
+      }'></textarea>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addMindMapping">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialMindMappingQuestion = document.querySelector(
+                "#mindMappingContainer .card"
+              );
+              if (initialMindMappingQuestion) {
+                setupMindMappingQuestionEvents(initialMindMappingQuestion);
+              }
+
+              document
+                .getElementById("addMindMapping")
+                .addEventListener("click", addMindMappingQuestion);
+              break;
+
+            case "comparison_table":
+              fieldsContainer.innerHTML = `
+            <div class="mb-3">
+              <label class="form-label">Comparison Table</label>
+              <div id="comparisonTableContainer">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label">Instructions</label>
+                      <input type="text" class="form-control question-input" placeholder="Instructions (e.g., Fill in the comparison table)">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Table Headers (comma separated)</label>
+                      <input type="text" class="form-control headers-input" placeholder="E.g., Feature,Animal,Plant">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Row Labels (comma separated)</label>
+                      <input type="text" class="form-control rows-input" placeholder="E.g., Cell Structure,Reproduction,Energy Source">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Correct Answers (JSON format)</label>
+                      <textarea class="form-control answers-input" rows="4" placeholder='[
+        {
+          "Feature": "Cell Structure",
+          "Animal": "No cell wall",
+          "Plant": "Has cell wall"
+        },
+        {
+          "Feature": "Reproduction",
+          "Animal": "Sexual",
+          "Plant": "Asexual or sexual"
+        }
+      ]'></textarea>
+                      <small class="form-text text-muted">
+                        Provide correct answers in array of objects format. Each object should include values for all columns.
+                      </small>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger remove-question" type="button">
+                      <i class="fas fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary" id="addComparisonTable">
+                <i class="fas fa-plus"></i> Add Question
+              </button>
+            </div>
+          `;
+
+              const initialComparisonTableQuestion = document.querySelector(
+                "#comparisonTableContainer .card"
+              );
+              if (initialComparisonTableQuestion) {
+                setupComparisonTableQuestionEvents(
+                  initialComparisonTableQuestion
+                );
+              }
+
+              document
+                .getElementById("addComparisonTable")
+                .addEventListener("click", addComparisonTableQuestion);
+              break;
+          }
+        });
+
+      // Form submission handler
+      document
+        .getElementById("assessmentForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Gather all assessment data
+          const assessmentData = {
+            title: document.getElementById("assessmentTitle").value,
+            type: document.getElementById("assessmentType").value,
+            total_points: document.getElementById("totalPoints").value,
+            time_limit: document.getElementById("timeLimit").value || null,
+            instructions: document.getElementById("assessmentInstructions")
+              .value,
+            questions: gatherQuestionsData(),
+            status:
+              e.submitter.id === "saveAssessmentDraft" ? "draft" : "published",
+          };
+
+          // Save assessment data (in a real app, this would be an API call)
+          console.log("Assessment data to be saved:", assessmentData);
+
+          try {
+            const response = await fetch(
+              `http://mahusci_backend_test.test/api/lessons/assessments`,
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify(assessmentData),
+              }
+            );
+
+            const data = await response.json();
+            if (response.ok) {
+              // window.location.href = `/teacher/assessments/${data.assessment.id}`;
+            } else {
+              throw new Error(data.message || "Failed to create assessment");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Error creating assessment: " + error.message);
+          }
+
+          // Redirect to lesson view or assessments list
+          alert("Assessment created successfully!");
+          //   window.location.href = `/teacher/lessons.html`;
+        });
+
+      // Function to gather all questions data based on type
+      function gatherQuestionsData() {
+        const type = document.getElementById("assessmentType").value;
+        const questions = [];
+
+        switch (type) {
+          case "multiple_choice":
+            document
+              .querySelectorAll("#mcqContainer .card")
+              .forEach((card, index) => {
+                const question = {
+                  text: card.querySelector(".question-input").value,
+                  options: [],
+                  correctAnswer: null,
+                };
+
+                card
+                  .querySelectorAll(".input-group")
+                  .forEach((optionGroup, i) => {
+                    const optionValue = String.fromCharCode(65 + i);
+                    const optionText =
+                      optionGroup.querySelector(".option-input").value;
+                    const isCorrect =
+                      optionGroup.querySelector(".correct-answer").checked;
+
+                    question.options.push({
+                      value: optionValue,
+                      text: optionText,
+                    });
+
+                    if (isCorrect) {
+                      question.correctAnswer = optionValue;
+                    }
+                  });
+
+                questions.push(question);
+              });
+            break;
+
+          case "true_false":
+            document
+              .querySelectorAll("#tfContainer .card")
+              .forEach((card, index) => {
+                const question = {
+                  text: card.querySelector(".question-input").value,
+                  correctAnswer: card.querySelector(
+                    "input[name='tfAnswer" + (index + 1) + "']:checked"
+                  )?.value,
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "short_answer":
+            document.querySelectorAll("#saContainer .card").forEach((card) => {
+              const question = {
+                text: card.querySelector(".question-input").value,
+                correctAnswer: card.querySelector(".answer-input").value,
+              };
+              questions.push(question);
+            });
+            break;
+
+          case "essay":
+            document
+              .querySelectorAll("#essayContainer .card")
+              .forEach((card) => {
+                const question = {
+                  text: card.querySelector(".question-input").value,
+                  sampleAnswer: card.querySelector("textarea").value,
+                  rubric: card.querySelectorAll("textarea")[1].value,
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "matching":
+            document
+              .querySelectorAll("#matchingContainer .card")
+              .forEach((card) => {
+                const items = Array.from(
+                  card.querySelectorAll(".item-input")
+                ).map((input) => input.value);
+                const matches = Array.from(
+                  card.querySelectorAll(".match-input")
+                ).map((input) => input.value);
+
+                const question = {
+                  instructions: card.querySelector(".question-input").value,
+                  items: items,
+                  matches: matches,
+                  // Note: In a real app, you might want to store correct pairings
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "fill_blank":
+            document
+              .querySelectorAll("#fillBlankContainer .card")
+              .forEach((card) => {
+                const question = {
+                  text: card.querySelector(".question-input").value,
+                  correctAnswers: card
+                    .querySelector(".answer-input")
+                    .value.split(",")
+                    .map((s) => s.trim()),
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "4pics1word":
+            document
+              .querySelectorAll("#picsContainer .card")
+              .forEach((card) => {
+                const question = {
+                  // Note: File handling would need additional processing
+                  images: Array.from(
+                    card.querySelector("input[type='file']").files
+                  ),
+                  correctAnswer: card.querySelector(".answer-input").value,
+                  hint: card.querySelector(".hint-input").value || null,
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "mind_mapping":
+            document
+              .querySelectorAll("#mindMappingContainer .card")
+              .forEach((card) => {
+                const centralTopic = card.querySelector(".central-topic").value;
+                const branches = [];
+
+                card
+                  .querySelectorAll(".branch-group")
+                  .forEach((branchGroup) => {
+                    const branch = {
+                      name: branchGroup.querySelector(".branch-input").value,
+                      subBranches: Array.from(
+                        branchGroup.querySelectorAll(".sub-branch-input")
+                      ).map((input) => input.value),
+                    };
+                    branches.push(branch);
+                  });
+
+                const question = {
+                  centralTopic: centralTopic,
+                  branches: branches,
+                  instructions: card.querySelectorAll("textarea")[0].value,
+                  sampleSolution: card.querySelector(".sample-solution").value,
+                };
+                questions.push(question);
+              });
+            break;
+
+          case "comparison_table":
+            document
+              .querySelectorAll("#comparisonTableContainer .card")
+              .forEach((card) => {
+                const question = {
+                  instructions: card.querySelector(".question-input").value,
+                  headers: card
+                    .querySelector(".headers-input")
+                    .value.split(",")
+                    .map((s) => s.trim()),
+                  rowLabels: card
+                    .querySelector(".rows-input")
+                    .value.split(",")
+                    .map((s) => s.trim()),
+                  correctAnswers: JSON.parse(
+                    card.querySelector(".answers-input").value || "[]"
+                  ),
+                };
+                questions.push(question);
+              });
+            break;
+
+          default:
+            console.warn(
+              "Question data gathering not implemented for type:",
+              type
+            );
+        }
+
+        return questions;
+      }
+      // Save draft handler
+      // document
+      //   .getElementById("saveAssessmentDraft")
+      //   .addEventListener("click", async function () {
+      //     const assessmentData = {
+      //       title: document.getElementById("assessmentTitle").value,
+      //       type: document.getElementById("assessmentType").value,
+      //       total_points: document.getElementById("totalPoints").value,
+      //       time_limit: document.getElementById("timeLimit").value || null,
+      //       instructions: document.getElementById("assessmentInstructions")
+      //         .value,
+      //       questions: gatherQuestionsData(),
+      //       status: "draft",
+      //     };
+
+      //     console.log("Saving as draft:", assessmentData);
+
+      //     try {
+      //       const response = await fetch(
+      //         `http://mahusci_backend_test.test/api/lessons/assessments`,
+      //         {
+      //           method: "POST",
+      //           headers: {
+      //             Accept: "application/json",
+      //           },
+      //           body: assessmentData,
+      //         }
+      //       );
+
+      //       const data = await response.json();
+      //       if (response.ok) {
+      //         // window.location.href = `/teacher/assessments/${data.assessment.id}`;
+      //       } else {
+      //         throw new Error(data.message || "Failed to create assessment");
+      //       }
+      //     } catch (error) {
+      //       console.error("Error:", error);
+      //       alert("Error creating assessment: " + error.message);
+      //     }
+
+      //     alert("Assessment saved as draft successfully!");
+      //   });
+
+      // Initialize with the first assessment type if needed
+      document
+        .getElementById("assessmentType")
+        .dispatchEvent(new Event("change"));
+    </script>
+  </body>
+</html>
