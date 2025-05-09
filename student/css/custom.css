@@ -1,3 +1,28 @@
+/* DRAG AND DROP IN PROFILE PICTURE */
+
+/* Drop Zone Styling */
+.file-drop-zone {
+  border-color: #dee2e6;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.dragover {
+  border-color: #0d6efd !important;
+  background-color: #f8f9fa;
+}
+
+/* Highlight text on hover */
+.clickable:hover {
+  text-decoration: underline;
+}
+
+/* Dashed border (Bootstrap doesn't have this by default) */
+.border-dashed {
+  border-style: dashed !important;
+}
+
 /* BACKGROUND IMAGE */
 
 .bg-image {

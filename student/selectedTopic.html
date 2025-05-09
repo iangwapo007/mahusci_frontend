@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css?family=Cabin Sketch"
       rel="stylesheet"
     />
-    <script type="module" src="./js/system/lessons.js"></script>
+    <script type="module" src="./js/utils/utils.js" defer></script>
   </head>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
@@ -72,31 +72,40 @@
         >
       </div>
 
-      <a class="text-decoration-none text-reset" href="myProfile.html">
-        <div
-          class="py-4 d-flex align-items-center float-end"
-          style="margin-top: -20px; margin-bottom: -20px"
-        >
-          <div class="pe-2">
-            <img
-              class="profile-picture"
-              src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-              alt=""
-              srcset=""
-            />
-          </div>
-          <div class="px-2">
-            <span
-              id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
-            ></span>
-            <span
-              id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
-            ></span>
-          </div>
+      <div
+        class="dropdown py-4 d-flex align-items-center float-end"
+        style="margin-top: -20px; margin-bottom: -20px"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <div class="pe-2">
+          <img
+            class="profile-picture"
+            src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+            alt=""
+            srcset=""
+          />
         </div>
-      </a>
+        <div class="px-2">
+          <span
+            id="username-desktop"
+            style="font-size: 16px; font-weight: 600; line-height: 1"
+          ></span>
+          <span
+            id="role-level-desktop"
+            style="font-size: 13px; display: block; line-height: 1"
+          ></span>
+          <ul class="dropdown-menu" style="margin-top: -20px">
+            <li>
+              <a class="dropdown-item" href="/student/myProfile.html"
+                >My Profile</a
+              >
+            </li>
+            <li id="btn_logout_desktop" class="dropdown-item">Logout</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <!-- END OF DESKTOP NAVBAR -->
 
@@ -218,7 +227,10 @@
               </a>
             </li>
           </ul>
-          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+          <div
+            class="position-absolute bottom-0 w-100 pb-5 ps-3"
+            id="btn_logout_mobile"
+          >
             <img
               src="/src/icon/logout.png"
               alt=""
