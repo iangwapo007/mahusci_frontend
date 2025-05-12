@@ -23,6 +23,8 @@ form_login.onsubmit = async (e) => {
   // Get Values of Form (input, textarea, select) set it as form-data
   const formData = new FormData(form_login);
 
+  document.querySelector(".fullscreen-spinner").classList.remove("d-none");
+
   // Fetch API user login endpoint
   const response = await fetch(backendURL + "/api/login", {
     method: "POST",
@@ -35,21 +37,25 @@ form_login.onsubmit = async (e) => {
   if (response.ok) {
     // Get response if 200-299 status code | IF OKAY
     const json = await response.json();
-    console.log(json);
 
-    localStorage.setItem("token", json.token);
-    localStorage.setItem("type", json.role);
+    sessionStorage.setItem("token", json.token);
+    sessionStorage.setItem("type", json.role);
+    sessionStorage.setItem("user-data", JSON.stringify(json.data));
 
     form_login.reset();
 
     successNotification("Login Successfully!");
 
-    window.location.pathname = "/student/home.html";
+    if (sessionStorage.getItem("type") === "Student") {
+      window.location.pathname = "/student/home.html";
+    } else {
+      window.location.pathname = "/teacher/dashboard.html";
+    }
   } else if (response.status == 422) {
     // Get response if 422 status code | IF DILI OKAY
     const json = await response.json();
     console.log(json);
-
+    document.querySelector(".fullscreen-spinner").classList.add("d-none");
     errorNotification(json.message);
   }
 

@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample | Courses</title>
+    <title>Sample | Curriculum</title>
     <link rel="icon" type="image/png" href="/src/images/logo.png" />
-
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat"
       rel="stylesheet"
@@ -17,22 +15,310 @@
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet" />
     <link
-      href="https://fonts.googleapis.com/css?family=Jost"
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
       rel="stylesheet"
     />
+    <script type="module" src="js/utils/utils.js"></script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f9ff;
+      }
+
+      .bg-primary {
+        background-color: #ff914d !important;
+      }
+
+      .hover-effect:hover {
+        color: #ff914d;
+        transform: translateY(-2px);
+        text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2);
+      }
+
+      .hover-effect-active {
+        color: #ff914d;
+        /* text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2); */
+      }
+
+      .nav-link-hover:hover {
+        color: #ff914d !important;
+      }
+
+      /* Navbar hover effects */
+      .nav-link-hover {
+        font-family: "Fredoka One", cursive;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link-hover:hover::after {
+        width: 100%;
+      }
+
+      .profile-picture {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ff914d;
+        transition: all 0.3s ease;
+      }
+
+      .profile-picture:hover {
+        box-shadow: 0 0 10px rgba(68, 126, 226, 0.7);
+        transform: scale(1.1);
+      }
+
+      /* Curriculum container */
+      .curriculum-container {
+        width: 60%;
+        margin-top: 120px;
+        margin-bottom: 50px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(68, 126, 226, 0.15);
+        overflow: hidden;
+        background: white;
+        border: 3px solid transparent;
+      }
+
+      /* Curriculum image */
+      .default-curriculum-image {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(135deg, #ff914d, #ff914d);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        font-family: "Fredoka One", cursive;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Quarter accordion */
+      .quarter-accordion {
+        border-radius: 15px !important;
+        border: 3px solid #c5d0e4 !important;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quarter-accordion:hover {
+        box-shadow: 0 5px 15px rgba(68, 126, 226, 0.3);
+      }
+
+      .quarter-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        color: #ff914d;
+        font-size: 1.2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Progress bar */
+      .quarter-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgba(68, 126, 226, 0.1);
+        z-index: 1;
+        transition: width 0.5s ease;
+      }
+
+      .progress-text {
+        font-size: 0.8rem;
+        color: #ff914d;
+        margin-left: 10px;
+        font-weight: 600;
+      }
+
+      /* Topic items */
+      .topic-item {
+        padding: 12px 15px;
+        margin: 8px 0;
+        border-radius: 10px;
+        background-color: #f0f7ff;
+        transition: all 0.3s ease;
+      }
+
+      .topic-item:hover {
+        background-color: #e0e9ff;
+        transform: translateX(5px);
+      }
+
+      .topic-title {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .locked-topic {
+        opacity: 0.6;
+        background-color: #f8f9fa;
+        /* border-left: 4px solid #ccc; */
+        cursor: not-allowed;
+      }
+
+      .lock-icon {
+        width: 18px;
+        margin-left: 10px;
+      }
+
+      /* Loading states */
+      .loading-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+      }
+
+      .cached-content {
+        opacity: 0.7;
+        position: relative;
+      }
+
+      .cached-content::after {
+        content: "Loading updates...";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+        color: #ff914d;
+        font-style: italic;
+      }
+
+      /* Footer */
+      .footer {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .footer-link:hover {
+        color: #ff914d !important;
+        transform: translateX(3px);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .default-curriculum-image {
+          height: 180px;
+          font-size: 2rem;
+        }
+
+        .curriculum-container {
+          width: 90%;
+          margin-top: 120px;
+          margin-bottom: 50px;
+          border-radius: 20px;
+          box-shadow: 0 10px 20px rgba(68, 126, 226, 0.15);
+          overflow: hidden;
+          background: white;
+          border: 3px solid transparent;
+        }
+
+        .quarter-title {
+          font-size: 1rem;
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in-out forwards;
+        animation-delay: 0.1s; /* Adjust delay as needed */
+      }
+
+      @keyframes slideFadeIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .slide-fade-in {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFadeIn 0.8s ease-out forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.4s ease-out forwards;
+      }
+
+      @keyframes bounceFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(-15px);
+        }
+        80% {
+          transform: translateY(5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .bounce-fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: bounceFadeUp 1s ease-out forwards;
+      }
+
+      @keyframes fadeDown {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-down {
+        opacity: 0;
+        transform: translateY(-30px);
+        animation: fadeDown 0.5s ease-out forwards;
+      }
+    </style>
   </head>
-  <body class="poppins bg-image">
+  <body
+    style="
+      background-image: url(/src/images/quiz\ bg.jpg);
+      background-size: 100%;
+      background-attachment: fixed;
+    "
+  >
     <!-- START OF DESKTOP NAVBAR -->
     <div
-      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow-sm"
       style="padding: 5px 150px 5px 150px"
     >
       <div class="py-3">
         <img
           src="/src/images/mahusci-banner-logo.png"
-          style="width: 180px"
+          style="width: 150px"
           alt=""
           srcset=""
         />
@@ -42,15 +328,15 @@
         <a class="text-decoration-none" href="/student/home.html"
           ><span
             class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Home
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/lessons.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover hover-effect-active flex-fill text-center col"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Lessons
           </span></a
         >
@@ -58,7 +344,7 @@
         <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
             class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 170px"
+            style="font-weight: 700; font-size: 17px; width: 170px"
             >My Learnings
           </span></a
         >
@@ -69,7 +355,7 @@
           class="py-4 d-flex align-items-center float-end"
           style="margin-top: -20px; margin-bottom: -20px"
         >
-          <div class="pe-2">
+          <div class="pe-1">
             <img
               class="profile-picture"
               src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
@@ -80,11 +366,16 @@
           <div class="px-2">
             <span
               id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                color: #ff914d;
+              "
             ></span>
             <span
               id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
+              style="font-size: 11px; display: block; line-height: 1"
             ></span>
           </div>
         </div>
@@ -134,7 +425,7 @@
             <div class="d-flex align-items-center rounded-3 mb-4">
               <div>
                 <img
-                  class="profile-picture-offcanvas"
+                  class="profile-picture"
                   src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
                   alt=""
                   srcset=""
@@ -226,479 +517,24 @@
     <!-- END OF MOBILE NAVBAR -->
 
     <!-- START OF CONTENT -->
-
     <div
-      class="container border-2 border-success border shadow rounded-3 bg-white custom-tab-width px-0"
-      style="margin-top: 120px; margin-bottom: 50px"
+      class="container curriculum-container border border-3 px-0"
+      id="curriculumContainer"
     >
-      <div class="container-fluid border m-0 p-0">
-        <img
-          src="/src/images/earth_science1.png"
-          class="img-fluid p-0 m-0"
-          alt=""
-          srcset=""
-        />
+      <div class="container-fluid p-0" id="curriculumImageContainer">
+        <!-- Image or default title will be loaded here dynamically -->
       </div>
-      <div class="pt-4">
-        <!--1ST QUARTER -->
-        <div class="container pb-3">
-          <button
-            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          >
-            <div
-              class="container d-flex justify-content-between align-items-center p-0"
-            >
-              <div class="lesson-title">
-                <img
-                  src="/src/icon/dropdown.png"
-                  style="width: 12px; margin-right: 6px"
-                  alt=""
-                />
-                <span class="fw-semibold">1st Quarter - </span>
-                <i>Introduction to Biology</i>
-              </div>
-              <div>
-                <img
-                  src="/src/icon/available.png"
-                  style="width: 30px"
-                  alt=""
-                  srcset=""
-                />
-              </div>
-            </div>
-          </button>
-          <!-- TOPICS INSIDE QUARTER -->
-          <div
-            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
-            id="collapseExample"
-          >
-            <div class="p-3 lesson-title">
-              <span class="fw-semibold">Topics for this Quarter: </span>
-              <!-- 1ST TOPIC -->
-              <a
-                class="text-reset text-decoration-none"
-                href="selectedTopic.html"
-                ><div class="pt-3 ms-lg-5">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <img
-                        src="/src/icon/file.png"
-                        style="width: 18px"
-                        alt=""
-                      />
-                      <span>Topics - Sample Topic Title</span>
-                    </div>
-                    <img
-                      src="/src/icon/available.png"
-                      style="width: 30px"
-                      alt=""
-                      srcset=""
-                    />
-                  </div></div
-              ></a>
-
-              <!-- 2ND TOPIC -->
-              <a
-                class="text-reset text-decoration-none"
-                href="selectedTopic.html"
-                ><div class="pt-3 ms-lg-5">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <img
-                        src="/src/icon/file.png"
-                        style="width: 18px"
-                        alt=""
-                      />
-                      <span>Topics - Sample Topic Title</span>
-                    </div>
-                    <img
-                      src="/src/icon/available.png"
-                      style="width: 30px"
-                      alt=""
-                      srcset=""
-                    />
-                  </div></div
-              ></a>
-              <!-- 3RD TOPIC -->
-              <a
-                class="text-reset text-decoration-none"
-                href="selectedTopic.html"
-                ><div class="pt-3 ms-lg-5">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <img
-                        src="/src/icon/file.png"
-                        style="width: 18px"
-                        alt=""
-                      />
-                      <span>Topics - Sample Topic Title</span>
-                    </div>
-                    <img
-                      src="/src/icon/available.png"
-                      style="width: 30px"
-                      alt=""
-                      srcset=""
-                    />
-                  </div></div
-              ></a>
-              <!-- 4TH TOPIC -->
-              <a
-                class="text-reset text-decoration-none"
-                href="selectedTopic.html"
-                ><div class="pt-3 ms-lg-5">
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <img
-                        src="/src/icon/file.png"
-                        style="width: 18px"
-                        alt=""
-                      />
-                      <span>Topics - Sample Topic Title</span>
-                    </div>
-                    <img
-                      src="/src/icon/available.png"
-                      style="width: 30px"
-                      alt=""
-                      srcset=""
-                    />
-                  </div></div
-              ></a>
-            </div>
-          </div>
-        </div>
-        <!--2ND QUARTER -->
-        <div class="container pb-3">
-          <button
-            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample1"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            disabled
-          >
-            <div
-              class="container d-flex justify-content-between align-items-center p-0"
-            >
-              <div class="lesson-title">
-                <img
-                  src="/src/icon/dropdown.png"
-                  style="width: 12px; margin-right: 6px"
-                  alt=""
-                />
-                <span class="fw-semibold">2nd Quarter - </span>
-                <i>Sample Title</i>
-              </div>
-              <div>
-                <img
-                  src="/src/icon/locked.png"
-                  style="width: 18px"
-                  alt=""
-                  srcset=""
-                />
-              </div>
-            </div>
-          </button>
-          <!-- TOPICS INSIDE QUARTER -->
-          <div
-            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
-            id="collapseExample1"
-          >
-            <div class="p-3 lesson-title">
-              <span class="fw-semibold">Topics for this Quarter: </span>
-              <!-- 1ST TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 2ND TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 3RD TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 4TH TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 3RD QUARTER -->
-        <div class="container pb-3">
-          <button
-            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample1"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            disabled
-          >
-            <div
-              class="container d-flex justify-content-between align-items-center p-0"
-            >
-              <div class="lesson-title">
-                <img
-                  src="/src/icon/dropdown.png"
-                  style="width: 12px; margin-right: 6px"
-                  alt=""
-                />
-                <span class="fw-semibold">3rd Quarter - </span>
-                <i>Sample Title</i>
-              </div>
-              <div>
-                <img
-                  src="/src/icon/locked.png"
-                  style="width: 18px"
-                  alt=""
-                  srcset=""
-                />
-              </div>
-            </div>
-          </button>
-          <!-- TOPICS INSIDE QUARTER -->
-          <div
-            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
-            id="collapseExample1"
-          >
-            <div class="p-3 lesson-title">
-              <span class="fw-semibold">Topics for this Quarter: </span>
-              <!-- 1ST TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 2ND TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 3RD TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 4TH TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 4TH QUARTER -->
-        <div class="container pb-3">
-          <button
-            class="btn shadow border border-success rounded-3 w-100 py-3 d-flex justify-content-start align-items-center"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample1"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            disabled
-          >
-            <div
-              class="container d-flex justify-content-between align-items-center p-0"
-            >
-              <div class="lesson-title">
-                <img
-                  src="/src/icon/dropdown.png"
-                  style="width: 12px; margin-right: 6px"
-                  alt=""
-                />
-                <span class="fw-semibold">4th Quarter - </span>
-                <i>Sample Title</i>
-              </div>
-              <div>
-                <img
-                  src="/src/icon/locked.png"
-                  style="width: 18px"
-                  alt=""
-                  srcset=""
-                />
-              </div>
-            </div>
-          </button>
-          <!-- TOPICS INSIDE QUARTER -->
-          <div
-            class="collapse border border-1 rounded-3 border-success mx-3 my-3"
-            id="collapseExample1"
-          >
-            <div class="p-3 lesson-title">
-              <span class="fw-semibold">Topics for this Quarter: </span>
-              <!-- 1ST TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 2ND TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 3RD TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-              <!-- 4TH TOPIC -->
-              <div class="pt-3 ms-lg-5">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <img src="/src/icon/file.png" style="width: 18px" alt="" />
-                    <span>Topics - Sample Topic Title</span>
-                  </div>
-                  <img
-                    src="/src/icon/locked.png"
-                    style="width: 18px"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="pt-4 px-4" id="quartersContainer">
+        <!-- Quarters will be loaded here dynamically -->
+        <div class="loading-spinner">
+          <div class="spinner-border text-primary"></div>
+          <p class="mt-3">Loading curriculum...</p>
         </div>
       </div>
     </div>
 
     <!-- START OF FOOTER -->
-    <div
-      class="container-fluid bg-white"
-      style="
-        border-top: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-      "
-    >
+    <div class="container-fluid footer bg-white fade-in">
       <div class="container">
         <div class="row px-md-5 gap-1" style="padding-top: 80px">
           <div class="col" style="margin-top: -5px">
@@ -709,40 +545,44 @@
               srcset=""
             />
             <p class="pt-md-5 pt-3 pe-5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
-              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
-              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
-              Quaerat, magnam.
+              Making science fun and exciting for high school students in grades
+              7-12! Our interactive platform brings science to life with
+              engaging lessons, experiments, and real-world applications.
             </p>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
             <span class="fs-5 fw-bold">GET HELP</span>
             <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Contact Us</li>
-              <li class="py-2">Latest Articles</li>
-              <li class="py-2">FAQ</li>
-            </ul>
-          </div>
-          <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">COURSES</span>
-            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Biology</li>
-              <li class="py-2">Chemistry</li>
-              <li class="py-2">Physics</li>
-              <li class="py-2">Earth Science</li>
-              <li class="py-2">Astronomy</li>
+              <li class="py-2 footer-link" style="transition: all 0.3s ease">
+                Contact Us
+              </li>
+              <li class="py-2 footer-link" style="transition: all 0.3s ease">
+                Latest Articles
+              </li>
+              <li class="py-2 footer-link" style="transition: all 0.3s ease">
+                FAQ
+              </li>
             </ul>
           </div>
 
           <div class="col" style="padding-top: 10px">
             <span class="fs-5 fw-bold">CONTACT US</span>
             <div class="pt-md-5 pt-3" style="margin-top: 3px">
-              <p>
+              <span
+                class="footer-link"
+                style="transition: all 0.3s ease; display: block"
+              >
                 Address: Caraga State University, Amapyon, Butuan City, Agusan
                 Del Norte, Philippines
-              </p>
-              <span style="display: block">Contact No. 085-342-1234</span>
-              <span>Mail: Palmerston03@gmail.com</span>
+              </span>
+              <span
+                class="footer-link"
+                style="transition: all 0.3s ease; display: block"
+                >Contact No. 085-342-1234</span
+              >
+              <span class="footer-link" style="transition: all 0.3s ease"
+                >Mail: Palmerston03@gmail.com</span
+              >
             </div>
           </div>
         </div>
@@ -756,6 +596,383 @@
     </div>
     <!-- END OF FOOTER -->
 
+    <!-- [Previous footer HTML remains exactly the same] -->
+
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const backendURL = "https://mahusci.rubenianinternational.com/public";
+        const authToken = sessionStorage.getItem("token");
+        const curriculumId = new URLSearchParams(window.location.search).get(
+          "curriculum_id"
+        );
+
+        const userData = JSON.parse(sessionStorage.getItem("user-data"));
+        loadUserData(userData);
+        // Load user data
+        function loadUserData(user) {
+          document.getElementById("username-desktop").textContent = `${
+            user.firstname
+          } ${user.middlename !== null ? user.middlename : ""} ${
+            user.lastname
+          }`;
+          document.getElementById("username-mobile").textContent = `${
+            user.firstname
+          } ${user.middlename !== null ? user.middlename : ""} ${
+            user.lastname
+          }`;
+          document.getElementById(
+            "role-level-desktop"
+          ).textContent = `Student | ${user.grade_level}`;
+          document.getElementById(
+            "role-level-mobile"
+          ).textContent = `Student | ${user.grade_level}`;
+
+          document.querySelectorAll(".profile-picture").forEach((img) => {
+            const defaultPic = "/src/images/profile.jpg";
+
+            const userPic = user?.profile_picture
+              ? `https://mahusci.rubenianinternational.com/storage/app/public/${user.profile_picture}`
+              : "";
+
+            console.log(userPic);
+
+            img.src = userPic || defaultPic;
+          });
+        }
+
+        // Initialize curriculum loading
+        loadCurriculum(curriculumId);
+
+        async function loadCurriculum(
+          curriculumId,
+          isBackgroundRefresh = false
+        ) {
+          try {
+            // Show loading spinner if this is the primary load
+            if (!isBackgroundRefresh) {
+              document.getElementById("quartersContainer").innerHTML = `
+                      <div class="loading-spinner">
+                        <div class="spinner-border text-primary"></div>
+                        <p class="mt-3">Loading curriculum...</p>
+                      </div>
+                    `;
+            }
+
+            // Try to get from cache first
+            const cachedData = sessionStorage.getItem(
+              `curriculum-${curriculumId}`
+            );
+            let curriculum = null;
+
+            if (cachedData) {
+              const parsedData = JSON.parse(cachedData);
+              curriculum = parsedData.data;
+
+              // Mark the container as cached content
+              if (!isBackgroundRefresh) {
+                document
+                  .getElementById("quartersContainer")
+                  .classList.add("cached-content");
+                renderCurriculum(curriculum);
+              }
+            }
+
+            // Always fetch fresh data
+            const response = await fetch(
+              `${backendURL}/api/curriculum-sequences/${curriculumId}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Failed to load curriculum");
+            }
+
+            const freshCurriculum = await response.json();
+
+            // Cache the fresh data
+            try {
+              const cacheData = {
+                data: freshCurriculum,
+                timestamp: Date.now(),
+              };
+              sessionStorage.setItem(
+                `curriculum-${curriculumId}`,
+                JSON.stringify(cacheData)
+              );
+            } catch (cacheError) {
+              console.error("Failed to cache data:", cacheError);
+            }
+
+            // Update UI with fresh data
+            if (
+              !isBackgroundRefresh ||
+              !curriculum ||
+              JSON.stringify(curriculum) !== JSON.stringify(freshCurriculum)
+            ) {
+              document
+                .getElementById("quartersContainer")
+                .classList.remove("cached-content");
+              renderCurriculum(freshCurriculum);
+            }
+          } catch (error) {
+            console.error("Error loading curriculum:", error);
+            if (!isBackgroundRefresh) {
+              document.getElementById("quartersContainer").innerHTML = `
+                      <div class="alert alert-danger m-3">
+                        Failed to load curriculum. Please try again later.
+                      </div>
+                    `;
+            }
+          }
+        }
+
+        async function fetchStudentProgress(sequenceId) {
+          try {
+            const cacheKey = `progress-${sequenceId}`;
+            const cachedProgress = sessionStorage.getItem(cacheKey);
+
+            if (cachedProgress) {
+              const { data, timestamp } = JSON.parse(cachedProgress);
+              const CACHE_EXPIRY = 60 * 60 * 1000; // 1 hour
+
+              if (Date.now() - timestamp < CACHE_EXPIRY) {
+                return data;
+              }
+            }
+
+            const res = await fetch(
+              `${backendURL}/api/sequences/${sequenceId}/progress`,
+              {
+                headers: {
+                  Accept: "application/json",
+                  Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                },
+              }
+            );
+
+            const progress = await res.json();
+
+            // Cache the progress data
+            try {
+              const cacheData = {
+                data: progress,
+                timestamp: Date.now(),
+              };
+              sessionStorage.setItem(cacheKey, JSON.stringify(cacheData));
+            } catch (cacheError) {
+              console.error("Failed to cache progress:", cacheError);
+            }
+
+            return progress;
+          } catch (error) {
+            console.error("Error fetching progress:", error);
+            return [];
+          }
+        }
+
+        function formatSequenceItems(items) {
+          if (!items || items.length === 0) return "No topics available";
+
+          const itemTitles = items.map((item) => item.sequence.title);
+
+          if (itemTitles.length === 1) {
+            return itemTitles[0];
+          }
+
+          if (itemTitles.length === 2) {
+            return `${itemTitles[0]} and ${itemTitles[1]}`;
+          }
+
+          const allExceptLast = itemTitles.slice(0, -1).join(", ");
+          const lastItem = itemTitles[itemTitles.length - 1];
+          return `${allExceptLast}, and ${lastItem}`;
+        }
+
+        async function renderCurriculum(curriculum) {
+          const quartersContainer =
+            document.getElementById("quartersContainer");
+          const curriculumImageContainer = document.getElementById(
+            "curriculumImageContainer"
+          );
+
+          // Clear existing content
+          quartersContainer.innerHTML = "";
+
+          // Display curriculum image or default title
+          if (curriculum.curriculum_image) {
+            curriculumImageContainer.innerHTML = `
+                    <img class="img-fluid w-100" src="https://mahusci.rubenianinternational.com/storage/app/public/${curriculum.curriculum_image}" alt="${curriculum.title}" style="max-height: 300px; object-fit: cover;" />
+                  `;
+          } else {
+            curriculumImageContainer.innerHTML = `
+                    <div class="default-curriculum-image">
+                      ${curriculum.title || "Curriculum"}
+                    </div>
+                  `;
+          }
+
+          // Add curriculum title
+          const titleElement = document.createElement("div");
+          titleElement.className = "px-4 pt-2 pb-2 ";
+          titleElement.innerHTML = `
+                  <h1 class="fw-bold" style="color: #ff914d; font-family: 'Fredoka One', cursive;">${
+                    curriculum.title
+                  }</h1>
+                  <p class="text-muted">${curriculum.description || ""}</p>
+                `;
+          quartersContainer.appendChild(titleElement);
+
+          // Sort quarters by quarter number (1-4)
+          curriculum.quarters.sort((a, b) => a.quarter - b.quarter);
+
+          for (const quarter of curriculum.quarters) {
+            const quarterElement = document.createElement("div");
+            quarterElement.className = "pb-3";
+
+            // Create progress bar element
+            const progressBar = document.createElement("div");
+            progressBar.className = "quarter-progress";
+            progressBar.style.width = "0%";
+
+            quarterElement.innerHTML = `
+                    <button
+                      class="btn quarter-accordion w-100 py-3 d-flex justify-content-start align-items-center "
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseQuarter${quarter.id}"
+                      aria-expanded="false"
+                      aria-controls="collapseQuarter${quarter.id}"
+                    >
+                      ${progressBar.outerHTML}
+                      <div class="container d-flex justify-content-between align-items-center p-0">
+                        <div class="quarter-title">
+                          <span>Quarter ${quarter.quarter} - </span>
+                          <span id="quarter-title-${quarter.quarter}"></span>
+                        </div>
+                        <span class="progress-text" id="quarter-progress-${quarter.id}">0% Complete</span>
+                      </div>
+                    </button>
+                    <div
+                      class="collapse"
+                      id="collapseQuarter${quarter.id}"
+                    >
+                      <div class="p-3">
+                        <div id="quarter${quarter.id}Topics" class="mt-2"></div>
+                      </div>
+                    </div>
+                  `;
+
+            quartersContainer.appendChild(quarterElement);
+            const topicsContainer = document.getElementById(
+              `quarter${quarter.id}Topics`
+            );
+
+            document.getElementById(
+              `quarter-title-${quarter.quarter}`
+            ).innerText = formatSequenceItems(quarter.items);
+
+            // Sort items by their explicit order field
+            quarter.items.sort((a, b) => a.order - b.order);
+
+            let totalItems = 0;
+            let completedItems = 0;
+
+            // Process each item in sorted order
+            for (const item of quarter.items) {
+              const progressData = await fetchStudentProgress(item.sequence.id);
+
+              // Sort sequence items by position
+              item.sequence.items.sort((a, b) => a.position - b.position);
+
+              // Create topic elements in order
+              for (const sequenceItem of item.sequence.items) {
+                totalItems++;
+                const isCompleted = progressData.some(
+                  (pd) =>
+                    pd.sequence_item_id === sequenceItem.id &&
+                    pd.status === "completed"
+                );
+
+                if (isCompleted) completedItems++;
+
+                const isLocked =
+                  !isCompleted &&
+                  sequenceItem.position > 0 &&
+                  !progressData.some(
+                    (pd) =>
+                      pd.sequence_item_id ===
+                        item.sequence.items[sequenceItem.position - 2].id &&
+                      pd.status === "completed"
+                  );
+
+                const topicElement = document.createElement("div");
+                topicElement.className = `topic-item  ${
+                  isLocked || isCompleted ? "locked-topic" : ""
+                }`;
+
+                topicElement.innerHTML = `
+                        <a
+                          class="text-reset text-decoration-none ${
+                            isLocked || isCompleted ? "pe-none" : ""
+                          }"
+                          ${
+                            isLocked || isCompleted
+                              ? ""
+                              : `href="sequence-player.html?curriculum_id=${curriculum.id}&quarter_id=${quarter.id}&sequence_id=${item.sequence.id}&item_id=${sequenceItem.id}"`
+                          }
+                        >
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                              <span class="topic-title">${
+                                sequenceItem.title
+                              }</span>
+                            </div>
+                              ${
+                                isCompleted
+                                  ? '<span class="badge bg-primary ms-2">Completed</span>'
+                                  : ""
+                              }
+                            ${
+                              isLocked
+                                ? '<img src="/src/icon/locked.png" class="lock-icon" alt="Locked" />'
+                                : ""
+                            }
+                          </div>
+                        </a>
+                      `;
+
+                topicsContainer.appendChild(topicElement);
+              }
+            }
+
+            // Update progress bar and text
+            const progressPercentage =
+              totalItems > 0
+                ? Math.round((completedItems / totalItems) * 100)
+                : 0;
+
+            const quarterProgressBar =
+              quarterElement.querySelector(".quarter-progress");
+            const quarterProgressText = document.getElementById(
+              `quarter-progress-${quarter.id}`
+            );
+
+            if (quarterProgressBar) {
+              quarterProgressBar.style.width = `${progressPercentage}%`;
+            }
+
+            if (quarterProgressText) {
+              quarterProgressText.textContent = `${progressPercentage}% Complete`;
+            }
+          }
+        }
+      });
+    </script>
   </body>
 </html>

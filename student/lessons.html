@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MahuSci | Lessons</title>
+    <title>MahuSci | Curriculum</title>
     <link rel="icon" type="image/png" href="/src/images/logo.png" />
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
@@ -21,21 +21,273 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Cabin Sketch"
+      href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
       rel="stylesheet"
     />
-    <script type="module" src="./js/system/lessons.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Comic+Neue"
+      rel="stylesheet"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
+    <style>
+      /* Navbar hover effects */
+      .hover-effect:hover {
+        color: #4481eb;
+        transform: translateY(-2px);
+        text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2);
+      }
+
+      .hover-effect-active {
+        color: #4481eb;
+        /* text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2); */
+      }
+
+      /* Navbar hover effects */
+      .nav-link-hover {
+        font-family: "Fredoka One", cursive;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link-hover:hover::after {
+        width: 100%;
+      }
+
+      /* Profile picture styles */
+      .profile-picture {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #4481eb;
+        transition: all 0.3s ease;
+      }
+
+      /* Horizontal card styles */
+      .horizontal-card {
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 10px 20px rgba(68, 126, 226, 0.15);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        margin-bottom: 30px;
+        overflow: hidden;
+        background: white;
+        border: 3px solid transparent;
+        height: 200px; /* Fixed height for consistency */
+      }
+
+      .horizontal-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(68, 126, 226, 0.25);
+        border-color: #4481eb;
+      }
+
+      .card-image-container {
+        width: 70%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card-content {
+        width: 65%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .card-title {
+        font-family: "Fredoka One", cursive;
+        color: #4481eb;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+
+      .card-description {
+        flex-grow: 1;
+        font-family: "Poppins";
+        overflow: hidden;
+        display: -webkit-box;
+        /* -webkit-line-clamp: 3; */
+        -webkit-box-orient: vertical;
+      }
+
+      .card-button-container {
+        margin-top: auto;
+      }
+
+      .btn-lesson {
+        background-color: #4481eb;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: bold;
+        font-family: "Fredoka One", cursive;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 8px rgba(68, 126, 226, 0.3);
+        transition: all 0.3s ease;
+        width: 65%;
+      }
+
+      .btn-lesson:hover {
+        background-color: #319134;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(68, 126, 226, 0.4);
+      }
+
+      /* Placeholder styles */
+      .placeholder-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(135deg, #e0e9ff, #c8dcff);
+        color: #4481eb;
+        font-weight: bold;
+        font-size: 2.5rem;
+        font-family: "Fredoka One", cursive;
+      }
+
+      /* Loading animation */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      .loading-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: 100px;
+      }
+
+      .loading-dots span {
+        width: 20px;
+        height: 20px;
+        background-color: #4481eb;
+        border-radius: 50%;
+        display: inline-block;
+        animation: bounce 0.8s infinite ease-in-out;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .loading-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .horizontal-card {
+          height: auto;
+          flex-direction: column;
+        }
+
+        .card-image-container {
+          width: 100%;
+          height: 150px;
+        }
+
+        .card-content {
+          width: 100%;
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in-out forwards;
+        animation-delay: 0.1s; /* Adjust delay as needed */
+      }
+
+      @keyframes slideFadeIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .slide-fade-in {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFadeIn 0.8s ease-out forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.4s ease-out forwards;
+      }
+
+      @keyframes bounceFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(-15px);
+        }
+        80% {
+          transform: translateY(5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .bounce-fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: bounceFadeUp 1s ease-out forwards;
+      }
+    </style>
   </head>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
     <div
-      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow-sm"
       style="padding: 5px 150px 5px 150px"
     >
       <div class="py-3">
         <img
           src="/src/images/mahusci-banner-logo.png"
-          style="width: 180px"
+          style="width: 150px"
           alt=""
           srcset=""
         />
@@ -44,24 +296,24 @@
       <div class="d-flex justify-content-between">
         <a class="text-decoration-none" href="/student/home.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Home
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/lessons.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover hover-effect-active flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Lessons
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 170px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 170px"
             >My Learnings
           </span></a
         >
@@ -72,7 +324,7 @@
           class="py-4 d-flex align-items-center float-end"
           style="margin-top: -20px; margin-bottom: -20px"
         >
-          <div class="pe-2">
+          <div class="pe-1">
             <img
               class="profile-picture"
               src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
@@ -83,11 +335,17 @@
           <div class="px-2">
             <span
               id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                color: #4481eb;
+                /* font-family: Fredoka One, cursive; */
+              "
             ></span>
             <span
               id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
+              style="font-size: 11px; display: block; line-height: 1"
             ></span>
           </div>
         </div>
@@ -137,7 +395,7 @@
             <div class="d-flex align-items-center rounded-3 mb-4">
               <div>
                 <img
-                  class="profile-picture-offcanvas"
+                  class="profile-picture"
                   src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
                   alt=""
                   srcset=""
@@ -197,7 +455,7 @@
                   alt=""
                   style="width: 25px; margin-left: -3px; margin-right: 20px"
                 />
-                <small class="mt-1 ms-1">My Learnings</small>
+                <small class="mt-1 ms-1 cabinsketch">My Learnings</small>
               </a>
             </li>
             <li class="nav-item">
@@ -229,131 +487,56 @@
     <!-- END OF MOBILE NAVBAR -->
 
     <!-- START OF ALL CONTENTS -->
-
     <div class="container-fluid p-0" style="margin-top: 55px">
-      <img
-        class="img-fluid w-100"
-        src="/src/images/header2.png"
-        alt=""
-        srcset=""
-      />
+      <div class="w-100">
+        <img
+          class="img-fluid w-100"
+          src="/src/images/header2.png"
+          alt=""
+          srcset=""
+        />
+      </div>
       <div
         class="overlay d-none d-lg-block ms-auto position-absolute top-50 end-0 translate-middle-y"
         style="max-width: 50%; padding-right: 10rem"
       >
-        <h1 class="fw-bolder cabinsketch">Browse all our Lessons.</h1>
+        <h1
+          class="fw-bolder slide-fade-in"
+          style="font-family: 'Fredoka One', cursive; color: #4481eb"
+        >
+          Browse all our Lessons.
+        </h1>
         <p class="pt-4 fw-medium">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo
-          perspiciatis assumenda suscipit fuga iure cupiditate reprehenderit ad
-          perferendis provident nobis modi voluptate sequi, quo excepturi
-          necessitatibus dolorum ullam natus quibusdam.
-          <br />
+          Explore our comprehensive science lesson designed specifically for
+          <span class="fw-bold" style="color: #4481eb"
+            >Grade <span id="userGrade">10</span> </span
+          >students. Each lesson is carefully crafted to make learning engaging
+          and effective.
         </p>
       </div>
     </div>
 
-    <div class="container pt-5">
-      <h3 class="fw-bold">Offered Lessons</h3>
+    <div class="container pt-5 fade-in">
+      <h3 class="fw-bold" style="font-family: 'Fredoka One', cursive">
+        Offered Lessons
+      </h3>
       <span class=""
         >Explore fun and educational lessons perfect for
-        <b>Grade 7 students.</b>
+        <b style="color: #4481eb">Grade <span id="userGrade"></span> </b
+        >students.
       </span>
     </div>
 
     <div class="container pt-4 pb-5">
-      <div class="row">
-        <div class="col-lg-6 col-12 mt-3">
-          <div
-            class="d-flex border p-0 rounded-3 home-item sub-item shadow lessons"
-          >
-            <img
-              class="w-50 rounded-start-3"
-              src="/src/images/biology1.png"
-              alt=""
-            />
-            <div class="ms-3" style="margin-top: 12px; margin-bottom: 12px">
-              <span class="d-block fw-bold lesson-title">Biology</span>
-              <small class="d-none d-sm-block mt-2" style="font-size: 12px">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </small>
-              <a href="selectedLesson.html"
-                ><button class="btn btn-primary mt-2">
-                  <small style="font-size: 12px">Take Lesson</small>
-                </button></a
-              >
-            </div>
+      <div class="row" id="lessonsContainer">
+        <!-- Loading indicator -->
+        <div class="col-12 text-center py-5">
+          <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-        </div>
-
-        <div class="col-lg-6 col-12 mt-3">
-          <div
-            class="d-flex border p-0 rounded-3 home-item sub-item shadow lessons"
-          >
-            <img
-              class="w-50 rounded-start-3"
-              src="/src/images/chemistry1.png"
-              alt=""
-            />
-            <div class="ms-3" style="margin-top: 12px; margin-bottom: 12px">
-              <span class="d-block fw-bold lesson-title">Chemistry</span>
-              <small class="d-none d-sm-block mt-2" style="font-size: 12px">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </small>
-              <a href="selectedLesson.html"
-                ><button class="btn btn-primary mt-2">
-                  <small style="font-size: 12px">Take Lesson</small>
-                </button></a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-12 mt-3">
-          <div
-            class="d-flex border p-0 rounded-3 home-item sub-item shadow lessons"
-          >
-            <img
-              class="w-50 rounded-start-3"
-              src="/src/images/physics1.png"
-              alt=""
-            />
-            <div class="ms-3" style="margin-top: 12px; margin-bottom: 12px">
-              <span class="d-block fw-bold lesson-title">Physics</span>
-              <small class="d-none d-sm-block mt-2" style="font-size: 12px">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </small>
-              <a href="selectedLesson.html"
-                ><button class="btn btn-primary mt-2">
-                  <small style="font-size: 12px">Take Lesson</small>
-                </button></a
-              >
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 col-12 mt-3">
-          <div
-            class="d-flex border p-0 rounded-3 home-item sub-item shadow lessons"
-          >
-            <img
-              class="w-50 rounded-start-3"
-              src="/src/images/earth_science1.png"
-              alt=""
-            />
-            <div class="ms-3" style="margin-top: 12px; margin-bottom: 12px">
-              <span class="d-block fw-bold lesson-title"
-                >Earth & Life Science</span
-              >
-              <small class="d-none d-sm-block mt-2" style="font-size: 12px">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </small>
-              <a href="selectedLesson.html"
-                ><button class="btn btn-primary mt-2">
-                  <small style="font-size: 12px">Take Lesson</small>
-                </button></a
-              >
-            </div>
-          </div>
+          <p class="mt-3">Loading your science adventures...</p>
         </div>
       </div>
     </div>
@@ -362,7 +545,7 @@
 
     <!-- START OF FOOTER -->
     <div
-      class="container-fluid"
+      class="container-fluid fade-in"
       style="
         border-top: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -378,10 +561,9 @@
               srcset=""
             />
             <p class="pt-md-5 pt-3 pe-5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
-              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
-              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
-              Quaerat, magnam.
+              MahuSci provides high-quality science education resources for
+              students and educators. Our mission is to make science learning
+              accessible, engaging, and fun for everyone.
             </p>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
@@ -390,16 +572,6 @@
               <li class="py-2">Contact Us</li>
               <li class="py-2">Latest Articles</li>
               <li class="py-2">FAQ</li>
-            </ul>
-          </div>
-          <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">COURSES</span>
-            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Biology</li>
-              <li class="py-2">Chemistry</li>
-              <li class="py-2">Physics</li>
-              <li class="py-2">Earth Science</li>
-              <li class="py-2">Astronomy</li>
             </ul>
           </div>
 
@@ -426,5 +598,159 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load user data
+        loadUserData(userData);
+
+        // Load curriculum data
+        loadCurriculum();
+      });
+      const backendURL = "https://mahusci.rubenianinternational.com/public";
+
+      const userData = JSON.parse(sessionStorage.getItem("user-data"));
+      const userGrade = userData.grade_level.split(" ")[1];
+
+      // Load user data from sessionStorage or API
+      function loadUserData(user) {
+        document.getElementById("username-desktop").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById("username-mobile").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById(
+          "role-level-desktop"
+        ).textContent = `Student | ${user.grade_level}`;
+        document.getElementById(
+          "role-level-mobile"
+        ).textContent = `Student | ${user.grade_level}`;
+
+        document.querySelectorAll("#userGrade").forEach((el) => {
+          el.textContent = `${userGrade}`;
+        });
+
+        document.querySelectorAll(".profile-picture").forEach((img) => {
+          const defaultPic = "/src/images/profile.jpg";
+          const userPic = user?.profile_picture
+            ? "https://mahusci.rubenianinternational.com/storage/app/public/" +
+              user.profile_picture
+            : null;
+
+          img.src = userPic || defaultPic;
+        });
+      }
+
+      // Load curriculum data from API
+      async function loadCurriculum() {
+        try {
+          // Show loading state
+          const container = document.getElementById("lessonsContainer");
+          container.innerHTML = `
+             <div class="col-12 text-center py-5">
+               <div class="loading-dots">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+               </div>
+               <p class="mt-3">Loading your science adventures...</p>
+             </div>
+           `;
+
+          const response = await fetch(
+            "https://mahusci.rubenianinternational.com/public/api/student/curriculum-sequences",
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch curriculum data");
+          }
+
+          const data = await response.json();
+
+          console.log(data);
+          displayCurriculum(data);
+        } catch (error) {
+          console.error("Error loading curriculum:", error);
+          document.getElementById("lessonsContainer").innerHTML = `
+             <div class="col-12 text-center py-5">
+               <p class="text-danger">Failed to load lessons. Please try again later.</p>
+               <button class="btn btn-primary mt-2" onclick="loadCurriculum()">Retry</button>
+             </div>
+           `;
+        }
+      }
+
+      // Display curriculum data with horizontal cards
+      async function displayCurriculum(curriculumData) {
+        const container = document.getElementById("lessonsContainer");
+
+        if (!curriculumData || curriculumData.length === 0) {
+          container.innerHTML = `
+             <div class="col-12 text-center py-5">
+               <p>No lessons available at the moment.</p>
+             </div>
+           `;
+          return;
+        }
+
+        let html = "";
+
+        curriculumData
+          .filter((c) => c.is_draft === "published")
+          .filter((g) => g.grades.includes(userGrade))
+          .forEach((lesson) => {
+            const hasImage =
+              lesson.curriculum_image && lesson.curriculum_image.trim() !== "";
+
+            html += `
+             <div class="col-lg-6 col-12 mb-4">
+               <div class="d-flex horizontal-card border">
+                 <div class="card-image-container">
+                   ${
+                     hasImage
+                       ? `<img class="card-image" src="${
+                           "https://mahusci.rubenianinternational.com/storage/app/public/" +
+                           lesson.curriculum_image
+                         }" alt="${lesson.title}" />`
+                       : `<div class="placeholder-image">
+                         <span>${lesson.title}</span>
+                        </div>`
+                   }
+                 </div>
+                 <div class="card-content">
+                   <p class="card-description">${lesson.description}</p>
+                   <div class="card-button-container">
+                     <a href="/student/selectedLesson.html?curriculum_id=${
+                       lesson.id
+                     }">
+                       <div class="text-end"><button class="btn-lesson" style="font-size: 12px">Start Learning </button></div>
+                     </a>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           `;
+          });
+
+        container.innerHTML = html;
+      }
+
+      // Helper function to get initials for placeholder
+      function getInitials(title) {
+        return title
+          .split(" ")
+          .map((word) => word[0])
+          .join("")
+          .toUpperCase()
+          .substring(0, 3);
+      }
+    </script>
   </body>
 </html>

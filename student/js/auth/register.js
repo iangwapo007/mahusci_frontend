@@ -39,9 +39,9 @@ form_register.onsubmit = async (e) => {
 
     form_register.reset();
     // Redirect to login page
-    // setTimeout(() => {
-    //   window.location.pathname = "/login.html";
-    // }, 5000);
+    setTimeout(() => {
+      window.location.pathname = "/index.html";
+    }, 2000);
   }
   // Get response if 422 status code | IF DILI OKAY
   else if (response.status == 422) {

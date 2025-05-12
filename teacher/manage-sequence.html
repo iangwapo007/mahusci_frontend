@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Sequences</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
+    <style>
+      :root {
+        --primary-color: #447ee2;
+        --secondary-color: #447ee2;
+        --accent-color: #447ee2;
+        --success-color: #4caf50;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --gray-color: #6c757d;
+        --border-radius: 12px;
+        --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 20px 0;
+        overflow-y: auto;
+      }
+
+      .sidebar-header {
+        padding: 0 10px 10px;
+        border-bottom: 1px solid #e9e9e9;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .sidebar-logo {
+        width: 160px;
+      }
+
+      .sidebar-nav {
+        padding: 0 15px;
+      }
+
+      .nav-item {
+        margin-bottom: 5px;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-radius: 8px;
+        color: #333;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background-color: rgba(68, 126, 226, 0.1);
+        color: var(--primary-color);
+      }
+
+      .nav-link i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+      }
+
+      .profile-section {
+        padding: 15px 20px;
+        border-top: 1px solid #eee;
+        margin-top: auto;
+      }
+
+      .profile-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .profile-picture {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+        border: 2px solid #447ee2;
+      }
+
+      .profile-name {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .profile-role {
+        font-size: 12px;
+        color: var(--gray-color);
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        padding: 30px;
+        margin-left: 300px;
+      }
+
+      /* Rest of your existing styles */
+      body {
+        background-color: #f5f7fa;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        padding-top: 0;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+      }
+
+      .modal-header {
+        background-color: var(--primary-color);
+      }
+
+      .btn {
+        border-radius: 8px;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: var(--transition);
+      }
+
+      .display-4 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .lead {
+        font-size: 1.2rem;
+        color: var(--gray-color);
+        font-weight: 400;
+      }
+
+      .sequence-card {
+        transition: var(--transition);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin-bottom: 20px;
+        background: white;
+      }
+
+      .sequence-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .sequence-item {
+        padding: 10px 15px;
+        margin-bottom: 5px;
+        background-color: rgba(248, 249, 250, 0.7);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+      }
+
+      .sequence-item.lesson {
+        border-left: 3px solid var(--accent-color);
+      }
+
+      .sequence-item.assessment {
+        border-left: 3px solid var(--success-color);
+      }
+
+      .item-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        margin-right: 10px;
+      }
+
+      .badge-lesson {
+        background-color: rgba(68, 126, 226, 0.2);
+        color: #1a4a9b;
+      }
+
+      .badge-assessment {
+        background-color: rgba(76, 175, 80, 0.2);
+        color: #2e7d32;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px;
+        color: var(--gray-color);
+        border: 2px dashed #dee2e6;
+        border-radius: var(--border-radius);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        body {
+          padding-left: 0;
+        }
+
+        .sidebar {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+        }
+
+        .sidebar.active {
+          transform: translateX(0);
+        }
+
+        .main-content {
+          width: 100%;
+          margin-left: 0;
+          padding: 20px;
+        }
+
+        .sidebar-toggle {
+          display: block !important;
+        }
+      }
+
+      .sidebar-toggle {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
+        display: none;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="fullscreen-spinner d-none d-flex justify-content-center align-items-center bg-white"
+    >
+      <div class="spinner"></div>
+    </div>
+
+    <style>
+      .fullscreen-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+      }
+
+      .spinner {
+        width: 90px;
+        height: 90px;
+        display: grid;
+      }
+
+      .spinner::before,
+      .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        background: radial-gradient(farthest-side, #cb6ce6 92%, #0000) 50% 0,
+          /* Top - M */ radial-gradient(farthest-side, #7ed957 92%, #0000) 50%
+            100%,
+          /* Bottom - a */ radial-gradient(farthest-side, #ffde59 92%, #0000)
+            100% 50%,
+          /* Right - h */ radial-gradient(farthest-side, #ff914d 92%, #0000) 0
+            50%; /* Left - u */
+        background-size: 20.4px 20.4px;
+        background-repeat: no-repeat;
+        animation: spinner-3hs4a3 1s infinite;
+      }
+
+      .spinner::before {
+        margin: 4.5px;
+        background-size: 13px 13px;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spinner-3hs4a3 {
+        100% {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <img
+          src="/src/images/mahusci-banner-logo.png"
+          class="sidebar-logo"
+          alt="Logo"
+        />
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+          <!-- GENERAL -->
+          <li
+            class="nav-label text-uppercase text-muted px-3 small"
+            style="font-size: 13px; color: #447ee2 !important"
+          >
+            General
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/dashboard.html">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+
+          <!-- MANAGEMENT -->
+          <li
+            class="nav-label text-uppercase text-muted px-3 mt-3 small"
+            style="font-size: 13px; color: #447ee2 !important"
+          >
+            Management
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/lessons.html">
+              <i class="fas fa-book"></i>
+              <span> Lessons</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/assessments.html">
+              <i class="fas fa-clipboard-list"></i>
+              <span>Assessments</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/teacher/manage-sequence.html">
+              <i class="fas fa-project-diagram"></i>
+              <span> Sequences</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/curriculum-sequence.html">
+              <i class="fas fa-sitemap"></i>
+              <span class="text-nowrap"> Curriculum Sequence</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/student-results.html">
+              <i class="fas fa-user-graduate"></i>
+              <span> Student Results</span>
+            </a>
+          </li>
+
+          <!-- CREATION -->
+          <li
+            class="nav-label text-uppercase text-muted px-3 mt-3 small pb-1"
+            style="font-size: 13px; color: #447ee2 !important"
+          >
+            Creation
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/sequence-builder.html">
+              <i class="fas fa-cogs"></i>
+              <span>Sequence Builder</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/create-lesson.html">
+              <i class="fas fa-plus-circle"></i>
+              <span>Create Lesson</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/teacher/create-assessment.html">
+              <i class="fas fa-plus-square"></i>
+              <span>Create Assessment</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- PROFILE -->
+      <div class="profile-section mt-4">
+        <a href="myProfile.html" class="text-decoration-none text-reset">
+          <div class="profile-info d-flex align-items-center px-3 py-2">
+            <img
+              src="/src/images/teacher-profile.png"
+              class="profile-picture me-2"
+              alt="Profile"
+            />
+            <div>
+              <div class="profile-name fw-semibold">Ms. Rodriguez</div>
+              <div class="profile-role text-muted small">Science Teacher</div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="w-75 btn-primary btn mt-1" id="btn_logout">
+          logout
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container py-5">
+        <div class="row mb-4">
+          <div class="col-12 text-center">
+            <h3 class="display-4 fw-bold mb-3">My Sequences</h3>
+            <p class="lead">
+              Manage and organize your lesson and assessment sequences
+            </p>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="input-group" style="max-width: 400px">
+                <span class="input-group-text"
+                  ><i class="fas fa-search"></i
+                ></span>
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control"
+                  placeholder="Search sequences..."
+                />
+              </div>
+              <a href="sequence-builder.html" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-2"></i>Create New Sequence
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div id="sequencesContainer">
+              <div class="text-center py-5">
+                <div class="spinner-border text-primary"></div>
+                <p class="mt-3">Loading sequences...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Sequence Modal -->
+        <div
+          class="modal fade"
+          id="editSequenceModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Edit Sequence</h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div id="modalLoading" class="text-center py-5">
+                  <div class="spinner-border text-primary"></div>
+                  <p class="mt-3">Loading sequence details...</p>
+                </div>
+                <div id="modalContent" class="d-none">
+                  <div class="mb-4">
+                    <label for="editSequenceTitle" class="form-label"
+                      >Sequence Title</label
+                    >
+                    <input
+                      type="text"
+                      id="editSequenceTitle"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Sequence Items</label>
+                    <div id="editSequenceItems" class="sortable-list">
+                      <!-- Items will be loaded here -->
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between mt-4">
+                    <button
+                      id="addLessonToSequence"
+                      class="btn btn-outline-primary"
+                    >
+                      <i class="fas fa-book me-2"></i>Add Lesson
+                    </button>
+                    <button
+                      id="addAssessmentToSequence"
+                      class="btn btn-outline-success"
+                    >
+                      <i class="fas fa-clipboard-check me-2"></i>Add Assessment
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  id="saveSequenceChanges"
+                  class="btn btn-primary"
+                >
+                  <i class="fas fa-save me-2"></i>Save Changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Items Modal -->
+        <div
+          class="modal fade"
+          id="addItemsModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addItemsModalTitle">Add Items</h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <span class="input-group-text"
+                    ><i class="fas fa-search"></i
+                  ></span>
+                  <input
+                    type="text"
+                    id="itemsSearchInput"
+                    class="form-control"
+                    placeholder="Search..."
+                  />
+                </div>
+                <div
+                  id="itemsLibrary"
+                  style="max-height: 400px; overflow-y: auto"
+                >
+                  <!-- Items will be loaded here -->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  id="addSelectedItems"
+                  class="btn btn-primary"
+                  disabled
+                >
+                  <i class="fas fa-plus me-2"></i>Add Selected
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div
+          class="modal fade"
+          id="confirmModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title">Confirm Action</h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="confirmModalBody">
+                Are you sure you want to perform this action?
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  id="confirmAction"
+                  class="btn btn-warning"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Toggle sidebar on mobile
+      document
+        .getElementById("sidebarToggle")
+        .addEventListener("click", function () {
+          document.querySelector(".sidebar").classList.toggle("active");
+        });
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener("click", function (event) {
+        const sidebar = document.querySelector(".sidebar");
+        const toggleBtn = document.getElementById("sidebarToggle");
+
+        if (
+          window.innerWidth <= 992 &&
+          !sidebar.contains(event.target) &&
+          event.target !== toggleBtn &&
+          !toggleBtn.contains(event.target)
+        ) {
+          sidebar.classList.remove("active");
+        }
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+      const userData = JSON.parse(sessionStorage.getItem("user-data"));
+      document.querySelector(".profile-name").textContent =
+        userData.firstname + " " + userData.lastname || "-";
+      document.querySelector(".profile-role").textContent =
+        userData.role || "-";
+
+      // Profile picture
+      if (userData.profile_picture) {
+        document.querySelector(
+          ".profile-picture"
+        ).src = `https://mahusci.rubenianinternational.com/storage/app/public/${userData.profile_picture}`;
+      } else {
+        document.querySelector(".profile-picture").src =
+          "/src/images/profile.jpg";
+      }
+      // Global variables
+      let sequences = [];
+      let currentEditingSequence = null;
+      let editSequenceSortable = null;
+
+      // DOM Elements
+      const sequencesContainer = document.getElementById("sequencesContainer");
+      const editSequenceModal = new bootstrap.Modal("#editSequenceModal");
+      const addItemsModal = new bootstrap.Modal("#addItemsModal");
+      const confirmModal = new bootstrap.Modal("#confirmModal");
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadSequences();
+        setupEventListeners();
+      });
+
+      function setupEventListeners() {
+        // Search input
+        document
+          .getElementById("searchInput")
+          .addEventListener("input", function () {
+            filterSequences(this.value);
+          });
+
+        // Edit sequence modal buttons
+        document
+          .getElementById("addLessonToSequence")
+          .addEventListener("click", function () {
+            showAddItemsModal("lesson");
+          });
+
+        document
+          .getElementById("addAssessmentToSequence")
+          .addEventListener("click", function () {
+            showAddItemsModal("assessment");
+          });
+
+        document
+          .getElementById("saveSequenceChanges")
+          .addEventListener("click", saveSequenceChanges);
+
+        // Add items modal
+        document
+          .getElementById("itemsSearchInput")
+          .addEventListener("input", function () {
+            filterItems(this.value);
+          });
+
+        document
+          .getElementById("addSelectedItems")
+          .addEventListener("click", addSelectedItemsToSequence);
+      }
+
+      function loadSequences() {
+        fetch(
+          "https://mahusci.rubenianinternational.com/public/api/sequences",
+          {
+            headers: {
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+              Accept: "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            sequences = data;
+            displaySequences(sequences);
+          })
+          .catch((error) => {
+            console.error("Error loading sequences:", error);
+            sequencesContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        Failed to load sequences. Please try again.
+                    </div>
+                `;
+          });
+      }
+
+      function displaySequences(sequencesToDisplay) {
+        if (sequencesToDisplay.length === 0) {
+          sequencesContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-list-ul fa-3x mb-3"></i>
+                        <h4>No Sequences Found</h4>
+                        <p>You haven't created any sequences yet.</p>
+                        <a href="sequence-builder.html" class="btn btn-primary mt-3">
+                            <i class="fas fa-plus-circle me-2"></i>Create Your First Sequence
+                        </a>
+                    </div>
+                `;
+          return;
+        }
+
+        let html = "";
+        sequencesToDisplay.forEach((sequence) => {
+          html += `
+                    <div class="card sequence-card mb-4" data-id="${
+                      sequence.id
+                    }">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div><h5>${sequence.title}</h5>
+                                 <span style="font-size: 12px; color: #447ee2">Quarter ${
+                                   sequence.quarter
+                                 }</span></div>
+                                <div>
+                                    <small class="text-muted me-3">
+                                        Created: ${formatDate(
+                                          sequence.created_at
+                                        )}
+                                    </small>
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-outline-primary edit-sequence-btn" data-id="${
+                                          sequence.id
+                                        }">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger delete-sequence-btn" data-id="${
+                                          sequence.id
+                                        }">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sequence-items-container">
+                                ${sequence.items
+                                  .map(
+                                    (item) => `
+                                    <div class="sequence-item ${
+                                      item.item_type
+                                    }">
+                                        <span class="item-badge ${
+                                          item.item_type === "lesson"
+                                            ? "badge-lesson"
+                                            : "badge-assessment"
+                                        }">
+                                            ${
+                                              item.item_type === "lesson"
+                                                ? '<i class="fas fa-book me-1"></i> Lesson'
+                                                : '<i class="fas fa-clipboard-check me-1"></i> Assessment'
+                                            }
+                                        </span>
+                                        <span>${item.title}</span>
+                                    </div>
+                                `
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                    </div>
+                `;
+        });
+
+        sequencesContainer.innerHTML = html;
+
+        // Add event listeners to buttons
+        document.querySelectorAll(".edit-sequence-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const sequenceId = this.dataset.id;
+            openEditSequenceModal(sequenceId);
+          });
+        });
+
+        document.querySelectorAll(".delete-sequence-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const sequenceId = this.dataset.id;
+            confirmDeleteSequence(sequenceId);
+          });
+        });
+      }
+
+      function filterSequences(searchTerm) {
+        if (!searchTerm) {
+          displaySequences(sequences);
+          return;
+        }
+
+        const filtered = sequences.filter(
+          (sequence) =>
+            sequence.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            sequence.items.some((item) =>
+              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        );
+
+        displaySequences(filtered);
+      }
+
+      function openEditSequenceModal(sequenceId) {
+        const sequence = sequences.find((s) => s.id == sequenceId);
+        if (!sequence) return;
+
+        currentEditingSequence = sequence;
+
+        // Show loading state
+        document.getElementById("modalLoading").classList.remove("d-none");
+        document.getElementById("modalContent").classList.add("d-none");
+
+        // Set title
+        document.getElementById("editSequenceTitle").value = sequence.title;
+
+        // Load items
+        const itemsContainer = document.getElementById("editSequenceItems");
+        itemsContainer.innerHTML = sequence.items
+          .map(
+            (item) => `
+                <div class="sequence-item ${item.item_type} mb-2" data-id="${
+              item.item_id
+            }" data-type="${item.item_type}" data-title="${item.title}">
+                    <span class="item-badge ${
+                      item.item_type === "lesson"
+                        ? "badge-lesson"
+                        : "badge-assessment"
+                    }">
+                        ${
+                          item.item_type === "lesson"
+                            ? '<i class="fas fa-book me-1"></i> Lesson'
+                            : '<i class="fas fa-clipboard-check me-1"></i> Assessment'
+                        }
+                    </span>
+                    <span class="flex-grow-1">${item.title}</span>
+                    <button class="btn btn-sm btn-outline-danger remove-item-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `
+          )
+          .join("");
+
+        // Initialize sortable
+        if (editSequenceSortable) {
+          editSequenceSortable.destroy();
+        }
+
+        editSequenceSortable = new Sortable(itemsContainer, {
+          animation: 150,
+          ghostClass: "sortable-ghost",
+          onEnd: function () {
+            // Update positions if needed
+          },
+        });
+
+        // Add event listeners to remove buttons
+        document.querySelectorAll(".remove-item-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            this.closest(".sequence-item").remove();
+          });
+        });
+
+        // Show content
+        document.getElementById("modalLoading").classList.add("d-none");
+        document.getElementById("modalContent").classList.remove("d-none");
+
+        // Show modal
+        editSequenceModal.show();
+      }
+
+      function showAddItemsModal(itemType) {
+        const modalTitle =
+          itemType === "lesson" ? "Add Lessons" : "Add Assessments";
+        document.getElementById("addItemsModalTitle").textContent = modalTitle;
+        console.log(itemType);
+        // Load items
+        fetch(
+          `https://mahusci.rubenianinternational.com/public/api/sequence-builder/${itemType}s`,
+          {
+            headers: {
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+              Accept: "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            const itemsLibrary = document.getElementById("itemsLibrary");
+            itemsLibrary.innerHTML = data
+              .map(
+                (item) => `
+                    <div class="form-check mb-2 library-item" data-id="${
+                      item.id
+                    }"  data-title="${item.title}">
+                        <input class="form-check-input item-checkbox" type="checkbox" value="${
+                          item.id
+                        }" id="item-${item.id}">
+                        <label class="form-check-label" for="item-${item.id}">
+                            ${item.title}
+                            <small class="text-muted d-block">
+                                ${
+                                  itemType === "lesson"
+                                    ? `${item.subject} • ${item.quarter}`
+                                    : `${formatType(item.type)} • ${
+                                        item.questions_count
+                                      } questions`
+                                }
+                            </small>
+                        </label>
+                    </div>
+                `
+              )
+              .join("");
+
+            // Add event listeners to checkboxes
+            document.querySelectorAll(".item-checkbox").forEach((checkbox) => {
+              checkbox.addEventListener("change", function () {
+                const anyChecked =
+                  document.querySelectorAll(".item-checkbox:checked").length >
+                  0;
+                document.getElementById("addSelectedItems").disabled =
+                  !anyChecked;
+              });
+            });
+
+            // Show modal
+            addItemsModal.show();
+          })
+          .catch((error) => {
+            console.error(`Error loading ${itemType}s:`, error);
+            document.getElementById("itemsLibrary").innerHTML = `
+                    <div class="alert alert-danger">
+                        Failed to load ${itemType}s. Please try again.
+                    </div>
+                `;
+            addItemsModal.show();
+          });
+      }
+
+      function filterItems(searchTerm) {
+        const items = document.querySelectorAll(".library-item");
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(searchTerm.toLowerCase())
+            ? "block"
+            : "none";
+        });
+      }
+
+      function addSelectedItemsToSequence() {
+        const checkedBoxes = document.querySelectorAll(
+          ".item-checkbox:checked"
+        );
+        const itemsContainer = document.getElementById("editSequenceItems");
+
+        checkedBoxes.forEach((checkbox) => {
+          const itemId = checkbox.value;
+          const itemType = document
+            .getElementById("addItemsModalTitle")
+            .textContent.includes("Lesson")
+            ? "lesson"
+            : "assessment";
+          const itemTitle = checkbox.nextElementSibling.textContent
+            .trim()
+            .split("\n")[0];
+
+          // Check if item already exists in sequence
+          if (
+            itemsContainer.querySelector(
+              `.sequence-item[data-id="${itemId}"][data-type="${itemType}"]`
+            )
+          ) {
+            alert("Already exists in the sequence");
+            return;
+          }
+
+          const itemHtml = `
+                    <div class="sequence-item ${itemType} mb-2" data-id="${itemId}" data-type="${itemType}" data-title="${itemTitle}">
+                        <span class="item-badge ${
+                          itemType === "lesson"
+                            ? "badge-lesson"
+                            : "badge-assessment"
+                        }">
+                            ${
+                              itemType === "lesson"
+                                ? '<i class="fas fa-book me-1"></i> Lesson'
+                                : '<i class="fas fa-clipboard-check me-1"></i> Assessment'
+                            }
+                        </span>
+                        <span class="flex-grow-1">${itemTitle}</span>
+                        <button class="btn btn-sm btn-outline-danger remove-item-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+
+          itemsContainer.insertAdjacentHTML("beforeend", itemHtml);
+
+          // Add event listener to new remove button
+          itemsContainer.lastElementChild
+            .querySelector(".remove-item-btn")
+            .addEventListener("click", function () {
+              this.closest(".sequence-item").remove();
+            });
+        });
+
+        addItemsModal.hide();
+      }
+
+      function saveSequenceChanges() {
+        const newTitle = document
+          .getElementById("editSequenceTitle")
+          .value.trim();
+        if (!newTitle) {
+          alert("Please enter a title for your sequence");
+          return;
+        }
+
+        const itemsContainer = document.getElementById("editSequenceItems");
+        const items = Array.from(itemsContainer.children)
+          .filter((item) => item.classList.contains("sequence-item"))
+          .map((item, index) => ({
+            id: item.dataset.id,
+            type: item.dataset.type,
+            position: index,
+            title: item.dataset.title,
+          }));
+
+        if (items.length === 0) {
+          alert("Please add at least one item to your sequence");
+          return;
+        }
+
+        const sequenceData = {
+          title: newTitle,
+          items: items,
+        };
+
+        console.log(sequenceData);
+
+        fetch(
+          `https://mahusci.rubenianinternational.com/public/api/sequences/${currentEditingSequence.id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+            body: JSON.stringify(sequenceData),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Sequence updated:", data);
+            editSequenceModal.hide();
+            loadSequences(); // Refresh the list
+          })
+          .catch((error) => {
+            console.error("Error updating sequence:", error);
+            alert("Failed to update sequence. Please try again.");
+          });
+      }
+
+      function confirmDeleteSequence(sequenceId) {
+        const sequence = sequences.find((s) => s.id == sequenceId);
+        if (!sequence) return;
+
+        document.getElementById("confirmModalBody").innerHTML = `
+                Are you sure you want to delete the sequence <strong>"${sequence.title}"</strong>?
+                This action cannot be undone.
+            `;
+
+        document.getElementById("confirmAction").onclick = function () {
+          deleteSequence(sequenceId);
+          confirmModal.hide();
+        };
+
+        confirmModal.show();
+      }
+
+      async function deleteSequence(sequenceId) {
+        fetch(
+          `https://mahusci.rubenianinternational.com/public/api/sequences/${sequenceId}`,
+          {
+            method: "DELETE",
+            headers: {
+              Accept: "application/json",
+              Authorization: "Bearer " + sessionStorage.getItem("token"),
+            },
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              loadSequences(); // Refresh the list
+            } else {
+              throw new Error("Failed to delete sequence");
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting sequence:", error);
+            alert("Failed to delete sequence. Please try again.");
+          });
+      }
+
+      // Helper functions
+      function formatDate(dateString) {
+        const options = { year: "numeric", month: "short", day: "numeric" };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      }
+
+      function formatType(type) {
+        const types = {
+          multiple_choice: "Multiple Choice",
+          true_false: "True/False",
+          essay: "Essay",
+          short_answer: "Short Answer",
+          matching: "Matching",
+          fill_blank: "Fill in Blank",
+          comparison_table: "Comparison Table",
+          mind_mapping: "Mind Mapping",
+          "4pics1word": "4 Pics 1 Word",
+        };
+        return types[type] || type;
+      }
+    </script>
+  </body>
+</html>

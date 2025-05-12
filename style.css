@@ -11,7 +11,8 @@ body {
   background-image: url(src/images/register.png);
 }
 
-.form, .form_register {
+.form,
+.form_register {
   background-color: white;
   border-radius: 20px;
   box-sizing: border-box;
@@ -99,7 +100,7 @@ span {
   cursor: pointer;
   font-weight: 500;
   height: 50px;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
   width: 100%;
   transition: background-color 0.2s ease;

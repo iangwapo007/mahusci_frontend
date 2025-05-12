@@ -15,24 +15,193 @@
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet" />
     <link
-      href="https://fonts.googleapis.com/css?family=Cabin Sketch"
+      href="https://fonts.googleapis.com/css?family=Jost"
       rel="stylesheet"
     />
-    <script type="module" src="./js/system/home.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
+      rel="stylesheet"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
+    <style>
+      /* Locked card styling */
+      .locked-card {
+        position: relative;
+        opacity: 0.7;
+      }
+
+      .locked-overlay {
+        cursor: not-allowed !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        z-index: 2;
+      }
+
+      .lock-icon {
+        font-size: 2rem;
+        color: #cb6ce6;
+        margin-bottom: 10px;
+      }
+
+      .btn:hover {
+        background-color: #c655e5 !important;
+      }
+
+      .grade-item {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .grade-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(68, 126, 226, 0.2);
+      }
+
+      /* Navbar hover effects */
+      .hover-effect:hover {
+        color: #cb6ce6;
+        transform: translateY(-2px);
+        text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2);
+      }
+
+      .hover-effect-active {
+        color: #cb6ce6;
+        /* text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2); */
+      }
+
+      /* Navbar hover effects */
+      .nav-link-hover {
+        font-family: "Fredoka One", cursive;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link-hover:hover::after {
+        width: 100%;
+      }
+
+      .nav-link-hover:hover {
+        color: #cb6ce6 !important;
+      }
+
+      /* Profile picture styles */
+      .profile-picture {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #cb6ce6;
+        transition: all 0.3s ease;
+      }
+
+      .text-primary {
+        color: #cb6ce6 !important;
+      }
+
+      .btn-primary {
+        border: none;
+        background-color: #cb6ce6;
+      }
+
+      .btn {
+        border-radius: 8px;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: all 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in-out forwards;
+        animation-delay: 0.1s; /* Adjust delay as needed */
+      }
+
+      @keyframes slideFadeIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .slide-fade-in {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFadeIn 0.8s ease-out forwards;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+
+      @keyframes bounceFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        40% {
+          opacity: 1;
+          transform: translateY(-10px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(5px);
+        }
+        80% {
+          transform: translateY(-5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .bounce-fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: bounceFadeUp 1.2s ease-out forwards;
+      }
+    </style>
   </head>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
     <div
-      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow-sm"
       style="padding: 5px 150px 5px 150px"
     >
       <div class="py-3">
         <img
           src="/src/images/mahusci-banner-logo.png"
-          style="width: 180px"
+          style="width: 150px"
           alt=""
           srcset=""
         />
@@ -41,8 +210,8 @@
       <div class="d-flex justify-content-between">
         <a class="text-decoration-none" href="/student/home.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover hover-effect-active flex-fill text-center col"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Home
           </span></a
         >
@@ -50,7 +219,7 @@
         <a class="text-decoration-none" href="/student/lessons.html"
           ><span
             class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Lessons
           </span></a
         >
@@ -58,7 +227,7 @@
         <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
             class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 170px"
+            style="font-weight: 700; font-size: 17px; width: 170px"
             >My Learnings
           </span></a
         >
@@ -69,7 +238,7 @@
           class="py-4 d-flex align-items-center float-end"
           style="margin-top: -20px; margin-bottom: -20px"
         >
-          <div class="pe-2">
+          <div class="pe-1">
             <img
               class="profile-picture"
               src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
@@ -80,11 +249,16 @@
           <div class="px-2">
             <span
               id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                color: #cb6ce6;
+              "
             ></span>
             <span
               id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
+              style="font-size: 11px; display: block; line-height: 1"
             ></span>
           </div>
         </div>
@@ -134,8 +308,8 @@
             <div class="d-flex align-items-center rounded-3 mb-4">
               <div>
                 <img
-                  class="profile-picture-offcanvas"
-                  src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+                  class="profile-picture"
+                  src="/src/images/profile.jpg"
                   alt=""
                   srcset=""
                 />
@@ -235,18 +409,33 @@
       />
       <div
         class="overlay d-none d-lg-block"
-        style="margin-top: -420px; margin-left: 200px; padding-right: 800px"
+        style="margin-top: -420px; margin-left: 200px"
       >
-        <h1 class="fw-bolder cabinsketch">Welcome to MahuSci!</h1>
-        <p class="pt-4 fw-medium">
-          "Unlock knowledge, one lesson at a time! Our platform makes learning
-          engaging and accessible, offering expert-designed courses and
+        <h1
+          class="fw-bolder bounce-fade-up"
+          style="font-family: 'Fredoka One', cursive"
+        >
+          Welcome to <span style="color: #cb6ce6">M</span
+          ><span style="color: #7ed957">a</span
+          ><span style="color: #ffde59">h</span
+          ><span style="color: #ff914d">u</span
+          ><span style="color: #4481eb">Sci</span>!
+        </h1>
+        <p
+          class="pt-4 fw-medium"
+          style="width: 700px; font-size: 17.5px !important"
+        >
+          Unlock knowledge, one lesson at a time! Our platform makes learning
+          engaging and accessible, offering expert-designed curriculum and
           interactive materials. Whether you're exploring new subjects or
           deepening your understanding, we provide the tools to help you grow at
-          your own pace. Start your journey today!"
+          your own pace. Start your journey today!
           <br />
-          <a href="allCategories.html">
-            <button class="mt-4 btn btn-primary rounded-5 px-5 py-3">
+          <a href="lessons.html">
+            <button
+              class="mt-4 btn rounded-5 px-4"
+              style="padding: 12px 0px; background-color: #cb6ce6; color: white"
+            >
               <span>Get Started!</span>
             </button>
           </a>
@@ -267,84 +456,25 @@
     <div class="container px-5 p-5">
       <div class="d-flex align-items-center justify-content-between pb-4">
         <div>
-          <span class="fw-bold fs-3 d-block">Grade Levels</span>
-          <span class="fs-5"
+          <span
+            class="fw-bold fs-3 d-block"
+            style="font-family: 'Fredoka One', cursive"
+            >Grade Levels</span
+          >
+          <span class="fs-6"
             >Lessons designed for <b>Grade Levels 7 to 12</b></span
           >
         </div>
       </div>
 
       <div class="container pb-5">
-        <div class="row px-lg-5 mx-lg-5 fw-medium">
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 7</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
+        <div class="row px-lg-5 mx-lg-5 fw-medium" id="gradeLevelsContainer">
+          <!-- Grade levels will be loaded here dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
             </div>
-          </div>
-
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 8</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 9</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 10</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 11</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-lg-4">
-            <div
-              class="py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item"
-              style="border: 1px solid #5a95fd"
-            >
-              <span class="fs-5 fw-bold text-primary">Grade 12</span>
-              <div class="mt-2">
-                <span class="d-block"> 10 Lessons</span>
-              </div>
-            </div>
+            <p class="mt-3">Loading grade levels...</p>
           </div>
         </div>
       </div>
@@ -352,7 +482,7 @@
 
     <!-- START OF FOOTER -->
     <div
-      class="container-fluid"
+      class="container-fluid fade-in"
       style="
         border-top: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
@@ -368,10 +498,9 @@
               srcset=""
             />
             <p class="pt-md-5 pt-3 pe-5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
-              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
-              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
-              Quaerat, magnam.
+              MahuSci provides high-quality science education resources for
+              students and educators. Our mission is to make science learning
+              accessible, engaging, and fun for everyone.
             </p>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
@@ -380,16 +509,6 @@
               <li class="py-2">Contact Us</li>
               <li class="py-2">Latest Articles</li>
               <li class="py-2">FAQ</li>
-            </ul>
-          </div>
-          <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">COURSES</span>
-            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Biology</li>
-              <li class="py-2">Chemistry</li>
-              <li class="py-2">Physics</li>
-              <li class="py-2">Earth Science</li>
-              <li class="py-2">Astronomy</li>
             </ul>
           </div>
 
@@ -416,5 +535,207 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const backendURL = "https://mahusci.rubenianinternational.com/public";
+        // Load user data
+        const userData = JSON.parse(sessionStorage.getItem("user-data"));
+
+        // Load user data
+        function loadUserData(user) {
+          document.getElementById("username-desktop").textContent = `${
+            user.firstname
+          } ${user.middlename !== null ? user.middlename : ""} ${
+            user.lastname
+          }`;
+          document.getElementById("username-mobile").textContent = `${
+            user.firstname
+          } ${user.middlename !== null ? user.middlename : ""} ${
+            user.lastname
+          }`;
+          document.getElementById(
+            "role-level-desktop"
+          ).textContent = `Student | ${user.grade_level}`;
+          document.getElementById(
+            "role-level-mobile"
+          ).textContent = `Student | ${user.grade_level}`;
+
+          document.querySelectorAll(".profile-picture").forEach((img) => {
+            const defaultPic = "/src/images/profile.jpg";
+            const userPic = user?.profile_picture
+              ? "https://mahusci.rubenianinternational.com/storage/app/public/" +
+                user.profile_picture
+              : null;
+
+            img.src = userPic || defaultPic;
+          });
+        }
+
+        loadUserData(userData);
+
+        // Load grade level data
+        loadGradeLevels();
+      });
+
+      // Function to fetch all paginated data
+      async function fetchAllPaginatedData(endpoint, type = "lesson") {
+        let allData = [];
+        let currentPage = 1;
+        let totalPages = 1;
+
+        try {
+          do {
+            const response = await fetch(`${endpoint}?page=${currentPage}`, {
+              headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+            });
+            if (!response.ok)
+              throw new Error(`HTTP error! status: ${response.status}`);
+
+            const data = await response.json();
+
+            console.log(data);
+
+            if (data.data && Array.isArray(data.data)) {
+              allData = [...allData, ...data.data];
+            }
+
+            if (data.meta && data.meta.last_page) {
+              totalPages = data.meta.last_page;
+              currentPage++;
+            } else {
+              if (type === "sequence") {
+                allData = data;
+              }
+              break; // No pagination data, exit loop
+            }
+          } while (currentPage <= totalPages);
+        } catch (error) {
+          console.error(`Error fetching data from ${endpoint}:`, error);
+          throw error; // Re-throw to handle in calling function
+        }
+        return allData;
+      }
+
+      // Load grade level data from API
+      async function loadGradeLevels() {
+        try {
+          const userData = JSON.parse(sessionStorage.getItem("user-data"));
+          // Get the current user's grade
+          const currentGrade = parseInt(userData.grade_level.split(" ")[1]);
+
+          // Fetch ALL curriculum sequences
+          const allCurricula = await fetchAllPaginatedData(
+            "https://mahusci.rubenianinternational.com/public/api/student/curriculum-sequences",
+            "sequence"
+          );
+
+          // Count lessons, assessments and curricula by grade
+          const gradeCounts = {};
+
+          // Initialize counts for all grades
+          for (let grade = 7; grade <= 12; grade++) {
+            gradeCounts[grade] = {
+              lessons: 0,
+              assessments: 0,
+              curricula: 0,
+            };
+          }
+
+          // Process each published curriculum
+          allCurricula
+            .filter((c) => c.is_draft === "published")
+            .forEach((curriculum) => {
+              // Count this curriculum for its grade
+              const grade = parseInt(curriculum.grades);
+              if (grade >= 7 && grade <= 12) {
+                gradeCounts[grade].curricula++;
+
+                // Count lessons and assessments in each quarter
+                curriculum.quarters.forEach((quarter) => {
+                  quarter.sequences.forEach((sequence) => {
+                    if (sequence.sequence_type === "lesson") {
+                      gradeCounts[grade].lessons++;
+                    } else if (sequence.sequence_type === "assessment") {
+                      gradeCounts[grade].assessments++;
+                    }
+                  });
+                });
+              }
+            });
+
+          // Display grade levels
+          displayGradeLevels(gradeCounts, currentGrade);
+        } catch (error) {
+          console.error("Error loading grade levels:", error);
+          document.getElementById("gradeLevelsContainer").innerHTML = `
+        <div class="col-12 text-center py-5">
+          <p class="text-danger">Failed to load grade levels. Please try again later.</p>
+          <button class="btn btn-primary mt-2" onclick="loadGradeLevels()">Retry</button>
+        </div>
+      `;
+        }
+      }
+
+      // Display grade levels with counts
+      function displayGradeLevels(gradeCounts, currentGrade) {
+        const container = document.getElementById("gradeLevelsContainer");
+        let html = "";
+
+        for (let grade = 7; grade <= 12; grade++) {
+          const isCurrentGrade = grade === currentGrade;
+          const totalItems =
+            gradeCounts[grade].lessons +
+            gradeCounts[grade].assessments +
+            gradeCounts[grade].curricula;
+
+          html += `
+        <div class="col-6 col-lg-4">
+          <div class="grade-item py-lg-5 py-2 mt-3 text-center rounded-3 d-flex flex-column justify-content-center align-items-center text-center home-item sub-item ${
+            isCurrentGrade ? "" : "locked-card"
+          }"
+               style="border: 1px solid #cb6ce6; position: relative; height: 120px;">
+            <span class="fs-5 fw-bold text-primary">Grade ${grade}</span>
+            <div class="mt-2">
+              <span class="d-block">${gradeCounts[grade].lessons} Lessons</span>
+              <span class="d-block">${
+                gradeCounts[grade].assessments
+              } Assessments</span>
+              <span class="d-block">${
+                gradeCounts[grade].curricula
+              } Curricula</span>
+            </div>
+
+            ${
+              !isCurrentGrade
+                ? `
+              <div class="locked-overlay">
+                <span class="lock-icon">🔒</span>
+                <small>Available for Grade ${grade} students</small>
+              </div>
+            `
+                : ""
+            }
+          </div>
+        </div>
+      `;
+        }
+
+        container.innerHTML = html;
+
+        // Add click event to current grade card
+        const currentGradeCard = container.querySelector(
+          `.grade-item:not(.locked-card)`
+        );
+        if (currentGradeCard) {
+          currentGradeCard.style.cursor = "pointer";
+          currentGradeCard.addEventListener("click", function () {
+            window.location.href = "/student/lessons.html";
+          });
+        }
+      }
+    </script>
   </body>
 </html>

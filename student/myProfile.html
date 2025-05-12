@@ -24,44 +24,516 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <script type="module" src="./js/system/myProfile.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
+      rel="stylesheet"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
   </head>
+  <style>
+    /* Text hover effects */
+    .hover-effect {
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    /* Navbar hover effects */
+    .hover-effect:hover {
+      color: #4481eb;
+      transform: translateY(-2px);
+      text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2);
+    }
+
+    .hover-effect-active {
+      color: #4481eb;
+    }
+
+    /* Navbar hover effects */
+    .nav-link-hover {
+      font-family: "Fredoka One", cursive;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link-hover:hover::after {
+      width: 100%;
+    }
+
+    .profile-picture {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4481eb;
+      transition: all 0.3s ease;
+    }
+
+    .profile-picture:hover {
+      box-shadow: 0 0 10px rgba(68, 126, 226, 0.7);
+    }
+
+    /* NEW STYLES ADDED */
+    :root {
+      --primary-color: #4481eb;
+      --primary-hover: #3a72d4;
+      --primary-light: rgba(68, 126, 226, 0.1);
+    }
+
+    body {
+      background-color: #f8f9fa;
+    }
+
+    /* Profile Page Enhancements */
+    .profile-container {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .profile-sidebar {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      height: 100%;
+    }
+
+    .profile-content {
+      padding: 2rem;
+    }
+
+    .profile-picture-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .profile-picture-large {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-edit-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .profile-edit-btn:hover {
+      background-color: var(--primary-hover);
+      transform: scale(1.1);
+    }
+
+    /* Info Cards */
+    .info-card {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .info-card .card-header {
+      background-color: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .info-card .card-body {
+      padding: 1.5rem;
+    }
+
+    .info-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Progress Cards */
+    .progress-card {
+      transition: all 0.3s ease;
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-card .progress {
+      height: 8px;
+      border-radius: 4px;
+      background-color: #e9ecef;
+    }
+
+    .progress-card .progress-bar {
+      background-color: var(--primary-color);
+    }
+
+    /* Scores Table - Responsive Design */
+    .scores-container {
+      overflow-x: auto;
+    }
+
+    .scores-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    .scores-table thead th {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    .scores-table tbody td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+
+    .scores-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .scores-table tbody tr:hover {
+      background-color: rgba(68, 126, 226, 0.05);
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .score-excellent {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: #28a745;
+    }
+
+    .score-good {
+      background-color: rgba(255, 193, 7, 0.1);
+      color: #ffc107;
+    }
+
+    .score-poor {
+      background-color: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+    }
+
+    /* History Items */
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-type {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .history-content {
+      flex-grow: 1;
+    }
+
+    .history-date {
+      color: #6c757d;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    /* Drag and Drop Styles */
+    .file-drop-zone {
+      border: 2px dashed var(--primary-color);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: rgba(68, 126, 226, 0.05);
+      margin-bottom: 1rem;
+    }
+
+    .file-drop-zone:hover {
+      background-color: rgba(68, 126, 226, 0.1);
+    }
+
+    .file-drop-zone.active {
+      border-color: #04befe;
+      background-color: rgba(4, 190, 254, 0.1);
+    }
+
+    .preview-image {
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 8px;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    /* Modal Enhancements */
+    .modal-content {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      background: linear-gradient(
+        135deg,
+        var(--primary-color) 0%,
+        #04befe 100%
+      );
+      color: white;
+      border-bottom: none;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-footer {
+      border-top: none;
+      background-color: #f8f9fa;
+      padding: 1rem 1.5rem;
+    }
+
+    /* Form Styling */
+    .form-floating label {
+      color: #6c757d;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #dee2e6;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(68, 126, 226, 0.25);
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .btn-outline-primary {
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 500;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .profile-sidebar {
+        margin-bottom: 2rem;
+      }
+
+      .profile-picture-container {
+        width: 120px;
+        height: 120px;
+      }
+
+      .info-card .card-body {
+        padding: 1rem;
+      }
+
+      .history-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .history-date {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .profile-content {
+        padding: 1.5rem;
+      }
+
+      .modal-dialog {
+        margin: 0.5rem;
+      }
+    }
+
+    /* Loading Spinner */
+    .spinner-border {
+      width: 1rem;
+      height: 1rem;
+      border-width: 0.15em;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: #6c757d;
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #dee2e6;
+    }
+  </style>
   <body class="poppins">
+    <div
+      class="fullscreen-spinner d-none d-flex justify-content-center align-items-center bg-white"
+    >
+      <div class="spinner"></div>
+    </div>
+
+    <style>
+      .fullscreen-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+      }
+
+      .spinner {
+        width: 90px;
+        height: 90px;
+        display: grid;
+      }
+
+      .spinner::before,
+      .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        background: radial-gradient(farthest-side, #cb6ce6 92%, #0000) 50% 0,
+          /* Top - M */ radial-gradient(farthest-side, #7ed957 92%, #0000) 50%
+            100%,
+          /* Bottom - a */ radial-gradient(farthest-side, #ffde59 92%, #0000)
+            100% 50%,
+          /* Right - h */ radial-gradient(farthest-side, #ff914d 92%, #0000) 0
+            50%; /* Left - u */
+        background-size: 20.4px 20.4px;
+        background-repeat: no-repeat;
+        animation: spinner-3hs4a3 1s infinite;
+      }
+
+      .spinner::before {
+        margin: 4.5px;
+        background-size: 13px 13px;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spinner-3hs4a3 {
+        100% {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
     <!-- START OF DESKTOP NAVBAR -->
     <div
-      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow-sm"
       style="padding: 5px 150px 5px 150px"
     >
       <div class="py-3">
         <img
           src="/src/images/mahusci-banner-logo.png"
-          style="width: 180px"
+          style="width: 150px"
           alt=""
           srcset=""
         />
       </div>
 
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-4">
         <a class="text-decoration-none" href="/student/home.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Home
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/lessons.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Lessons
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 170px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 170px"
             >My Learnings
           </span></a
         >
@@ -72,7 +544,7 @@
           class="py-4 d-flex align-items-center float-end"
           style="margin-top: -20px; margin-bottom: -20px"
         >
-          <div class="pe-2">
+          <div class="pe-1">
             <img
               class="profile-picture"
               src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
@@ -83,11 +555,16 @@
           <div class="px-2">
             <span
               id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                color: #4481eb;
+              "
             ></span>
             <span
               id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
+              style="font-size: 11px; display: block; line-height: 1"
             ></span>
           </div>
         </div>
@@ -213,7 +690,10 @@
               </a>
             </li>
           </ul>
-          <div class="position-absolute bottom-0 w-100 pb-5 ps-3">
+          <div
+            class="position-absolute bottom-0 w-100 pb-5 ps-3"
+            id="btn_logout_mobile"
+          >
             <img
               src="/src/icon/logout.png"
               alt=""
@@ -224,7 +704,7 @@
           </div>
         </div>
       </div>
-      <!-- ENF OF OFFCANVAS -->
+      <!-- END OF OFFCANVAS -->
     </div>
     <!-- END OF MOBILE NAVBAR -->
 
@@ -232,74 +712,52 @@
     <div class="container-fluid" style="margin-top: 100px; margin-bottom: 80px">
       <div class="container">
         <!-- Profile Header Section -->
-        <div class="row bg-white rounded-4 shadow">
+        <div class="row profile-container">
           <!-- Left sidebar with profile picture and stats -->
-          <div class="col-md-3 py-4 border-end">
+          <div class="col-md-3 py-4 profile-sidebar">
             <div class="d-flex flex-column align-items-center">
               <!-- Profile picture with edit icon overlay -->
-              <div class="position-relative mb-3">
+              <div class="profile-picture-container">
                 <img
+                  id="profile-picture-preview"
                   src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
-                  class="rounded-circle"
+                  class="profile-picture-large"
                   alt="Profile Picture"
-                  style="width: 120px; height: 120px; object-fit: cover"
                 />
-                <div
-                  class="position-absolute bottom-0 end-0 bg-primary rounded-circle d-flex align-items-center justify-content-center"
-                  style="width: 32px; height: 32px; cursor: pointer"
-                  title="Change profile picture"
+                <button
+                  class="profile-edit-btn"
+                  title="Upload New Photo"
+                  data-bs-toggle="modal"
+                  data-bs-target="#profilePic"
                 >
-                  <img
-                    src="/src/icon/edit.png"
-                    alt="Edit"
-                    style="
-                      width: 16px;
-                      height: 16px;
-                      filter: brightness(0) invert(1);
-                    "
-                  />
-                </div>
+                  <i class="fas fa-camera" style="font-size: 16px"></i>
+                </button>
               </div>
 
-              <div
-                class="d-flex align-items-center justify-content-center mb-1"
+              <div class="text-center mb-3">
+                <h4 class="fw-bold mb-1" id="username-header"></h4>
+                <p class="text-muted mb-2" id="email-header"></p>
+                <span class="badge bg-primary bg-opacity-10 text-primary">
+                  <i class="fas fa-graduation-cap me-1"></i>
+                  <span id="grade-level-badge"></span>
+                </span>
+              </div>
+
+              <!-- Edit account details button -->
+              <button
+                class="btn btn-primary btn-sm mb-3 w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#personalInfoModal"
               >
-                <h4 class="fw-bold text-center mb-0 me-2">
-                  Gagawin ko ang lahat para sa fudgee bar
-                </h4>
-              </div>
-
-              <!-- Email with edit button -->
-              <div
-                class="d-flex align-items-center justify-content-center mb-3"
-              >
-                <p class="text-muted text-center mb-0 me-2">
-                  student@mahusci.edu
-                </p>
-              </div>
-
-              <!-- Edit profile button -->
-              <button class="btn btn-outline-primary btn-sm mb-3 w-75">
-                Edit Profile
+                <i class="fas fa-edit me-2"></i>Edit Profile
               </button>
 
               <!-- Navigation buttons -->
               <div class="w-100 mt-4">
-                <div class="list-group">
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action d-flex align-items-center active"
-                    style="background-color: #5995fd; border-color: #5995fd"
-                  >
-                    <i
-                      class="fas fa-dashboard me-2"
-                      style="font-size: 16px"
-                    ></i>
-                    Dashboard
-                  </a>
+                <div class="list-groups">
                   <button
                     id="btn_logout"
-                    class="list-group-item list-group-item-action d-flex align-items-center"
+                    class="list-group-item list-group-item-action d-flex align-items-center rounded-3 mb-2 w-100 text-start"
                   >
                     <i
                       class="fas fa-sign-out-alt me-2"
@@ -313,107 +771,70 @@
           </div>
 
           <!-- Main content area -->
-          <div class="col-md-9 py-4 px-4">
+          <div class="col-md-9 py-4 profile-content">
             <!-- Profile Information Card -->
-            <div class="card shadow-sm mb-4">
+            <div class="info-card">
               <div
-                class="card-header bg-white d-flex justify-content-between align-items-center"
+                class="card-header d-flex justify-content-between align-items-center"
               >
-                <h5 class="mb-0 fw-bold">Profile Information</h5>
-                <button class="btn btn-sm btn-outline-primary">
-                  Edit All Information
+                <h5 class="mb-0 fw-bold">Personal Information</h5>
+                <button
+                  id="btn_edit"
+                  class="btn btn-sm btn-outline-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#personalInfoModal"
+                >
+                  <i class="fas fa-edit me-1"></i>Edit
                 </button>
               </div>
               <div class="card-body">
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >First Name</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Ian Emmanuele</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Username</label>
+                      <p class="info-value mb-0" id="username-detail"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Middle Name</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">-</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">First Name</label>
+                      <p class="info-value mb-0" id="firstname"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Last Name</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Generalao</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Middle Name</label>
+                      <p class="info-value mb-0" id="middlename"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted">Age</label>
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">13 Years Old</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Last Name</label>
+                      <p class="info-value mb-0" id="lastname"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Birthday</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">12/08/2002</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Age</label>
+                      <p class="info-value mb-0" id="age"></p>
+                    </div>
+                    <div class="info-item">
+                      <label class="info-label">Birthday</label>
+                      <p class="info-value mb-0" id="birthdate"></p>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Username</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Iangwapo007</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Email</label>
+                      <p class="info-value mb-0" id="email-detail"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Name of School</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Caraga State University</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Name of School</label>
+                      <p class="info-value mb-0" id="school_name"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Grade Level</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Grade-7</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Grade Level</label>
+                      <p class="info-value mb-0" id="grade_level"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted">Section</label>
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Santol</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Section</label>
+                      <p class="info-value mb-0" id="section"></p>
                     </div>
-                    <div class="mb-3">
-                      <label class="form-label small text-muted"
-                        >Complete Address</label
-                      >
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 flex-grow-1">Test</p>
-                      </div>
-                      <hr class="my-2" />
+                    <div class="info-item">
+                      <label class="info-label">Complete Address</label>
+                      <p class="info-value mb-0" id="address"></p>
                     </div>
                   </div>
                 </div>
@@ -426,104 +847,14 @@
                 class="d-flex justify-content-between align-items-center mb-3"
               >
                 <h5 class="fw-bold">My Progress</h5>
-                <a href="#" class="text-decoration-none text-primary"
+                <a
+                  href="myLearnings.html"
+                  class="text-decoration-none text-primary"
                   >View All</a
                 >
               </div>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <div class="card shadow-sm">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between mb-2">
-                        <h6 class="card-titles">Biology</h6>
-                        <span class="badge bg-success">78%</span>
-                      </div>
-                      <div class="progress" style="height: 8px">
-                        <div
-                          class="progress-bar bg-success"
-                          role="progressbar"
-                          style="width: 78%"
-                          aria-valuenow="78"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                      <p class="card-text text-muted small mt-2">
-                        10 of 12 lessons completed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card shadow-sm">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between mb-2">
-                        <h6 class="card-titles">Chemistry</h6>
-                        <span class="badge bg-warning text-dark">45%</span>
-                      </div>
-                      <div class="progress" style="height: 8px">
-                        <div
-                          class="progress-bar bg-warning"
-                          role="progressbar"
-                          style="width: 45%"
-                          aria-valuenow="45"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                      <p class="card-text text-muted small mt-2">
-                        5 of 11 lessons completed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card shadow-sm">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between mb-2">
-                        <h6 class="card-titles">Physics</h6>
-                        <span class="badge bg-danger">23%</span>
-                      </div>
-                      <div class="progress" style="height: 8px">
-                        <div
-                          class="progress-bar bg-danger"
-                          role="progressbar"
-                          style="width: 23%"
-                          aria-valuenow="23"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                      <p class="card-text text-muted small mt-2">
-                        3 of 13 lessons completed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card shadow-sm">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between mb-2">
-                        <h6 class="card-titles">Astronomy</h6>
-                        <span class="badge bg-primary">92%</span>
-                      </div>
-                      <div class="progress" style="height: 8px">
-                        <div
-                          class="progress-bar bg-primary"
-                          role="progressbar"
-                          style="width: 92%"
-                          aria-valuenow="92"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        ></div>
-                      </div>
-                      <p class="card-text text-muted small mt-2">
-                        11 of 12 lessons completed
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div id="progress-section">
+                <div class="row"></div>
               </div>
             </div>
 
@@ -538,54 +869,27 @@
                 >
               </div>
 
-              <div class="card shadow-sm">
+              <div class="card info-card">
                 <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
+                  <div class="scores-container">
+                    <table class="scores-table">
                       <thead>
                         <tr>
-                          <th scope="col">Course</th>
-                          <th scope="col">Quiz</th>
-                          <th scope="col">Score</th>
-                          <th scope="col">Date</th>
-                          <th scope="col">Status</th>
+                          <th>Title</th>
+                          <th>Type</th>
+                          <th>Score</th>
+                          <th>Date</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>Biology</td>
-                          <td>Cell Structure</td>
-                          <td>92/100</td>
-                          <td>Feb 15, 2025</td>
-                          <td><span class="badge bg-success">Passed</span></td>
-                        </tr>
-                        <tr>
-                          <td>Chemistry</td>
-                          <td>Periodic Table</td>
-                          <td>87/100</td>
-                          <td>Feb 10, 2025</td>
-                          <td><span class="badge bg-success">Passed</span></td>
-                        </tr>
-                        <tr>
-                          <td>Physics</td>
-                          <td>Newton's Laws</td>
-                          <td>65/100</td>
-                          <td>Feb 8, 2025</td>
-                          <td>
-                            <span class="badge bg-warning text-dark"
-                              >Review</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Chemistry</td>
-                          <td>Chemical Bonds</td>
-                          <td>42/100</td>
-                          <td>Jan 30, 2025</td>
-                          <td><span class="badge bg-danger">Failed</span></td>
-                        </tr>
+                      <tbody id="scores-table-body">
+                        <!-- Scores will be loaded here -->
                       </tbody>
                     </table>
+                  </div>
+                  <div id="no-scores" class="empty-state d-none">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h5>No scores yet</h5>
+                    <p>Complete some assessments to see your scores here</p>
                   </div>
                 </div>
               </div>
@@ -597,97 +901,23 @@
                 class="d-flex justify-content-between align-items-center mb-3"
               >
                 <h5 class="fw-bold">Learning History</h5>
-                <a href="#" class="text-decoration-none text-primary"
+                <a
+                  href="Learning-history.html"
+                  class="text-decoration-none text-primary"
                   >View All</a
                 >
               </div>
 
-              <div class="card shadow-sm">
+              <div class="card info-card">
                 <div class="card-body">
-                  <ul class="list-group list-group-flush">
-                    <li
-                      class="list-group-item d-flex justify-content-between align-items-center px-0"
-                    >
-                      <div class="d-flex align-items-center">
-                        <div
-                          class="bg-primary bg-opacity-10 p-2 rounded-3 me-3"
-                        >
-                          <img
-                            src="/src/icon/books.png"
-                            alt="Course"
-                            style="width: 24px; height: 24px"
-                          />
-                        </div>
-                        <div>
-                          <h6 class="mb-0">Completed "Cell Division" lesson</h6>
-                          <p class="text-muted small mb-0">Biology</p>
-                        </div>
-                      </div>
-                      <span class="text-muted small">Today, 9:45 AM</span>
-                    </li>
-                    <li
-                      class="list-group-item d-flex justify-content-between align-items-center px-0"
-                    >
-                      <div class="d-flex align-items-center">
-                        <div class="bg-danger bg-opacity-10 p-2 rounded-3 me-3">
-                          <img
-                            src="/src/icon/quiz.png"
-                            alt="Quiz"
-                            style="width: 24px; height: 24px"
-                          />
-                        </div>
-                        <div>
-                          <h6 class="mb-0">
-                            Attempted "Chemical Reactions" quiz
-                          </h6>
-                          <p class="text-muted small mb-0">Chemistry</p>
-                        </div>
-                      </div>
-                      <span class="text-muted small">Yesterday, 2:30 PM</span>
-                    </li>
-                    <li
-                      class="list-group-item d-flex justify-content-between align-items-center px-0"
-                    >
-                      <div class="d-flex align-items-center">
-                        <div
-                          class="bg-success bg-opacity-10 p-2 rounded-3 me-3"
-                        >
-                          <img
-                            src="/src/icon/certificate.png"
-                            alt="Certificate"
-                            style="width: 24px; height: 24px"
-                          />
-                        </div>
-                        <div>
-                          <h6 class="mb-0">
-                            Earned "Astronomy Basics" certificate
-                          </h6>
-                          <p class="text-muted small mb-0">Astronomy</p>
-                        </div>
-                      </div>
-                      <span class="text-muted small">Feb 12, 2025</span>
-                    </li>
-                    <li
-                      class="list-group-item d-flex justify-content-between align-items-center px-0"
-                    >
-                      <div class="d-flex align-items-center">
-                        <div
-                          class="bg-warning bg-opacity-10 p-2 rounded-3 me-3"
-                        >
-                          <img
-                            src="/src/icon/calendar.png"
-                            alt="Joined"
-                            style="width: 24px; height: 24px"
-                          />
-                        </div>
-                        <div>
-                          <h6 class="mb-0">Enrolled in "Quantum Physics"</h6>
-                          <p class="text-muted small mb-0">Physics</p>
-                        </div>
-                      </div>
-                      <span class="text-muted small">Feb 5, 2025</span>
-                    </li>
-                  </ul>
+                  <div id="history-list">
+                    <!-- History items will be loaded here -->
+                  </div>
+                  <div id="no-history" class="empty-state d-none">
+                    <i class="fas fa-history"></i>
+                    <h5>No history yet</h5>
+                    <p>Your learning activities will appear here</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -729,16 +959,6 @@
               <li class="py-2">FAQ</li>
             </ul>
           </div>
-          <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">COURSES</span>
-            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Biology</li>
-              <li class="py-2">Chemistry</li>
-              <li class="py-2">Physics</li>
-              <li class="py-2">Earth Science</li>
-              <li class="py-2">Astronomy</li>
-            </ul>
-          </div>
 
           <div class="col" style="padding-top: 10px">
             <span class="fs-5 fw-bold">CONTACT US</span>
@@ -762,6 +982,900 @@
     </div>
     <!-- END OF FOOTER -->
 
+    <!-- PROFILE PIC MODAL -->
+    <div
+      class="modal fade"
+      id="profilePic"
+      tabindex="-1"
+      aria-labelledby="profilePicModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text-white" id="profilePicModalLabel">
+              Upload New Profile Photo
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- File Drop Zone -->
+            <div
+              id="dropZone"
+              class="file-drop-zone py-4 border-2 border-dashed rounded-3 text-center"
+            >
+              <!-- Hidden File Input (Triggered on click) -->
+              <input
+                type="file"
+                id="fileInput"
+                class="d-none"
+                accept="image/*"
+              />
+
+              <!-- Visual Upload Area -->
+              <div
+                class="mt-2 d-flex justify-content-center align-items-center"
+              >
+                <i class="fas fa-cloud-upload-alt fa-3x text-primary"></i>
+              </div>
+              <p class="mt-3 mb-1 text-center">
+                Drag & drop your image here or
+                <span
+                  class="text-primary fw-bold"
+                  onclick="document.getElementById('fileInput').click()"
+                  >browse</span
+                >
+              </p>
+              <small class="text-muted">Supports JPG, PNG up to 5MB</small>
+
+              <!-- Preview Image -->
+              <img
+                id="imagePreview"
+                class="preview-image"
+                src=""
+                alt="Preview"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="saveProfilePic">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL INFO MODAL -->
+    <div
+      class="modal fade"
+      id="personalInfoModal"
+      tabindex="-1"
+      aria-labelledby="personalInfoModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text-white" id="personalInfoModalLabel">
+              Edit Personal Information
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form id="personalInfoForm">
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editUsername"
+                      name="username"
+                      placeholder="Username"
+                      required
+                    />
+                    <label for="editUsername">Username</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editFirstname"
+                      name="firstname"
+                      placeholder="First Name"
+                      required
+                    />
+                    <label for="editFirstname">First Name</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editMiddlename"
+                      name="middlename"
+                      placeholder="Middle Name"
+                    />
+                    <label for="editMiddlename">Middle Name</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editLastname"
+                      name="lastname"
+                      placeholder="Last Name"
+                      required
+                    />
+                    <label for="editLastname">Last Name</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="editAge"
+                      name="age"
+                      placeholder="Age"
+                      min="1"
+                      max="120"
+                      required
+                    />
+                    <label for="editAge">Age</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="editBirthdate"
+                      name="birthdate"
+                      placeholder="Birthday"
+                      required
+                    />
+                    <label for="editBirthdate">Birthday</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="editEmail"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <label for="editEmail">Email</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editSchool"
+                      name="school_name"
+                      placeholder="School Name"
+                    />
+                    <label for="editSchool">School Name</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      id="editGradeLevel"
+                      name="grade_level"
+                      required
+                    >
+                      <option value="Grade 7">Grade 7</option>
+                      <option value="Grade 8">Grade 8</option>
+                      <option value="Grade 9">Grade 9</option>
+                      <option value="Grade 10">Grade 10</option>
+                      <option value="Grade 11">Grade 11</option>
+                      <option value="Grade 12">Grade 12</option>
+                    </select>
+                    <label for="editGradeLevel">Grade Level</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="editSection"
+                      name="section"
+                      placeholder="Section"
+                    />
+                    <label for="editSection">Section</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control"
+                      id="editAddress"
+                      name="address"
+                      placeholder="Address"
+                      style="height: 100px"
+                    ></textarea>
+                    <label for="editAddress">Complete Address</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="savePersonalInfo"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Global variables
+      const backendURL = "https://mahusci.rubenianinternational.com/public";
+      const token = sessionStorage.getItem("token");
+      const userId = sessionStorage.getItem("user-id");
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Load user data
+        loadUserData(userData);
+        // Load user data
+        getUserDetails();
+
+        // Load assessment results
+        fetchAssessmentResults();
+
+        // Load learning history
+        fetchLearningHistory();
+
+        // Load curriculum progress
+        fetchCurriculumProgress();
+
+        // Initialize drag and drop functionality
+        initDragAndDrop();
+
+        // Set up event listeners
+        setupEventListeners();
+      });
+
+      const userData = JSON.parse(sessionStorage.getItem("user-data"));
+
+      // Load user data from sessionStorage
+      function loadUserData(user) {
+        document.getElementById("username-desktop").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById("username-mobile").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById(
+          "role-level-desktop"
+        ).textContent = `Student | ${user.grade_level}`;
+        document.getElementById(
+          "role-level-mobile"
+        ).textContent = `Student | ${user.grade_level}`;
+
+        const userPic = user?.profile_picture
+          ? "https://mahusci.rubenianinternational.com/storage/app/public/" +
+            user.profile_picture
+          : null;
+
+        document.querySelector(".profile-picture").src = userPic || defaultPic;
+        document.getElementById("profile-picture-preview").src =
+          userPic || defaultPic;
+      }
+
+      // Initialize drag and drop functionality
+      function initDragAndDrop() {
+        const dropZone = document.getElementById("dropZone");
+        const fileInput = document.getElementById("fileInput");
+        const imagePreview = document.getElementById("imagePreview");
+
+        // Prevent default drag behaviors
+        ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+          dropZone.addEventListener(eventName, preventDefaults, false);
+          document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        // Highlight drop zone when item is dragged over it
+        ["dragenter", "dragover"].forEach((eventName) => {
+          dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ["dragleave", "drop"].forEach((eventName) => {
+          dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        // Handle dropped files
+        dropZone.addEventListener("drop", handleDrop, false);
+
+        // Handle file selection via click
+        fileInput.addEventListener("change", handleFiles, false);
+
+        function preventDefaults(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        function highlight() {
+          dropZone.classList.add("active");
+        }
+
+        function unhighlight() {
+          dropZone.classList.remove("active");
+        }
+
+        function handleDrop(e) {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          handleFiles({ target: { files } });
+        }
+
+        function handleFiles(e) {
+          const files = e.target.files;
+          if (files.length) {
+            const file = files[0];
+            if (file.type.match("image.*")) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = "block";
+              };
+              reader.readAsDataURL(file);
+            } else {
+              alert("Please select an image file (JPEG, PNG, etc.)");
+            }
+          }
+        }
+      }
+
+      // Set up event listeners
+      function setupEventListeners() {
+        // Logout button
+        document
+          .getElementById("btn_logout")
+          .addEventListener("click", logoutUser);
+
+        // Save profile picture
+        document
+          .getElementById("saveProfilePic")
+          .addEventListener("click", updateProfilePicture);
+
+        // Save personal info form
+        document
+          .getElementById("personalInfoForm")
+          .addEventListener("submit", updatePersonalInfo);
+      }
+
+      // Get user details
+      async function getUserDetails() {
+        try {
+          const response = await fetch(`${backendURL}/api/user/profile`, {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          if (response.ok) {
+            const user = await response.json();
+            console.log(user);
+            displayUserData(user);
+            populateEditForm(user);
+          } else {
+            const error = await response.json();
+            showError("Failed to fetch user details: " + error.message);
+          }
+        } catch (error) {
+          showError("Network error while fetching user details");
+        }
+      }
+
+      // Display user data in the profile
+      function displayUserData(user) {
+        // Header section
+        document.getElementById("username-header").textContent = `${
+          user.firstname
+        } ${user.middlename || ""} ${user.lastname}`;
+        document.getElementById("email-header").textContent = user.email;
+        document.getElementById("grade-level-badge").textContent =
+          user.grade_level;
+
+        // Mobile navbar
+        document.getElementById("username-mobile").textContent = `${
+          user.firstname
+        } ${user.middlename || ""} ${user.lastname}`;
+        document.getElementById(
+          "role-level-mobile"
+        ).textContent = `Student | ${user.grade_level}`;
+
+        // Profile details
+        document.getElementById("username-detail").textContent = user.username;
+        document.getElementById("firstname").textContent = user.firstname;
+        document.getElementById("middlename").textContent =
+          user.middlename || "-";
+        document.getElementById("lastname").textContent = user.lastname;
+        document.getElementById("age").textContent = user.age || "-";
+        document.getElementById("birthdate").textContent =
+          formatDate(user.birthdate) || "-";
+        document.getElementById("email-detail").textContent = user.email;
+        document.getElementById("school_name").textContent =
+          user.school_name || "-";
+        document.getElementById("grade_level").textContent =
+          user.grade_level || "-";
+        document.getElementById("section").textContent = user.section || "-";
+        document.getElementById("address").textContent = user.address || "-";
+
+        // Profile picture
+        if (user.profile_picture) {
+          document.getElementById(
+            "profile-picture-preview"
+          ).src = `https://mahusci.rubenianinternational.com/storage/app/public/${user.profile_picture}`;
+        }
+
+        if (user.profile_picture) {
+          document.querySelector(
+            ".profile-picture"
+          ).src = `https://mahusci.rubenianinternational.com/storage/app/public/${user.profile_picture}`;
+        }
+      }
+
+      // Populate edit form with user data
+      function populateEditForm(user) {
+        document.getElementById("editUsername").value = user.username || "";
+        document.getElementById("editFirstname").value = user.firstname || "";
+        document.getElementById("editMiddlename").value = user.middlename || "";
+        document.getElementById("editLastname").value = user.lastname || "";
+        document.getElementById("editAge").value = user.age || "";
+        document.getElementById("editBirthdate").value = user.birthdate || "";
+        document.getElementById("editEmail").value = user.email || "";
+        document.getElementById("editSchool").value = user.school_name || "";
+        document.getElementById("editGradeLevel").value = user.grade_level;
+        document.getElementById("editSection").value = user.section || "";
+        document.getElementById("editAddress").value = user.address || "";
+      }
+
+      // Update profile picture
+      async function updateProfilePicture() {
+        const fileInput = document.getElementById("fileInput");
+        const imagePreview = document.getElementById("imagePreview");
+
+        if (!fileInput.files.length && !imagePreview.src) {
+          alert("Please select an image first");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("profile_picture", fileInput.files[0]);
+
+        try {
+          const saveBtn = document.getElementById("saveProfilePic");
+          saveBtn.disabled = true;
+          saveBtn.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Uploading...
+          `;
+
+          formData.append("_method", "PUT");
+
+          const response = await fetch(
+            `${backendURL}/api/user/profile-picture`,
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: "application/json",
+              },
+              body: formData,
+            }
+          );
+
+          if (response.ok) {
+            const result = await response.json();
+            sessionStorage.setItem("user-data", JSON.stringify(result.data));
+            console.log(result.data);
+            loadUserData(result.data);
+            // Close modal
+            bootstrap.Modal.getInstance(
+              document.getElementById("profilePic")
+            ).hide();
+            showSuccess("Profile picture updated successfully!");
+          } else {
+            const error = await response.json();
+            showError(error.message || "Failed to update profile picture");
+          }
+        } catch (error) {
+          showError("Network error while updating profile picture");
+        } finally {
+          const saveBtn = document.getElementById("saveProfilePic");
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save Changes";
+        }
+      }
+
+      // Update personal information
+      async function updatePersonalInfo(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const jsonData = {};
+
+        formData.forEach((value, key) => {
+          jsonData[key] = value;
+        });
+
+        const saveBtn = document.getElementById("savePersonalInfo");
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = `
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Saving...
+          `;
+        const userData = JSON.parse(sessionStorage.getItem("user-data"));
+
+        console.log(userData);
+
+        const response = await fetch(
+          `${backendURL}/api/user/update/${userData.id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+            },
+            body: JSON.stringify(jsonData),
+          }
+        );
+
+        const user = await response.json();
+
+        if (response.ok) {
+          sessionStorage.setItem("user-data", JSON.stringify(user.user));
+          getUserDetails(user);
+          bootstrap.Modal.getInstance(
+            document.getElementById("personalInfoModal")
+          ).hide();
+          showSuccess("Profile updated successfully!");
+        } else {
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save Changes";
+          showError(user.message || "Failed to update profile");
+          alert(user.message);
+        }
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save Changes";
+      }
+
+      // Fetch assessment results
+      async function fetchAssessmentResults() {
+        try {
+          const response = await fetch(
+            `${backendURL}/api/assessments/results`,
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const results = await response.json();
+            renderAssessmentResults(results);
+          } else {
+            const error = await response.json();
+            showError("Failed to fetch assessment results: " + error.message);
+          }
+        } catch (error) {
+          showError("Network error while fetching assessment results");
+        }
+      }
+
+      // Render assessment results
+      function renderAssessmentResults(results) {
+        const tbody = document.getElementById("scores-table-body");
+        const emptyState = document.getElementById("no-scores");
+
+        tbody.innerHTML = "";
+
+        if (results.length === 0) {
+          emptyState.classList.remove("d-none");
+          return;
+        }
+
+        emptyState.classList.add("d-none");
+
+        const typeLabels = {
+          true_false: "True/False",
+          short_answer: "Short Answer",
+          essay: "Essay",
+          matching: "Matching",
+          fill_blank: "Fill in the Blank",
+          "4pics1word": "4 Pics 1 Word",
+          comparison_table: "Comparison Table",
+          mind_mapping: "Mind Mapping",
+        };
+
+        results.forEach((result) => {
+          const row = document.createElement("tr");
+
+          // Determine score class based on percentage
+          let scoreClass = "score-poor";
+          if (result.percentage >= 75) scoreClass = "score-excellent";
+          else if (result.percentage >= 50) scoreClass = "score-good";
+
+          row.innerHTML = `
+            <td>${result.assessment?.title || "N/A"}</td>
+            <td>${
+              typeLabels[result.assessment?.type] ||
+              result.assessment?.type ||
+              "N/A"
+            }</td>
+            <td>
+              <span class="score-badge ${scoreClass}">
+                ${result.score}/${result.total_points} (${result.percentage}%)
+              </span>
+            </td>
+            <td>${formatDate(result.created_at)}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      // Fetch learning history
+      async function fetchLearningHistory() {
+        try {
+          const response = await fetch(
+            `${backendURL}/api/student/learning-history`,
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const history = await response.json();
+            renderLearningHistory(history);
+          } else {
+            const error = await response.json();
+            showError("Failed to fetch learning history: " + error.message);
+          }
+        } catch (error) {
+          showError("Network error while fetching learning history");
+        }
+      }
+
+      // Render learning history
+      function renderLearningHistory(history) {
+        const historyList = document.getElementById("history-list");
+        const emptyState = document.getElementById("no-history");
+
+        historyList.innerHTML = "";
+
+        if (history.length === 0) {
+          emptyState.classList.remove("d-none");
+          return;
+        }
+
+        emptyState.classList.add("d-none");
+
+        const typeLabels = {
+          true_false: "True/False",
+          short_answer: "Short Answer",
+          essay: "Essay",
+          matching: "Matching",
+          fill_blank: "Fill in the Blank",
+          "4pics1word": "4 Pics 1 Word",
+          comparison_table: "Comparison Table",
+          mind_mapping: "Mind Mapping",
+        };
+
+        history.forEach((item) => {
+          const historyItem = document.createElement("div");
+          historyItem.className = "history-item";
+
+          const typeInitial = item.type.charAt(0).toUpperCase();
+          const subject =
+            item.type === "Assessment"
+              ? typeLabels[item.subject] || item.subject
+              : item.subject;
+
+          historyItem.innerHTML = `
+            <div class="d-flex w-100">
+              <div class="history-type">${typeInitial}</div>
+              <div class="history-content">
+                <h6 class="mb-1">${item.details}</h6>
+                <p class="text-muted small mb-0">${subject}</p>
+              </div>
+              <div class="history-date">${formatDate(item.created_at)}</div>
+            </div>
+          `;
+          historyList.appendChild(historyItem);
+        });
+      }
+
+      // Fetch curriculum progress
+      async function fetchCurriculumProgress() {
+        try {
+          const response = await fetch(
+            `${backendURL}/api/student/curriculum-progress`,
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const curricula = await response.json();
+            renderCurriculumProgress(curricula);
+          } else {
+            const error = await response.json();
+            showError("Failed to fetch curriculum progress: " + error.message);
+          }
+        } catch (error) {
+          showError("Network error while fetching curriculum progress");
+        }
+      }
+
+      // Render curriculum progress
+      function renderCurriculumProgress(curricula) {
+        const progressContainer = document.querySelector(
+          "#progress-section .row"
+        );
+        progressContainer.innerHTML = "";
+
+        // Filter to only show curricula with some progress
+        const filteredCurricula = curricula
+          .filter(
+            (c) =>
+              c.progress.completed_items > 0 || c.progress.in_progress_items > 0
+          )
+          .slice(0, 4); // Show max 4
+
+        if (filteredCurricula.length === 0) {
+          progressContainer.innerHTML = `
+            <div class="col-12">
+              <div class="card progress-card">
+                <div class="card-body text-center text-muted py-4">
+                  <i class="fas fa-book-open fa-2x mb-3"></i>
+                  <p class="mb-0">No progress data yet. Start learning!</p>
+                </div>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        filteredCurricula.forEach((curriculum) => {
+          const progress = curriculum.progress;
+          const percentage = progress.percentage;
+
+          const col = document.createElement("div");
+          col.className = "col-md-6 mb-3";
+          col.innerHTML = `
+            <div class="card progress-card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                  <h6 class="card-title mb-0">${curriculum.title}</h6>
+                  <span class="badge bg-primary bg-opacity-10 text-primary">${percentage}%</span>
+                </div>
+                <div class="progress mb-3">
+                  <div class="progress-bar"
+                       role="progressbar"
+                       style="width: ${percentage}%"
+                       aria-valuenow="${percentage}"
+                       aria-valuemin="0"
+                       aria-valuemax="100"></div>
+                </div>
+                <p class="card-text text-muted small mb-1">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  ${progress.completed_items} of ${
+            progress.total_items
+          } items completed
+                </p>
+                ${
+                  progress.in_progress_items > 0
+                    ? `
+                <p class="card-text text-muted small mb-0">
+                  <i class="fas fa-spinner text-warning me-1"></i>
+                  ${progress.in_progress_items} in progress
+                </p>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          `;
+          progressContainer.appendChild(col);
+        });
+      }
+
+      // Logout user
+      async function logoutUser() {
+        try {
+          document
+            .querySelector(".fullscreen-spinner")
+            .classList.remove("d-none");
+          const response = await fetch(`${backendURL}/api/logout`, {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          if (response.ok) {
+            sessionStorage.clear();
+            window.location.href = "/index.html";
+          } else {
+            const error = await response.json();
+            showError(error.message || "Logout failed");
+          }
+        } catch (error) {
+          showError("Network error during logout");
+        }
+      }
+
+      // Helper functions
+      function formatDate(dateString) {
+        if (!dateString) return "-";
+        const date = new Date(dateString);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+      }
+
+      function showSuccess(message) {
+        // You can replace this with a more sophisticated notification system
+        alert("Success: " + message);
+      }
+
+      function showError(message) {
+        // You can replace this with a more sophisticated notification system
+        alert("Error: " + message);
+        console.error(message);
+      }
+    </script>
   </body>
 </html>

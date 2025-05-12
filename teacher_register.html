@@ -3,11 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up | MahuSci</title>
+    <title>Teacher Sign Up | MahuSci</title>
     <link rel="icon" type="image/png" href="/src/images/logo.png" />
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <script src="/student/js/auth/register.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
@@ -18,7 +17,7 @@
     />
   </head>
   <body style="font-family: 'Poppins'">
-    <form id="form_register" class="form_register">
+    <form id="form_register_teacher" class="form_register">
       <div class="logo-container mt-2">
         <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo" />
       </div>
@@ -90,6 +89,7 @@
           <span>Birthdate</span>
         </label>
       </div>
+
       <label>
         <!-- School Name Field -->
         <input
@@ -102,36 +102,7 @@
         />
         <span>Name of School</span>
       </label>
-      <div class="flex">
-        <label>
-          <!-- Grade Level Field -->
-          <select required class="input" id="grade_level" name="grade_level">
-            <option value="" disabled selected hidden>
-              Select Grade Level
-            </option>
-            <option value="Grade 7">Grade 7</option>
-            <option value="Grade 8">Grade 8</option>
-            <option value="Grade 9">Grade 9</option>
-            <option value="Grade 10">Grade 10</option>
-            <option value="Grade 11">Grade 11</option>
-            <option value="Grade 12">Grade 12</option>
-          </select>
-          <span>Grade</span>
-        </label>
 
-        <label>
-          <!-- Section Field -->
-          <input
-            required=""
-            placeholder=""
-            type="text"
-            class="input"
-            id="section"
-            name="section"
-          />
-          <span>Section</span>
-        </label>
-      </div>
       <label>
         <!-- Email Field -->
         <input
@@ -171,7 +142,7 @@
           />
           <span>Username</span>
         </label>
-        <input type="hidden" value="Student" name="role" />
+        <input type="hidden" value="Teacher" name="role" />
       </div>
 
       <div class="flex" style="gap: 1rem">
@@ -254,8 +225,6 @@
         Already have an account? <a href="index.html">Login</a>
       </p>
     </form>
-
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script>
       const togglePassword = document.getElementById("togglePassword");
       const passwordInput = document.getElementById("password");
@@ -266,7 +235,7 @@
         this.innerHTML =
           type === "password"
             ? `<i class="fa-regular fa-eye"></i>`
-            : `<i class="fa-regular fa-eye-slash"></i>`;
+            : `<i class="fa-solid fa-eye-slash"></i>`;
       });
 
       const toggleConfirmPassword = document.getElementById(
@@ -283,8 +252,72 @@
         this.innerHTML =
           type === "password"
             ? `<i class="fa-regular fa-eye"></i>`
-            : `<i class="fa-regular fa-eye-slash"></i>`;
+            : `<i class="fa-solid fa-eye-slash"></i>`;
       });
+    </script>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document
+        .getElementById("form_register_teacher")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const form = e.target;
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch(
+              "https://mahusci.rubenianinternational.com/public/api/teachers/register",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(data),
+              }
+            );
+
+            const result = await response.json();
+
+            if (response.ok) {
+              // Show success message
+              const successAlert = form.querySelector(".alert-primary");
+              successAlert.textContent =
+                "Registration successful! Redirecting...";
+              successAlert.classList.remove("d-none");
+
+              // Redirect after 2 seconds
+              setTimeout(() => {
+                window.location.href = "/index.html";
+              }, 2000);
+            } else {
+              // Show error message
+              const errorAlert = form.querySelector(".alert-danger");
+              console.log(result);
+              const errors = result.errors;
+              const messages = [];
+
+              if (errors?.email) messages.push(errors?.email);
+              if (errors?.username) messages.push(errors?.username);
+              if (errors?.password) messages.push(errors?.password);
+
+              errorAlert.innerHTML =
+                messages.length > 0
+                  ? messages.join("<br>")
+                  : "Registration failed. Please try again.";
+
+              errorAlert.classList.remove("d-none");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            const errorAlert = form.querySelector(".alert-danger");
+            errorAlert.textContent = "An error occurred. Please try again.";
+            errorAlert.classList.remove("d-none");
+          }
+        });
     </script>
   </body>
 </html>

@@ -8,8 +8,78 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <script src="/student/js/auth/login.js" type="module" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
-  <body>
+  <style>
+    .btn-outline-primary {
+      color: #4070f4 !important;
+      border: 1px solid #4070f4 !important;
+    }
+
+    .btn-outline-primary:hover {
+      color: white !important;
+      border: 1px solid #4070f4 !important;
+      background-color: #4070f4 !important;
+    }
+  </style>
+  <body style="font-family: 'Poppins'">
+    <div
+      class="fullscreen-spinner d-none d-flex justify-content-center align-items-center bg-white"
+    >
+      <div class="spinner"></div>
+    </div>
+
+    <style>
+      .fullscreen-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+      }
+
+      .spinner {
+        width: 90px;
+        height: 90px;
+        display: grid;
+      }
+
+      .spinner::before,
+      .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        background: radial-gradient(farthest-side, #cb6ce6 92%, #0000) 50% 0,
+          /* Top - M */ radial-gradient(farthest-side, #7ed957 92%, #0000) 50%
+            100%,
+          /* Bottom - a */ radial-gradient(farthest-side, #ffde59 92%, #0000)
+            100% 50%,
+          /* Right - h */ radial-gradient(farthest-side, #ff914d 92%, #0000) 0
+            50%; /* Left - u */
+        background-size: 20.4px 20.4px;
+        background-repeat: no-repeat;
+        animation: spinner-3hs4a3 1s infinite;
+      }
+
+      .spinner::before {
+        margin: 4.5px;
+        background-size: 13px 13px;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spinner-3hs4a3 {
+        100% {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
     <form id="form_login" class="form" style="max-width: 450px">
       <div class="logo-container">
         <img src="src/images/mahusci-banner-logo.png" alt="Logo" class="logo" />
@@ -31,10 +101,10 @@
         <span>Username</span>
       </label>
 
-      <label>
+      <label style="position: relative">
         <!-- Password Field -->
         <input
-          required=""
+          required
           placeholder=""
           type="password"
           class="input"
@@ -42,16 +112,33 @@
           name="password"
         />
         <span>Password</span>
+        <!-- Toggle Button -->
+        <button
+          type="button"
+          id="togglePassword"
+          style="
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+          "
+          tabindex="-1"
+        >
+          <i class="fa-regular fa-eye"></i>
+        </button>
       </label>
 
       <div class="remember-forgot">
         <div class="remember">
-          <input type="checkbox" id="remember" />
-          <label class="ps-2" style="margin-top: 19px" for="remember"
-            >Remember Me</label
+          <label class="ps-2 d-flex align-items-center" for="remember">
+            <input type="checkbox" id="remember" /> Remember Me</label
           >
         </div>
-        <a href="#" class="forgot" style="margin-top: 19px">Forgot password?</a>
+        <a href="#" class="forgot">Forgot password?</a>
       </div>
 
       <button
@@ -59,14 +146,44 @@
       >
         Login
       </button>
-      <div class="pt-3">
+      <div class="">
         <div class="alert alert-primary d-none" role="alert"></div>
         <div class="alert alert-danger d-none" role="alert"></div>
       </div>
-      <p class="register">
-        Don't have an account? <a href="register.html">Sign Up</a>
-      </p>
+      <p class="register">Don't have an account? Sign up now.</p>
+      <div class="d-flex justify-content-center">
+        <a
+          class="btn btn-sm btn-outline-primary w-25 me-2 d-flex justify-content-center align-items-center"
+          href="register.html"
+        >
+          Student</a
+        >
+        <a
+          class="btn btn-sm btn-outline-primary w-25 d-flex justify-content-center align-items-center"
+          href="teacher_register.html"
+        >
+          Teacher</a
+        >
+      </div>
     </form>
+    <script>
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("password");
+
+      togglePassword.addEventListener("click", function () {
+        const type =
+          passwordInput.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Optionally toggle icon text or emoji
+        this.innerHTML =
+          type === "password"
+            ? `<i class="fa-regular fa-eye"></i>`
+            : `<i class="fa-regular fa-eye-slash"></i>`;
+      });
+    </script>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
   </body>

@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Learning Sequence</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
+    <style>
+      :root {
+        --primary-color: #4481eb;
+        --secondary-color: #4481eb;
+        --accent-color: #4481eb;
+        --success-color: #4caf50;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --border-radius: 12px;
+        --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .lesson-content-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--box-shadow);
+        margin-bottom: 20px;
+      }
+
+      .lesson-header {
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 15px;
+      }
+
+      .lesson-title {
+        font-family: "Fredoka One", cursive;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .lesson-meta {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      .objectives-container {
+        background-color: #f8fafc;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .objectives-title {
+        font-family: "Fredoka One", cursive;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .objectives-list {
+        padding-left: 20px;
+      }
+
+      .objectives-list li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 15px;
+      }
+
+      .objectives-list li:before {
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+
+      .lesson-content {
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .lesson-content p {
+        margin-bottom: 1.2rem;
+      }
+
+      .media-container {
+        margin: 25px 0;
+      }
+
+      .images-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .image-item {
+        flex: 1 1 calc(50% - 15px);
+        min-width: 200px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .image-item img {
+        width: 85%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        aspect-ratio: 16/9;
+        object-fit: fill;
+      }
+
+      .video-container {
+        width: 100%;
+        margin: 25px 0;
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .attachments-container {
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+
+      .attachments-title {
+        font-family: "Fredoka One", cursive;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .attachment-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 6px;
+        background-color: #f8f9fa;
+        margin-bottom: 10px;
+        transition: var(--transition);
+      }
+
+      .attachment-item:hover {
+        background-color: #e9ecef;
+      }
+
+      .attachment-icon {
+        margin-right: 10px;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+      }
+
+      .complete-lesson-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: var(--border-radius);
+        padding: 10px 25px;
+        font-weight: 600;
+        margin-top: 30px;
+        transition: var(--transition);
+        border: none;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .complete-lesson-btn:hover {
+        background-color: #3a6bc8;
+        transform: translateY(-2px);
+      }
+
+      .complete-lesson-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .video-progress-message {
+        color: var(--danger-color);
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: none;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .image-item {
+          flex: 1 1 100%;
+        }
+
+        .lesson-content {
+          font-size: 1rem;
+        }
+
+        .lesson-header {
+          padding-bottom: 10px;
+        }
+      }
+
+      body {
+        background-color: #f5f7fa;
+        font-family: "Poppins";
+      }
+
+      .sequence-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+      }
+
+      .btn {
+        border-radius: 8px;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: var(--transition);
+      }
+
+      .sequence-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        margin-bottom: 20px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .sequence-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .sequence-items:last-child {
+        margin-bottom: 10px;
+      }
+
+      .sequence-item {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        position: relative;
+        border-left: 2px solid var(--primary-color);
+      }
+
+      .sequence-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .sequence-item.locked {
+        opacity: 0.6;
+        background-color: #f8f9fa;
+        border-left-color: #adb5bd;
+        cursor: not-allowed !important;
+      }
+
+      .sequence-item.locked .item-title {
+        color: #6c757d;
+      }
+
+      .sequence-item.completed {
+        border-left-color: var(--success-color);
+      }
+
+      .sequence-item.in-progress {
+        border-left-color: var(--primary-color);
+      }
+
+      .item-status {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+
+      .status-not-started {
+        background-color: #e9ecef;
+        color: #6c757d;
+      }
+
+      .status-in-progress {
+        background-color: #e6f7ff;
+        color: var(--primary-color);
+      }
+
+      .status-completed {
+        background-color: #e6ffed;
+        color: var(--success-color);
+      }
+
+      .item-type {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .item-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .item-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .btn-start {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        padding: 2px 15px;
+      }
+
+      .btn-continue {
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        padding: 2px 15px;
+      }
+
+      .btn-view {
+        background-color: var(--success-color);
+        color: white;
+        border-radius: 8px;
+        padding: 2px 15px;
+      }
+
+      .btn-locked {
+        background-color: #e9ecef;
+        color: #6c757d;
+        cursor: not-allowed !important;
+        border: none;
+      }
+
+      .content-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--box-shadow);
+        min-height: fit-content;
+      }
+
+      .progress-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .progress-bar {
+        height: 10px;
+        border-radius: 5px;
+        background-color: #e9ecef;
+        margin-bottom: 10px;
+      }
+
+      .progress-completed {
+        height: 100%;
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        width: 0%;
+        transition: width 0.5s ease;
+      }
+
+      .progress-stats {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        background-color: #f8f9fa;
+        flex: 1;
+        margin: 0 5px;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ASSESSMENT STYLES */
+      .assessment-container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(68, 126, 226, 0.1);
+        padding: 2rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .assessment-header {
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #f0f4f9;
+        padding-bottom: 1rem;
+      }
+
+      .assessment-title {
+        font-family: "Fredoka One", cursive;
+        color: #4481eb;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .assessment-instructions {
+        background: #f8fafd;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .assessment-question {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 10px rgba(68, 126, 226, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .assessment-question:hover {
+        box-shadow: 0 4px 15px rgba(68, 126, 226, 0.15);
+      }
+
+      .question-text {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #2c3e50;
+        margin-bottom: 1.2rem;
+        font-family: "Fredoka One", cursive;
+      }
+
+      .question-options {
+        margin-left: 0.5rem;
+      }
+
+      .option {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .option input[type="radio"],
+      .option input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 12px;
+        accent-color: #4481eb;
+        cursor: pointer;
+      }
+
+      .option label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .option-text {
+        font-size: 0.95rem;
+        color: #3a4a5e;
+      }
+
+      .form-control {
+        border: 1px solid #d6e0ef;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .form-control:focus {
+        border-color: #4481eb;
+        box-shadow: 0 0 0 0.25rem rgba(68, 126, 226, 0.25);
+      }
+
+      .form-select {
+        border: 1px solid #d6e0ef;
+        border-radius: 8px;
+        padding: 0.5rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .submit-assessment {
+        background: #4481eb;
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-family: "Fredoka One", cursive;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(68, 126, 226, 0.3);
+        margin-top: 1.5rem;
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .submit-assessment:hover {
+        background: #3a6bc5;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(68, 126, 226, 0.4);
+      }
+
+      /* Matching question styles */
+      .matching-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .matching-column {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .matching-item {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        background: #f8fafd;
+        border-radius: 8px;
+      }
+
+      .matching-match {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .match-label {
+        white-space: nowrap;
+      }
+
+      /* Fill in the blank styles */
+      .blanks-container {
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .blank-input {
+        border: 1px dashed #4481eb;
+        background: #f8fafd;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        margin: 0 0.25rem;
+      }
+
+      /* 4 Pics 1 Word styles */
+      .pics-container.grid-2x2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin: 1.5rem auto;
+        max-width: 500px;
+      }
+
+      .pic-item {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .pic-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        aspect-ratio: 1/1;
+        background: white;
+      }
+
+      /* Comparison table styles */
+      .comparison-table-container {
+        overflow-x: auto;
+        margin: 1.5rem 0;
+      }
+
+      .comparison-table-container table {
+        min-width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .comparison-table-container th,
+      .comparison-table-container td {
+        padding: 0.75rem;
+        text-align: left;
+        border: 1px solid #e0e8f2;
+      }
+
+      .comparison-table-container th {
+        background: #f0f4f9;
+        font-weight: 600;
+      }
+
+      .comparison-table-container input {
+        width: 100%;
+        min-width: 80px;
+      }
+
+      /* Mind mapping styles */
+      .mindmap-container {
+        background: #e0e9fa;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .central-topic {
+        background-color: white;
+        font-size: 1.25rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-family: "Fredoka One", cursive;
+      }
+
+      .branches-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .main-branch {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        min-width: 220px;
+      }
+
+      .sub-branch-container {
+        margin-top: 1rem;
+      }
+
+      .sub-branch-card {
+        border: 1px solid #e0e8f2;
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        background: #f8fafd;
+      }
+
+      /* Assessment results styles */
+      .assessment-result {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(68, 126, 226, 0.1);
+      }
+
+      .result-alert {
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .result-alert.success {
+        background: #e6ffed;
+        color: #2e7d32;
+      }
+
+      .result-alert.danger {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .text-primary {
+        color: #4481eb;
+      }
+
+      .result-score {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 1rem 0;
+        font-family: "Fredoka One", cursive;
+      }
+
+      .questions-review {
+        margin-top: 2rem;
+      }
+
+      .review-question {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 10px rgba(68, 126, 226, 0.08);
+      }
+
+      .user-answer {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f8fafd;
+        border-radius: 8px;
+      }
+
+      .correct-answer {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #e6ffed;
+        border-radius: 8px;
+      }
+
+      .explanation-box {
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #e6f7ff;
+        border-radius: 8px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .assessment-title {
+          font-size: 1.5rem;
+        }
+
+        .matching-container {
+          flex-direction: column;
+        }
+
+        .pics-container.grid-2x2 {
+          grid-template-columns: 1fr;
+          max-width: 300px;
+        }
+
+        .submit-assessment {
+          max-width: 100%;
+        }
+      }
+
+      /* Lesson styles */
+      .lesson-content {
+        line-height: 1.6;
+      }
+
+      .lesson-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 15px 0;
+      }
+
+      .complete-lesson-btn {
+        margin-top: 20px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .sequence-container {
+          padding: 10px;
+        }
+
+        .sequence-header {
+          padding: 15px;
+        }
+
+        .item-actions {
+          flex-direction: column;
+        }
+
+        .progress-stats {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .stat-box {
+          margin: 5px 0;
+        }
+      }
+
+      .central-topic {
+        font-size: 1.25rem;
+      }
+
+      .main-branch {
+        background-color: #fff;
+        border-radius: 12px;
+      }
+
+      .sub-branch-card input {
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+      }
+
+      /* Add these to your existing CSS */
+      .bg-success-light {
+        background-color: rgba(40, 167, 69, 0.1);
+      }
+
+      .bg-danger-light {
+        background-color: rgba(220, 53, 69, 0.1);
+      }
+
+      .sub-branch-card {
+        transition: all 0.2s;
+      }
+
+      .sub-branch-card:hover {
+        transform: translateX(5px);
+      }
+
+      .main-branch {
+        min-width: 200px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s;
+      }
+
+      .main-branch:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .central-topic {
+        font-weight: 700;
+        text-transform: capitalize;
+        margin: 0 auto;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(68, 129, 235, 0.2);
+      }
+
+      .pics-container.grid-2x2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      .pic-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        aspect-ratio: 1 / 1;
+      }
+
+      .nav-link-hover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 50px 20px 50px 20px;
+        margin: -30px 0 -20px 0;
+        transition: background-color 0.3s ease-in-out;
+        color: #313131;
+      }
+
+      .nav-link-hover:hover {
+        color: #4481eb;
+        text-decoration: underline;
+        text-decoration-thickness: 5px;
+        text-underline-offset: 18px;
+        transform: translateY(-5px);
+      }
+
+      .profile-picture {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #c7dfd2;
+      }
+
+      .profile-picture-offcanvas {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #c7dfd2;
+      }
+    </style>
+  </head>
+  <body
+    class="poppins"
+    style="
+      background-image: url(/src/images/quiz\ bg.jpg);
+      background-size: 100%;
+      background-attachment: fixed;
+    "
+  >
+    <!-- START OF DESKTOP NAVBAR -->
+
+    <!-- END OF DESKTOP NAVBAR -->
+
+    <!-- START OF MOBILE NAVBAR -->
+
+    <!-- END OF MOBILE NAVBAR -->
+    <div
+      class="fullscreen-spinner d-flex justify-content-center align-items-center bg-white"
+    >
+      <div class="spinner"></div>
+    </div>
+
+    <style>
+      .fullscreen-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+      }
+
+      .spinner {
+        width: 90px;
+        height: 90px;
+        display: grid;
+      }
+
+      .spinner::before,
+      .spinner::after {
+        content: "";
+        grid-area: 1/1;
+        background: radial-gradient(farthest-side, #cb6ce6 92%, #0000) 50% 0,
+          /* Top - M */ radial-gradient(farthest-side, #7ed957 92%, #0000) 50%
+            100%,
+          /* Bottom - a */ radial-gradient(farthest-side, #ffde59 92%, #0000)
+            100% 50%,
+          /* Right - h */ radial-gradient(farthest-side, #ff914d 92%, #0000) 0
+            50%; /* Left - u */
+        background-size: 20.4px 20.4px;
+        background-repeat: no-repeat;
+        animation: spinner-3hs4a3 1s infinite;
+      }
+
+      .spinner::before {
+        margin: 4.5px;
+        background-size: 13px 13px;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spinner-3hs4a3 {
+        100% {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
+
+    <div class="sequence-container">
+      <div class="progress-container">
+        <div class="sequence-header">
+          <h4 id="sequence-title">Loading Sequence...</h4>
+          <small id="sequence-description"></small>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed" id="progress-bar"></div>
+        </div>
+        <div class="progress-stats">
+          <div class="stat-box">
+            <div class="stat-value" id="completed-count">0</div>
+            <div class="stat-label">Completed</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="in-progress-count">0</div>
+            <div class="stat-label">In Progress</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-value" id="total-lessons">0</div>
+            <div class="stat-label">Total Lessons</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="total-assessments">0</div>
+            <div class="stat-label">Total Assessments</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="total-count">0</div>
+            <div class="stat-label">Total Items</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-3">
+          <a
+            class="btn mt-2 mb-2 w-100 text-primary"
+            style="
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(5px);
+              background-color: rgba(255, 255, 255, 0.3);
+              padding: 0.6rem 1.2rem;
+              border-radius: 0.75rem;
+              /* border: 1px solid rgba(255, 255, 255, 0.4); */
+              text-decoration: none;
+              color: #4481eb !important;
+              font-weight: 500;
+              display: inline-block;
+              border: 1px solid #4481eb;
+            "
+            href="myLearnings.html"
+          >
+            Return to "My Learnings"
+          </a>
+          <div class="sequence-items bg-white" id="sequence-items">
+            <!-- Sequence items will be loaded here -->
+            <div class="text-center py-5">
+              <div class="spinner-border text-primary"></div>
+              <p class="mt-3">Loading sequence items...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="content-container" id="content-container">
+            <div class="text-center py-5 mt-5">
+              <i class="fas fa-book-open fa-3x text-muted mb-3"></i>
+              <h4 class="text-muted">Select an item to begin</h4>
+              <p class="text-muted">
+                Choose a lesson or assessment from the left panel
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="sequence-item-template">
+      <div class="sequence-item" data-id="">
+        <div class="item-type"></div>
+        <div class="item-title"></div>
+        <div class="item-status status-not-started">Not Started</div>
+        <div class="item-actions">
+          <button class="btn btn-sm btn-start">Start</button>
+        </div>
+      </div>
+    </template>
+
+    <template id="lesson-content-template">
+      <div class="objectives-container"></div>
+      <div class="lesson-content">
+        <h3 class="mb-3"></h3>
+        <div class="content"></div>
+        <button
+          id="markAsComplete"
+          class="btn btn-sm btn-primary complete-lesson-btn"
+        >
+          Mark as Complete
+        </button>
+      </div>
+    </template>
+
+    <template id="assessment-content-template">
+      <div class="assessment-content">
+        <h3 class="mb-4"></h3>
+        <div class="instructions mb-3"></div>
+        <div class="questions-container"></div>
+        <button class="btn btn-primary submit-assessment">
+          Submit Assessment
+        </button>
+      </div>
+    </template>
+
+    <template id="question-template">
+      <div class="assessment-question" data-index="">
+        <div class="question-text"></div>
+        <div class="question-options"></div>
+      </div>
+    </template>
+
+    <template id="option-template">
+      <div class="option">
+        <label>
+          <input type="radio" name="" value="" />
+          <span class="option-text"></span>
+        </label>
+      </div>
+    </template>
+
+    <template id="result-template">
+      <div class="assessment-result">
+        <div class="alert alert-success">
+          <h4 class="alert-heading">Assessment Submitted!</h4>
+          <p>
+            You scored <span class="score"></span> out of
+            <span class="total"></span> (<span class="percentage"></span>%)
+          </p>
+        </div>
+        <div class="questions-review"></div>
+      </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const backendURL = "https://mahusci.rubenianinternational.com/public";
+        const urlParams = new URLSearchParams(window.location.search);
+        const curriculumId = urlParams.get("curriculum_id");
+        const quarterId = urlParams.get("quarter_id");
+        const sequenceId = urlParams.get("sequence_id");
+        const itemId = urlParams.get("item_id");
+
+        let currentSequence = null;
+        let currentItems = [];
+        let currentActiveItem = null;
+        let authToken = sessionStorage.getItem("token");
+        let currentCurriculum = null;
+        let currentQuarterIndex = -1;
+        let currentSequenceIndex = -1;
+
+        if (!curriculumId || !quarterId || !sequenceId) {
+          alert("Missing required parameters. Redirecting to lessons.");
+          window.location.href = "lessons.html";
+          return;
+        }
+
+        // Load sequence data from curriculum
+        loadSequenceFromCurriculum(curriculumId, quarterId, sequenceId);
+
+        // Modify the loadSequenceFromCurriculum function to track current position
+        async function fetchStudentProgress(sequenceId) {
+          try {
+            const response = await fetch(
+              backendURL + `/api/sequences/${sequenceId}/progress`,
+              {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Failed to fetch student progress");
+            }
+
+            return await response.json();
+          } catch (error) {
+            console.error("Error fetching student progress:", error);
+            return [];
+          }
+        }
+
+        // Modify the loadSequenceFromCurriculum function
+        async function loadSequenceFromCurriculum(
+          curriculumId,
+          quarterId,
+          sequenceId
+        ) {
+          try {
+            // Fetch curriculum data
+            const response = await fetch(
+              backendURL + `/api/curriculum-sequences/${curriculumId}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (!response.ok) throw new Error("Failed to load curriculum");
+
+            currentCurriculum = await response.json();
+            currentQuarterIndex = currentCurriculum.quarters.findIndex(
+              (q) => q.id == quarterId
+            );
+            if (currentQuarterIndex === -1)
+              throw new Error("Quarter not found");
+
+            const quarter = currentCurriculum.quarters[currentQuarterIndex];
+            currentSequenceIndex = quarter.items.findIndex(
+              (item) => item.sequence_id == sequenceId
+            );
+            if (currentSequenceIndex === -1)
+              throw new Error("Sequence not found");
+
+            const sequenceItem = quarter.items[currentSequenceIndex];
+            currentSequence = {
+              ...sequenceItem.sequence,
+              quarter: quarter.quarter,
+            };
+
+            // Fetch student progress for this sequence
+            const progressData = await fetchStudentProgress(sequenceId);
+
+            // Map progress to items
+            currentItems = sequenceItem.sequence.items.map((item) => {
+              const itemProgress = progressData.find(
+                (p) => p.sequence_item_id === item.id
+              );
+
+              return {
+                ...item,
+                progress: itemProgress
+                  ? {
+                      status: itemProgress.status,
+                      score: itemProgress.score,
+                      answers: itemProgress.answers,
+                    }
+                  : {
+                      status: "not_started",
+                      score: 0,
+                      answers: {},
+                    },
+                is_locked: itemProgress
+                  ? itemProgress.status !== "in_progress"
+                    ? true
+                    : false
+                  : loadSequence(sequenceId),
+              };
+            });
+
+            // Update UI
+            document.getElementById("sequence-title").textContent =
+              currentSequence.title;
+            document.getElementById(
+              "sequence-description"
+            ).textContent = `Quarter ${currentSequence.quarter}`;
+
+            // Determine which item to load
+            let itemToLoad = null;
+
+            // If itemId is specified in URL, use that
+            if (itemId) {
+              itemToLoad = currentItems.find((item) => item.id == itemId);
+            }
+
+            // Otherwise find first in-progress or not started item
+            itemToLoad =
+              currentItems.find(
+                (item) => item.progress.status === "in_progress"
+              ) ||
+              currentItems.find(
+                (item) => item.progress.status === "not_started"
+              );
+
+            renderSequenceItems(status);
+            updateProgressStats();
+
+            // Load the appropriate item
+            if (itemToLoad) {
+              // Update URL to include itemId
+              const newUrl = new URL(window.location.href);
+              newUrl.searchParams.set("item_id", itemToLoad.id);
+              window.history.replaceState({}, "", newUrl);
+              console.log("4");
+              loadItemContent(itemToLoad);
+            }
+          } catch (error) {
+            console.error("Error loading curriculum sequence:", error);
+            alert("Failed to load sequence. Please try again.");
+          }
+        }
+
+        async function loadSequence(sequenceId, status = false) {
+          const response = await fetch(
+            backendURL + `/api/load-sequences/${sequenceId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to load sequence");
+          }
+
+          const data = await response.json();
+          currentSequence = data.sequence;
+          currentItems = data.items;
+          console.log("1");
+          renderSequenceItems(status);
+        }
+
+        // Function to render sequence items
+        async function renderSequenceItems(status = false) {
+          const container = document.getElementById("sequence-items");
+          container.innerHTML = "";
+
+          console.log("2");
+
+          const template = document.getElementById("sequence-item-template");
+
+          currentItems.forEach((item) => {
+            const clone = template.content.cloneNode(true);
+            const itemElement = clone.querySelector(".sequence-item");
+            const itemType = clone.querySelector(".item-type");
+            const itemTitle = clone.querySelector(".item-title");
+            const itemStatus = clone.querySelector(".item-status");
+            const actionButton = clone.querySelector(".item-actions button");
+
+            itemElement.dataset.id = item.id;
+            itemType.textContent =
+              item.item_type === "lesson" ? "Lesson" : "Assessment";
+            itemTitle.textContent = item.title;
+
+            // if (!item.is_locked) {
+            //   // Auto-load if in progress
+            //   if (item.progress.status === "in_progress" && status === false) {
+            //     loadItemContent(item);
+            //   }
+            // }
+
+            // Set status and classes
+            if (item.progress) {
+              switch (item.progress.status) {
+                case "completed":
+                  itemStatus.textContent = "Completed";
+                  itemStatus.className = "item-status status-completed";
+                  itemElement.classList.add("locked");
+                  actionButton.innerHTML = `<i class="fa-solid fa-lock"></i>`;
+                  actionButton.className = "btn btn-sm btn-locked";
+                  actionButton.disabled = true;
+                  break;
+                case "in_progress":
+                  if (status === true) {
+                    itemStatus.textContent = "In Progress";
+                    itemStatus.className = "item-status status-in-progress";
+                    itemElement.classList.add("in-progress");
+                    actionButton.textContent = "Retake";
+                    actionButton.className = "btn btn-sm btn-continue";
+                  } else {
+                    itemStatus.textContent = "In Progress";
+                    itemStatus.className = "item-status status-in-progress";
+                    itemElement.classList.add("in-progress");
+                    actionButton.textContent = "Continue";
+                    actionButton.className = "btn btn-sm btn-continue";
+                  }
+                  break;
+                default:
+                  itemStatus.textContent = "Not Started";
+                  itemStatus.className = "item-status status-not-started";
+                  actionButton.textContent = "Start";
+                  actionButton.className = "btn btn-sm btn-start";
+              }
+            }
+
+            // Check if item is locked
+            if (item.is_locked) {
+              itemElement.classList.add("locked");
+              actionButton.innerHTML = `<i class="fa-solid fa-lock"></i>`;
+              actionButton.className = "btn btn-sm btn-locked";
+              actionButton.disabled = true;
+            }
+
+            // Add click event
+            actionButton.addEventListener("click", () => {
+              if (!item.is_locked) {
+                loadItemContent(item);
+              }
+            });
+
+            container.appendChild(clone);
+          });
+
+          updateProgressStats();
+        }
+
+        // Function to load item content
+        async function loadItemContent(item) {
+          try {
+            currentActiveItem = item;
+            console.log(item);
+
+            // Mark as in progress if not started
+            if (item.progress.status === "not_started") {
+              const response = await fetch(
+                backendURL + `/api/sequence-items/${item.id}/start`,
+                {
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+
+              if (!response.ok) {
+                await loadSequence(sequenceId);
+                throw new Error("Failed to start item");
+              }
+
+              // Update local state
+              item.progress.status = "in_progress";
+            }
+
+            console.log("5");
+
+            // Load content based on type
+            const container = document.getElementById("content-container");
+            updateProgressStats();
+
+            if (item.item_type === "lesson") {
+              loadLessonContent(item, container);
+            } else {
+              loadAssessmentContent(item, container);
+            }
+          } catch (error) {
+            console.error("Error loading item content:", error);
+            alert("Failed to load content. Please try again.");
+          }
+        }
+
+        async function loadLessonContent(item, container) {
+          try {
+            // Fetch lesson content
+            const response = await fetch(
+              backendURL + `/api/lessons/${item.item_id}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Failed to load lesson content");
+            }
+
+            const lessonData = await response.json();
+            console.log(lessonData);
+
+            // Create lesson container
+            const lessonContainer = document.createElement("div");
+            lessonContainer.className = "lesson-content-container";
+
+            // Create header
+            const header = document.createElement("div");
+            header.className = "lesson-header";
+
+            const title = document.createElement("h1");
+            title.className = "lesson-title";
+            title.textContent = lessonData.title;
+            header.appendChild(title);
+
+            // Add meta information
+            const metaContainer = document.createElement("div");
+            metaContainer.className = "lesson-meta";
+
+            const subject = document.createElement("div");
+            subject.className = "meta-item";
+            subject.innerHTML = `<i class="fas fa-book"></i> ${lessonData.subject
+              .replace("_", " ")
+              .toUpperCase()}`;
+
+            const grade = document.createElement("div");
+            grade.className = "meta-item";
+            grade.innerHTML = `<i class="fas fa-graduation-cap"></i> Grade ${lessonData.grades}`;
+
+            const difficulty = document.createElement("div");
+            difficulty.className = "meta-item";
+            difficulty.innerHTML = `<i class="fas fa-signal"></i> ${
+              lessonData.difficulty.charAt(0).toUpperCase() +
+              lessonData.difficulty.slice(1)
+            }`;
+
+            metaContainer.append(subject, grade, difficulty);
+            header.appendChild(metaContainer);
+            lessonContainer.appendChild(header);
+
+            // Add objectives
+            if (lessonData.objectives && lessonData.objectives.length > 0) {
+              const objectivesContainer = document.createElement("div");
+              objectivesContainer.className = "objectives-container";
+
+              const objectivesTitle = document.createElement("h3");
+              objectivesTitle.className = "objectives-title";
+              objectivesTitle.textContent = "Learning Objectives";
+              objectivesContainer.appendChild(objectivesTitle);
+
+              const objectivesList = document.createElement("ul");
+              objectivesList.className = "objectives-list";
+
+              lessonData.objectives.forEach((obj) => {
+                const li = document.createElement("li");
+                li.textContent = obj;
+                objectivesList.appendChild(li);
+              });
+
+              objectivesContainer.appendChild(objectivesList);
+              lessonContainer.appendChild(objectivesContainer);
+            }
+
+            let disabled = "";
+
+            // Add content sections
+            if (lessonData.contents && lessonData.contents.length > 0) {
+              const contentWrapper = document.createElement("div");
+              contentWrapper.className = "lesson-content-wrapper";
+
+              lessonData.contents.forEach((contentSection, index) => {
+                // Add content
+                const contentDiv = document.createElement("div");
+                contentDiv.className = "lesson-content";
+                contentDiv.innerHTML = contentSection.content;
+                contentWrapper.appendChild(contentDiv);
+
+                // Add media if exists
+                if (
+                  contentSection.content_media &&
+                  contentSection.content_media.length > 0
+                ) {
+                  const mediaContainer = document.createElement("div");
+                  mediaContainer.className = "media-container";
+
+                  // Separate images and videos
+                  const images = contentSection.content_media.filter((m) =>
+                    m.file_type.startsWith("image")
+                  );
+                  const videos = contentSection.content_media.filter((m) =>
+                    m.file_type.startsWith("video")
+                  );
+
+                  // Display images in grid
+                  if (images.length > 0) {
+                    const imagesGrid = document.createElement("div");
+                    imagesGrid.className = "images-grid";
+
+                    images.forEach((image) => {
+                      const imageItem = document.createElement("div");
+                      imageItem.className = "image-item";
+
+                      const img = document.createElement("img");
+                      img.src = `https://mahusci.rubenianinternational.com/storage/app/public/${image.file_path}`;
+                      img.alt = image.original_name;
+
+                      imageItem.appendChild(img);
+                      imagesGrid.appendChild(imageItem);
+
+                      console.log(contentSection);
+                    });
+
+                    const imageName = document.createElement("div");
+                    imageName.className =
+                      "image-item d-flex justify-content-center fw-bold mb-5";
+                    imageName.innerText = contentSection.image_name
+                      ? contentSection.image_name
+                      : "";
+
+                    mediaContainer.appendChild(imagesGrid);
+                    mediaContainer.appendChild(imageName);
+                  }
+                  // Display videos
+                  // Display videos with proper controls and seeking prevention
+                  if (videos.length > 0) {
+                    if (videos) {
+                      disabled = true;
+                    } else {
+                      disabled = false;
+                    }
+                    videos.forEach((video) => {
+                      const videoContainer = document.createElement("div");
+                      videoContainer.className = "video-container";
+
+                      const videoWrapper = document.createElement("div");
+                      videoWrapper.className = "video-wrapper";
+
+                      const videoEl = document.createElement("video");
+                      videoEl.src = `https://mahusci.rubenianinternational.com/storage/app/public/${video.file_path}`;
+                      videoEl.controls = true;
+                      videoEl.preload = "metadata";
+
+                      // Variables to track seeking
+                      let lastValidTime = 0;
+                      let isSeeking = false;
+
+                      // Prevent seeking by tracking time changes
+                      videoEl.addEventListener("timeupdate", () => {
+                        if (!isSeeking && videoEl.currentTime > lastValidTime) {
+                          lastValidTime = videoEl.currentTime;
+                        }
+                      });
+
+                      videoEl.addEventListener("seeking", () => {
+                        // If user tries to seek forward
+                        if (videoEl.currentTime > lastValidTime) {
+                          isSeeking = true;
+                          videoEl.currentTime = lastValidTime;
+                        }
+                      });
+
+                      videoEl.addEventListener("seeked", () => {
+                        isSeeking = false;
+                      });
+
+                      // Update completion state when video progresses
+                      videoEl.addEventListener(
+                        "timeupdate",
+                        updateCompleteButtonState
+                      );
+
+                      // Disable right-click menu to prevent download
+                      videoEl.addEventListener("contextmenu", (e) => {
+                        e.preventDefault();
+                        return false;
+                      });
+
+                      videoWrapper.appendChild(videoEl);
+                      videoContainer.appendChild(videoWrapper);
+                      mediaContainer.appendChild(videoContainer);
+                    });
+                  }
+
+                  contentWrapper.appendChild(mediaContainer);
+                }
+              });
+
+              lessonContainer.appendChild(contentWrapper);
+            }
+
+            // Add attachments if exists
+            if (lessonData.media && lessonData.media.length > 0) {
+              const attachmentsContainer = document.createElement("div");
+              attachmentsContainer.className = "attachments-container";
+
+              const attachmentsTitle = document.createElement("h4");
+              attachmentsTitle.className = "attachments-title";
+              attachmentsTitle.textContent = "Attachments";
+              attachmentsContainer.appendChild(attachmentsTitle);
+
+              lessonData.media.forEach((attachment) => {
+                const attachmentItem = document.createElement("a");
+                attachmentItem.className = "attachment-item";
+                attachmentItem.href = `https://mahusci.rubenianinternational.com/storage/app/public/${attachment.file_path}`;
+                attachmentItem.target = "_blank";
+                attachmentItem.download = attachment.original_name;
+
+                const icon = document.createElement("i");
+                console.log(attachment.file_type);
+                icon.className =
+                  "attachment-icon fas " +
+                  (attachment.file_type.includes("application/pdf")
+                    ? "fa-file"
+                    : attachment.file_type.includes("application/word")
+                    ? "fa-file-word"
+                    : attachment.file_type.includes("application/excel")
+                    ? "fa-file-excel"
+                    : attachment.file_type.includes("application/powerpoint")
+                    ? "fa-file-powerpoint"
+                    : "fa-file");
+
+                const text = document.createElement("span");
+                text.textContent = attachment.original_name;
+
+                attachmentItem.append(icon, text);
+                attachmentsContainer.appendChild(attachmentItem);
+              });
+
+              lessonContainer.appendChild(attachmentsContainer);
+            }
+
+            // Add complete button
+            const completeButton = document.createElement("button");
+            completeButton.id = "completeLessonBtn";
+            completeButton.className = "complete-lesson-btn";
+            completeButton.textContent = "Mark as Complete";
+
+            // Add video progress message
+            const videoMessage = document.createElement("div");
+            videoMessage.className = "video-progress-message";
+            videoMessage.textContent =
+              "Please watch all videos completely before marking as complete";
+            videoMessage.id = "videoProgressMessage";
+
+            // Function to check video completion
+            function updateCompleteButtonState() {
+              const videos = document.querySelectorAll("video");
+              let allVideosCompleted = true;
+
+              completeButton.disabled = disabled;
+
+              if (videos.length > 0) {
+                videos.forEach((video) => {
+                  // Check if video has been watched to at least 95% (allowing for slight buffer)
+                  if (video.currentTime / video.duration < 0.95) {
+                    allVideosCompleted = false;
+                  }
+                });
+
+                completeButton.disabled = !allVideosCompleted;
+                videoMessage.style.display = allVideosCompleted
+                  ? "none"
+                  : "block";
+              } else {
+                // completeButton.disabled = false;
+                videoMessage.style.display = "none";
+              }
+            }
+
+            // Initial state check
+            updateCompleteButtonState();
+
+            // Complete button event
+            completeButton.addEventListener("click", async () => {
+              try {
+                const response = await fetch(
+                  backendURL + `/api/sequence-items/${item.id}/complete-lesson`,
+                  {
+                    method: "POST",
+                    headers: {
+                      Authorization: `Bearer ${authToken}`,
+                      "Content-Type": "application/json",
+                    },
+                  }
+                );
+
+                console.log(await response.json());
+
+                if (!response.ok) {
+                  throw new Error("Failed to complete lesson");
+                }
+
+                // Update local state
+                item.progress.status = "completed";
+
+                updateProgressStats();
+                loadSequence(sequenceId);
+
+                // Show success message
+                container.innerHTML = `
+              <div class="alert alert-success">
+                  <h4 class="alert-heading">Lesson Completed!</h4>
+                  <p>You've successfully completed this lesson.</p>
+                  <hr>
+                  <p class="mb-0">You can now proceed to the next item in the sequence.</p>
+              </div>
+            `;
+              } catch (error) {
+                console.error("Error completing lesson:", error);
+                alert("Failed to complete lesson. Please try again.");
+              }
+            });
+
+            lessonContainer.append(completeButton, videoMessage);
+            container.innerHTML = "";
+            container.appendChild(lessonContainer);
+          } catch (error) {
+            console.error("Error loading lesson content:", error);
+            container.innerHTML = `
+          <div class="alert alert-danger">
+              Failed to load lesson content. Please try again.
+          </div>
+        `;
+          }
+
+          document.querySelector(".fullscreen-spinner").classList.add("d-none");
+        }
+
+        // Function to load assessment content
+        async function loadAssessmentContent(item, container) {
+          try {
+            // Fetch assessment data
+            const response = await fetch(
+              backendURL + `/api/lessons/assessments/${item.item_id}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Failed to load assessment");
+            }
+
+            const assessment = await response.json();
+            renderSequenceItems(false);
+
+            // Check if already completed
+            if (item.progress.status === "completed") {
+              showAssessmentResults(item, assessment.data, container);
+              return;
+            }
+
+            // Load assessment form
+            const template = document.getElementById(
+              "assessment-content-template"
+            );
+            const clone = template.content.cloneNode(true);
+
+            const title = clone.querySelector("h3");
+            const instructions = clone.querySelector(".instructions");
+            const questionsContainer = clone.querySelector(
+              ".questions-container"
+            );
+            const submitButton = clone.querySelector(".submit-assessment");
+
+            title.textContent = assessment.data.title;
+            console.log(assessment);
+            instructions.innerHTML =
+              assessment.data.instructions ||
+              "Complete the following questions:";
+
+            // Render questions
+            assessment.data.questions.forEach((question, index) => {
+              const questionTemplate =
+                document.getElementById("question-template");
+              const questionClone = questionTemplate.content.cloneNode(true);
+
+              const questionElement = questionClone.querySelector(
+                ".assessment-question"
+              );
+              const questionText =
+                questionClone.querySelector(".question-text");
+              const optionsContainer =
+                questionClone.querySelector(".question-options");
+
+              questionElement.dataset.index = index;
+              questionElement.dataset.type = assessment.data.type;
+
+              // Set question text based on type
+              let questionDisplayText = `${index + 1}. `;
+              if (question.text) {
+                questionDisplayText += question.text;
+              } else if (question.instructions) {
+                questionDisplayText += question.instructions;
+              } else {
+                questionDisplayText += "Answer the following:";
+              }
+
+              questionText.textContent = questionDisplayText;
+
+              // Render options based on question type
+              switch (assessment.data.type) {
+                case "multiple_choice":
+                  function shuffleArray(array) {
+                    for (let i = array.length - 1; i > 0; i--) {
+                      const j = Math.floor(Math.random() * (i + 1));
+                      [array[i], array[j]] = [array[j], array[i]];
+                    }
+                  }
+
+                  shuffleArray(question.options);
+
+                  question.options.forEach((option, optIndex) => {
+                    const optionTemplate =
+                      document.getElementById("option-template");
+                    const optionClone = optionTemplate.content.cloneNode(true);
+
+                    const optionElement = optionClone.querySelector(".option");
+                    const radioInput = optionClone.querySelector(
+                      'input[type="radio"]'
+                    );
+                    const optionText =
+                      optionClone.querySelector(".option-text");
+
+                    radioInput.name = `question-${index}`;
+                    radioInput.value = option.value;
+                    optionText.textContent = option.text;
+
+                    // Check if this option is the correct answer (for review mode)
+                    if (
+                      item.progress.answers &&
+                      item.progress.answers[index] === option.value
+                    ) {
+                      radioInput.checked = true;
+                    }
+
+                    optionsContainer.appendChild(optionClone);
+                  });
+                  break;
+
+                case "true_false":
+                  ["True", "False"].forEach((option, optIndex) => {
+                    const optionTemplate =
+                      document.getElementById("option-template");
+                    const optionClone = optionTemplate.content.cloneNode(true);
+
+                    const optionElement = optionClone.querySelector(".option");
+                    const radioInput = optionClone.querySelector(
+                      'input[type="radio"]'
+                    );
+                    const optionText =
+                      optionClone.querySelector(".option-text");
+
+                    radioInput.name = `question-${index}`;
+                    radioInput.value = option.toLowerCase();
+                    optionText.textContent = option;
+
+                    // Check if this option is the correct answer (for review mode)
+                    if (
+                      item.progress.answers &&
+                      item.progress.answers[index] === option.toLowerCase()
+                    ) {
+                      radioInput.checked = true;
+                    }
+
+                    optionsContainer.appendChild(optionClone);
+                  });
+                  break;
+
+                case "short_answer":
+                  const shortAnswerInput = document.createElement("textarea");
+                  shortAnswerInput.className = "form-control";
+                  shortAnswerInput.name = `question-${index}`;
+                  shortAnswerInput.placeholder = "Type your answer here...";
+                  shortAnswerInput.rows = 3;
+
+                  // if (item.progress.answers && item.progress.answers[index]) {
+                  //   shortAnswerInput.value = item.progress.answers[index];
+                  // }
+
+                  optionsContainer.appendChild(shortAnswerInput);
+                  break;
+
+                case "essay":
+                  const essayInput = document.createElement("textarea");
+                  essayInput.className = "form-control";
+                  essayInput.name = `question-${index}`;
+                  essayInput.placeholder = "Write your essay response here...";
+                  essayInput.rows = 6;
+
+                  // if (item.progress.answers && item.progress.answers[index]) {
+                  //   essayInput.value = item.progress.answers[index];
+                  // }
+
+                  // Add rubric hint if available
+                  if (question.rubric) {
+                    const rubricDiv = document.createElement("div");
+                    rubricDiv.className = "alert alert-info mt-2";
+                    const formattedRubric = question.rubric.replace(
+                      /\n/g,
+                      "<br>"
+                    );
+                    rubricDiv.innerHTML = `<strong>Rubric:</strong><br>${formattedRubric}`;
+                    optionsContainer.appendChild(rubricDiv);
+                  }
+
+                  optionsContainer.appendChild(essayInput);
+                  break;
+
+                case "matching":
+                  const matchingContainer = document.createElement("div");
+                  matchingContainer.className = "matching-container";
+
+                  // Create two columns
+                  const leftColumn = document.createElement("div");
+                  leftColumn.className = "matching-column";
+
+                  const rightColumn = document.createElement("div");
+                  rightColumn.className = "matching-column";
+
+                  // Add items to left column
+                  question.items.forEach((item, itemIndex) => {
+                    const itemDiv = document.createElement("div");
+                    itemDiv.className = "matching-item";
+                    itemDiv.textContent = `${itemIndex + 1}. ${item}`;
+                    leftColumn.appendChild(itemDiv);
+                  });
+
+                  // Add matches to right column with select dropdowns
+                  question.matches.forEach((match, matchIndex) => {
+                    const matchDiv = document.createElement("div");
+                    matchDiv.className = "matching-match";
+
+                    const select = document.createElement("select");
+                    select.className = "form-select form-select-sm";
+                    select.name = `question-${index}[${match.item}]`;
+
+                    // Add default option
+                    const defaultOption = document.createElement("option");
+                    defaultOption.value = "";
+                    defaultOption.textContent = "Select match...";
+                    select.appendChild(defaultOption);
+
+                    // Add match options
+                    question.items.forEach((item, itemIndex) => {
+                      const option = document.createElement("option");
+                      option.value = itemIndex;
+                      option.textContent = item;
+
+                      // // Check if this was previously selected
+                      // if (
+                      //   item.progress.answers &&
+                      //   item.progress.answers[index] &&
+                      //   item.progress.answers[index][match.item] == itemIndex
+                      // ) {
+                      //   option.selected = true;
+                      // }
+
+                      select.appendChild(option);
+                    });
+
+                    matchDiv.appendChild(select);
+                    matchDiv.insertAdjacentHTML(
+                      "beforeend",
+                      ` <span class="match-label">${match.match}</span>`
+                    );
+                    rightColumn.appendChild(matchDiv);
+                  });
+
+                  matchingContainer.appendChild(leftColumn);
+                  matchingContainer.appendChild(rightColumn);
+                  optionsContainer.appendChild(matchingContainer);
+                  break;
+
+                case "fill_blank":
+                  let textWithBlanks = question.text;
+
+                  // Replace blanks with input fields
+                  question.blanks.forEach((blank, blankIndex) => {
+                    const inputId = `blank-${index}-${blankIndex}`;
+                    const inputField = `<input type="text" class="blank-input form-control d-inline-block"
+                                      style="width: auto; min-width: 100px;"
+                                      name="question-${index}[${blank.id}]"
+                                      id="${inputId}"
+                                      value="">`;
+
+                    // USE IF NEEDED
+                    //   value="${
+                    //   item.progress.answers &&
+                    //   item.progress.answers[index] &&
+                    //   item.progress.answers[index][blank.id]
+                    //     ? item.progress.answers[index][blank.id]
+                    //     : ""
+                    // }">`;
+
+                    textWithBlanks = textWithBlanks.replace(
+                      new RegExp(`\\[${blank.id}\\]`, "g"),
+                      inputField
+                    );
+                  });
+
+                  const blanksContainer = document.createElement("div");
+                  blanksContainer.className = "blanks-container";
+                  blanksContainer.innerHTML = textWithBlanks;
+                  optionsContainer.appendChild(blanksContainer);
+                  break;
+
+                case "4pics1word":
+                  const picsContainer = document.createElement("div");
+                  picsContainer.className = "pics-container grid-2x2 mb-3";
+
+                  // Add images
+                  question.images.forEach((image, imageIndex) => {
+                    const imgDiv = document.createElement("div");
+                    imgDiv.className = "pic-item";
+
+                    const img = document.createElement("img");
+                    img.src = `https://mahusci.rubenianinternational.com/storage/app/public/${image}`;
+                    img.alt = `Image ${imageIndex + 1}`;
+                    img.className = "img-thumbnail";
+
+                    imgDiv.appendChild(img);
+                    picsContainer.appendChild(imgDiv);
+                  });
+
+                  optionsContainer.appendChild(picsContainer);
+
+                  // Add answer input
+                  const answerInput = document.createElement("input");
+                  answerInput.type = "text";
+                  answerInput.className = "form-control";
+                  answerInput.name = `question-${index}`;
+                  answerInput.placeholder =
+                    "What word do these pictures represent?";
+
+                  // if (item.progress.answers && item.progress.answers[index]) {
+                  //   answerInput.value = item.progress.answers[index];
+                  // }
+
+                  optionsContainer.appendChild(answerInput);
+
+                  // Add hint if available
+                  if (question.hint) {
+                    const hintDiv = document.createElement("div");
+                    hintDiv.className = "text-muted mt-2";
+                    hintDiv.textContent = `Hint: ${question.hint}`;
+                    optionsContainer.appendChild(hintDiv);
+                  }
+                  break;
+
+                case "comparison_table":
+                  const tableContainer = document.createElement("div");
+                  tableContainer.className = "comparison-table-container";
+
+                  const table = document.createElement("table");
+                  table.className = "table table-bordered";
+
+                  // Create header row
+                  const thead = document.createElement("thead");
+                  const headerRow = document.createElement("tr");
+
+                  // Empty header for row labels
+                  headerRow.appendChild(document.createElement("th"));
+
+                  // Add column headers
+                  question.headers.forEach((header) => {
+                    const th = document.createElement("th");
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                  });
+
+                  thead.appendChild(headerRow);
+                  table.appendChild(thead);
+
+                  // Create table body
+                  const tbody = document.createElement("tbody");
+
+                  // Add rows with inputs
+                  question.rowLabels.forEach((rowLabel, rowIndex) => {
+                    const tr = document.createElement("tr");
+
+                    // Add row label
+                    const rowLabelCell = document.createElement("td");
+                    rowLabelCell.innerHTML = `<strong>${rowLabel}</strong>`;
+                    tr.appendChild(rowLabelCell);
+
+                    // Add input cells
+                    question.headers.forEach((header, colIndex) => {
+                      const td = document.createElement("td");
+
+                      const input = document.createElement("input");
+                      input.type = "text";
+                      input.className = "form-control form-control-sm";
+                      input.name = `question-${index}[${rowLabel}][${header}]`;
+
+                      // // Set previous answer if exists
+                      // if (
+                      //   item.progress.answers &&
+                      //   item.progress.answers[index] &&
+                      //   item.progress.answers[index][rowLabel] &&
+                      //   item.progress.answers[index][rowLabel][header]
+                      // ) {
+                      //   input.value =
+                      //     item.progress.answers[index][rowLabel][header];
+                      // }
+
+                      td.appendChild(input);
+                      tr.appendChild(td);
+                    });
+
+                    tbody.appendChild(tr);
+                  });
+
+                  table.appendChild(tbody);
+                  tableContainer.appendChild(table);
+                  optionsContainer.appendChild(tableContainer);
+                  break;
+
+                case "mind_mapping":
+                  const mindmapContainer = document.createElement("div");
+                  mindmapContainer.className =
+                    "mindmap-container position-relative p-4 border rounded shadow-sm";
+
+                  // Central topic (centered)
+                  const centralTopicNode = document.createElement("div");
+                  centralTopicNode.className =
+                    "central-topic text-center fw-bold mb-4";
+                  const centralTopicText = question.centralTopic;
+                  centralTopicNode.textContent = centralTopicText;
+                  mindmapContainer.appendChild(centralTopicNode);
+
+                  // Branches
+                  const branchesWrapper = document.createElement("div");
+                  branchesWrapper.className =
+                    "branches-wrapper d-flex flex-wrap justify-content-center gap-5";
+                  question.branches.forEach((branch, branchIndex) => {
+                    const mainBranch = document.createElement("div");
+                    mainBranch.className =
+                      "main-branch card border-0 p-3 shadow-sm text-center";
+                    mainBranch.style.minWidth = "220px";
+
+                    // Main branch title only (no input)
+                    const mainBranchName = branch.name;
+                    const branchTitle = document.createElement("div");
+                    branchTitle.className = "fw-semibold";
+                    branchTitle.textContent = mainBranchName;
+                    mainBranch.appendChild(branchTitle);
+
+                    // Sub-branches (count-based cards, initially hidden)
+                    const subBranchData = branch.subBranches;
+                    const subBranchList = subBranchData
+                      .split(",")
+                      .map((s) => s.trim())
+                      .filter(Boolean);
+
+                    const subBranchCardContainer =
+                      document.createElement("div");
+                    subBranchCardContainer.className =
+                      "sub-branch-container mt-3";
+
+                    subBranchList.forEach((subBranch, subIndex) => {
+                      const card = document.createElement("div");
+                      card.className =
+                        "sub-branch-card border rounded p-2 mb-2";
+
+                      const input = document.createElement("input");
+                      input.type = "text";
+                      input.className = "form-control";
+                      input.placeholder = `Sub-branch ${subIndex + 1}`;
+                      input.name = `question-${index}[branches][${branchIndex}][subBranchInput][${subIndex}]`;
+
+                      card.appendChild(input);
+                      subBranchCardContainer.appendChild(card);
+                    });
+
+                    mainBranch.appendChild(subBranchCardContainer);
+                    branchesWrapper.appendChild(mainBranch);
+                  });
+
+                  mindmapContainer.appendChild(branchesWrapper);
+                  optionsContainer.appendChild(mindmapContainer);
+                  break;
+
+                default:
+                  optionsContainer.innerHTML =
+                    "<p>Question type not supported in this demo.</p>";
+              }
+
+              questionsContainer.appendChild(questionClone);
+            });
+
+            // Submit button event
+            submitButton.addEventListener("click", async () => {
+              try {
+                // Gather answers
+                const answers = {};
+                const questions = container.querySelectorAll(
+                  ".assessment-question"
+                );
+
+                questions.forEach((question) => {
+                  const index = question.dataset.index;
+                  const questionType = question.dataset.type;
+
+                  switch (questionType) {
+                    case "multiple_choice":
+                    case "true_false":
+                      const selectedOption = question.querySelector(
+                        'input[type="radio"]:checked'
+                      );
+                      answers[index] = selectedOption
+                        ? selectedOption.value
+                        : null;
+                      break;
+
+                    case "short_answer":
+                    case "essay":
+                    case "4pics1word":
+                      const textInput = question.querySelector(
+                        'input[type="text"], textarea'
+                      );
+                      answers[index] = textInput ? textInput.value.trim() : "";
+                      break;
+
+                    case "matching":
+                      const matchInputs = question.querySelectorAll("select");
+                      answers[index] = {};
+                      matchInputs.forEach((input) => {
+                        const matchKey = input.name.match(/\[(.*?)\]/)[1];
+                        answers[index][matchKey] = input.value;
+                      });
+                      break;
+
+                    case "fill_blank":
+                      const blankInputs =
+                        question.querySelectorAll(".blank-input");
+                      answers[index] = {};
+                      blankInputs.forEach((input) => {
+                        const blankId = input.name.match(/\[(.*?)\]/)[1];
+                        answers[index][blankId] = input.value.trim();
+                      });
+                      break;
+
+                    case "comparison_table":
+                      const tableInputs =
+                        question.querySelectorAll('input[type="text"]');
+                      answers[index] = {};
+                      tableInputs.forEach((input) => {
+                        const nameParts =
+                          input.name.match(/\[(.*?)\]\[(.*?)\]/);
+                        if (nameParts && nameParts.length === 3) {
+                          const rowLabel = nameParts[1];
+                          const colHeader = nameParts[2];
+
+                          if (!answers[index][rowLabel]) {
+                            answers[index][rowLabel] = {};
+                          }
+                          answers[index][rowLabel][colHeader] =
+                            input.value.trim();
+                        }
+                      });
+                      break;
+
+                    case "mind_mapping":
+                      const branchContainers = question.querySelectorAll(
+                        ".sub-branch-container"
+                      );
+
+                      answers[index] = {
+                        branches: [],
+                      };
+
+                      branchContainers.forEach((branchContainer) => {
+                        const subBranchInputs =
+                          branchContainer.querySelectorAll(
+                            'input[name^="question-"][name*="[subBranchInput]"]'
+                          );
+
+                        const subBranches = [];
+                        subBranchInputs.forEach((input) => {
+                          if (input.value.trim() !== "") {
+                            subBranches.push(input.value.trim());
+                          }
+                        });
+
+                        answers[index].branches.push({
+                          subBranches: subBranches.join(", "),
+                        });
+                      });
+                      break;
+                  }
+                });
+
+                console.log(answers);
+
+                // Submit assessment
+                const response = await fetch(
+                  backendURL +
+                    `/api/sequence-items/${item.id}/submit-assessment`,
+                  {
+                    method: "POST",
+                    headers: {
+                      Authorization: `Bearer ${authToken}`,
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ answers }),
+                  }
+                );
+
+                if (!response.ok) {
+                  throw new Error("Failed to submit assessment");
+                }
+
+                const result = await response.json();
+
+                console.log(result);
+                if (result.passing_status === "passed") {
+                  // Update local state
+                  item.progress.status = "completed";
+                  item.progress.score = result.progress.score;
+                  item.progress.answers = answers; // Store answers for review
+
+                  updateProgressStats();
+                  loadSequence(sequenceId);
+                  setTimeout(() => {
+                    loadSequenceFromCurriculum(
+                      curriculumId,
+                      quarterId,
+                      sequenceId
+                    );
+                  }, 60000);
+                } else {
+                  item.progress.status = "in_progress";
+                  item.progress.score = result.progress.score;
+                  item.progress.answers = answers; // Store answers for review
+                }
+
+                renderSequenceItems(true);
+                showAssessmentResults(item, assessment.data, container, result);
+              } catch (error) {
+                console.error("Error submitting assessment:", error);
+                alert("Failed to submit assessment. Please try again.");
+              }
+            });
+
+            container.innerHTML = "";
+            container.appendChild(clone);
+          } catch (error) {
+            console.error("Error loading assessment content:", error);
+            container.innerHTML = `
+                      <div class="alert alert-danger">
+                          Failed to load assessment. Please try again.
+                      </div>
+                  `;
+          }
+
+          document.querySelector(".fullscreen-spinner").classList.add("d-none");
+        }
+
+        // Function to show assessment results
+        function showAssessmentResults(
+          item,
+          assessment,
+          container,
+          result = null
+        ) {
+          const template = document.getElementById("result-template");
+
+          const clone = template.content.cloneNode(true);
+          const alertDiv = clone.querySelector(".alert");
+
+          alertDiv.classList.remove("alert-success", "alert-danger");
+          if (result.passing_status === "passed") {
+            alertDiv.classList.add("alert-success");
+            alertDiv.querySelector(".alert-heading").textContent =
+              "Assessment Submitted!";
+          } else {
+            alertDiv.classList.add("alert-danger");
+            alertDiv.querySelector(".alert-heading").textContent =
+              "Failed Assessment!";
+          }
+
+          const scoreElement = clone.querySelector(".score");
+          const totalElement = clone.querySelector(".total");
+          const percentageElement = clone.querySelector(".percentage");
+          const questionsReview = clone.querySelector(".questions-review");
+
+          // If we have a fresh result, use that, otherwise use progress data
+          if (result.result) {
+            scoreElement.textContent =
+              result.passing_status === "passed"
+                ? result.result?.score.toFixed(1)
+                : result.progress.score.toFixed(1);
+            totalElement.textContent = assessment.points.toFixed(1);
+            percentageElement.textContent = result.percentage.toFixed(1);
+          } else {
+            scoreElement.textContent = item.progress.score;
+            totalElement.textContent = assessment.points;
+            percentageElement.textContent = (
+              (item.progress.score / assessment.points) *
+              100
+            ).toFixed(1);
+          }
+
+          // Render question review
+          assessment.questions.forEach((question, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "mb-4 p-3 border rounded";
+
+            const questionText = document.createElement("div");
+            questionText.className = "fw-bold mb-2";
+            questionText.textContent = `${index + 1}. ${
+              question.text || question.instructions || "Question"
+            }`;
+
+            const userAnswer = document.createElement("div");
+            userAnswer.className = "mb-2";
+
+            const correctAnswer = document.createElement("div");
+
+            // Display user answer and correct answer based on question type
+            switch (assessment.type) {
+              case "multiple_choice":
+                const selectedOption = question.options.find(
+                  (opt) => opt.value === (item.progress.answers[index] || "")
+                );
+                userAnswer.innerHTML = `<strong>Your answer:</strong> ${
+                  selectedOption ? selectedOption.text : "No answer provided"
+                }`;
+
+                const correctOption = question.options.find(
+                  (opt) => opt.value === question.correctAnswer
+                );
+                if (result.passing_status === "passed") {
+                  correctAnswer.className =
+                    correctOption.text === selectedOption?.text
+                      ? "text-success"
+                      : "text-danger";
+
+                  correctAnswer.innerHTML = `<strong>Correct answer:</strong> ${
+                    correctOption ? correctOption.text : question.correctAnswer
+                  }`;
+                }
+                break;
+
+              case "true_false":
+                userAnswer.innerHTML = `<strong>Your answer:</strong> ${
+                  item.progress.answers[index]
+                    ? item.progress.answers[index].charAt(0).toUpperCase() +
+                      item.progress.answers[index].slice(1)
+                    : "No answer provided"
+                }`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Correct answer:</strong> ${
+                    question.correctAnswer.charAt(0).toUpperCase() +
+                    question.correctAnswer.slice(1)
+                  }`;
+                }
+                break;
+
+              case "short_answer":
+                userAnswer.innerHTML = `<strong>Your answer:</strong> ${
+                  item.progress.answers[index] || "No answer provided"
+                }`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Correct answer:</strong> ${question.correctAnswer}`;
+                  break;
+                }
+
+              case "essay":
+                userAnswer.innerHTML = `<strong>Your response:</strong><div class="bg-light p-2 mt-1">${
+                  item.progress.answers[index] || "No answer provided"
+                }</div>`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Grading rubric:</strong><div class="bg-light p-2 mt-1">${
+                    question.rubric || "No rubric provided"
+                  }</div>`;
+                }
+                break;
+
+              case "matching":
+                userAnswer.innerHTML = `<strong>Your matches:</strong><ul class="mt-1">`;
+                question.matches.forEach((match) => {
+                  const userMatch =
+                    item.progress.answers[index] &&
+                    item.progress.answers[index][match.item];
+                  const matchedItem =
+                    userMatch !== undefined
+                      ? question.items[userMatch]
+                      : "No match selected";
+
+                  userAnswer.innerHTML += `<li>${match.match} → ${matchedItem}</li>`;
+                });
+                userAnswer.innerHTML += `</ul>`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Correct matches:</strong><ul class="mt-1">`;
+                  question.matches.forEach((match) => {
+                    const correctItem = question.items[match.item];
+                    correctAnswer.innerHTML += `<li>${match.match} → ${correctItem}</li>`;
+                  });
+                  correctAnswer.innerHTML += `</ul>`;
+                }
+                break;
+
+              case "fill_blank":
+                userAnswer.innerHTML = `<strong>Your answers:</strong><div class="bg-light p-2 mt-1">`;
+                question.blanks.forEach((blank) => {
+                  const userBlank =
+                    item.progress.answers[index] &&
+                    item.progress.answers[index][blank.id];
+                  userAnswer.innerHTML += `<div>${blank.id}: ${
+                    userBlank || "No answer provided"
+                  }</div>`;
+                });
+                userAnswer.innerHTML += `</div>`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Correct answers:</strong><div class="bg-light p-2 mt-1">`;
+                  question.blanks.forEach((blank) => {
+                    correctAnswer.innerHTML += `<div>${blank.id}: ${blank.correctAnswer}</div>`;
+                  });
+                  correctAnswer.innerHTML += `</div>`;
+                }
+                break;
+
+              case "4pics1word":
+                userAnswer.innerHTML = `<strong>Your answer:</strong> ${
+                  item.progress.answers[index] || "No answer provided"
+                }`;
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `<strong>Correct answer:</strong> ${question.correctAnswer}`;
+                }
+
+                // Show images in a 2x2 grid
+                const picsDiv = document.createElement("div");
+                picsDiv.className = "pics-container grid-2x2 my-3";
+
+                question.images.forEach((image) => {
+                  const imgWrapper = document.createElement("div");
+                  imgWrapper.className = "pic-item";
+
+                  const img = document.createElement("img");
+                  img.src = `https://mahusci.rubenianinternational.com/storage/app/public/${image}`;
+                  img.alt = "Question image";
+                  img.className = "img-thumbnail";
+
+                  imgWrapper.appendChild(img);
+                  picsDiv.appendChild(imgWrapper);
+                });
+
+                questionDiv.appendChild(picsDiv);
+                break;
+
+              case "comparison_table":
+                // Create user answers table with color coding
+                userAnswer.innerHTML = `
+          <strong>Your answers:</strong>
+          <div class="table-responsive mt-1">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th></th>
+                          ${question.headers
+                            .map((header) => `<th>${header}</th>`)
+                            .join("")}
+                      </tr>
+                  </thead>
+                  <tbody>
+                      ${question.rowLabels
+                        .map((rowLabel) => {
+                          const userRow =
+                            item.progress.answers[index]?.[rowLabel] || {};
+                          const correctRow =
+                            question.correctAnswers?.find(
+                              (r) =>
+                                r.rowLabel === rowLabel || // If using rowLabel field
+                                question.rowLabels.indexOf(rowLabel) ===
+                                  question.correctAnswers.indexOf(r)
+                            ) || {};
+
+                          return `
+                          <tr>
+                              <td><strong>${rowLabel}</strong></td>
+                              ${question.headers
+                                .map((header) => {
+                                  const userValue = userRow[header] || "";
+                                  const correctValue =
+                                    correctRow[header] ||
+                                    Object.values(correctRow)[
+                                      question.headers.indexOf(header)
+                                    ] ||
+                                    "";
+                                  const isCorrect =
+                                    userValue
+                                      .toString()
+                                      .toLowerCase()
+                                      .trim() ===
+                                    correctValue
+                                      .toString()
+                                      .toLowerCase()
+                                      .trim();
+
+                                  return `
+                                  <td class="${
+                                    isCorrect ? "text-success" : "text-danger"
+                                  }">
+                                      ${userValue}
+                                  </td>`;
+                                })
+                                .join("")}
+                          </tr>`;
+                        })
+                        .join("")}
+                  </tbody>
+              </table>
+          </div>
+      `;
+
+                // Create correct answers table
+                if (
+                  result.passing_status === "passed" &&
+                  question.correctAnswers?.length
+                ) {
+                  correctAnswer.innerHTML = `
+              <strong>Correct answers:</strong>
+              <div class="table-responsive mt-1">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th></th>
+                              ${question.headers
+                                .map((header) => `<th>${header}</th>`)
+                                .join("")}
+                          </tr>
+                      </thead>
+                      <tbody>
+                          ${question.rowLabels
+                            .map((rowLabel, rowIndex) => {
+                              const correctRow =
+                                question.correctAnswers[rowIndex] || {};
+                              return `
+                              <tr>
+                                  <td><strong>${rowLabel}</strong></td>
+                                  ${question.headers
+                                    .map((header) => {
+                                      const value =
+                                        correctRow[header] ||
+                                        Object.values(correctRow)[
+                                          question.headers.indexOf(header)
+                                        ] ||
+                                        "";
+                                      return `<td class="text-success">${value}</td>`;
+                                    })
+                                    .join("")}
+                              </tr>`;
+                            })
+                            .join("")}
+                      </tbody>
+                  </table>
+              </div>
+          `;
+                }
+                break;
+
+              case "mind_mapping":
+                userAnswer.innerHTML = `
+    <div class=" ">
+        <h4 class="text-center mb-4 p-3 ${
+          result.passing_status === "passed"
+            ? "bg-success-light"
+            : "bg-danger-light"
+        }">Your Mind Map Answers</h4>`;
+
+                const user = item.progress.answers[index];
+
+                if (user) {
+                  // Central topic
+                  if (user.centralTopic) {
+                    const isCorrect =
+                      question.centralTopic &&
+                      user.centralTopic.toLowerCase() ===
+                        question.centralTopic.toLowerCase();
+                    userAnswer.innerHTML += `
+                <div class="central-topic ${
+                  isCorrect ? "text-success" : "text-danger"
+                }">
+                    ${question.centralTopic}
+                </div>`;
+                  }
+
+                  // Branches and sub-branches
+                  if (user.branches && user.branches.length > 0) {
+                    userAnswer.innerHTML += `<div class="branches-wrapper">`;
+
+                    user.branches.forEach((branch, i) => {
+                      const correctBranch = question.branches[i];
+                      const branchNameMatch =
+                        correctBranch &&
+                        branch.name &&
+                        branch.name.toLowerCase() ===
+                          correctBranch.name.toLowerCase();
+
+                      userAnswer.innerHTML += `
+                    <div class="main-branch ${
+                      branchNameMatch ? "text-success" : "text-danger"
+                    }">
+                        <strong>${
+                          correctBranch.name ?? "Unnamed Branch"
+                        }</strong>`;
+
+                      if (branch.subBranches) {
+                        const userSubBranches = branch.subBranches
+                          .split(",")
+                          .map((s) => s.trim())
+                          .filter((s) => s !== "");
+
+                        const correctSubBranches = correctBranch?.subBranches
+                          ? correctBranch.subBranches
+                              .split(",")
+                              .map((s) => s.trim())
+                              .filter((s) => s !== "")
+                          : [];
+
+                        if (userSubBranches.length > 0) {
+                          userAnswer.innerHTML += `<div class="sub-branch-container">`;
+                          userSubBranches.forEach((sub) => {
+                            const isSubCorrect = correctSubBranches.some(
+                              (correctSub) =>
+                                correctSub.toLowerCase() === sub.toLowerCase()
+                            );
+                            userAnswer.innerHTML += `
+                                <div class="sub-branch-card ${
+                                  isSubCorrect ? "text-success" : "text-danger"
+                                }">
+                                    ${sub}
+                                </div>`;
+                          });
+                          userAnswer.innerHTML += `</div>`;
+                        }
+                      }
+
+                      userAnswer.innerHTML += `</div>`;
+                    });
+
+                    userAnswer.innerHTML += `</div>`;
+                  }
+                } else {
+                  userAnswer.innerHTML += `<div class="text-danger text-center">No answer provided</div>`;
+                }
+
+                userAnswer.innerHTML += `</div>`; // Close mindmap-container
+
+                if (result.passing_status === "passed") {
+                  // Correct answer
+                  correctAnswer.innerHTML = `
+        <div class=" ">
+            <h4 class="text-center mb-4 bg-success-light p-3 ">Correct Mind Map Answers</h4>`;
+
+                  if (question.centralTopic) {
+                    correctAnswer.innerHTML += `
+                <div class="central-topic text-success">
+                    ${question.centralTopic}
+                </div>`;
+                  }
+
+                  if (question.branches && question.branches.length > 0) {
+                    correctAnswer.innerHTML += `<div class="branches-wrapper">`;
+
+                    question.branches.forEach((branch) => {
+                      correctAnswer.innerHTML += `
+                    <div class="main-branch text-success">
+                        <strong>${branch.name ?? "Unnamed Branch"}</strong>`;
+
+                      if (branch.subBranches) {
+                        const subBranches = branch.subBranches
+                          .split(",")
+                          .map((s) => s.trim())
+                          .filter((s) => s !== "");
+
+                        if (subBranches.length > 0) {
+                          correctAnswer.innerHTML += `<div class="sub-branch-container">`;
+                          subBranches.forEach((sub) => {
+                            correctAnswer.innerHTML += `
+                                <div class="sub-branch-card text-success">
+                                    ${sub}
+                                </div>`;
+                          });
+                          correctAnswer.innerHTML += `</div>`;
+                        }
+                      }
+
+                      correctAnswer.innerHTML += `</div>`;
+                    });
+
+                    correctAnswer.innerHTML += `</div>`;
+                  }
+
+                  correctAnswer.innerHTML += `</div>`; // Close mindmap-container
+                }
+                break;
+              default:
+                userAnswer.innerHTML = `
+    <div class="mindmap-container p-4 mb-4 border ${
+      item.progress.answers[index]
+        ? result.passing_status === "passed"
+          ? "border-success"
+          : "border-danger"
+        : "border-secondary"
+    }">
+        <h5 class="${
+          item.progress.answers[index]
+            ? result.passing_status === "passed"
+              ? "text-success"
+              : "text-danger"
+            : "text-secondary"
+        } mb-3">
+            Your Answer
+        </h5>
+        <div class="p-3">
+            ${
+              item.progress.answers[index]
+                ? JSON.stringify(item.progress.answers[index])
+                : '<span class="text-danger">No answer provided</span>'
+            }
+        </div>
+    </div>`;
+
+                if (result.passing_status === "passed") {
+                  correctAnswer.innerHTML = `
+        <div class="mindmap-container p-4 border border-success">
+            <h5 class="text-success mb-3">Correct Answer</h5>
+            <div class="p-3">
+                ${
+                  question.correctAnswer
+                    ? JSON.stringify(question.correctAnswer)
+                    : "Not available"
+                }
+            </div>
+        </div>`;
+                }
+            }
+            // Add explanation if available
+            if (question.explanation) {
+              const explanationDiv = document.createElement("div");
+              explanationDiv.className = "alert alert-info mt-2";
+              explanationDiv.innerHTML = `<strong>Explanation:</strong> ${question.explanation}`;
+              questionDiv.appendChild(explanationDiv);
+            }
+
+            questionDiv.appendChild(questionText);
+            questionDiv.appendChild(userAnswer);
+            if (result.passing_status === "passed") {
+              questionDiv.appendChild(correctAnswer);
+            }
+            questionsReview.appendChild(questionDiv);
+          });
+
+          container.innerHTML = "";
+          container.appendChild(clone);
+        }
+
+        async function recordCompletedLearning(type, details, subject) {
+          const data = {
+            type: type,
+            details: details,
+            subject: subject,
+          };
+
+          const response = await fetch(
+            backendURL + "/api/student/learning-history",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+              body: JSON.stringify(data),
+            }
+          );
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(
+              result.message || "Failed to record learning history."
+            );
+          }
+
+          return result;
+        }
+
+        // Function to update progress stats
+        // Update the progression logic to include itemId
+        function updateProgressStats() {
+          if (!currentItems.length) return;
+
+          console.log("3");
+          const totalLessons = currentItems.filter(
+            (item) => item.item_type === "lesson"
+          ).length;
+          const totalAssessments = currentItems.filter(
+            (item) => item.item_type === "assessment"
+          ).length;
+          const totalItems = currentItems.length;
+          const completedItems = currentItems.filter(
+            (item) => item.progress.status === "completed"
+          ).length;
+          const inProgressItems = currentItems.filter(
+            (item) =>
+              item.progress.status === "in_progress" ||
+              item.progress.status === "not_started"
+          ).length;
+
+          document.getElementById("completed-count").textContent =
+            completedItems;
+          document.getElementById("in-progress-count").textContent =
+            inProgressItems;
+          document.getElementById("total-count").textContent = totalItems;
+          document.getElementById("total-lessons").textContent = totalLessons;
+          document.getElementById("total-assessments").textContent =
+            totalAssessments;
+
+          const progressPercentage = (completedItems / totalItems) * 100;
+          document.getElementById(
+            "progress-bar"
+          ).style.width = `${progressPercentage}%`;
+
+          if (progressPercentage === 100) {
+            const currentQuarter =
+              currentCurriculum.quarters[currentQuarterIndex];
+            // Check for next sequence in current quarter
+            if (currentSequenceIndex < currentQuarter.items.length - 1) {
+              const nextSequence =
+                currentQuarter.items[currentSequenceIndex + 1];
+              const nextSequenceId = nextSequence.sequence_id;
+
+              // Fetch progress for next sequence to determine which item to load
+              fetchStudentProgress(nextSequenceId).then(
+                async (progressData) => {
+                  let firstItemId = null;
+
+                  // Find first in-progress or not started item
+                  const sequenceItems = nextSequence.sequence.items;
+                  const inProgressItem = sequenceItems.find((item) =>
+                    progressData.some(
+                      (p) =>
+                        p.sequence_item_id === item.id &&
+                        p.status === "in_progress"
+                    )
+                  );
+
+                  if (inProgressItem) {
+                    firstItemId = inProgressItem.id;
+                  } else {
+                    const notStartedItem = sequenceItems.find(
+                      (item) =>
+                        !progressData.some(
+                          (p) => p.sequence_item_id === item.id
+                        )
+                    );
+                    if (notStartedItem) firstItemId = notStartedItem.id;
+                    else if (sequenceItems.length > 0)
+                      firstItemId = sequenceItems[0].id;
+                  }
+
+                  await recordCompletedLearning(
+                    "Curriculum",
+                    `Completed the "${currentCurriculum.title} - Quarter ${
+                      currentQuarterIndex + parseInt(1)
+                    }" `,
+                    `${currentCurriculum.title}`
+                  );
+
+                  const newUrl =
+                    `sequence-player.html?curriculum_id=${curriculumId}&quarter_id=${currentQuarter.id}&sequence_id=${nextSequenceId}` +
+                    (firstItemId ? `&item_id=${firstItemId}` : "");
+
+                  setTimeout(() => {
+                    window.location.href = newUrl;
+                  }, 1500);
+                }
+              );
+            }
+            // Check for next quarter
+            else if (
+              currentQuarterIndex <
+              currentCurriculum.quarters.length - 1
+            ) {
+              const nextQuarter =
+                currentCurriculum.quarters[currentQuarterIndex + 1];
+              const firstSequence = nextQuarter.items[0];
+              const firstSequenceId = firstSequence.sequence_id;
+
+              // Fetch progress for first sequence in next quarter
+              fetchStudentProgress(firstSequenceId).then(
+                async (progressData) => {
+                  let firstItemId = null;
+
+                  const sequenceItems = firstSequence.sequence.items;
+                  const inProgressItem = sequenceItems.find((item) =>
+                    progressData.some(
+                      (p) =>
+                        p.sequence_item_id === item.id &&
+                        p.status === "in_progress"
+                    )
+                  );
+
+                  if (inProgressItem) {
+                    firstItemId = inProgressItem.id;
+                  } else {
+                    const notStartedItem = sequenceItems.find(
+                      (item) =>
+                        !progressData.some(
+                          (p) => p.sequence_item_id === item.id
+                        )
+                    );
+                    if (notStartedItem) firstItemId = notStartedItem.id;
+                    else if (sequenceItems.length > 0)
+                      firstItemId = sequenceItems[0].id;
+                  }
+
+                  await recordCompletedLearning(
+                    "Curriculum",
+                    `Completed the "${currentCurriculum.title} - Quarter ${
+                      currentQuarterIndex + parseInt(1)
+                    }" `,
+                    `${currentCurriculum.title}`
+                  );
+
+                  const newUrl =
+                    `sequence-player.html?curriculum_id=${curriculumId}&quarter_id=${nextQuarter.id}&sequence_id=${firstSequenceId}` +
+                    (firstItemId ? `&item_id=${firstItemId}` : "");
+
+                  setTimeout(() => {
+                    window.location.href = newUrl;
+                  }, 1500);
+                }
+              );
+            }
+            // Curriculum completed
+            else {
+              setTimeout(() => {
+                document.getElementById("content-container").innerHTML = `
+              <div class="alert alert-success text-center">
+                <h3>Curriculum Completed!</h3>
+                <p>You've successfully completed all quarters and sequences in this curriculum.</p>
+                <button class="btn btn-primary mt-3" onclick="window.location.href='myLearnings.html'">
+                  Return to My Learnings
+                </button>
+              </div>
+            `;
+              }, 1500);
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

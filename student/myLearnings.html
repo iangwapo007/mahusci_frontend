@@ -3,10 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sample | Courses</title>
+    <title>Mahusci | My Learnings</title>
     <link rel="icon" type="image/png" href="/src/images/logo.png" />
     <link rel="stylesheet" href="/student/css/custom.css" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat"
       rel="stylesheet"
@@ -15,53 +19,424 @@
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Comic+Neue"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Jost"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Cabin Sketch"
+      href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
       rel="stylesheet"
     />
-    <script type="module" src="./js/system/myLearnings.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fredoka+One"
+      rel="stylesheet"
+    />
+    <script type="module" src="js/utils/utils.js"></script>
   </head>
+  <style>
+    body {
+      font-family: "Comic Neue", cursive;
+    }
+
+    .profile-picture {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #4caf50;
+      transition: all 0.3s ease;
+    }
+
+    .input-field {
+      padding: 12px 15px 12px 50px;
+      border-radius: 30px;
+      border: 3px solid #4caf50;
+      width: 100%;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(68, 126, 226, 0.2);
+      font-family: "Comic Neue", cursive;
+      background-color: #f0f7ff;
+    }
+
+    .input-field:focus {
+      outline: none;
+      box-shadow: 0 6px 15px rgba(68, 126, 226, 0.3);
+      background-color: white;
+    }
+
+    /* Card styles - More fun */
+    .card {
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 10px 20px rgba(77, 133, 230, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 30px;
+      overflow: hidden;
+      background: white;
+      border: 3px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(68, 126, 226, 0.25);
+      border-color: #4caf50;
+    }
+
+    .card-header {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+      font-family: "Fredoka One", cursive;
+      font-size: 1.5rem;
+      padding: 18px;
+      border-bottom: none;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.5px;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .progress {
+      height: 18px;
+      border-radius: 15px;
+      background-color: #e0e9ff;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+      background-color: #4caf50;
+      border-radius: 15px;
+      transition: width 0.6s ease;
+    }
+
+    /* Placeholder image styles */
+    .placeholder-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 130px;
+      width: 100%;
+      background: linear-gradient(135deg, #e0e9ff, #c8dcff);
+      color: #4caf50;
+      font-weight: bold;
+      font-size: 3.5rem;
+      font-family: "Fredoka One", cursive;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .custom-card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    /* Button styles */
+    .btn-continue {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      font-family: "Fredoka One", cursive;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 8px rgba(68, 126, 226, 0.3);
+    }
+
+    .btn-continue:hover {
+      background-color: #4caf50;
+      transform: scale(1.02) translateY(-3px);
+      box-shadow: 0 6px 12px rgba(68, 126, 226, 0.4);
+    }
+
+    /* Pagination styles - More playful */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
+      gap: 10px;
+    }
+
+    .pagination-item {
+      cursor: pointer;
+      padding: 10px 18px;
+      border-radius: 50%;
+      background: white;
+      user-select: none;
+      border: 3px solid #4caf50;
+      color: #4caf50;
+      font-weight: bold;
+      font-family: "Fredoka One", cursive;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .pagination-item:hover {
+      background: #e0e9ff;
+      transform: scale(1.15) rotate(5deg);
+    }
+
+    .pagination-item.active {
+      background: #4caf50;
+      color: white;
+      transform: scale(1.15);
+      box-shadow: 0 4px 8px rgba(68, 126, 226, 0.3);
+    }
+
+    /* Welcome message - More fun */
+    .welcome-message {
+      /* background: linear-gradient(135deg, #4caf50, #6a9af1); */
+      /* color: white; */
+      padding: 20px 30px;
+      /* border-radius: 20px; */
+      /* box-shadow: 0 10px 20px rgba(78, 134, 230, 0.3); */
+      /* margin-bottom: 30px; */
+      display: inline-block;
+      border: 3px solid white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome-message::after {
+      content: "✨";
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+      0%,
+      100% {
+        opacity: 0.7;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    .welcome-message h2 {
+      font-weight: 800;
+      margin-bottom: 10px;
+      font-family: "Fredoka One", cursive;
+      letter-spacing: 0.5px;
+    }
+
+    .welcome-message p {
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+
+    /* Text hover effects */
+    .hover-effect {
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    /* Navbar hover effects */
+    .hover-effect:hover {
+      color: #4caf50;
+      transform: translateY(-2px);
+      text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2);
+    }
+
+    .hover-effect-active {
+      color: #4caf50;
+      /* text-shadow: 0 2px 4px rgba(68, 126, 226, 0.2); */
+    }
+
+    /* Navbar hover effects */
+    .nav-link-hover {
+      font-family: "Fredoka One", cursive;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link-hover:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .card {
+        margin-bottom: 25px;
+      }
+
+      .welcome-message {
+        width: 100%;
+        padding: 15px 20px;
+      }
+
+      .input-field {
+        width: 100%;
+      }
+
+      .card-header {
+        font-size: 1.3rem;
+      }
+
+      .btn-continue {
+        padding: 8px 20px;
+      }
+    }
+
+    /* Loading animation */
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .loading-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      height: 100px;
+    }
+
+    .loading-dots span {
+      width: 20px;
+      height: 20px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      display: inline-block;
+      animation: bounce 0.8s infinite ease-in-out;
+    }
+
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in-out forwards;
+      animation-delay: 0.1s; /* Adjust delay as needed */
+    }
+
+    @keyframes slideFadeIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-fade-in {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideFadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.4s ease-out forwards;
+    }
+
+    @keyframes bounceFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-15px);
+      }
+      80% {
+        transform: translateY(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bounce-fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: bounceFadeUp 1s ease-out forwards;
+    }
+  </style>
   <body class="poppins">
     <!-- START OF DESKTOP NAVBAR -->
     <div
-      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow"
+      class="container-fluid navbar fixed-top bg-white d-none d-md-flex d-flex justify-content-between align-items-center shadow-sm"
       style="padding: 5px 150px 5px 150px"
     >
       <div class="py-3">
         <img
           src="/src/images/mahusci-banner-logo.png"
-          style="width: 180px"
+          style="width: 150px"
           alt=""
           srcset=""
         />
       </div>
 
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between mb-4">
         <a class="text-decoration-none" href="/student/home.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Home
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/lessons.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 140px"
+            class="nav-link-hover flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 140px"
             >Lessons
           </span></a
         >
 
         <a class="text-decoration-none" href="/student/myLearnings.html"
           ><span
-            class="nav-link-hover flex-fill text-center col"
-            style="font-weight: 700; font-size: 18px; width: 170px"
+            class="nav-link-hover hover-effect-active flex-fill text-center col hover-effect"
+            style="font-weight: 700; font-size: 17px; width: 170px"
             >My Learnings
           </span></a
         >
@@ -72,10 +447,10 @@
           class="py-4 d-flex align-items-center float-end"
           style="margin-top: -20px; margin-bottom: -20px"
         >
-          <div class="pe-2">
+          <div class="pe-1">
             <img
               class="profile-picture"
-              src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
+              src="/src/images/profile.jpg"
               alt=""
               srcset=""
             />
@@ -83,11 +458,17 @@
           <div class="px-2">
             <span
               id="username-desktop"
-              style="font-size: 16px; font-weight: 600; line-height: 1"
+              style="
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                color: #4caf50;
+                /* font-family: Fredoka One, cursive; */
+              "
             ></span>
             <span
               id="role-level-desktop"
-              style="font-size: 13px; display: block; line-height: 1"
+              style="font-size: 11px; display: block; line-height: 1"
             ></span>
           </div>
         </div>
@@ -137,15 +518,18 @@
             <div class="d-flex align-items-center rounded-3 mb-4">
               <div>
                 <img
-                  class="profile-picture-offcanvas"
+                  class="profile-picture"
                   src="/src/images/team-liquid-logo-png_seeklogo-528696.png"
                   alt=""
                   srcset=""
                 />
               </div>
               <div class="ps-4">
-                <small id="username-mobile" class="d-block fw-bold"></small>
-                <small id="role-level-mobile" class="pt-2"
+                <small
+                  id="username-mobile"
+                  class="d-block fw-bold hover-effect"
+                ></small>
+                <small id="role-level-mobile" class="pt-2 hover-effect"
                   >Student | Grade 7</small
                 >
               </div>
@@ -168,7 +552,7 @@
                   srcset=""
                   style="width: 20px; margin-right: 26px"
                 />
-                <small class="mt-1">Home</small>
+                <small class="mt-1 hover-effect">Home</small>
               </a>
             </li>
 
@@ -184,7 +568,7 @@
                   srcset=""
                   style="width: 20px; margin-right: 26px"
                 />
-                <small class="mt-1">Lessons</small>
+                <small class="mt-1 hover-effect">Lessons</small>
               </a>
             </li>
 
@@ -197,7 +581,7 @@
                   alt=""
                   style="width: 25px; margin-left: -3px; margin-right: 20px"
                 />
-                <small class="mt-1 ms-1">My Learnings</small>
+                <small class="mt-1 ms-1 hover-effect">My Learnings</small>
               </a>
             </li>
             <li class="nav-item">
@@ -209,7 +593,7 @@
                   alt=""
                   style="width: 18px; margin-left: 1px; margin-right: 22px"
                 />
-                <small class="mt-1 ms-1">My Profile</small>
+                <small class="mt-1 ms-1 hover-effect">My Profile</small>
               </a>
             </li>
           </ul>
@@ -220,7 +604,7 @@
               srcset=""
               style="width: 25px"
             />
-            <small class="ps-3">Log out</small>
+            <small class="ps-3 hover-effect">Log out</small>
           </div>
         </div>
       </div>
@@ -229,250 +613,48 @@
     <!-- END OF MOBILE NAVBAR -->
 
     <!-- START OF CONTENTS -->
-
-    <div
-      class="container mt-5 d-flex justify-content-between align-items-center"
-      style="padding-top: 55px"
-    >
-      <div class="ms-3 pt-lg-5">
-        <h2 style="font-weight: 800; color: #4481eb">My Courses</h2>
-        <span
-          >Welcome back!
-          <span class="fw-bolder">Christine Lacuerda Luperte</span>
-        </span>
-      </div>
-      <div class="mt-3 search-container d-none d-md-flex">
-        <input class="input-field" type="text" placeholder="Search" />
-        <img
-          src="/src/icon/search.png"
-          class="search-icon"
-          alt="Search"
-          srcset=""
-          style="width: 20px"
-        />
+    <div class="container" style="padding-top: 100px">
+      <div class="welcome-message w-100">
+        <h2 style="margin-bottom: 10px; color: #4caf50">My Learnings</h2>
+        <p>
+          Welcome Back, <span style="color: #4caf50">Science Explorer!</span>
+          <br />
+          Ready to continue your science adventure? Check out your progress
+          below!
+        </p>
       </div>
     </div>
 
     <!-- START OF CARDS -->
-    <div class="container px-md-5 px-4" style="margin-top: -18px">
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-4 mt-5">
-          <a
-            class="text-decoration-none text-reset"
-            href="/student/selectedCourse.html"
-            ><div class="custom-card">
-              <span
-                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-                >Biology</span
-              >
-              <img
-                src="/src/images/biology.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <h5 class="custom-card-title truncate">Botany (Plants)</h5>
+    <div class="container px-md-5 px-4">
+      <div class="row" id="curriculum-cards-container">
+        <!-- Loading indicator -->
+        <div class="col-12 text-center py-5 d-none" id="loading-indicator">
+          <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <p class="mt-3 hover-effect">Loading your science adventures...</p>
+        </div>
+      </div>
 
-                <div class="custom-card-footer">
-                  <span style="font-size: smaller">Progress:</span>
-                  <div
-                    class="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar w-25"></div>
-                  </div>
-                </div>
-              </div></div
-          ></a>
-        </div>
-        <div class="col-lg-4 mt-5">
-          <a
-            class="text-decoration-none text-reset"
-            href="/student/selectedCourse.html"
-          >
-            <div class="custom-card">
-              <span
-                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-              >
-                Chemistry
-              </span>
-              <img
-                src="/src/images/chemistry.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <h5 class="custom-card-title truncate">
-                  Organic Chemistry (Carbon-based Compounds)
-                </h5>
-
-                <div class="custom-card-footer">
-                  <span style="font-size: smaller">Progress:</span>
-                  <div
-                    class="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar w-75"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 mt-5">
-          <a
-            class="text-decoration-none text-reset"
-            href="/student/selectedCourse.html"
-          >
-            <div class="custom-card">
-              <span
-                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-              >
-                Physics
-              </span>
-              <img
-                src="/src/images/physics.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <h5 class="custom-card-title truncate">
-                  Mechanics (Motion, Forces, Energy)
-                </h5>
-
-                <div class="custom-card-footer">
-                  <span style="font-size: smaller">Progress:</span>
-                  <div
-                    class="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar w-50"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 mt-5">
-          <a
-            class="text-decoration-none text-reset"
-            href="/student/selectedCourse.html"
-          >
-            <div class="custom-card">
-              <span
-                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-              >
-                Earth Science
-              </span>
-              <img
-                src="/src/images/earth_science.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <h5 class="custom-card-title truncate">
-                  Geology (Rocks, Minerals, Earth’s Crust)
-                </h5>
-
-                <div class="custom-card-footer">
-                  <span style="font-size: smaller">Progress:</span>
-                  <div
-                    class="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar w-25"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-lg-4 mt-5">
-          <a
-            class="text-decoration-none text-reset"
-            href="/student/selectedCourse.html"
-          >
-            <div class="custom-card">
-              <span
-                class="fw-medium badge overlay text-bg-dark mt-3 ms-3 py-2 px-3"
-              >
-                Astronomy
-              </span>
-              <img
-                src="/src/images/astronomy.jpeg"
-                alt="Card Image"
-                class="custom-card-img"
-              />
-              <div class="custom-card-body">
-                <h5 class="custom-card-title truncate">
-                  Astrophysics (Stars, Galaxies, Black Holes)
-                </h5>
-                <div class="custom-card-footer">
-                  <span style="font-size: smaller">Progress:</span>
-                  <div
-                    class="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <div class="progress-bar w-50"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+      <!-- Pagination -->
+      <div class="pagination-container my-5">
+        <div class="d-flex" id="pagination-controls"></div>
       </div>
     </div>
     <!-- END OF CARDS -->
 
-    <!-- START OF PAGINATION -->
-
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="d-flex gap-3 justify-content-center my-5">
-        <span class="pagination-item"><</span>
-        <span
-          class="pagination-item"
-          style="background-color: #4587f8; color: #f5f5f5"
-          >1</span
-        >
-        <span class="pagination-item">2</span>
-        <span class="pagination-item">3</span>
-        <span class="pagination-item">></span>
-      </div>
-    </div>
-
-    <!-- END OF PAGINATION -->
-
-    <!-- END OF CONTENTS -->
-
     <!-- START OF FOOTER -->
     <div
-      class="container-fluid"
+      class="container-fluid fade-in"
       style="
         border-top: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
       "
     >
-      <div class="container">
+      <div class="container bg-white">
         <div class="row px-md-5 gap-1" style="padding-top: 80px">
           <div class="col" style="margin-top: -5px">
             <img
@@ -482,40 +664,33 @@
               srcset=""
             />
             <p class="pt-md-5 pt-3 pe-5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. In sint
-              dignissimos, excepturi id nisi obcaecati dolorum molestias atque
-              ducimus quam at ut aliquam odit voluptatum placeat ad sit?
-              Quaerat, magnam.
+              MahuSci provides high-quality science education resources for
+              students and educators. Our mission is to make science learning
+              accessible, engaging, and fun for everyone.
             </p>
           </div>
           <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">GET HELP</span>
+            <p class="fs-5 fw-bold hover-effect">GET HELP</p>
             <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Contact Us</li>
-              <li class="py-2">Latest Articles</li>
-              <li class="py-2">FAQ</li>
-            </ul>
-          </div>
-          <div class="col-lg-2" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">COURSES</span>
-            <ul class="list-unstyled pt-md-5 pt-3" style="margin-top: -5px">
-              <li class="py-2">Biology</li>
-              <li class="py-2">Chemistry</li>
-              <li class="py-2">Physics</li>
-              <li class="py-2">Earth Science</li>
-              <li class="py-2">Astronomy</li>
+              <li class="py-2 hover-effect">Contact Us</li>
+              <li class="py-2 hover-effect">Latest Articles</li>
+              <br />
+              <li class="py-2 hover-effect">FAQ</li>
             </ul>
           </div>
 
           <div class="col" style="padding-top: 10px">
-            <span class="fs-5 fw-bold">CONTACT US</span>
+            <span class="fs-5 fw-bold hover-effect">CONTACT US</span>
             <div class="pt-md-5 pt-3" style="margin-top: 3px">
-              <p>
+              <span class="hover-effect">
                 Address: Caraga State University, Amapyon, Butuan City, Agusan
                 Del Norte, Philippines
-              </p>
-              <span style="display: block">Contact No. 085-342-1234</span>
-              <span>Mail: Palmerston03@gmail.com</span>
+              </span>
+              <br /><br />
+              <span class="hover-effect" style="display: block"
+                >Contact No. 085-342-1234</span
+              >
+              <span class="hover-effect">Mail: Palmerston03@gmail.com</span>
             </div>
           </div>
         </div>
@@ -530,5 +705,323 @@
     <!-- END OF FOOTER -->
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize pagination
+        initPagination();
+
+        // Load user data
+        const userData = JSON.parse(sessionStorage.getItem("user-data"));
+        loadUserData(userData);
+
+        // Fetch curriculum data with progress
+        fetchCurriculumData();
+      });
+
+      const backendURL = "https://mahusci.rubenianinternational.com/public";
+      const CARDS_PER_PAGE = 6;
+      let currentPage = 1;
+      let totalFilteredCurricula = 0;
+
+      // Load user data from sessionStorage
+      function loadUserData(user) {
+        document.getElementById("username-desktop").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById("username-mobile").textContent = `${
+          user.firstname
+        } ${user.middlename !== null ? user.middlename : ""} ${user.lastname}`;
+        document.getElementById(
+          "role-level-desktop"
+        ).textContent = `Student | ${user.grade_level}`;
+        document.getElementById(
+          "role-level-mobile"
+        ).textContent = `Student | ${user.grade_level}`;
+
+        document.querySelectorAll(".profile-picture").forEach((img) => {
+          const defaultPic = "/src/images/profile.jpg";
+          const userPic = user?.profile_picture
+            ? "https://mahusci.rubenianinternational.com/storage/app/public/" +
+              user.profile_picture
+            : null;
+
+          img.src = userPic || defaultPic;
+        });
+      }
+
+      // Initialize pagination controls
+      function initPagination() {
+        const paginationContainer = document.createElement("div");
+        paginationContainer.className = "d-flex gap-3";
+        paginationContainer.id = "pagination-controls";
+        document
+          .querySelector(".pagination-container")
+          .appendChild(paginationContainer);
+      }
+
+      async function fetchCurriculumData() {
+        showLoading();
+
+        try {
+          const response = await fetch(
+            backendURL + "/api/student/curriculum-progress",
+            {
+              headers: {
+                Accept: "application/json",
+                Authorization: "Bearer " + sessionStorage.getItem("token"),
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch curriculum data");
+          }
+
+          const curricula = await response.json();
+
+          // Filter curricula to only show those with progress
+          const filteredCurricula = curricula.filter(
+            (curriculum) =>
+              curriculum.progress.completed_items > 0 ||
+              curriculum.progress.in_progress_items > 0
+          );
+
+          // Store in sessionStorage
+          sessionStorage.setItem(
+            "curriculum-data",
+            JSON.stringify(filteredCurricula)
+          );
+
+          totalFilteredCurricula = filteredCurricula.length;
+          renderPagination();
+          renderCurriculumCards(filteredCurricula.slice(0, CARDS_PER_PAGE));
+        } catch (error) {
+          console.error("Error fetching curriculum data:", error);
+          showErrorState();
+        }
+      }
+
+      function renderPagination() {
+        const totalPages = Math.ceil(totalFilteredCurricula / CARDS_PER_PAGE);
+        const paginationContainer = document.getElementById(
+          "pagination-controls"
+        );
+
+        if (totalPages <= 1) {
+          paginationContainer.style.display = "none";
+          return;
+        }
+
+        paginationContainer.style.display = "flex";
+        paginationContainer.innerHTML = "";
+
+        // Previous button
+        const prevButton = document.createElement("span");
+        prevButton.className = "pagination-item";
+        prevButton.innerHTML = "&lt;";
+        prevButton.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            updateDisplayedCards();
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement("span");
+          pageButton.className = `pagination-item ${
+            i === currentPage ? "active" : ""
+          }`;
+          pageButton.textContent = i;
+          pageButton.addEventListener("click", () => {
+            currentPage = i;
+            updateDisplayedCards();
+          });
+          paginationContainer.appendChild(pageButton);
+        }
+
+        // Next button
+        const nextButton = document.createElement("span");
+        nextButton.className = "pagination-item";
+        nextButton.innerHTML = "&gt;";
+        nextButton.addEventListener("click", () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            updateDisplayedCards();
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+
+      function updateDisplayedCards() {
+        const curricula = JSON.parse(
+          sessionStorage.getItem("curriculum-data") || "[]"
+        );
+
+        const startIdx = (currentPage - 1) * CARDS_PER_PAGE;
+        const endIdx = startIdx + CARDS_PER_PAGE;
+        const currentPageData = curricula.slice(startIdx, endIdx);
+
+        renderCurriculumCards(currentPageData);
+        renderPagination();
+      }
+
+      function renderCurriculumCards(curricula) {
+        const container = document.getElementById("curriculum-cards-container");
+        const loadingIndicator = document.getElementById("loading-indicator");
+
+        if (curricula.length === 0) {
+          container.innerHTML = noCoursesHtml();
+          loadingIndicator.style.display = "none";
+          return;
+        }
+
+        container.innerHTML = "";
+
+        const fragment = document.createDocumentFragment();
+
+        for (const curriculum of curricula) {
+          const cardElement = createCurriculumCard(curriculum);
+          fragment.appendChild(cardElement);
+        }
+
+        container.appendChild(fragment);
+        loadingIndicator.style.display = "none";
+      }
+
+      function createCurriculumCard(curriculum) {
+        const progress = curriculum.progress;
+        const progressText =
+          progress.in_progress_items > 0
+            ? `${progress.percentage}% (${progress.completed_items}/${progress.total_items} items, ${progress.in_progress_items} in progress)`
+            : `${progress.percentage}% (${progress.completed_items}/${progress.total_items} items)`;
+
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "col-lg-4 col-md-6 mb-4 fade-up";
+        cardDiv.innerHTML = `
+    <a class="text-decoration-none text-reset" href="/student/selectedLesson.html?curriculum_id=${
+      curriculum.id
+    }">
+      <div class="card h-100">
+        <div class="card-header">
+          ${curriculum.title}
+        </div>
+        <div class="card-body d-flex flex-column">
+          <div class="placeholder-image mb-3">
+            ${getCurriculumImageHtml(curriculum)}
+          </div>
+          <p class="flex-grow-1">${
+            curriculum.description || "Explore this exciting topic!"
+          }</p>
+          
+          <div class="progress-container mt-auto">
+            <small class="text-muted d-block mb-1">
+              Progress: ${progressText}
+            </small>
+            <div class="progress mb-3">
+              <div class="progress-bar" style="width: ${
+                progress.percentage
+              }%"></div>
+            </div>
+            <button class="btn-continue">
+              ${
+                progress.percentage > 0 ? "Continue Learning" : "Start Learning"
+              }
+            </button>
+          </div>
+        </div>
+      </div>
+    </a>
+  `;
+
+        return cardDiv;
+      }
+
+      function getCurriculumImageHtml(curriculum) {
+        if (curriculum.curriculum_image) {
+          return `
+      <img src="${
+        "https://mahusci.rubenianinternational.com/storage/app/public/" +
+        curriculum.curriculum_image
+      }" 
+           alt="${curriculum.title}" 
+           class="custom-card-img"
+           onerror="this.onerror=null;this.src='${generatePlaceholderImage(
+             curriculum.title
+           )}';">
+    `;
+        }
+
+        return `
+    <div class="custom-card-img placeholder-image">
+      <span>${getInitials(curriculum.title)}</span>
+    </div>
+  `;
+      }
+
+      function generatePlaceholderImage(title) {
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+      <rect width="300" height="200" fill="${stringToColor(title)}"/>
+      <text x="150" y="100" font-family="Fredoka One" font-size="48" 
+            fill="white" text-anchor="middle" dominant-baseline="middle">
+        ${getInitials(title)}
+      </text>
+    </svg>
+  `)}`;
+      }
+
+      function stringToColor(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        const hue = Math.abs(hash % 360);
+        return `hsl(${hue}, 70%, 60%)`;
+      }
+
+      function getInitials(title) {
+        return title
+          .split(" ")
+          .map((word) => word[0])
+          .join("")
+          .toUpperCase()
+          .substring(0, 3);
+      }
+
+      function noCoursesHtml() {
+        return `
+    <div class="col-12 text-center py-5">
+      <i class="fas fa-book-open fa-3x mb-3 text-muted" style="color: #4caf50 !important"></i><br>
+      <h5 class="hover-effect">No active curriculum found</h5><br>
+      <p class="hover-effect">Start a new curriculum from the Lessons page</p>
+    </div>
+  `;
+      }
+
+      function showErrorState() {
+        const loadingIndicator = document.getElementById("loading-indicator");
+        loadingIndicator.innerHTML = `
+    <div class="col-12 text-center py-5">
+      <h5 class="hover-effect">Error loading courses</h5>
+      <p class="hover-effect">Please try again later</p>
+    </div>
+  `;
+      }
+
+      function showLoading() {
+        const loadingIndicator = document.getElementById("loading-indicator");
+        loadingIndicator.classList.remove("d-none");
+        loadingIndicator.innerHTML = `
+    <div class="loading-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="mt-3 hover-effect">Loading your science adventures...</p>
+  `;
+      }
+    </script>
   </body>
 </html>
